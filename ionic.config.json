@@ -1,0 +1,8 @@
+{
+  "name": "Mycarespot",
+  "app_id": "732f6204",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

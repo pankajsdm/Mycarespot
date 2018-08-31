@@ -1,0 +1,20 @@
+page-doctors {
+
+    /* Common css*/
+    .item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .toolbar-background {background: #00b4ff;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #ffffff;}
+    /* Ended common css*/
+    
+    /* Main Css*/ 
+
+    
+    ion-buttons {margin: 0;}
+    .bar-button-default-md, .bar-button-default-ios{color: #fff;}
+    .toolbar-md{padding: 0px;}
+    ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+    ion-col.col.col{float:left;}
+    .forward_icon ion-icon{color: #6b5b5b;}
+}

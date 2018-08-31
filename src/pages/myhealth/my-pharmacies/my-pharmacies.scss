@@ -1,0 +1,12 @@
+page-my-pharmacies {
+    item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .toolbar-background {background: #00b4ff;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #ffffff;}
+    .back-button{width:0px;color: #fff;}
+    ion-card-title.card-title{font-size: 1.4rem;}
+    ion-content img{width: 70px;border-radius: 50%;}
+    .list-header-md, .list-header-ios{border-bottom: 1px solid #ccc;border-top: none;}
+    .ion-ios-create-outline{color: #fff;font-size: 20px;}
+}

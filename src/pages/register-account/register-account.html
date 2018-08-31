@@ -1,0 +1,61 @@
+<div class="ion-content">
+    <div class="top">
+        <div class="circle_icon">
+            <img src="assets/img/circle_plus.png" />   
+        </div>         
+    </div>
+    <ion-content>
+
+
+        <form id="registro" class="center" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
+
+            <label id="registrateYConsultaAUnProvedor-input2">
+                <ion-input type="text" placeholder="Nombre" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
+            </label>
+
+            <label id="registrateYConsultaAUnProvedor-input3">
+                <ion-input type="text" placeholder="Apellido" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
+            </label>
+
+            <ion-item class="fecha">
+                <ion-label class="label_text">Fecha de Nacimiento</ion-label>
+                <ion-datetime class="fechaClick" displayFormat="YYYY-MM-DD" pickerFormat="YYYY MMMM DD" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth" cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
+            </ion-item>
+
+            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="registration_type">
+                <ion-input  type="email" placeholder="Correo Electrónico" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
+            </label>
+
+            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
+                <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+            </label>
+            
+
+            <label id="registrateYConsultaAUnProvedor-input7">
+                <ion-input type="password" placeholder="Contraseña" [(ngModel)]='user.password' formControlName="password" ng-minlength="8" ng-maxlength="20" [ngClass]="{ 'input_invalid': isSubmitted && check.password.errors }"></ion-input>
+            </label>
+
+            <label>
+                <ion-input ng-model="confirm" type="password" [(ngModel)]='user.c_password' formControlName="c_password" placeholder="Confirmar contraseña" ng-minlength="2" [ngClass]="{ 'input_invalid': isSubmitted && check.c_password.errors }"></ion-input>
+            </label>
+
+            <label>
+                <ion-segment [(ngModel)]="user.Gender" formControlName="Gender" [ngClass]="{ 'input_invalid': isSubmitted && check.Gender.errors }">
+                    <ion-segment-button value="1" style="width:100px;">Hombre</ion-segment-button>
+                    <ion-segment-button value="2" style="width:100px;">Mujer</ion-segment-button>
+                </ion-segment>
+            </label>
+
+            <button type="submit"  class="button">Regístrate</button>
+            <div class="space"></div>
+        </form>
+    </ion-content>
+</div>
+
+<ion-footer>
+    <div class="bottom">
+        <label>&iquest;Ya tienes cuenta?
+            <span class="link" (click)="goToLogin()">Entrar aquí.</span>
+        </label>
+    </div>
+</ion-footer>
