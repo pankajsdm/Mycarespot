@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavParams, ToastController, LoadingController, NavController, AlertController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
+import { PasswordValidation } from '../../validators/password.validator';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -35,9 +36,12 @@ export class RegisterAccountPage {
         DateOfBirth: ['', [Validators.required]],
         email: [''],
         mobilePhone: [''],
+        country_code: [''],
         Gender: ['', [Validators.required]],
         password: ['', [Validators.required]],
         c_password: ['', [Validators.required]],
+      },{
+        validator: PasswordValidation.MatchPassword
       });
   }
 
@@ -46,19 +50,23 @@ export class RegisterAccountPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterAccountPage');
     console.log(this.navParams.get('type'));
+    this.user.country_code = 'PR +1';
     this.reg_param = this.navParams.get('type');
     if(this.reg_param=='mail'){
       const pureEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       this.registration_type = true;
       this.registerForm.controls['email'].setValidators([Validators.required, Validators.pattern(pureEmail)]);
       this.registerForm.controls['mobilePhone'].clearValidators();
+      this.registerForm.controls['country_code'].clearValidators();
     }else{
       this.registration_type = false;
       this.registerForm.controls['mobilePhone'].setValidators([Validators.required]);
+      this.registerForm.controls['country_code'].setValidators([Validators.required]);
       this.registerForm.controls['email'].clearValidators();
     }
     this.registerForm.controls['email'].updateValueAndValidity();
     this.registerForm.controls['mobilePhone'].updateValueAndValidity();
+    this.registerForm.controls['country_code'].updateValueAndValidity();
   }
 
   goToLogin() { 
@@ -76,7 +84,7 @@ export class RegisterAccountPage {
       }else{
         api_url = 'patient/registerMobileUserByMobileNumber';
         delete this.user.email;
-        this.user.countryCode = '91';
+        this.user.countryCode = this.user.country_code;
       }
       console.log(this.user);
       this.authService.post(api_url, this.user).then((result) => {

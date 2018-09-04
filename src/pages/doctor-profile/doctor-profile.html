@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Dr. John Doe</ion-title>
+        <ion-title>Dr. {{doctor.firstName}} {{doctor.lastName}}</ion-title>
         <ion-buttons end>
           <button ion-button color="royal"></button>
         </ion-buttons>
@@ -8,17 +8,23 @@
 </ion-header>
 
 
+
 <ion-content>
     <ion-item text-center class="image_container_profile" style="padding-left:0px;">
-        <img src="assets/img/marty-avatar.png">
-        <h2>Dr. John Doe</h2>
+        <img [src]="doctor.avatar">
+        <h2>Dr. {{doctor.firstName}} {{doctor.lastName}}</h2>
         <p>General Physical</p>   
 
         <div class="user_activity">
-            <ion-icon name="ios-videocam"></ion-icon>
-            <ion-icon name="ios-chatboxes"></ion-icon>
-            <ion-icon name="ios-calendar"></ion-icon>
+            <ion-icon name="ios-videocam" (click)="patientInfo()"></ion-icon>
+            <ion-icon name="ios-chatboxes" (click)="patientInfo()"></ion-icon>
+            <ion-icon name="ios-calendar" (click)="patientInfo()"></ion-icon>
         </div>
+       <!--  <div class="user_activity_label">
+            <span class="video">Video</span>
+            <span class="chat">Mensaje</span>
+            <span class="schedule">Cita</span>
+        </div> -->
     </ion-item>
 
 

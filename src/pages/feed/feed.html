@@ -65,7 +65,8 @@
               <!-- <ion-avatar item-start (click)="userDetail()">
               </ion-avatar> -->
 
-              <img [src]="comment.created_by_user_id.avatar">
+              <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
+              <img *ngIf="!comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
               <h4>{{comment.created_by_user_id.firstName}} {{comment.created_by_user_id.lastName}} <span class="time_ago">{{comment.createdAt | timeAgo }}</span></h4>
               <p>{{comment.message}}</p>   
               <div class="comment_activities">
@@ -86,7 +87,10 @@
             
 
             <div class="child_comment" *ngFor="let chld_comment of comment.child_comment;">
-              <img [src]="chld_comment.created_by_user_id.avatar">
+
+              <img *ngIf="chld_comment.created_by_user_id.avatar" [src]="chld_comment.created_by_user_id.avatar">
+              <img *ngIf="!chld_comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
+
               <h4>{{chld_comment.created_by_user_id.firstName}} {{chld_comment.created_by_user_id.lastName}} <span class="time_ago">{{chld_comment.datetime | timeAgo }}</span></h4>
               <p>{{chld_comment.message}}</p>
             </div>
@@ -112,7 +116,7 @@
                         <ion-input id="comment_text_{{feed._id}}" formControlName="comments" placeholder="Write a comment" type="text"></ion-input> 
                     </ion-item>
                   </ion-col>
-                  <ion-col class="col" col-2="">
+                  <ion-col class="col" col-2="" style="display:none;">
                     <button type="submit" clear="" icon-only="" ion-button="" item-right="" class="">
                       <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
                     </button>

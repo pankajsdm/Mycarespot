@@ -3,7 +3,7 @@
     <ion-content>
         <div class="bg-block nav-lt" menuClose (click)="getProfile()">
               <div class="user-img"> <img src="assets/img/marty-avatar.png"></div>
-              <div class="user-name">Nick Martin</div>
+              <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
           </div>
         <ion-list class="left-nav">
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}</button>

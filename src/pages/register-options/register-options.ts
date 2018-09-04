@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { Events, NavParams, ToastController, AlertController, LoadingController, NavController, MenuController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { LoginPage } from '../login/login';
 import { RegisterAccountPage } from '../register-account/register-account'
+import { CommonServiceProvider } from '../../providers/common-service/common-service';
 
 @Component({
   selector: 'page-register-options',
@@ -12,11 +14,20 @@ export class RegisterOptionsPage {
 
   private fb: any;
   isLoggedIn:boolean = false;
-  
+  isSubmitted: boolean = false;
+  online: Boolean = true;
+  loading: any;
+  user_data: any;
+
   constructor(
     fb: Facebook,
-    public navCtrl: NavController, 
-    public navParams: NavParams) {
+    private alertCtrl: AlertController,
+    public events: Events,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController,
+    public authService: CommonServiceProvider,
+    private toastCtrl: ToastController,
+    public menu: MenuController) {
       this.fb = fb; 
   }
   
@@ -49,12 +60,40 @@ export class RegisterOptionsPage {
   } 
 
   connectDb(token, id, first_name, last_name, email){
-    console.log(token);
-    console.log(id);
-    console.log(first_name);
-    console.log(last_name);
-    console.log(email);
+    this.showLoader();
+    let name = first_name+' '+last_name;
+    let json =   {
+      email: email,
+      name: name,
+      provider : 'facebook',
+      provider_id : id,
+      provider_pic: "",
+      token: token
+    };
+
+    this.authService.post('patient/facebookLogin', json).then((result) => {
+      this.loading.dismiss();
+      this.user_data = result;  
+      if(this.user_data.code==200){ 
+        this.menu.enable(true); 
+        localStorage.setItem('user_data', JSON.stringify(this.user_data.data));
+        localStorage.setItem('token', this.user_data.token);
+        this.publish_events(this.user_data.data);
+        this.navCtrl.setRoot(TabsPage);
+      }else{
+        this.presentAlert('Error', this.user_data.message);
+      }
+    },(err) => {
+      this.loading.dismiss();
+      this.presentToast('Something wrong! Please try later.');
+    });
   }
+
+   /* Pubslish event on each update */
+   publish_events(data){
+    this.events.publish('user:update', data);
+  }
+
 
   goToLogin(){
     this.navCtrl.push(LoginPage); 
@@ -68,6 +107,37 @@ export class RegisterOptionsPage {
     this.fb.logout()
       .then( res => this.isLoggedIn = false)
       .catch(e => console.log('Error logout from Facebook', e));
+  }
+
+  presentAlert(title, subtitle) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subtitle,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: ''
+    });
+    this.loading.present();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 10000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
     
 

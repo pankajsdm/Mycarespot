@@ -5,21 +5,25 @@
     </div>
 </ion-header>
 <ion-content class="no-scroll">
+        <div class="pad_rlt">
     <div class="register_option_text">
-        <p>Puede registrarse utilizando<br>cualquier de las siguientes opciones:</p>
+        <p>Puede registrarse utilizando cualquier de las siguientes opciones:</p>
     </div>
+    
     <button class="btnFacebook" (click)="facebook()">
         <img class="facebookIcon" src="assets/img/facebook.png" height="20px"/>
         <p>Facebook</p>
     </button>
     <button class="btnMail" (click)="register('mail')">
-        <img class="mailIcon" src="assets/img/mail.png" height="20px"/>
+        <img class="mailIcon" src="assets/img/gmail.png" height="20px" style="left: 5px;width: 21px;"/>
         <p>Correo electrónico</p>
     </button>
     <button class="btnMobile" (click)="register('mobile')">
-        <img class="mobileIcon" src="assets/img/mobile.png" height="20px"/>
+        <img class="mobileIcon" src="assets/img/phone.png" height="20px"/>
         <p>Numero celular</p>
     </button>
+</div>
+   
 
     <div class="terminos">
         <h5>Al registrarte, confirmas que leiste nuestros</h5>

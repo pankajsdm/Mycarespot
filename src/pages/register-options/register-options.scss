@@ -1,22 +1,21 @@
 page-register-options {
     .top{
-        padding: 30px 0 !important;
-        height: 182px !important;
-        img{width: 15%;}
+        padding: 30px 20px 0 20px !important;
+        height: 158px !important;
+        img{width: 34px;}
     }
 
     .btnFacebook{
-        width: 90%;
+        width:100%; 
         margin: 10px auto;
         background-color:#3b5998;
         text-align: left;
-        color:white;
-        padding: 5px 15px !important;
+        color:white; 
         position: relative !important;
         .facebookIcon{
             display: inline-block;
             vertical-align: middle;
-            margin: 0 25px;
+            margin: 0 25px 0 0;
         }
         p{
             display: inline-block;
@@ -28,17 +27,16 @@ page-register-options {
     }
 
     .btnMail{
-        width: 90%;
+        width: 100%;
         margin: 10px auto;
         background-color:#dad2d2;
         text-align: left;
-        color:white;
-        padding: 5px 15px !important;
+        color:white; 
         position: relative !important;
         .mailIcon{
             display: inline-block;
             vertical-align: middle;
-            margin: 0 25px;
+            margin: 0 25px 0 0;
         }
         p{
             display: inline-block;
@@ -50,17 +48,16 @@ page-register-options {
     }
 
     .btnMobile{
-        width: 90%;
+        width: 100%;
         margin: 10px auto;
         background-color:#00b4ff;
         text-align: left;
-        color:white;
-        padding: 5px 15px !important;
+        color:white; 
         position: relative !important;
         .mobileIcon{
             display: inline-block;
             vertical-align: middle;
-            margin: 0 25px;
+            margin: 0 25px 0 0;
         }
         p{
             display: inline-block;
@@ -72,7 +69,7 @@ page-register-options {
     }
 
     .scroll-content{
-        margin-top: 190px !important;
+        margin-top: 158px !important;
     }
 
     .separador{
@@ -104,7 +101,7 @@ page-register-options {
     }
 
     .terminos{
-        margin-bottom: 60px;
+        margin-bottom: 50px;
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -114,6 +111,7 @@ page-register-options {
             margin-top:15px;
             text-align: center; 
             padding-top: 25px;
+            margin-bottom: 3px;
         }
         .link{
             color: #00B4FF;
@@ -122,12 +120,26 @@ page-register-options {
     }
     
     .no-scroll .scroll-content{overflow: hidden;}
-    .register_option_text{ margin: 0 auto; width: 88%;}
-    .register_option_text p{ color: #757575;}
+    .register_option_text{ margin: 0 auto; width: 100%;}
+    .register_option_text p{ color: #757575;font-size: 13px; margin: 20px 0 13px 0;}
     .terminos a{color: #00b4ff;}
     .term_privacy{width: 82%;margin: 0 auto;}
     .term_privacy span {color: #757575;}
 
-    .bottom {padding: 28px;border-top: none; height: 60px; background: #fff;}
+    .bottom {padding: 15px 0;border-top: none; background: #fff;}
+    
 
+}
+/*========= New Css ==============*/
+.btnFacebook, .btnMail, .btnMobile{
+    padding-left: 40px;
+}
+.btnFacebook .facebookIcon , .btnMail .mailIcon, .btnMobile .mobileIcon{ 
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+.pad_rlt{
+display: block;
+padding: 0 34px;
 }

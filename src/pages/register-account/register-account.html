@@ -27,7 +27,17 @@
             </label>
 
             <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
-                <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+                <div class="phone_number">
+
+                    <ion-select interface="popover" [(ngModel)]="user.country_code" formControlName="country_code">
+                        <ion-option value="PR +1">PR +1</ion-option> 
+                        <ion-option value="Ind +91">Ind +91</ion-option> 
+                        <ion-option value="Aus +61">Aus +61</ion-option> 
+                    </ion-select>
+                    
+
+                    <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+                </div>
             </label>
             
 
@@ -46,8 +56,7 @@
                 </ion-segment>
             </label>
 
-            <button type="submit"  class="button">Regístrate</button>
-            <div class="space"></div>
+            <button type="submit"  class="button">Regístrate</button> 
         </form>
     </ion-content>
 </div>

@@ -1,4 +1,5 @@
 page-register-account {
+  
     .label_text{
         text-align:left;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
@@ -30,7 +31,7 @@ page-register-account {
         border-radius: 7px;
         border: 1px solid #D2D2D2;
         padding: 10px 10px 10px 20px;
-        margin-top: 10px;
+        margin-bottom: 10px;
         font-size: 1em;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
       }
@@ -94,6 +95,7 @@ page-register-account {
       }  
       .scroll-content{
         margin-top: 0px !important;
+        overflow: visible;
       }
       .fecha {
         margin: 0 auto;
@@ -101,7 +103,7 @@ page-register-account {
         border-radius: 7px;
         border: 1px solid #D2D2D2;
         padding: 0px 0px 0px 20px;
-        margin-top: 10px;
+        margin-bottom: 10px;
         font-size: 1em;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
         position: relative;
@@ -141,9 +143,56 @@ page-register-account {
         padding-right: 4px;
         min-height: 44px;
     }
+    .button{margin: 0 0 10px 0 !important;}
     .datetime{border-radius: 6px;}
-    .segment{display: inline-flex; padding: 0;margin: 10px 0;}
+    .segment{display: inline-flex; padding: 0;margin: 0 0 10px 0;}
     .segment-button{border-left: 1px solid #ddd; color: #9c9c9c !important;}
-    .segment-button.segment-activated{border-color: #ccc !important; border-right: 1px solid #ddd;}
+    .segment-button.segment-activated{color: #fff !important;
+      background-color: #00b4ff !important;}
     .datetime.input_invalid, .segment.input_invalid{border: 1px solid red;}
+.center{
+  padding: 0 30px;
+  margin: 0 auto !important;
+}
+.segment-ios .segment-button{
+  border-color: #D2D2D2;
+} 
+
+.phone_number .input_invalid {
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+.phone_number{
+  border: 1px solid #D2D2D2;
+  margin: 0 0 10px 0;
+  border-radius: 5px;
+  display: flex;
+  .select-ios{
+    border: 0px;
+    width: 60px;
+    display: inline-block;
+    font-size: 12px; margin: 0px;
+    border-right: 1px solid #d2d2d2;
+    border-radius: 0px;    color: #00b4ff;
+    .select-icon{display: none;}
+    .select-text { padding-top: 7px;}
+  }
+  .select-md{
+    border: 0px;
+    width: 60px;
+    display: inline-block;
+    font-size: 12px; margin: 0px;
+    border-right: 1px solid #d2d2d2;
+    border-radius: 0px;    color: #00b4ff;
+    .select-icon{display: none;}
+    .select-text { padding-top: 0px;}
+  }
+  .text-input{
+    width:100%;
+    display: inline-block;
+    margin: 0px;
+    border: 0px;
+  }
+}
 }

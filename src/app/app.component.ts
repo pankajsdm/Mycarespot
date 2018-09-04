@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,16 +20,22 @@ export class MyApp {
 
   rootPage:any = HomePage;
   pages:any;
+  user = {firstName: '', lastName: ''};
 
   public feedPage        = 'Feed'; 
   public aboutPage       = 'About';
   public contactPage    = 'Contact';
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(public events: Events, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
 
     
-    platform.ready().then(() => {
+    events.subscribe('user:update', (user) => {
+      console.log("my date", user.firstName, user.lastName);
+      this.user.firstName = user.firstName;
+      this.user.lastName = user.lastName;
+    }); 
 
+    platform.ready().then(() => {
       this.main_navigation();
       statusBar.styleDefault();
       splashScreen.hide();

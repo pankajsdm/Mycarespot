@@ -111,6 +111,7 @@ public cmt: {comments: any};
     var cur_date = new Date();
     this.customComment = {
       child_comment: [],
+      like: [],
       createdAt: cur_date,
       created_by_user_id:{
         avatar: this.current_user.avatar,
@@ -154,6 +155,7 @@ public cmt: {comments: any};
     var cur_date = new Date();
     this.customComment = {
       child_comment: [],
+      like: [],
       createdAt: cur_date,
       created_by_user_id:{
         avatar: this.current_user.avatar,

@@ -1,0 +1,79 @@
+page-patient-info {
+   
+    .toolbar-background {background: #00b4ff;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #ffffff;font-size: 1.5rem;}
+    .back-button{width:0px;color: #fff;}
+    ion-card-title.card-title{font-size: 1.4rem;}
+
+
+
+    .text-input {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 7px;
+    border: 1px solid #D2D2D2;
+    padding: 10px 10px 10px 20px;
+    margin-top: 10px;
+    font-size: 1em;
+    font-family: 'helvetica-normal', 'arial', 'sans-serif';
+    }
+
+    .top{
+        /* height: 150px !important;
+        padding: 64px 0 !important; */
+        padding: 92px 0 !important;
+        background-color: #ffffff;
+        p{ padding: 0 50px;}
+    }
+
+    .center h6{color: #847676}
+    .circle_icon ul {padding:0;
+    margin: 14px 0px;
+display: flex;
+justify-content: space-between;align-items: center;}
+    .circle_icon ul li {
+        list-style: none;
+        padding: 0px;
+        line-height: 15px;
+        font-size: 10px;
+        font-weight: bold;
+        width: 15px;
+        height: 15px;
+        text-align: center;
+        background: #ededed;
+        border-radius: 100%;
+        color: #fff;
+        position: relative;
+        
+    }
+    .circle_icon ul li.active{background: #00b4ff;}
+    .circle_icon ul li:after {
+        content: '';
+        position: absolute;
+        top: 7px;
+        height: 2px;
+        background: #ededed;
+        left: 15px;
+        width: 35px;
+        z-index: 0;
+    }
+    .circle_icon ul li:last-child:after {
+        content: none;
+    }
+    .circle_icon ul li.fill:after{
+        background: #00b4ff;
+    }
+    .add_menor{
+        margin-top: 13px;
+        float: left;
+        color: #00b4ff;
+    }
+
+    .centerData{ 
+        p{font-size: 12px;text-align: center;}
+        span{font-size: 12px;text-align: center;}
+    }
+
+
+}

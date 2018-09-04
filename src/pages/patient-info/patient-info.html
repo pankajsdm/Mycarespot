@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Paciente</ion-title>
+    <ion-buttons end class="right_button">
+      <button ion-button color="royal">Continuar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<div class="ion-content">
+  <div class="top">
+    <div class="pad_rlt">
+    <div class="circle_icon">
+      <ul>
+        <li class="active fill">1</li>
+        <li class="active">2</li>
+        <li> </li>
+        <li> </li>
+        <li> </li>
+        <li> </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+
+  <ion-content>
+
+    <form id="registro" class="center" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
+
+      <h6>¿Quien es el paciente?</h6>
+
+      <label id="registrateYConsultaAUnProvedor-input2">
+        <ion-input type="text" placeholder="Yo, Rafael J. Esteves" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
+      </label>
+
+      <label id="registrateYConsultaAUnProvedor-input3">
+        <ion-input type="text" placeholder="Nicolas Esteves" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
+      </label>
+
+
+      <label id="registrateYConsultaAUnProvedor-input5">
+        <ion-input type="email" placeholder="Rosalisa Esteves" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
+      </label>
+
+      <label id="registrateYConsultaAUnProvedor-input5">
+        <span class="add_menor" (click)="add_menor()">+ Añadir menor</span>
+      </label>
+
+
+      <label>
+        <ion-input ng-model="confirm" type="password" [(ngModel)]='user.c_password' formControlName="c_password" placeholder="Confirmar contraseña"
+          ng-minlength="2" [ngClass]="{ 'input_invalid': isSubmitted && check.c_password.errors }"></ion-input>
+      </label>
+
+
+      <div class="centerData">
+        <p>Al continuar, confirmas que leíste nuestros</p>
+        <a>Términos de Uso</a>
+        <span>y</span>
+        <a>Política de Privacidad</a>
+      </div>
+
+      <div class="space"></div>
+    </form>
+  </ion-content>
+
+</div>
