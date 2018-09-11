@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Síntomas</ion-title>
+      <ion-buttons end class="right_button" (click)="riskFactors()">
+        <button ion-button color="royal">Continuar</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content>
+        <form class="pad_rlt_25" [formGroup]="registerForm">
+
+              <div class="circle_icon">
+                <ul>
+                  <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
+                  <li class="active">2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                </ul>
+              </div>
+
+
+          <div class="clearfix"><span class="form_label">¿Qué síntomas esta presentando?</span></div>
+
+          <div class="check_section">
+              <ion-searchbar debounce="10" placeholder="Buscar, p. ej. dolor de cabe4za"></ion-searchbar>
+          </div>
+          <ul class="search_tag">
+            <li>Dolor de cabeza <a href="#"></a></li>
+            <li>Dolor de cabeza <a href="#"></a></li> 
+          </ul>
+
+          <!-- <div class="clearfix"><span class="form_label">¿Cuando comenzó a sentirte así?</span></div>
+          <div class="centerData clearfix">
+            <label>
+              <ion-input type="text" placeholder="Buscar, p. ej. dolor de cabeza"></ion-input>
+            </label>
+          </div>
+          <div class="space"></div> -->
+
+        </form>
+
+  </ion-content>

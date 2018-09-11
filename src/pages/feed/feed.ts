@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { AfterViewInit, Component, ElementRef} from '@angular/core';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
@@ -61,8 +62,13 @@ public cmt: {comments: any};
         this.showLoader();
         this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=1').then((result) => {
           this.loading.dismiss();
-          this.feedsArr = result;  
-          this.organizePost();
+          this.feedsArr = result;
+          if(this.feedsArr.code=='401'){
+            localStorage.clear();
+            this.navCtrl.setRoot(LoginPage);
+          }else{  
+            this.organizePost();
+          }
         },(err) => {
           this.loading.dismiss();
           this.presentToast('Something wrong! Please try later.');

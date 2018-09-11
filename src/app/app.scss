@@ -2,6 +2,7 @@ body {
     background-color: white;
     font-size: 1em;
     font-family: 'Open Sans', sans-serif;
+    color: #919191;
 }
 
 
@@ -65,7 +66,7 @@ h6 {
 
 p {
     font-size: 1em;
-    color: #212121;
+    color: #464646;
 }
 
 .center {
@@ -84,8 +85,8 @@ p {
     padding: 15px;
     padding-top: 20px;
     p {
-        color: white; 
-        font-weight: 200; 
+        color: white;
+        font-weight: 200;
         font-size: 13px;
         margin:24px 0 0 0;
         padding: 0;
@@ -637,9 +638,35 @@ span.back-button-text.back-button-text-ios {
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
+    text-transform: capitalize;
+}
+
+.alert-ios .alert-button, .alert-md .alert-button{
+    float: left; width: 50%;
 }
 
 span.back-button-text.back-button-text-ios {
     font-weight: bold;
     font-size: 12px;
 }
+.clearfix{
+    display: block;
+    width: 100%;
+    float: left;
+}
+.card-md{box-shadow: none;border-bottom: 1px solid #ddd;}
+.label-md,.label-ios {
+    margin:8px 0px 8px 0;  
+  }
+  .header-md::after{
+      content:none;
+  }
+  .searchbar-md .searchbar-clear-icon, .searchbar-ios .searchbar-clear-icon {
+    right: 26px;
+    top: 4px;
+    background-size: 16px;
+  }
+  .toolbar-title-md {
+    font-size: 18px;
+  }
+

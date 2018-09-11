@@ -9,16 +9,18 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  
+    
   @ViewChild(Nav) nav: Nav;
 
   rootPage:any = HomePage;
+  //rootPage:any = PharmacyPage;
   pages:any;
   user = {firstName: '', lastName: ''};
 

@@ -18,6 +18,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { FeedPage } from '../pages/feed/feed';
+import { MedicalCarePage } from './../pages/medical-care/medical-care';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { DoctorProfilePage } from './../pages/doctor-profile/doctor-profile';
 import { ConversationPage } from './../pages/conversation/conversation';
@@ -27,15 +28,26 @@ import { MyDocumentsPage } from './../pages/myhealth/my-documents/my-documents';
 import { MySuppliersPage } from './../pages/myhealth/my-suppliers/my-suppliers';
 import { MyPharmaciesPage } from './../pages/myhealth/my-pharmacies/my-pharmacies';
 import { DiagnosticsPage } from './../pages/myhealth/my-records/diagnostics/diagnostics';
-import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-password';
-import { RegisterOptionsPage } from '../pages/register-options/register-options';
-import { RegisterAccountPage } from '../pages/register-account/register-account'
-import { CommonServiceProvider } from '../providers/common-service/common-service';
+import { RecoveryPasswordPage } from './../pages/recovery-password/recovery-password';
+import { RegisterOptionsPage } from './../pages/register-options/register-options';
+import { RegisterAccountPage } from './../pages/register-account/register-account'
+import { CommonServiceProvider } from './../providers/common-service/common-service';
+  
 import { PatientInfoPage } from './../pages/patient-info/patient-info';
+import { AddMinorPage } from './../pages/add-minor/add-minor';
+import { PatientSimptomPage } from './../pages/patient-info/patient-simptom/patient-simptom';
+import { RiskFactorsPage } from './../pages/patient-info/risk-factors/risk-factors';
+import { MedicalHistoryPage } from './../pages/patient-info/medical-history/medical-history';
+import { BodyMeasurementsPage } from './../pages/patient-info/body-measurements/body-measurements';
+import { VitalsPage } from './../pages/patient-info/vitals/vitals';
+import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
+import { PharmacyAddPage } from './../pages/patient-info/pharmacy-add/pharmacy-add';
+import { PharmacyMapPage } from './../pages/patient-info/pharmacy-map/pharmacy-map';
+
 
 /* Defined pipe here */
 import { LikePipe } from './../pipes/like.pipe';
-  
+
 @NgModule({
   declarations: [
     MyApp,
@@ -46,6 +58,7 @@ import { LikePipe } from './../pipes/like.pipe';
     AboutPage,
     ContactPage,
     FeedPage,
+    MedicalCarePage,
     DoctorsPage,
     DoctorProfilePage,
     ConversationPage,
@@ -56,6 +69,15 @@ import { LikePipe } from './../pipes/like.pipe';
     MyPharmaciesPage,
     DiagnosticsPage,
     PatientInfoPage,
+    AddMinorPage,
+    PatientSimptomPage,
+    RiskFactorsPage,
+    MedicalHistoryPage,
+    BodyMeasurementsPage,
+    VitalsPage,
+    PharmacyPage,
+    PharmacyAddPage,
+    PharmacyMapPage,
     RecoveryPasswordPage,
     RegisterOptionsPage,
     RegisterAccountPage,
@@ -75,9 +97,9 @@ import { LikePipe } from './../pipes/like.pipe';
     AboutPage,
     ContactPage,
     FeedPage,
+    MedicalCarePage,
     DoctorsPage,
     DoctorProfilePage,
-    
     MyhealthPage,
     MyRecordsPage,
     MyDocumentsPage,
@@ -85,6 +107,15 @@ import { LikePipe } from './../pipes/like.pipe';
     MyPharmaciesPage,
     DiagnosticsPage,
     PatientInfoPage,
+    AddMinorPage,
+    PatientSimptomPage,
+    RiskFactorsPage,
+    MedicalHistoryPage,
+    BodyMeasurementsPage,
+    VitalsPage,
+    PharmacyPage,
+    PharmacyAddPage,
+    PharmacyMapPage,
     ConversationPage,
     RecoveryPasswordPage,
     RegisterOptionsPage,

@@ -1,5 +1,6 @@
 page-feed {
     
+
         /* Common css*/
         .card-md, .card-ios{width: 100%;margin: 0;}
         /* Ended common css*/
@@ -43,6 +44,10 @@ page-feed {
         .comment_activities .common_span{
             color: #443f3f;
             font-size: 13px;
+        }
+
+        .top-little img {
+            padding-top: 0px;
         }
 
         .subcomment_text{padding:0;}

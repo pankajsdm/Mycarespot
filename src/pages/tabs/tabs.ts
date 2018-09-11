@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavParams, NavController} from 'ionic-angular';
 import { FeedPage } from '../feed/feed';
+import { MedicalCarePage } from './../medical-care/medical-care';
 import { DoctorsPage } from '../doctors/doctors';
 import { ConversationPage } from './../conversation/conversation';
 import { MyhealthPage } from './../myhealth/myhealth';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { LoginPage } from '../login/login';
+import { PharmacyPage } from './../patient-info/pharmacy/pharmacy';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -36,11 +37,11 @@ export class TabsPage {
     
   this.tabs = [
       {root: FeedPage, icon: "home", enabled: false},
-      {root: DoctorsPage, icon: "briefcase", enabled: false},
+      {root: MedicalCarePage, icon: "briefcase", enabled: false},
       {root: ConversationPage, icon: "chatboxes", enabled: false},
       {root: FeedPage, icon: "notifications", enabled: false},
       {root: MyhealthPage, icon: "heart", enabled: false},
-      {root: FeedPage, icon: "calendar", enabled: false},
+      {root: ContactPage, icon: "calendar", enabled: false},
     ];  
    
     let getComponentFromNavPArams = navParams.get('page');

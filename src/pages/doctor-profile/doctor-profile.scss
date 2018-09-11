@@ -6,12 +6,26 @@ page-doctor-profile {
     ion-title .toolbar-title{color: #ffffff;}
     .back-button{width:0px;color: #fff;}
     ion-card-title.card-title{font-size: 1.4rem;}
-    ion-content img{width: 70px;border-radius: 50%;}
+    .profile_img {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        overflow: hidden;
+        border: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        img{width: 100%;}
+    }
+    .text_center_flex{    
+        display: flex;
+        justify-content: space-around;
+    }
     .list-header-md, .list-header-ios{border-bottom: 1px solid #ccc;border-top: none;}
     
     .user_info{border-bottom: 1px solid #ddd;;}
     .user_info h6{font-size: 14px;}
-    .user_info p{margin: 0px;;}
+    .user_info p{margin: 0px;}
 
     .user_activity{margin-top: 15px;}
     .user_activity ion-icon{
@@ -28,4 +42,16 @@ page-doctor-profile {
         margin: 0px 38px 0px -4px;
         width: 5px;
     }
+   .item-inner{padding: 0px !important;}
+   .label-ios{margin-right: 0px;}
+   .user_activity ion-icon{margin: 0 15px;}
+   .input-wrapper{
+       background: #00b4ff;
+       color: #fff;
+       h2{font-weight: bold;color: #fff;}
+       p{
+        color: #fff;
+        font-weight: bold;
+       }
+   }
 }

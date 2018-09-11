@@ -11,7 +11,7 @@
 
 <ion-content>
     <ion-item text-center class="image_container_profile" style="padding-left:0px;">
-        <img [src]="doctor.avatar">
+       <p class="text_center_flex"><span class="profile_img"><img *ngIf="doctor.avatar" [src]="doctor.avatar"/></span></p>
         <h2>Dr. {{doctor.firstName}} {{doctor.lastName}}</h2>
         <p>General Physical</p>   
 

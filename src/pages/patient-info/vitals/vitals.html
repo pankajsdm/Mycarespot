@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Vitales</ion-title>
+      <ion-buttons end class="right_button" (click)="pharmacy()">
+        <button ion-button color="royal">Continuar</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <form>
+      <div class="pad_rlt_25">
+        <div class="circle_icon">
+          <ul>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active">5</li>
+            <li>6</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="pad_rlt_10">
+        <span class="form_label">¿Ha sido diagnosticado con alguna de las siguientes condiciones?</span>
+      </div>
+  
+      <ion-list-header>
+          Presión arterial
+      </ion-list-header>
+      <div class="user_info">
+        <div class="title_text">Sistólica</div>
+        <span class="">100</span>
+      </div>
+      <div class="user_info">
+          <div class="title_text">Diastólica</div>
+          <span class="">32</span>
+        </div>
+
+      <ion-list-header>
+          Temperatura corporal
+      </ion-list-header>
+      <div class="user_info">
+        <div class="title_text">°F</div>
+        <span class="">100</span>
+      </div>
+
+      <ion-list-header>
+          Velocidad de la respiración
+      </ion-list-header>
+      <div class="user_info">
+          <div class="title_text">Respiraciones por minuto</div>
+          <span class="">100</span>
+        </div>
+  
+    </form>
+  
+  </ion-content>

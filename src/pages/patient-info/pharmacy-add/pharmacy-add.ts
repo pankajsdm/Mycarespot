@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { PharmacyMapPage } from './../pharmacy-map/pharmacy-map';
+
+
+@Component({
+  selector: 'page-pharmacy-add',
+  templateUrl: 'pharmacy-add.html',
+})
+export class PharmacyAddPage {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PharmacyAddPage');
+  }
+
+  seeMap(){
+    this.navCtrl.push(PharmacyMapPage);
+  }
+
+}

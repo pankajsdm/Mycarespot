@@ -14,10 +14,16 @@ export class RegisterAccountPage {
 
   
   public registerForm: FormGroup;
+  public verifyForm: FormGroup;
   public user: any = {};
+  verificationProcess: boolean = false;
+  public verf: any = {code: ''};
   registration_type: boolean;
   reg_param: string;
+  cellphone: Number;
+  register_id: string;
   isSubmitted: boolean = false;
+  isSubmittedVrfToken: boolean = false;
   online: Boolean = true;
   loading: any;
   user_data: any;
@@ -29,6 +35,10 @@ export class RegisterAccountPage {
     private toastCtrl: ToastController,
     public navCtrl: NavController, public navParams: NavParams
   ) {
+
+      this.verifyForm = this.formdata.group({
+        code: ['', [Validators.required]],
+      }); 
 
       this.registerForm = this.formdata.group({
         FirstName: ['', [Validators.required]],
@@ -46,6 +56,7 @@ export class RegisterAccountPage {
   }
 
   get check() { return this.registerForm.controls; }
+  get vrfToken() { return this.verifyForm.controls; }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterAccountPage');
@@ -63,7 +74,7 @@ export class RegisterAccountPage {
       this.registerForm.controls['mobilePhone'].setValidators([Validators.required]);
       this.registerForm.controls['country_code'].setValidators([Validators.required]);
       this.registerForm.controls['email'].clearValidators();
-    }
+    } 
     this.registerForm.controls['email'].updateValueAndValidity();
     this.registerForm.controls['mobilePhone'].updateValueAndValidity();
     this.registerForm.controls['country_code'].updateValueAndValidity();
@@ -86,10 +97,43 @@ export class RegisterAccountPage {
         delete this.user.email;
         this.user.countryCode = this.user.country_code;
       }
-      console.log(this.user);
       this.authService.post(api_url, this.user).then((result) => {
         this.loading.dismiss();
         this.user_data = result;  
+        if(this.user_data.code==200){
+          if(this.reg_param=='mail'){
+            this.presentAlert('Success', this.user_data.message)
+            setTimeout(() => {
+              this.navCtrl.setRoot(LoginPage);
+            }, 1000);
+          }else{
+            this.mobile_verification_html(this.user.mobilePhone, this.user_data.data._id);
+          }
+        }else{
+          this.presentAlert('Error', this.user_data.message)
+        }   
+      },(err) => {
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
+    } 
+  }     
+
+  mobile_verification_html(mobilePhone, _id){
+    this.verificationProcess = true;
+    this.cellphone = mobilePhone;
+    this.register_id = _id;
+  }
+   
+  tokenVerification(){
+    if(this.verifyForm.valid){
+      console.log(this.verf);
+      this.verf['_id'] = this.register_id;
+      this.verf['mobileNumber'] = this.cellphone;
+      this.authService.fetch('verifyMobileNumber', this.verf).then((result) => {
+        this.loading.dismiss();
+        console.log("new code", result);
+        this.user_data = result
         if(this.user_data.code==200){
           this.presentAlert('Success', this.user_data.message)
           setTimeout(() => {
@@ -97,7 +141,7 @@ export class RegisterAccountPage {
           }, 1000);
         }else{
           this.presentAlert('Error', this.user_data.message)
-        }   
+        }
       },(err) => {
         this.loading.dismiss();
         this.presentToast('Something wrong! Please try later.');

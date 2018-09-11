@@ -22,12 +22,12 @@ export class DoctorsPage {
     public menu: MenuController,
   ) {
   }
-  
+    
   ionViewDidLoad() {
     console.log('ionViewDidLoad DoctorsPage');
     this.getDoctors();
   }
-  
+     
   getDoctors(){
     if(this.online){
         this.showLoader();
@@ -74,10 +74,5 @@ export class DoctorsPage {
 
     toast.present();
   }
-
-  openMenu(){
-    this.menu.open();
-  } 
-
 
 }

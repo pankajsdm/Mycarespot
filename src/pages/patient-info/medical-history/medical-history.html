@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Historial Medico</ion-title>
+    <ion-buttons end class="right_button" (click)="bodyMeasurements()">
+      <button ion-button color="royal">Continuar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm">
+    <div class="pad_rlt_25">
+      <div class="circle_icon">
+        <ul>
+          <li class="active fill">
+            <ion-icon name="checkmark"></ion-icon>
+          </li>
+          <li class="active fill">
+            <ion-icon name="checkmark"></ion-icon>
+          </li>
+          <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
+          <li class="active">4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </div>
+
+      <span class="form_label">Añada los medicamentos que le producen alergia</span>
+      <div class="check_section">
+        <ion-searchbar debounce="10" placeholder="Buscar, p. ej. dolor de cabe4za"></ion-searchbar>
+      </div>
+
+      <ul class="search_tag">
+        <li>Dolor de cabeza
+          <a href="#"></a>
+        </li>
+        <li>Dolor de cabeza
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+  </form>
+</ion-content>
