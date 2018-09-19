@@ -5,6 +5,7 @@ import { TabsPage } from '../tabs/tabs';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { LoginPage } from '../login/login';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { PasswordValidation } from '../../validators/password.validator';
 
 @Component({
   selector: 'page-recovery-password',
@@ -13,9 +14,20 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 export class RecoveryPasswordPage {
 
   public resetForm: FormGroup;
+  public verifyForm: FormGroup;
+  public passwordForm: FormGroup;
   public user: any = {};
+  public verf: any = {code: ''};
+  public change: any = {password: '', c_password: ''};
+  resetProcess: boolean = false;
+  passwordProcess: boolean = false;
+  cellphone: Number;
+  register_id: string;
+  
   private fb: any;
   isSubmitted: boolean = false;
+  isSubmittedVrfToken: boolean = false;
+  isPasswordSubmitted: boolean = false;
   online: Boolean = true;
   loading: any;
   user_data: any;
@@ -29,14 +41,28 @@ export class RecoveryPasswordPage {
     private toastCtrl: ToastController,
     public menu: MenuController,
     public navCtrl: NavController, public navParams: NavParams
-  ) {
+  ) { 
       this.fb = fb;
       this.resetForm = this.formdata.group({
         email_cellphone: ['', [Validators.required]]
       });
-  }
+
+      this.verifyForm = this.formdata.group({
+        code: ['', [Validators.required]],
+      }); 
+
+      this.passwordForm = this.formdata.group({
+        password: ['', [Validators.required]],
+        c_password: ['', [Validators.required]]
+      },{
+        validator: PasswordValidation.MatchPassword
+      }); 
+
+  }       
 
   get check() { return this.resetForm.controls; }
+  get vrfToken() { return this.verifyForm.controls; }
+  get reset() { return this.passwordForm.controls; }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecoveryPage');
@@ -45,22 +71,19 @@ export class RecoveryPasswordPage {
 
   submitReset(){
     this.isSubmitted = true;
+    
     if(this.resetForm.valid){
       this.showLoader();
       let json = {mobilePhone: this.user.email_cellphone};
-      this.authService.post('patient/sentVerficationCodeToMobileNumber', json).then((result) => {
+      this.authService.post('patient/resetPasswordByMobile', json).then((result) => {
         this.loading.dismiss();
         this.user_data = result;  
         console.log("this.user_data", this.user_data);
-        if(this.user_data.code==200){ 
-          this.presentAlert('Success', 'Restablecer contraseña exitosamente Por favor revise su correo electrónico.');
-          setTimeout(() => {
-            this.navCtrl.setRoot(LoginPage);
-          }, 1000);
-          
+        if(this.user_data.code==200){
+          this.mobile_verification_html(this.user.email_cellphone, this.user_data.data._id);
         }else{
-          this.presentAlert('Error', this.user_data.message);
-        }
+          this.presentAlert('Error', this.user_data.message)
+        } 
       },(err) => {
         this.loading.dismiss();
         this.presentToast('Something wrong! Please try later.');
@@ -68,6 +91,57 @@ export class RecoveryPasswordPage {
 
     }else{
       this.presentAlert('Error', 'Please enter mobile or cellphone number');
+    }
+  }
+
+  mobile_verification_html(mobilePhone, _id){
+    this.resetProcess = true;
+    this.cellphone = mobilePhone;
+    this.register_id = _id;
+  }
+
+  tokenVerification(){
+    this.isSubmittedVrfToken = true;
+    if(this.verifyForm.valid){
+      this.verf['_id'] = this.register_id;
+      this.verf['mobileNumber'] = this.cellphone;
+      this.authService.fetch('verifyMobileNumber', this.verf).then((result) => {
+        this.loading.dismiss();
+        console.log("new code", result);
+        this.user_data = result
+        if(this.user_data.code==200){
+          this.resetProcess = false;
+          this.passwordProcess = true;  
+        }else{
+          this.presentAlert('Error', this.user_data.message)
+        }
+      },(err) => {
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
+    }
+  } 
+
+  setPassword(){
+    this.isPasswordSubmitted = true;
+    if(this.passwordForm.valid){
+      console.log("change.password", this.change);
+      this.change['token'] = this.verf.code;
+      this.authService.fetch('resetPasswordThroughToken', this.change).then((result) => {
+        this.loading.dismiss();
+        this.user_data = result
+        if(this.user_data.code==200){
+          this.presentAlert('Success', this.user_data.message)
+          setTimeout(() => {
+            this.navCtrl.setRoot(LoginPage);
+          }, 1000);
+        }else{
+          this.presentAlert('Error', this.user_data.message)
+        }
+      },(err) => {
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
     }
   }
 

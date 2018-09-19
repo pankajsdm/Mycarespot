@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { PharmacyAddPage } from './../../patient-info/pharmacy-add/pharmacy-add';
+
 
 @Component({
   selector: 'page-my-pharmacies',
@@ -12,6 +14,10 @@ export class MyPharmaciesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyPharmaciesPage');
+  }
+
+  add_pharmacy(){
+    this.navCtrl.push(PharmacyAddPage);
   }
 
 }

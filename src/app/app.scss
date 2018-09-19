@@ -670,3 +670,6 @@ span.back-button-text.back-button-text-ios {
     font-size: 18px;
   }
 
+  .tab-button[aria-selected=true] .tab-button-icon{
+    color: #00b4ff;
+  }

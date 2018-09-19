@@ -27,5 +27,15 @@ page-conversation {
         left: 16px !important;
         top: 20px !important;
     }
-    .searchbar-ios{border-bottom: 1px solid #e6e1e1;border-top: none; background: #fff;}
+    .searchbar-ios, .searchbar-md{border-bottom: 1px solid #e6e1e1;border-top: none; background: #fff;}
+
+
+    .searchbar-md.searchbar-left-aligned .searchbar-search-icon{
+        left: 2px !important;
+        top: 16px !important;
+    }
+    .searchbar-md .searchbar-input {
+        padding: 0px 0px 0px 25px;
+        font-size: 15px;
+    }
 }

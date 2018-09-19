@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Events, ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AddMinorPage } from '../add-minor/add-minor';
 import { PatientSimptomPage } from '../patient-info/patient-simptom/patient-simptom';
+import { CommonServiceProvider } from '../../providers/common-service/common-service';
+
 
 @Component({
   selector: 'page-patient-info',
@@ -10,8 +12,11 @@ import { PatientSimptomPage } from '../patient-info/patient-simptom/patient-simp
 })
 export class PatientInfoPage {
 
-  public registerForm: FormGroup;
-  public user: any = {};
+  registerForm: FormGroup;
+  users: any;
+  prctArr: any;
+  isSubmittedMinor: boolean =  false;
+  defaultPatient: String;
   registration_type: boolean;
   reg_param: string;
   isSubmitted: boolean = false;
@@ -20,30 +25,49 @@ export class PatientInfoPage {
   user_data: any;
 
   constructor(
-    public viewCtrl: ViewController,
+    private event: Events,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController,
+    public authService: CommonServiceProvider,
+    private toastCtrl: ToastController,
+    public menu: MenuController,
     public formdata: FormBuilder,
-    public navCtrl: NavController, 
     public navParams: NavParams
   ) {
 
     this.registerForm = this.formdata.group({
       FirstName: ['', [Validators.required]],
-      LastName: ['', [Validators.required]],
-      DateOfBirth: ['', [Validators.required]],
-      email: [''],
-      mobilePhone: [''],
-      country_code: [''],
-      Gender: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      c_password: ['', [Validators.required]],
     });
-    this.viewCtrl.setBackButtonText('Cancel');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientInfoPage');
-    this.user.country_code = 'PR +1';
+    this.getMinorList();
+    this.event.subscribe('submitted', (paramsVar) => {
+      if(paramsVar){
+        this.getMinorList();
+      }
+    });
   }
+
+  getMinorList(){
+    if(this.online){
+      this.showLoader();
+      this.authService.get('practioner/getAddedMinorsList').then((result) => {
+        this.loading.dismiss();
+        this.prctArr = result;  
+        this.users = this.prctArr.data.children;
+        this.defaultPatient =  this.prctArr.data._id.name;
+        console.log("user", this.users);
+      },(err) => {
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
+    }else{
+      this.presentToast('Oh no! No internet found.');
+    }
+  }
+
 
   add_minor(){
     this.navCtrl.push(AddMinorPage);
@@ -51,6 +75,30 @@ export class PatientInfoPage {
 
   simptoms(){
     this.navCtrl.push(PatientSimptomPage);
+  }
+
+  /* Show prgoress loader*/
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: ''
+    });
+    this.loading.present();
+  }
+
+  /* Creating toast */
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 10000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }

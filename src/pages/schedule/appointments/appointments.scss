@@ -1,0 +1,23 @@
+page-appointments {
+    item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .toolbar-background {background: #00b4ff;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #ffffff;}
+    .back-button{width:0px;color: #fff;}
+    ion-card-title.card-title{font-size: 1.4rem;}
+    ion-content img{width: 70px;border-radius: 50%;}
+    .list-header-md, .list-header-ios{border-bottom: 1px solid #cccccc;border-top: none;}
+    .ion-md-cloud-upload{color: #fff;font-size: 25px;}
+    .top-element{background: #e8e4e4;padding:5px 0px 5px;}
+    .inner-element{
+        border-bottom: 1px solid #ddd;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        padding-left: 7px;
+    }
+    .scroll-content {padding: 0px !important;}
+    ion-col p{margin:0; color: #292929;}
+    ion-col span {font-size: 11px;}
+    
+}

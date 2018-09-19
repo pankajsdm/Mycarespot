@@ -1,4 +1,5 @@
 
+
 /* Defined required modules and component here */
 import { NgModule, ErrorHandler, Pipe, PipeTransform, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,17 +33,29 @@ import { RecoveryPasswordPage } from './../pages/recovery-password/recovery-pass
 import { RegisterOptionsPage } from './../pages/register-options/register-options';
 import { RegisterAccountPage } from './../pages/register-account/register-account'
 import { CommonServiceProvider } from './../providers/common-service/common-service';
-  
+    
 import { PatientInfoPage } from './../pages/patient-info/patient-info';
 import { AddMinorPage } from './../pages/add-minor/add-minor';
 import { PatientSimptomPage } from './../pages/patient-info/patient-simptom/patient-simptom';
+import { PatientSimptomNextPage } from './../pages/patient-info/patient-simptom/patient-simptom-next/patient-simptom-next';
 import { RiskFactorsPage } from './../pages/patient-info/risk-factors/risk-factors';
+
 import { MedicalHistoryPage } from './../pages/patient-info/medical-history/medical-history';
+import { MedicalHistoryPhase2Page } from './../pages/patient-info/medical-history/medical-history-phase2/medical-history-phase2';
+import { MedicalHistoryPhase3Page } from './../pages/patient-info/medical-history/medical-history-phase3/medical-history-phase3';
+import { MedicalHistoryPhase4Page } from './../pages/patient-info/medical-history/medical-history-phase4/medical-history-phase4';
+import { MedicalHistoryPhase5Page } from './../pages/patient-info/medical-history/medical-history-phase5/medical-history-phase5';
+
 import { BodyMeasurementsPage } from './../pages/patient-info/body-measurements/body-measurements';
 import { VitalsPage } from './../pages/patient-info/vitals/vitals';
 import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
 import { PharmacyAddPage } from './../pages/patient-info/pharmacy-add/pharmacy-add';
 import { PharmacyMapPage } from './../pages/patient-info/pharmacy-map/pharmacy-map';
+
+import { SchedulePage } from './../pages/schedule/schedule';
+import { AppointmentsPage } from './../pages/schedule/appointments/appointments';
+import { AppointmentsRequestPage } from './../pages/schedule/appointments-request/appointments-request';
+import { ListAppointmentsPage } from './../pages/schedule/list-appointments/list-appointments';
 
 
 /* Defined pipe here */
@@ -71,18 +84,29 @@ import { LikePipe } from './../pipes/like.pipe';
     PatientInfoPage,
     AddMinorPage,
     PatientSimptomPage,
+    PatientSimptomNextPage,
     RiskFactorsPage,
     MedicalHistoryPage,
+    MedicalHistoryPhase2Page,
+    MedicalHistoryPhase3Page,
+    MedicalHistoryPhase4Page,
+    MedicalHistoryPhase5Page,
     BodyMeasurementsPage,
     VitalsPage,
     PharmacyPage,
     PharmacyAddPage,
     PharmacyMapPage,
-    RecoveryPasswordPage,
+
+    SchedulePage,
+    AppointmentsPage,
+    AppointmentsRequestPage,
+    ListAppointmentsPage,
+
+    RecoveryPasswordPage,   
     RegisterOptionsPage,
     RegisterAccountPage,
     LikePipe
-  ],      
+  ],        
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -109,13 +133,26 @@ import { LikePipe } from './../pipes/like.pipe';
     PatientInfoPage,
     AddMinorPage,
     PatientSimptomPage,
+    PatientSimptomNextPage,
     RiskFactorsPage,
+
     MedicalHistoryPage,
+    MedicalHistoryPhase2Page,
+    MedicalHistoryPhase3Page,
+    MedicalHistoryPhase4Page,
+    MedicalHistoryPhase5Page,
+
     BodyMeasurementsPage,
     VitalsPage,
     PharmacyPage,
     PharmacyAddPage,
     PharmacyMapPage,
+
+    SchedulePage,
+    AppointmentsPage,
+    AppointmentsRequestPage,
+    ListAppointmentsPage,
+
     ConversationPage,
     RecoveryPasswordPage,
     RegisterOptionsPage,
@@ -130,4 +167,4 @@ import { LikePipe } from './../pipes/like.pipe';
     CommonServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule {} 

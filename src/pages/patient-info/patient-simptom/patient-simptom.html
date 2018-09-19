@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
       <ion-title>Síntomas</ion-title>
-      <ion-buttons end class="right_button" (click)="riskFactors()">
+      <ion-buttons end class="right_button" (click)="saveAndNextPhase()">
         <button ion-button color="royal">Continuar</button>
       </ion-buttons>
     </ion-navbar>
@@ -9,7 +9,7 @@
 
 
   <ion-content>
-        <form class="pad_rlt_25" [formGroup]="registerForm">
+        <div class="pad_rlt_25">
 
               <div class="circle_icon">
                 <ul>
@@ -26,11 +26,15 @@
           <div class="clearfix"><span class="form_label">¿Qué síntomas esta presentando?</span></div>
 
           <div class="check_section">
-              <ion-searchbar debounce="10" placeholder="Buscar, p. ej. dolor de cabe4za"></ion-searchbar>
+              <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Buscar, p. ej. dolor de cabeza"></ion-searchbar>
           </div>
-          <ul class="search_tag">
-            <li>Dolor de cabeza <a href="#"></a></li>
-            <li>Dolor de cabeza <a href="#"></a></li> 
+
+          <ul class="searchedListing">
+              <li (click)="selectItem(item.translations.fr.name)" *ngFor="let item of items">{{ item.translations.fr.name }} <a href="#"></a></li>
+          </ul>
+
+          <ul class="search_tag" *ngIf="disease?.length > 0">
+            <li *ngFor="let des of disease">{{des}} <a href="#" (click)="removeItem(des)"></a></li>
           </ul>
 
           <!-- <div class="clearfix"><span class="form_label">¿Cuando comenzó a sentirte así?</span></div>
@@ -41,6 +45,6 @@
           </div>
           <div class="space"></div> -->
 
-        </form>
+        </div>
 
   </ion-content>

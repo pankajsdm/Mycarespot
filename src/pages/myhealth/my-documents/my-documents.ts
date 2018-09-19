@@ -14,4 +14,8 @@ export class MyDocumentsPage {
     console.log('ionViewDidLoad MyDocumentsPage');
   }
 
+  docProfile(){
+    
+  }
+
 }

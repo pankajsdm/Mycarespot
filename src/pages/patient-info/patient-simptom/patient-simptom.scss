@@ -161,6 +161,25 @@ page-patient-simptom {
       #registro{padding: 10px 34px !important;}
       .form_label{font-weight: bold;font-size: 13px; margin-top: 15px;margin-bottom:0px;float: left;color: #919191;}
 
+      .searchedListing {
+        display: block;
+        width: 100%;
+        padding: 0px 0 10px 0;
+        margin: 0px;
+        float: left;
+      }
+
+      .searchedListing li{
+          list-style: none;
+          display: block;
+          width: 100%;
+          padding: 10px 15px;
+          color: #000;
+          font-size: 13px;
+          margin: 2px 0px;
+          border-bottom: 1px solid #ccc;
+      
+      }
 
         .searchbar-ios.searchbar-left-aligned .searchbar-search-icon{
             left: 238px !important;

@@ -1,70 +1,56 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Paciente</ion-title>
-      <ion-buttons end class="right_button" (click)="simptoms()">
-        <button ion-button color="royal">Continuar</button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  
-  
-  <ion-content>
-        <form class="pad_rlt_25" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
-  
-              <div class="circle_icon">
-                <ul>
-                  <li class="active fill">1</li>
-                  <li class="">2</li>
-                  <li>3</li>
-                  <li>4</li>
-                  <li>5</li>
-                  <li>6</li>
-                </ul>
-              </div>
-  
-  
-          <div><span class="form_label">¿Quien es el paciente?</span></div>
-  
-  
-          <div class="check_section">
-            <div class="check_box tick">Yo, Rafael J. Esteves, 32</div>
-            <div class="check_box">Nicolas Esteves,9</div>
-            <div class="check_box">Rosalisa Esteves, 6</div>
-          </div>
-  
-          <ion-item no-lines class="pad_zero">
-            <label id="registrateYConsultaAUnProvedor-input5">
-              <span class="add_menor" (click)="add_minor()">+ Añadir paciente</span>
-            </label>
-          </ion-item>
-  
-  
-            <label id="registrateYConsultaAUnProvedor-input5">
-                <div class="phone_number">
-                    <ion-select interface="popover" [(ngModel)]='user.country_code' formControlName="country_code">
-                        <ion-option value="PR +1">PR +1</ion-option>
-                        <ion-option value="Ind +91">Ind +91</ion-option>
-                        <ion-option value="Aus +61">Aus +61</ion-option>
-                    </ion-select>
-  
-                    <ion-input  type="text" placeholder="Teléfono celular"></ion-input>
-                </div>
-            </label>
-  
-  
-  
-  
-          <!-- <div class="centerData">
-            <p>Al continuar, confirmas que leíste nuestros</p>
-            <div class="center">
-              <a>Términos de Uso</a>
-              <span>y</span>
-              <a>Política de Privacidad</a>
-            </div>
-          </div>
-          <div class="space"></div> -->
+  <ion-navbar>
+    <ion-title>Paciente</ion-title>
+    <ion-buttons end class="right_button" (click)="add_minor()">
+      <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
-        </form>
-  
-  </ion-content>
-  
+
+<ion-content>
+
+  <form class="pad_rlt_25">
+    <div class="circle_icon">
+      <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+      </ul>
+    </div>
+  </form>
+
+  <div class="clearfix">
+      <span class="form_label">¿Quien es el paciente?</span>
+  </div>
+
+  <ion-card>
+    <ion-item (click)="simptoms()">
+      <ion-col class="col" col-11>
+        <h2>{{defaultPatient}}</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    <ion-item (click)="simptoms()" *ngFor="let patient of users">
+      <ion-col class="col" col-11>
+        <h2>{{patient.userId.name}}</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+
+  </ion-card>
+
+  <div class="pad_rlt_25">
+      <span class="add_menor" (click)="add_minor()">+ Añadir farmacia</span>
+  </div>
+
+</ion-content>

@@ -27,7 +27,13 @@ page-doctor-profile {
     .user_info h6{font-size: 14px;}
     .user_info p{margin: 0px;}
 
-    .user_activity{margin-top: 15px;}
+    .user_activity{
+        margin-top: 15px;
+        img {
+            width: 35px;
+            margin-left: 10px;
+        }
+    }
     .user_activity ion-icon{
         background: #00b4ff;
         color: #fff;

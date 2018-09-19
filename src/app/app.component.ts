@@ -1,3 +1,4 @@
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -10,17 +11,20 @@ import { FeedPage } from '../pages/feed/feed';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
-
+import { PatientInfoPage } from './../pages/patient-info/patient-info';
+import { MedicalHistoryPage } from './../pages/patient-info/medical-history/medical-history';
+import { PatientSimptomPage } from './../pages/patient-info/patient-simptom/patient-simptom';
+import { BodyMeasurementsPage } from './../pages/patient-info/body-measurements/body-measurements';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-    
+
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = HomePage;
-  //rootPage:any = PharmacyPage;
+  //rootPage:any = HomePage;  
+  rootPage:any = BodyMeasurementsPage;
   pages:any;
   user = {firstName: '', lastName: ''};
 
@@ -36,20 +40,20 @@ export class MyApp {
       this.user.firstName = user.firstName;
       this.user.lastName = user.lastName;
     }); 
-
+ 
     platform.ready().then(() => {
       this.main_navigation();
       statusBar.styleDefault();
       splashScreen.hide();
     });
   }
-
+  
   main_navigation(){
     this.pages = [
       { title: this.feedPage, component: FeedPage },
     ];
   } 
-  
+
   openPage(page) {
     //this.nav.setRoot(page.component);
     this.nav.setRoot(TabsPage, {page: page.component}); 

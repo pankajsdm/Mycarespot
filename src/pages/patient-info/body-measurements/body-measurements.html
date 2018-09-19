@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="registerForm">
     <div class="pad_rlt_25">
       <div class="circle_icon">
         <ul>
@@ -34,15 +33,19 @@
       <span class="form_label">¿Ha sido diagnosticado con alguna de las siguientes condiciones?</span>
     </div>
 
-    <div class="user_info">
-      <div class="title_text">Altura</div>
-      <span class="">6’ 0”</span>
-    </div>
-    <div class="user_info">
-      <div class="title_text">Peso</div>
-      <span class="">200 lbs</span>
-    </div>
-
-  </form>
+      <div class="user_info">
+        <div class="title_text">Altura</div>
+          <ion-select (ionChange)="heightSelect(body.height)" interface="popover" [(ngModel)]="body.height" [ngModelOptions]="{standalone: true}">
+            <ion-option [value]="h" *ngFor="let h of heights">{{h}}"</ion-option> 
+          </ion-select>
+      </div>
+      
+      <div class="user_info">
+        <div class="title_text">Peso</div>
+          <ion-select (ionChange)="weightSelect(body.weight)" interface="popover" [(ngModel)]="body.weight" [ngModelOptions]="{standalone: true}">
+            <ion-option [value]="w" *ngFor="let w of weights">{{w}}</ion-option> 
+          </ion-select> 
+      </div>
+  
 
 </ion-content>

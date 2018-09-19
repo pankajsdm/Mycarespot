@@ -125,7 +125,7 @@ page-body-measurements {
           ion-label{color: #00b4ff !important;}
         }
         .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #919191;}
-        button{padding: 0px; margin: 0px;}
+        button{padding: 0px; margin: 0px; position: relative;}
         h6{font-size: 14px;}
         p{margin: 0px;}
         .item-inner{display: inline-block;}
@@ -171,4 +171,5 @@ page-body-measurements {
               border-color: #488aff;
           }
         }
+        .select-text{min-width: 27px;}
 }

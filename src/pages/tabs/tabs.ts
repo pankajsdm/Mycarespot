@@ -8,6 +8,7 @@ import { MyhealthPage } from './../myhealth/myhealth';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { PharmacyPage } from './../patient-info/pharmacy/pharmacy';
+import { SchedulePage } from './../schedule/schedule';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -34,14 +35,14 @@ export class TabsPage {
     this.tab1Root = ContactPage;
   }  */
 
-    
+      
   this.tabs = [
       {root: FeedPage, icon: "home", enabled: false},
       {root: MedicalCarePage, icon: "briefcase", enabled: false},
       {root: ConversationPage, icon: "chatboxes", enabled: false},
       {root: FeedPage, icon: "notifications", enabled: false},
       {root: MyhealthPage, icon: "heart", enabled: false},
-      {root: ContactPage, icon: "calendar", enabled: false},
+      {root: SchedulePage, icon: "calendar", enabled: false},
     ];  
    
     let getComponentFromNavPArams = navParams.get('page');
