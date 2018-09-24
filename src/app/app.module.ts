@@ -1,5 +1,4 @@
 
-
 /* Defined required modules and component here */
 import { NgModule, ErrorHandler, Pipe, PipeTransform, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,8 +15,6 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { FeedPage } from '../pages/feed/feed';
 import { MedicalCarePage } from './../pages/medical-care/medical-care';
 import { DoctorsPage } from '../pages/doctors/doctors';
@@ -31,7 +28,8 @@ import { MyPharmaciesPage } from './../pages/myhealth/my-pharmacies/my-pharmacie
 import { DiagnosticsPage } from './../pages/myhealth/my-records/diagnostics/diagnostics';
 import { RecoveryPasswordPage } from './../pages/recovery-password/recovery-password';
 import { RegisterOptionsPage } from './../pages/register-options/register-options';
-import { RegisterAccountPage } from './../pages/register-account/register-account'
+import { RegisterAccountPage } from './../pages/register-account/register-account';
+import { CountryCodePage } from './../pages/register-account/country-code/country-code';
 import { CommonServiceProvider } from './../providers/common-service/common-service';
     
 import { PatientInfoPage } from './../pages/patient-info/patient-info';
@@ -47,10 +45,17 @@ import { MedicalHistoryPhase4Page } from './../pages/patient-info/medical-histor
 import { MedicalHistoryPhase5Page } from './../pages/patient-info/medical-history/medical-history-phase5/medical-history-phase5';
 
 import { BodyMeasurementsPage } from './../pages/patient-info/body-measurements/body-measurements';
+import { BodyMeasurementChooserPage } from './../pages/patient-info/body-measurements/body-measurement-chooser/body-measurement-chooser';
+
 import { VitalsPage } from './../pages/patient-info/vitals/vitals';
+import { VitalsChooserPage } from './../pages/patient-info/vitals/vitals-chooser/vitals-chooser';
+
+
 import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
-import { PharmacyAddPage } from './../pages/patient-info/pharmacy-add/pharmacy-add';
-import { PharmacyMapPage } from './../pages/patient-info/pharmacy-map/pharmacy-map';
+import { PharmacyAddPage } from './../pages/patient-info/pharmacy/pharmacy-add/pharmacy-add';
+import { PharmacyMapPage } from './../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map';
+import { PharmacySearchPage } from '../pages/patient-info/pharmacy/pharmacy-search/pharmacy-search';
+
 
 import { SchedulePage } from './../pages/schedule/schedule';
 import { AppointmentsPage } from './../pages/schedule/appointments/appointments';
@@ -68,8 +73,6 @@ import { LikePipe } from './../pipes/like.pipe';
     LoginPage,
     TabsPage,
     HomePage,
-    AboutPage,
-    ContactPage,
     FeedPage,
     MedicalCarePage,
     DoctorsPage,
@@ -91,11 +94,17 @@ import { LikePipe } from './../pipes/like.pipe';
     MedicalHistoryPhase3Page,
     MedicalHistoryPhase4Page,
     MedicalHistoryPhase5Page,
+
     BodyMeasurementsPage,
+    BodyMeasurementChooserPage,
+
     VitalsPage,
+    VitalsChooserPage,
+    
     PharmacyPage,
     PharmacyAddPage,
     PharmacyMapPage,
+    PharmacySearchPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -105,6 +114,7 @@ import { LikePipe } from './../pipes/like.pipe';
     RecoveryPasswordPage,   
     RegisterOptionsPage,
     RegisterAccountPage,
+    CountryCodePage,
     LikePipe
   ],        
   imports: [
@@ -118,8 +128,6 @@ import { LikePipe } from './../pipes/like.pipe';
     LoginPage,
     TabsPage,
     HomePage,
-    AboutPage,
-    ContactPage,
     FeedPage,
     MedicalCarePage,
     DoctorsPage,
@@ -143,10 +151,15 @@ import { LikePipe } from './../pipes/like.pipe';
     MedicalHistoryPhase5Page,
 
     BodyMeasurementsPage,
+    BodyMeasurementChooserPage,
+
     VitalsPage,
+    VitalsChooserPage,
+
     PharmacyPage,
     PharmacyAddPage,
     PharmacyMapPage,
+    PharmacySearchPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -156,7 +169,8 @@ import { LikePipe } from './../pipes/like.pipe';
     ConversationPage,
     RecoveryPasswordPage,
     RegisterOptionsPage,
-    RegisterAccountPage
+    RegisterAccountPage,
+    CountryCodePage 
   ],
   exports: [LikePipe],
   providers: [

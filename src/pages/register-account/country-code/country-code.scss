@@ -1,5 +1,5 @@
-page-patient-info {
-  /* Common css*/
+page-country-code {
+   
   .item-md.item-block .item-inner{padding-right: 0px;}
   .card-md, .card-ios{width: 100%; margin: 0;}
   .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
@@ -69,7 +69,7 @@ page-patient-info {
       height: 2px;
       background: #ededed;
       left: 15px;
-      width: 57px;
+      width: 45px;
       z-index: 0;
     }
     .circle_icon ul li:last-child:after {
@@ -82,7 +82,7 @@ page-patient-info {
     .pad_rlt_25{padding: 0 25px; display: block;}
     .item-ios, .item-md{padding-left: 8px;
       h2 {
-          font-size: 14px; 
+          font-size: 14px; font-weight: bold;
         }
       p {
         font-size: 12px;
@@ -97,10 +97,10 @@ page-patient-info {
     .forward_icon{text-align: right;}
     .item-ios.item-block .item-inner{padding-right: 0px;}
     .forward_icon .button{width: 74px;}
-    .clearfix {
-      padding: 0px 14px;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
+    
+      .text-ios-primary, .text-md-primary {
+        color: #fff;
+        font-size: 13px;
+      }
+      
 }

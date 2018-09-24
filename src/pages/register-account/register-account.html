@@ -12,13 +12,15 @@
         </div>         
     </div> 
 
-    <ion-content>
+    <ion-content class="no-scroll">
 
         <form *ngIf="!verificationProcess" id="registro" class="center" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
 
             <label id="registrateYConsultaAUnProvedor-input2">
                 <ion-input type="text" placeholder="Nombre" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
             </label>
+            
+            
 
             <label id="registrateYConsultaAUnProvedor-input3">
                 <ion-input type="text" placeholder="Apellido" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
@@ -35,17 +37,24 @@
 
             <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
                 <div class="phone_number">
+                    <div class="select-ios" (click)="presentProfileModal()">
+                        <div class="select-text">{{set_country_code}}</div>
+                    </div>
 
+                    <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+                </div>
+            </label>
+
+            <!-- <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
+                <div class="phone_number">
                     <ion-select interface="popover" [(ngModel)]="user.country_code" formControlName="country_code">
                         <ion-option value="PR +1">PR +1</ion-option> 
                         <ion-option value="Ind +91">Ind +91</ion-option> 
                         <ion-option value="Aus +61">Aus +61</ion-option> 
                     </ion-select>
-                    
-
                     <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
                 </div>
-            </label>
+            </label> -->
             
 
             <label id="registrateYConsultaAUnProvedor-input7">

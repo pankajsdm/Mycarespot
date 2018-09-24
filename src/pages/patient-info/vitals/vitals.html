@@ -1,14 +1,13 @@
 <ion-header>
     <ion-navbar>
       <ion-title>Vitales</ion-title>
-      <ion-buttons end class="right_button" (click)="pharmacy()">
+      <ion-buttons end class="right_button" (click)="otherBodyVitals()">
         <button ion-button color="royal">Continuar</button>
       </ion-buttons>
     </ion-navbar>
   </ion-header>
   
   <ion-content>
-    <form>
       <div class="pad_rlt_25">
         <div class="circle_icon">
           <ul>
@@ -28,10 +27,6 @@
             <li>6</li>
           </ul>
         </div>
-      </div>
-  
-      <div class="pad_rlt_10">
-        <span class="form_label">¿Ha sido diagnosticado con alguna de las siguientes condiciones?</span>
       </div>
   
       <ion-list-header>
@@ -66,11 +61,10 @@
       </ion-list-header>
       <div class="user_info">
           <div class="title_text">Respiraciones por minuto</div>
-          <ion-select (ionChange)="breathSelect(body.breath)" interface="popover" [(ngModel)]="body.breath" [ngModelOptions]="{standalone: true}">
+          <ion-select class="last_selection" (ionChange)="breathSelect(body.breath)" interface="popover" [(ngModel)]="body.breath" [ngModelOptions]="{standalone: true}">
               <ion-option [value]="br" *ngFor="let br of breathsArr">{{br}}</ion-option> 
           </ion-select>
         </div>
   
-    </form>
-  
+
   </ion-content>

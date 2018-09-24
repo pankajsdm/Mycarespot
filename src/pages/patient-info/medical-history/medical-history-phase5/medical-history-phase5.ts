@@ -18,6 +18,8 @@ export class MedicalHistoryPhase5Page {
   isSubmitted: boolean = false;
   online: Boolean = true;
   loading: any;
+  user_data: any;
+  patientId = '5b72f2b7df57caa1c9e0d9fa';
 
   constructor(
     private toastCtrl: ToastController,
@@ -27,7 +29,7 @@ export class MedicalHistoryPhase5Page {
     public navParams: NavParams
   ) {
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPhase5Page');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
@@ -36,15 +38,19 @@ export class MedicalHistoryPhase5Page {
 
   getItems(ev: any) {
     const val = ev.target.value;
-    console.log("val", val);
-    if (val && val.trim() != '') {
-      this.items = this.symtoms;
-      this.items = this.items.filter((item) => {
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      });
+    if(val.length > 2 && val.trim() != ''){
+        this.authService.get('patient/searchMedicine/'+this.patientId+'?name='+val).then((result) => {
+            this.lists =  result; 
+            if(this.lists.code==200){
+                this.items = this.lists.data;
+            } 
+        },(err) => {
+            //this.presentToast('Something wrong! Please try later.');
+        }); 
     }else{
-      this.items = [];
+        this.items = [];
     }
+
   } 
 
   selectItem(value){

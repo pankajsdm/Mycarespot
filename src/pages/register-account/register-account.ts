@@ -1,10 +1,12 @@
 
+
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavParams, ToastController, LoadingController, NavController, AlertController } from 'ionic-angular';
+import { NavParams, ViewController, ModalController, ToastController, LoadingController, NavController, AlertController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { PasswordValidation } from '../../validators/password.validator';
 import { LoginPage } from '../login/login';
+import { CountryCodePage } from './country-code/country-code';
 
 @Component({
   selector: 'page-register-account',
@@ -22,12 +24,15 @@ export class RegisterAccountPage {
   reg_param: string;
   cellphone: Number;
   register_id: string;
+  set_country_code: string = '+1';
+  set_country_with_code: string = 'PR +1';
   isSubmitted: boolean = false;
   isSubmittedVrfToken: boolean = false;
   online: Boolean = true;
   loading: any;
   user_data: any;
   constructor(
+    public modalCtrl: ModalController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public formdata: FormBuilder,
@@ -46,7 +51,6 @@ export class RegisterAccountPage {
         DateOfBirth: ['', [Validators.required]],
         email: [''],
         mobilePhone: [''],
-        country_code: [''],
         Gender: ['', [Validators.required]],
         password: ['', [Validators.required]],
         c_password: ['', [Validators.required]],
@@ -54,31 +58,43 @@ export class RegisterAccountPage {
         validator: PasswordValidation.MatchPassword
       });
   }
-
+ 
   get check() { return this.registerForm.controls; }
   get vrfToken() { return this.verifyForm.controls; }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(CountryCodePage, { userId: 8675309 });
+    profileModal.onDidDismiss(data => {
+      let spt = data.code.split('+');
+      this.set_country_code = '+'+spt[1];
+      //this.set_country_with_code = spt[0]+' +'+spt[1];
+      this.set_country_with_code = spt[1];
+    });
+    profileModal.present();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterAccountPage');
     console.log(this.navParams.get('type'));
-    this.user.country_code = 'PR +1';
+
     this.reg_param = this.navParams.get('type');
     if(this.reg_param=='mail'){
       const pureEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       this.registration_type = true;
       this.registerForm.controls['email'].setValidators([Validators.required, Validators.pattern(pureEmail)]);
       this.registerForm.controls['mobilePhone'].clearValidators();
-      this.registerForm.controls['country_code'].clearValidators();
+
     }else{
       this.registration_type = false;
       this.registerForm.controls['mobilePhone'].setValidators([Validators.required]);
-      this.registerForm.controls['country_code'].setValidators([Validators.required]);
+
       this.registerForm.controls['email'].clearValidators();
     } 
     this.registerForm.controls['email'].updateValueAndValidity();
     this.registerForm.controls['mobilePhone'].updateValueAndValidity();
-    this.registerForm.controls['country_code'].updateValueAndValidity();
   }
+
+ 
 
   goToLogin() { 
     this.navCtrl.push(LoginPage); 
@@ -95,8 +111,9 @@ export class RegisterAccountPage {
       }else{
         api_url = 'patient/registerMobileUserByMobileNumber';
         delete this.user.email;
-        this.user.countryCode = this.user.country_code;
+        this.user.countryCode = this.set_country_with_code;
       }
+      console.log("user", this.user);
       this.authService.post(api_url, this.user).then((result) => {
         this.loading.dismiss();
         this.user_data = result;  
@@ -156,7 +173,7 @@ export class RegisterAccountPage {
       buttons: ['Ok']
     });
     alert.present();
-  }
+  } 
 
   showLoader(){
     this.loading = this.loadingCtrl.create({
@@ -180,4 +197,7 @@ export class RegisterAccountPage {
     toast.present();
   }
 
+
+
 }
+

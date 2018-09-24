@@ -3,18 +3,17 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+  
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
 import { PatientInfoPage } from './../pages/patient-info/patient-info';
 import { MedicalHistoryPage } from './../pages/patient-info/medical-history/medical-history';
 import { PatientSimptomPage } from './../pages/patient-info/patient-simptom/patient-simptom';
 import { BodyMeasurementsPage } from './../pages/patient-info/body-measurements/body-measurements';
+import { MedicalHistoryPhase3Page } from './../pages/patient-info/medical-history/medical-history-phase3/medical-history-phase3';
 
 @Component({
   templateUrl: 'app.html'
@@ -47,7 +46,7 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-  
+
   main_navigation(){
     this.pages = [
       { title: this.feedPage, component: FeedPage },

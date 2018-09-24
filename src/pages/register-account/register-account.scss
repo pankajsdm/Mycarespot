@@ -1,5 +1,9 @@
 page-register-account {
   
+  .no-scroll .scroll-content{
+    overflow: hidden;
+  }
+  
     .label_text{
         text-align:left;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';

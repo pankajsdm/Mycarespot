@@ -50,7 +50,7 @@ export class PatientInfoPage {
     });
   }
 
-  getMinorList(){
+  getMinorList(){   
     if(this.online){
       this.showLoader();
       this.authService.get('practioner/getAddedMinorsList').then((result) => {

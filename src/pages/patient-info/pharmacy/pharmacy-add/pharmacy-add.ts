@@ -16,8 +16,12 @@ export class PharmacyAddPage {
     console.log('ionViewDidLoad PharmacyAddPage');
   }
 
-  seeMap(){
+  search_pharmacy(){
     this.navCtrl.push(PharmacyMapPage);
+  }
+
+  docProfile(){
+    
   }
 
 }

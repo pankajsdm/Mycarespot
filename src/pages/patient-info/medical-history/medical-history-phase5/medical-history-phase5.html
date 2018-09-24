@@ -35,7 +35,7 @@
         </div>
 
         <ul class="searchedListing">
-            <li (click)="selectItem(item.translations.fr.name)" *ngFor="let item of items">{{ item.translations.fr.name }} <a href="#"></a></li>
+            <li (click)="selectItem(item.Name)" *ngFor="let item of items">{{ item.Name }} <a href="#"></a></li>
         </ul>
 
         <ul class="search_tag" *ngIf="disease?.length > 0">

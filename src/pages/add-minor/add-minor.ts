@@ -52,7 +52,7 @@ export class AddMinorPage {
   get check() { return this.registerForm.controls; }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterAccountPage');
+    console.log('ionViewDidLoad AddMinorPage');
     this.user.relationship = 'Brother';
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
   }

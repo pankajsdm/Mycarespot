@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { PharmacyAddPage } from './../pharmacy-add/pharmacy-add';
-
+import { PharmacySearchPage } from './pharmacy-search/pharmacy-search';
+//import { PharmacyAddPage } from './pharmacy-add/pharmacy-add';
+  
 
 @Component({
   selector: 'page-pharmacy',
@@ -16,7 +17,7 @@ export class PharmacyPage {
     console.log('ionViewDidLoad PharmacyPage');
   }
 
-  add_pharmacy(){
-    this.navCtrl.push(PharmacyAddPage);
+  search_pharmacy(){
+    this.navCtrl.push(PharmacySearchPage);
   }
 }

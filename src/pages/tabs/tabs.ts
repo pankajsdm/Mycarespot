@@ -5,8 +5,6 @@ import { MedicalCarePage } from './../medical-care/medical-care';
 import { DoctorsPage } from '../doctors/doctors';
 import { ConversationPage } from './../conversation/conversation';
 import { MyhealthPage } from './../myhealth/myhealth';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
 import { PharmacyPage } from './../patient-info/pharmacy/pharmacy';
 import { SchedulePage } from './../schedule/schedule';
 
@@ -44,8 +42,8 @@ export class TabsPage {
       {root: MyhealthPage, icon: "heart", enabled: false},
       {root: SchedulePage, icon: "calendar", enabled: false},
     ];  
-   
-    let getComponentFromNavPArams = navParams.get('page');
+    
+    /* let getComponentFromNavPArams = navParams.get('page');
     if (getComponentFromNavPArams != undefined) {
       console.log("I am defined", getComponentFromNavPArams.name);
       this.tabs[1].root = getComponentFromNavPArams;
@@ -54,7 +52,7 @@ export class TabsPage {
     } else {
       this.tabs[0].root = FeedPage;
       this.tabs[0].enabled = true;
-    }
+    }  */
 
     console.log("defined Root", this.tabs);
     

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { PharmacyAddPage } from './../../patient-info/pharmacy-add/pharmacy-add';
+//import { PharmacyAddPage } from './../../patient-info/pharmacy/pharmacy-add/pharmacy-add';
+import { PharmacySearchPage } from './../../patient-info/pharmacy/pharmacy-search/pharmacy-search';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class MyPharmaciesPage {
   }
 
   add_pharmacy(){
-    this.navCtrl.push(PharmacyAddPage);
+    this.navCtrl.push(PharmacySearchPage);
   }
 
 }

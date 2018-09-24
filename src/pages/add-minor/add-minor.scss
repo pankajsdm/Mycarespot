@@ -53,7 +53,7 @@ page-add-minor {
             font-size: 1em;
             font-family: 'helvetica-normal', 'arial', 'sans-serif';
           }
-          .select-ios {
+          .select-ios, .select-md {
             width: 100%;
             display:inline-block;
             border-radius:7px;
@@ -170,6 +170,7 @@ page-add-minor {
         .datetime{border-radius: 6px;}
         .segment{display: inline-flex; padding: 0;margin: 0 0 10px 0;}
         .segment-button{border-left: 1px solid #ddd; color: #9c9c9c;}
+
         .segment-button.segment-activated{
           color: #04b4ff !important;
           background-color: transparent !important;
@@ -180,11 +181,11 @@ page-add-minor {
             padding: 0 30px;
             margin: 0 auto !important;
         }
-        .segment-ios .segment-button{
+        .segment-ios .segment-button, .segment-md .segment-button{
           border-color: #f1f1f1;
-      border: 0px;
-      border-bottom: 2px solid;
-      border-radius: 0px !important;color: #9c9c9c;
+          border: 0px;
+          border-bottom: 2px solid;
+          border-radius: 0px !important;color: #9c9c9c;
         }
     
         .phone_number .input_invalid {
@@ -196,7 +197,7 @@ page-add-minor {
             position: relative !important;
         }
     
-    
+        
         .phone_number{
             border: 1px solid #D2D2D2;
             margin: 0 0 10px 0;
@@ -245,6 +246,10 @@ page-add-minor {
     }
     .segment-ios .segment-button:hover:not(.segment-activated){
       background: transparent;
-      // color: #04b4ff ;
     }
-    
+    .segment-md .segment-button:hover:not(.segment-activated){
+      background: transparent;
+    }
+    ion-segment-button.segment-button.segment-activated{
+      border-color: #04b4ff !important;
+    }

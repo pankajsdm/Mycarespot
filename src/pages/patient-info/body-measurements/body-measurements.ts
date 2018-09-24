@@ -3,7 +3,7 @@ import { ToastController, LoadingController, NavParams, NavController, MenuContr
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { VitalsPage } from './../vitals/vitals';
-
+import { BodyMeasurementChooserPage } from './body-measurement-chooser/body-measurement-chooser';
 
 
 @Component({
@@ -18,8 +18,6 @@ export class BodyMeasurementsPage {
   loading: any;   
   lists: any;   
   current_user: any;
-  selectHeight: any;
-  selectWeight: any;
   heights = [ '5.2', '5.4', '5.6', '5.8', '6.0', '6.1', '6.2', '6.3', '6.4', '6.5'];
   weights = [ '55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100'];
 
@@ -40,11 +38,11 @@ export class BodyMeasurementsPage {
 
   heightSelect(val){
     console.log(val);
-    this.selectHeight = val;
+    this.body.height = val;
   }
   weightSelect(val){
     console.log(val);
-    this.selectWeight = val;
+    this.body.weight = val;
   }
 
     
@@ -53,8 +51,8 @@ export class BodyMeasurementsPage {
       this.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
-          height: this.selectHeight,
-          weight: this.selectWeight,
+          height: this.body.height,
+          weight: this.body.weight,
       }
       this.authService.post('patient/addPatientVitals', data).then((result) => {
           this.loading.dismiss();

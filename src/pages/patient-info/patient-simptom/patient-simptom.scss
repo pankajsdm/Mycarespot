@@ -182,12 +182,16 @@ page-patient-simptom {
       }
 
         .searchbar-ios.searchbar-left-aligned .searchbar-search-icon{
-            left: 238px !important;
+            right: 3px;
             top: 19px !important;
+            left: initial !important;
+            background-size: 16px;
         }
         .searchbar-md.searchbar-left-aligned .searchbar-search-icon{
-            left: 16px !important;
-            top: 20px !important;
+          right: 3px;
+          top: 19px !important;
+          left: initial !important;
+          background-size: 16px;
         }
         .searchbar-ios{
             border-top: none;
