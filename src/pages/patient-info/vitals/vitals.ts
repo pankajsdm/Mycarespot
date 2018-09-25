@@ -1,8 +1,9 @@
+
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, ModalController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
-
+import { VitalsChooserPage } from './vitals-chooser/vitals-chooser';
 import { PharmacyPage } from './../pharmacy/pharmacy';
 
 
@@ -19,36 +20,38 @@ export class VitalsPage {
   lists: any;   
   current_user: any;
   body = {systolic: '100', diastolic: '50', temprature: '100', breath: '12-28'};
-  systolicArr = ['70', '80', '90', '100', '110', '120', '130', '140', '150', '160', '170', '180', '190'];
-  diastolicArr = ['40', '50', '60', '70', '80', '90', '100'];
-  tempratureArr = [95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106];
-  breathsArr = ['10-30', '12-28', '12-18', '17–23', '18–25', '20–30', '25–40', '30–60'];
-
+  
   constructor( 
+    public modalCtrl: ModalController,
     private toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams) {
     
-  }
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VitalsPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
   }
 
-  systolicSelect(val){
-    this.body.systolic = val;
-  }
-  diastolicSelect(val){
-    this.body.diastolic = val; 
-  }
-  tempratureSelect(val){
-    this.body.temprature = val;
-  }
-  breathSelect(val){
-    this.body.breath = val;
+ 
+  choose(val){
+    let profileModal = this.modalCtrl.create(VitalsChooserPage, { value: val });
+    profileModal.onDidDismiss(data => {
+      console.log(data.code);
+      if(val=='systolic'){
+        this.body.systolic = data.code;
+      }else if(val=='diastolic'){
+        this.body.diastolic = data.code;
+      }else if(val=='temprature'){
+        this.body.temprature = data.code;
+      }else{
+        this.body.breath = data.code;
+      }
+    });
+    profileModal.present();
   }
   
   otherBodyVitals(){
@@ -77,6 +80,10 @@ export class VitalsPage {
     }else{
       this.presentToast('Oh no! No internet found.');
     } 
+  }
+
+  cancle(){
+    this.navCtrl.pop();
   }
 
   /* Show prgoress loader*/

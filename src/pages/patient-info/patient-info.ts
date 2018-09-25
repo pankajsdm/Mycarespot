@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Events, ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AddMinorPage } from '../add-minor/add-minor';
-import { PatientSimptomPage } from '../patient-info/patient-simptom/patient-simptom';
+import { PatientSimptomPage } from './patient-simptom/patient-simptom';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
+import { OptionsSimptomPage } from './options-simptom/options-simptom';
 
-
+  
 @Component({
   selector: 'page-patient-info',
   templateUrl: 'patient-info.html',
@@ -16,7 +17,7 @@ export class PatientInfoPage {
   users: any;
   prctArr: any;
   isSubmittedMinor: boolean =  false;
-  defaultPatient: String;
+  defaultPatient = {name: '', _id: ''};
   registration_type: boolean;
   reg_param: string;
   isSubmitted: boolean = false;
@@ -40,7 +41,10 @@ export class PatientInfoPage {
     });
   }
 
+
+
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad PatientInfoPage');
     this.getMinorList();
     this.event.subscribe('submitted', (paramsVar) => {
@@ -57,7 +61,7 @@ export class PatientInfoPage {
         this.loading.dismiss();
         this.prctArr = result;  
         this.users = this.prctArr.data.children;
-        this.defaultPatient =  this.prctArr.data._id.name;
+        this.defaultPatient =  this.prctArr.data._id;
         console.log("user", this.users);
       },(err) => {
         this.loading.dismiss();
@@ -68,13 +72,21 @@ export class PatientInfoPage {
     }
   }
 
+  cancle(){
+    this.navCtrl.pop();
+  }
+
 
   add_minor(){
     this.navCtrl.push(AddMinorPage);
   }
 
-  simptoms(){
+  /* simptoms(id){
     this.navCtrl.push(PatientSimptomPage);
+  } */
+
+  optionSimptom(id){
+    this.navCtrl.push(OptionsSimptomPage);
   }
 
   /* Show prgoress loader*/
@@ -101,4 +113,11 @@ export class PatientInfoPage {
     toast.present();
   }
 
+ ionViewDidEnter(){
+    let elem = <HTMLElement>document.querySelector(".tabbar");
+    if (elem != null) {
+      elem.style.display = 'none';
+    }
+  }
+ 
 }

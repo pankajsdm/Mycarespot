@@ -677,3 +677,18 @@ span.back-button-text.back-button-text-ios {
   .circle_icon ul li:after {
     width: 57px !important;
   }
+
+  .main-footer{
+      bottom: 0px !important;
+  }
+
+  ion-footer{
+    .toolbar-background{
+      background: transparent !important;
+    }
+    .toolbar-title{
+      color: #00b4ff !important;
+      font-weight: normal;
+      font-size: 14px;
+    }
+  }

@@ -33,6 +33,8 @@ import { CountryCodePage } from './../pages/register-account/country-code/countr
 import { CommonServiceProvider } from './../providers/common-service/common-service';
     
 import { PatientInfoPage } from './../pages/patient-info/patient-info';
+import { OptionsSimptomPage } from './../pages/patient-info/options-simptom/options-simptom';
+
 import { AddMinorPage } from './../pages/add-minor/add-minor';
 import { PatientSimptomPage } from './../pages/patient-info/patient-simptom/patient-simptom';
 import { PatientSimptomNextPage } from './../pages/patient-info/patient-simptom/patient-simptom-next/patient-simptom-next';
@@ -85,6 +87,7 @@ import { LikePipe } from './../pipes/like.pipe';
     MyPharmaciesPage,
     DiagnosticsPage,
     PatientInfoPage,
+    OptionsSimptomPage,
     AddMinorPage,
     PatientSimptomPage,
     PatientSimptomNextPage,
@@ -139,6 +142,7 @@ import { LikePipe } from './../pipes/like.pipe';
     MyPharmaciesPage,
     DiagnosticsPage,
     PatientInfoPage,
+    OptionsSimptomPage,
     AddMinorPage,
     PatientSimptomPage,
     PatientSimptomNextPage,

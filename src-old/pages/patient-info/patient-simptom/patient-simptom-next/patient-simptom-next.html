@@ -1,0 +1,84 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>Síntomas</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+<ion-content>
+
+  <form class="pad_rlt_25">
+  <div class="circle_icon">
+    <ul>
+      <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
+      <li class="active">2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+  </form>
+
+  <div class="clearfix"><span class="form_label">¿Qué síntomas esta presentando?</span></div>
+  
+  <ion-card>
+    <ion-item (click)="riskFactors('Hoy')">
+      <ion-col class="col" col-11>
+        <h2>Hoy</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    <ion-item (click)="riskFactors('Ayer')">
+      <ion-col class="col" col-11>
+        <h2>Ayer</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1 >
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_semana')">
+      <ion-col class="col" col-11>
+        <h2>Hace alrededor de 1 semana</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1 >
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_un_mes')">
+      <ion-col class="col" col-11>
+        <h2>Hace alrededor de 1 un mes</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1 >
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_un_año')">
+      <ion-col class="col" col-11>
+        <h2>Hace alrededor de 1 un año</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1 >
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+    <ion-item (click)="riskFactors('Hace_mas_de_1_un_año')">
+      <ion-col class="col" col-11>
+        <h2>Hace mas de 1 un año</h2>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1 >
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+
+
+  </ion-card>
+</ion-content>

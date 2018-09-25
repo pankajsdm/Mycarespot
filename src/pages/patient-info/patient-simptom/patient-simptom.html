@@ -25,6 +25,8 @@
 
           <div class="clearfix"><span class="form_label">¿Qué síntomas esta presentando?</span></div>
 
+          
+
           <div class="check_section">
               <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Buscar, p. ej. dolor de cabeza"></ion-searchbar>
           </div>
@@ -48,3 +50,8 @@
         </div>
 
   </ion-content>
+  <ion-footer class="main-footer">
+      <ion-toolbar (click)="cancle()">
+        <ion-title>Cancelar proceso</ion-title>
+      </ion-toolbar>
+    </ion-footer>

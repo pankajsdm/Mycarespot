@@ -22,8 +22,8 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  //rootPage:any = HomePage;  
-  rootPage:any = BodyMeasurementsPage;
+  rootPage:any = HomePage;  
+  //rootPage:any = PatientInfoPage;
   pages:any;
   user = {firstName: '', lastName: ''};
 

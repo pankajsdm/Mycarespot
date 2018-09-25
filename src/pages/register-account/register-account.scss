@@ -1,5 +1,4 @@
 page-register-account {
-  
   .no-scroll .scroll-content{
     overflow: hidden;
   }
@@ -121,7 +120,6 @@ page-register-account {
       .platform-ios .circle_icon span{ top: 5px !important;}
 
       .top{
-        height: 112px !important;
         padding: 10px 0 !important;
         background-color: #ffffff;
         p{ padding: 0 50px;}
@@ -155,58 +153,65 @@ page-register-account {
     .segment-button.segment-activated{color: #fff !important;
       background-color: #00b4ff !important;}
     .datetime.input_invalid, .segment.input_invalid{border: 1px solid red;}
-.center{
-  padding: 0 30px;
-  margin: 0 auto !important;
-}
-.segment-ios .segment-button{
-  border-color: #D2D2D2;
-} 
+    .center{
+      padding: 0 30px;
+      margin: 0 auto !important;
+    }
+    .segment-ios .segment-button{
+      border-color: #D2D2D2;
+    } 
 
-.phone_number .input_invalid {
-  border: 1px solid red;
-  border-radius: 4px;
+    .phone_number .input_invalid {
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+
+    .input-cover{
+      position: relative !important;
+    }
+
+
+    .phone_number{
+      border: 1px solid #D2D2D2;
+      margin: 0 0 10px 0;
+      border-radius: 5px;
+      display: flex;
+      position: relative;
+      .select-ios{
+        border: 0px;
+        width: 60px;
+        display: inline-block;
+        padding: 5px 0px 0 6px;
+        font-size: 12px; margin: 0px;
+        border-right: 1px solid #d2d2d2;
+        border-radius: 0px;    color: #00b4ff;
+        .select-icon{display: none;}
+        .select-text { padding-top: 7px;}
+      }
+      .select-md{
+        border: 0px;
+        width: 60px;
+        padding: 11px 0px 0 6px;
+        display: inline-block;
+        font-size: 12px; margin: 0px;
+        border-right: 1px solid #d2d2d2;
+        border-radius: 0px;    color: #00b4ff;
+        .select-icon{display: none;}
+        .select-text { padding-top: 0px;}
+      }
+      .text-input{
+        width:100%;
+        display: inline-block;
+        margin: 0px;
+        border: 0px;
+      }
+    }
+    ion-icon{color: #fff;}
 }
 
-.input-cover{
-  position: relative !important;
-}
-
-
-.phone_number{
-  border: 1px solid #D2D2D2;
-  margin: 0 0 10px 0;
-  border-radius: 5px;
-  display: flex;
-  position: relative;
-  .select-ios{
-    border: 0px;
-    width: 60px;
-    display: inline-block;
-    padding: 5px 0px 0 6px;
-    font-size: 12px; margin: 0px;
-    border-right: 1px solid #d2d2d2;
-    border-radius: 0px;    color: #00b4ff;
-    .select-icon{display: none;}
-    .select-text { padding-top: 7px;}
-  }
-  .select-md{
-    border: 0px;
-    width: 60px;
-    padding: 11px 0px 0 6px;
-    display: inline-block;
-    font-size: 12px; margin: 0px;
-    border-right: 1px solid #d2d2d2;
-    border-radius: 0px;    color: #00b4ff;
-    .select-icon{display: none;}
-    .select-text { padding-top: 0px;}
-  }
-  .text-input{
-    width:100%;
-    display: inline-block;
-    margin: 0px;
-    border: 0px;
-  }
-}
-
-}
+.top-icon .circle_icon{position: relative;width:90px;margin: 0px auto;}
+.top{height: auto;margin-top: 15px;}
+.camera-span{background: #0099ff;right: 0;bottom: 10px;position: absolute;border-radius: 50%;cursor: pointer;padding: 7px;height: 30px;width: 30px;}
+.camera-span i.fas{color: #fff;}
+page-register-account .segment-ios .segment-button{border-color:#0099ff; color: #0099ff !important;}
+page-register-account .segment-button.segment-activated{color: #fff !important;}

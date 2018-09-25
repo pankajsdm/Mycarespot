@@ -14,7 +14,7 @@ export class DoctorProfilePage {
   doctrArr: any;
   doctor: any = {firstName: '', lastName: ''};
   doc_id: string;
-
+  tabBarElement: any;
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
@@ -77,6 +77,14 @@ export class DoctorProfilePage {
   openMenu(){
     this.menu.open();
   } 
+
+  ionViewDidEnter(){
+    console.log("tesing");
+    let elem = <HTMLElement>document.querySelector(".tabbar");
+    if (elem != null) {
+      elem.style.display = 'flex';
+    }
+  }
 
 
 }

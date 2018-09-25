@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, ModalController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { VitalsPage } from './../vitals/vitals';
@@ -18,10 +18,10 @@ export class BodyMeasurementsPage {
   loading: any;   
   lists: any;   
   current_user: any;
-  heights = [ '5.2', '5.4', '5.6', '5.8', '6.0', '6.1', '6.2', '6.3', '6.4', '6.5'];
-  weights = [ '55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100'];
+
 
   constructor(
+    public modalCtrl: ModalController,
     private toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
@@ -29,20 +29,25 @@ export class BodyMeasurementsPage {
     public navParams: NavParams
   ) { 
     
-  }
+  } 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MedicalHistoryPage');
+    console.log('ionViewDidLoad BodyMeasurementsPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
   } 
 
-  heightSelect(val){
-    console.log(val);
-    this.body.height = val;
-  }
-  weightSelect(val){
-    console.log(val);
-    this.body.weight = val;
+
+  choose(val){
+    let profileModal = this.modalCtrl.create(BodyMeasurementChooserPage, { value: val });
+    profileModal.onDidDismiss(data => {
+      console.log(data.code);
+      if(val=='height'){
+        this.body.height = data.code;
+      }else{
+        this.body.weight = data.code;
+      }
+    });
+    profileModal.present();
   }
 
     
@@ -70,6 +75,10 @@ export class BodyMeasurementsPage {
       this.presentToast('Oh no! No internet found.');
     } 
 
+  }
+
+  cancle(){
+    this.navCtrl.pop();
   }
 
   /* Show prgoress loader*/

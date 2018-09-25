@@ -94,7 +94,11 @@ export class MedicalHistoryPhase5Page {
         this.presentToast('Oh no! No internet found.');
     }
 
-  } 
+  }
+  
+  cancle(){
+    this.navCtrl.pop();
+  }
 
   /* Show prgoress loader*/
   showLoader(){

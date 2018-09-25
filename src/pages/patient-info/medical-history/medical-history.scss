@@ -169,4 +169,19 @@ page-medical-history {
           border-color: #488aff;
       }
     }
+
+  .searchbar-md.searchbar-left-aligned .searchbar-search-icon{
+    left: initial !important;
+    right: 3px;
+    top: 18px !important;
+    background-size: 16px;
+    }
+    .border_zero{border: 0px;}
+    .map{
+      display: inline-block;
+      width: 100%;
+      border-top: 1px solid #ddd;
+    }
+    
+    .user_info ion-list ion-item.item-radio-checked{border-radius: 50%;height: 55px;width: 55px;}
 }

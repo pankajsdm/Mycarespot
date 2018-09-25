@@ -59,6 +59,10 @@ export class MedicalHistoryPhase2Page {
 
   }
 
+  cancle(){
+    this.navCtrl.pop();
+  }
+
   /* Show prgoress loader*/
   showLoader(){
     this.loading = this.loadingCtrl.create({

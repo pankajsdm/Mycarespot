@@ -94,7 +94,7 @@ export class RegisterOptionsPage {
     this.events.publish('user:update', data);
   }
 
-
+  
   goToLogin(){
     this.navCtrl.push(LoginPage); 
   }     

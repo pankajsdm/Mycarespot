@@ -20,4 +20,9 @@ export class PharmacyPage {
   search_pharmacy(){
     this.navCtrl.push(PharmacySearchPage);
   }
+
+  
+ cancle(){
+  this.navCtrl.pop();
+  }
 }

@@ -21,7 +21,7 @@
 
         <div class="pad_rlt">
             <div id="entrar-markdown1"> 
-                <p class="reset">&iquest;Olvidaste tu contraseña? <a href="#" (click)="goToRecovery()">Oprima aquí</a> </p> 
+                <p class="reset"><a href="#" (click)="goToRecovery()">¿Olvido su contraseña?</a> </p> 
             </div>
             <span class="or">o</span>
             <button class="btnFacebook" (click)="facebook()">
@@ -32,8 +32,10 @@
     </div> 
 </ion-content>
 
-<ion-footer>
-    <div class="bottom">
-        <label>&iquest;No tienes cuenta?  <span class="link" (click)="goToRegister()">Reg&iacute;strate</span></label>
-    </div>
+
+
+<ion-footer class="main-footer">
+    <ion-toolbar (click)="goToRegister()">
+        <ion-title>¿No tienes cuenta?</ion-title>
+    </ion-toolbar>
 </ion-footer>

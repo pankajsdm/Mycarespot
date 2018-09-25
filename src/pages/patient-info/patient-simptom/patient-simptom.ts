@@ -40,6 +40,8 @@ export class PatientSimptomPage {
     this.defineSymtoms();
   }  
 
+
+
   getItems(ev: any) {
     const val = ev.target.value;
     console.log("val", val);
@@ -122,6 +124,9 @@ export class PatientSimptomPage {
   }
 
 
+  cancle(){
+    this.navCtrl.pop();
+  }
 
   defineSymtoms(){
       this.symtoms =   [

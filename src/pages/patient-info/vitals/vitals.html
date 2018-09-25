@@ -32,39 +32,47 @@
       <ion-list-header>
           Presión arterial
       </ion-list-header>
-      <div class="user_info">
-        <div class="title_text">Sistólica</div>
-        <ion-select (ionChange)="systolicSelect(body.systolic)" interface="popover" [(ngModel)]="body.systolic" [ngModelOptions]="{standalone: true}">
-            <ion-option [value]="sys" *ngFor="let sys of systolicArr">{{sys}}</ion-option> 
-        </ion-select>
 
-      </div>
-      <div class="user_info">
-          <div class="title_text">Diastólica</div>
-          <ion-select (ionChange)="diastolicSelect(body.diastolic)" interface="popover" [(ngModel)]="body.diastolic" [ngModelOptions]="{standalone: true}">
-              <ion-option [value]="dias" *ngFor="let dias of diastolicArr">{{dias}}</ion-option> 
-          </ion-select>
+      <div class="user_info" (click)="choose('systolic')">
+        <div class="title_text">Sistólica</div>
+        <div class="ion-select">
+            <div class="select-text">{{body.systolic}}</div>
         </div>
+      </div>
+
+      <div class="user_info" (click)="choose('diastolic')">
+          <div class="title_text">Diastólica</div>
+          <div class="ion-select">
+              <div class="select-text">{{body.diastolic}}</div>
+          </div>
+      </div>
 
       <ion-list-header>
           Temperatura corporal
       </ion-list-header>
-      <div class="user_info">
+      
+      <div class="user_info" (click)="choose('temprature')">
         <div class="title_text">°F</div>
-        <ion-select (ionChange)="tempratureSelect(body.temprature)" interface="popover" [(ngModel)]="body.temprature" [ngModelOptions]="{standalone: true}">
-            <ion-option [value]="temp" *ngFor="let temp of tempratureArr">{{temp}}</ion-option> 
-        </ion-select>
+        <div class="ion-select">
+            <div class="select-text">{{body.temprature}}</div>
+        </div>
       </div>
 
       <ion-list-header>
           Velocidad de la respiración
       </ion-list-header>
-      <div class="user_info">
+      <div class="user_info" (click)="choose('breath')">
           <div class="title_text">Respiraciones por minuto</div>
-          <ion-select class="last_selection" (ionChange)="breathSelect(body.breath)" interface="popover" [(ngModel)]="body.breath" [ngModelOptions]="{standalone: true}">
-              <ion-option [value]="br" *ngFor="let br of breathsArr">{{br}}</ion-option> 
-          </ion-select>
+          <div class="ion-select">
+              <div class="select-text">{{body.breath}}</div>
+          </div>
         </div>
   
 
   </ion-content>
+
+  <ion-footer class="main-footer">
+      <ion-toolbar (click)="cancle()">
+        <ion-title>Cancelar proceso</ion-title>
+      </ion-toolbar>
+    </ion-footer>

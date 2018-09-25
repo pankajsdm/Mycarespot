@@ -56,6 +56,10 @@ export class PatientSimptomNextPage {
       this.presentToast('Oh no! No internet found.');
     }   
   }   
+
+  cancle(){
+    this.navCtrl.pop();
+  }
     
   /* Show prgoress loader*/
   showLoader(){
