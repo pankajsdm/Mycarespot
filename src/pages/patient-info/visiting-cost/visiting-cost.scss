@@ -8,6 +8,9 @@ page-visiting-cost {
       ion-title .toolbar-title {
         color: #ffffff;
         font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
         .back-button {
           width: 0px;
@@ -178,4 +181,38 @@ page-visiting-cost {
         margin-bottom: 0px !important;
     }
     .list-header-ios{border-color: #eee !important;    text-transform: none;}
+    .title_header{
+      background: #d9d9d9;
+      padding: 5px;
+    }
+    .cost_section{
+      color: #555555;
+      b{color: #555555;}
+      span{
+      float: right;
+      }
+      .discount{color:#ff3199;}
+    }
+    .text-input-ios, .text-input-md{
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin: 0px;
+      height: 40px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    button{height: 40px;}
+    .border_btn{
+      background: #fff;
+      border: 2px solid #00b4ff;
+      color: #00b4ff;
+      transition: ease-in-out 0.5s;
+      -webkit-transition: ease-in-out 0.5s;
+      outline: none;
+      &:hover{
+        background: #00b4ff; 
+        color: #fff;
+      }
+    }
 }

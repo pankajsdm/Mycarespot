@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-      <ion-title>Datos</ion-title>
+      <ion-title><span class="user_image"><img src="https://www.joomlack.fr/images/demos/demo2/on-top-of-earth.jpg" alt=""/></span> Datos</ion-title>
       <ion-buttons end class="right_button" (click)="otherBodyVitals()">
         <button ion-button color="royal">Continuar</button>
       </ion-buttons>
@@ -30,10 +30,39 @@
           </ul>
         </div>
       </div>
-  
-      <ion-list-header>
-          Presión arterial
-      </ion-list-header>
+    
+          <ion-grid class="title_header"> 
+            <ion-row>
+              <ion-col col-6>Altura</ion-col>
+              <ion-col col-6>Peso</ion-col>
+            </ion-row>
+          </ion-grid> 
+
+          <ion-grid class="title_content"> 
+            <ion-row>
+              <ion-col col-3>Pies</ion-col>
+              <ion-col col-3><b>6’3“</b></ion-col>
+              <ion-col col-3>Libras</ion-col>
+              <ion-col col-3><b>200</b></ion-col>
+            </ion-row>
+          </ion-grid> 
+
+          <ion-grid class="title_header"> 
+            <ion-row>
+              <ion-col col-6>Presión Sistólica</ion-col>
+              <ion-col col-6>Presión Diastólica</ion-col>
+            </ion-row>
+          </ion-grid> 
+
+          <ion-grid class="title_content"> 
+            <ion-row>
+              <ion-col col-3>mmHG</ion-col>
+              <ion-col col-3><b>100</b></ion-col>
+              <ion-col col-3>mmHG</ion-col>
+              <ion-col col-3><b>100</b></ion-col>
+            </ion-row>
+          </ion-grid> 
+
 
       <div class="user_info" (click)="choose('systolic')">
         <div class="title_text">Sistólica</div>
