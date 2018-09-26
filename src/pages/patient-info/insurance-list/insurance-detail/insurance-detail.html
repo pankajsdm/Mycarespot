@@ -1,0 +1,87 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Seguro Médico</ion-title>
+      <ion-buttons end class="right_button" (click)="confirm()">
+        <button ion-button color="royal">Confirmar</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+
+      <div class="pad_rlt_25">
+        <div class="circle_icon">
+          <ul>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">5</li>
+            <li class="active fill">6</li>
+            <li class="active">7</li>
+            <li>8</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="pad_rlt_25">
+        <span class="form_label">Confirme su seguro médico</span>
+      </div>
+  
+  
+      <ion-card>
+  
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <p>Aseguradora</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+              Triple S
+          </ion-col>
+        </ion-item>
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <p>Beneficiario</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+              Rafael J. Esteves
+          </ion-col>
+        </ion-item>
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <p># Grupo</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+              123456789
+          </ion-col>
+        </ion-item>
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <p>ID o # Contrato</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+              123456789
+          </ion-col>
+        </ion-item>
+
+
+      </ion-card>
+ 
+  
+  </ion-content>
+  
+  <ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  
+

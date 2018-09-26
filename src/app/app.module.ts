@@ -57,12 +57,18 @@ import { PharmacyPage } from './../pages/patient-info/pharmacy/pharmacy';
 import { PharmacyAddPage } from './../pages/patient-info/pharmacy/pharmacy-add/pharmacy-add';
 import { PharmacyMapPage } from './../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map';
 import { PharmacySearchPage } from '../pages/patient-info/pharmacy/pharmacy-search/pharmacy-search';
+import { SummaryPage } from './../pages/patient-info/summary/summary';
+import { InsuranceDetailPage } from './../pages/patient-info/insurance-list/insurance-detail/insurance-detail';
+import { InsuranceListPage } from './../pages/patient-info/insurance-list/insurance-list';
+import { VisitingCostPage } from './../pages/patient-info/visiting-cost/visiting-cost';
 
 
 import { SchedulePage } from './../pages/schedule/schedule';
 import { AppointmentsPage } from './../pages/schedule/appointments/appointments';
 import { AppointmentsRequestPage } from './../pages/schedule/appointments-request/appointments-request';
 import { ListAppointmentsPage } from './../pages/schedule/list-appointments/list-appointments';
+
+
 
 
 /* Defined pipe here */
@@ -108,6 +114,10 @@ import { LikePipe } from './../pipes/like.pipe';
     PharmacyAddPage,
     PharmacyMapPage,
     PharmacySearchPage,
+    SummaryPage,
+    InsuranceDetailPage,
+    InsuranceListPage,
+    VisitingCostPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -164,6 +174,10 @@ import { LikePipe } from './../pipes/like.pipe';
     PharmacyAddPage,
     PharmacyMapPage,
     PharmacySearchPage,
+    SummaryPage,
+    InsuranceDetailPage,
+    InsuranceListPage,
+    VisitingCostPage,
 
     SchedulePage,
     AppointmentsPage,
