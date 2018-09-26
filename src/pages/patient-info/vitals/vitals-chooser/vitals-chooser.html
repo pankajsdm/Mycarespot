@@ -10,6 +10,24 @@
         <ion-list-header>Escoger {{title}}</ion-list-header>
     </ion-list>
 
+    <ion-card *ngIf="type=='weight'" >
+        <ion-item (click)="choose(wht)" *ngFor="let wht of weights" >
+            <ion-col class="col" col-8>
+            <h2>{{wht}}</h2>
+            </ion-col>
+            <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="type=='height'" >
+        <ion-item (click)="choose(hts)" *ngFor="let hts of heights" >
+            <ion-col class="col" col-8>
+            <h2>{{hts}}</h2>
+            </ion-col>
+            <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
+        </ion-item>
+    </ion-card>
+
     <ion-card *ngIf="type=='systolic'" >
         <ion-item (click)="choose(sys)" *ngFor="let sys of systolicArr" >
             <ion-col class="col" col-8>
@@ -41,6 +59,15 @@
         <ion-item (click)="choose(brths)" *ngFor="let brths of breathsArr" >
             <ion-col class="col" col-8>
             <h2>{{brths}}</h2>
+            </ion-col>
+            <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
+        </ion-item>
+    </ion-card>
+    
+    <ion-card *ngIf="type=='pulse'" >
+        <ion-item (click)="choose(pls)" *ngFor="let pls of pulseArr" >
+            <ion-col class="col" col-8>
+            <h2>{{pls}}</h2>
             </ion-col>
             <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
         </ion-item>

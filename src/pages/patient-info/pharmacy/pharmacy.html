@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <form>
     <div class="pad_rlt_25">
       <div class="circle_icon">
         <ul>
@@ -31,57 +30,26 @@
         </ul>
       </div>
     </div>
-
+    
     <div class="pad_rlt_25">
       <span class="form_label">Seleccione la farmacia de su preferencia.</span>
     </div>
 
 
-    <ion-card>
+    <ion-card *ngIf="lists?.length > 0">
 
-      <ion-item (click)="summary()">
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
+      <ion-item (click)="summary(item._id)" *ngFor="let item of lists" >
+          <ion-col class="col" col-11>
+            <h2>{{item.name}}</h2>
+            <p>{{item.city}}</p>
+            <p>{{item.state}}, {{item.zip}}</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
 
-      <ion-item (click)="summary()">
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
 
-      <ion-item (click)="summary()"> 
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
-      
-      <ion-item (click)="summary()">
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
 
 
 
@@ -108,7 +76,11 @@
               </ion-item> -->
 
     </ion-card>
-  </form>
+
+    <div class="no_data" *ngIf="lists?.length<1">
+        No ha añadido farmacia.
+    </div>
+
 
   <div class="bottom_fixed_btn">
     <span class="add_menor" (click)="search_pharmacy()">Saltar</span>

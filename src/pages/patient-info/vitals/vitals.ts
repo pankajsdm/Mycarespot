@@ -19,7 +19,17 @@ export class VitalsPage {
   loading: any;   
   lists: any;   
   current_user: any;
-  body = {systolic: '100', diastolic: '50', temprature: '100', breath: '12-28'};
+  body = {
+    height: '5.6', 
+    weight: '65', 
+    systolic: '100', 
+    diastolic: '50', 
+    temprature: '100', 
+    breath: '12-28',
+    pulse: '72-75'
+  };
+
+  
   
   constructor( 
     public modalCtrl: ModalController,
@@ -41,12 +51,18 @@ export class VitalsPage {
     let profileModal = this.modalCtrl.create(VitalsChooserPage, { value: val });
     profileModal.onDidDismiss(data => {
       console.log(data.code);
-      if(val=='systolic'){
+      if(val=='weight'){
+        this.body.weight = data.code;
+      }else if(val=='height'){
+        this.body.height = data.code;
+      }else if(val=='systolic'){
         this.body.systolic = data.code;
       }else if(val=='diastolic'){
         this.body.diastolic = data.code;
       }else if(val=='temprature'){
         this.body.temprature = data.code;
+      }else if(val=='pulse'){
+        this.body.pulse = data.code;
       }else{
         this.body.breath = data.code;
       }
@@ -60,6 +76,8 @@ export class VitalsPage {
       this.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
+          height: this.body.height,
+          weight: this.body.weight,
           systolic: this.body.systolic,
           diastolic: this.body.diastolic,
           temperature: parseInt(this.body.temprature),

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ToastController, ModalController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { PharmacySearchPage } from './pharmacy-search/pharmacy-search';
+import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 //import { PharmacyAddPage } from './pharmacy-add/pharmacy-add';
 import { SummaryPage } from './../summary/summary';
 
@@ -10,23 +11,81 @@ import { SummaryPage } from './../summary/summary';
 })
 export class PharmacyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  isSubmitted: boolean = false;
+  online: Boolean = true;
+  loading: any;   
+  rawMat: any;   
+  lists: any;   
+  current_user: any;
+
+  constructor( 
+    public modalCtrl: ModalController,
+    private toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController, 
+    public authService: CommonServiceProvider,
+    public navParams: NavParams) {
+    
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyPage');
+    this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.getPatientPharmacy();
   }
+
+  getPatientPharmacy(){
+    
+    if(this.online){
+      this.showLoader();
+      this.authService.get('users/getPatientPharmacy/'+this.current_user._id).then((result) => {
+          this.loading.dismiss();
+          this.rawMat =  result; 
+          this.lists = this.rawMat.data;
+      },(err) => { 
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
+    }else{
+      this.presentToast('Oh no! No internet found.');
+    } 
+  } 
 
   search_pharmacy(){
     this.navCtrl.push(PharmacySearchPage);
   }
 
-  summary(){
+  summary(id){
     this.navCtrl.push(SummaryPage);
   }
 
   
- cancle(){
-  this.navCtrl.pop();
+  cancle(){
+    this.navCtrl.pop();
   }
+
+  /* Show prgoress loader*/
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: ''
+    });
+    this.loading.present();
+  }
+
+  /* Creating toast */
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 10000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
 }
