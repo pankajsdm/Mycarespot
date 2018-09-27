@@ -6,18 +6,22 @@
 
 <ion-content>
   <ion-card>
-    <ion-item *ngFor="let doctor of doctors" class="flax_box">
-      <ion-avatar item-start style="margin: 8px 6px 8px 0;" (click)="docProfile(doctor._id)">
+
+    <ion-item *ngFor="let doctor of doctors" class="flax_box" (click)="docProfile(doctor._id)">
+      <ion-avatar item-start style="margin: 8px 6px 8px 0;">
         <img [src]="doctor.avatar">
       </ion-avatar>
       <ion-col class="col" col-11>
         <h2>Dr. {{doctor.firstName}} {{doctor.lastName}}</h2>
         <p>Por aquí te envió algunas fotos</p>   
       </ion-col>
-      <ion-col class="col forward_icon" col-1 (click)="docProfile(doctor._id)">
+      <ion-col class="col forward_icon" col-1>
         <ion-icon name="ios-arrow-forward"></ion-icon>
       </ion-col>
     </ion-item>
+
   </ion-card>
 </ion-content>
+
+
 

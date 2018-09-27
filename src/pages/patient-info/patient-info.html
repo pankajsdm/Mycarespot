@@ -28,9 +28,9 @@
   </div>
 
   <ion-card>
-    <ion-item (click)="simptoms()">
+    <ion-item (click)="optionSimptom(defaultPatient._id)">
       <ion-col class="col" col-11>
-        <h2>{{defaultPatient}}</h2>
+        <h2>{{defaultPatient.name}}</h2>
       </ion-col>
       <ion-col class="col forward_icon" col-1>
         <ion-icon name="ios-arrow-forward"></ion-icon>
@@ -38,7 +38,7 @@
     </ion-item> 
 
 
-      <ion-item (click)="simptoms()" *ngFor="let patient of users">
+      <ion-item (click)="optionSimptom(patient.userId._id)" *ngFor="let patient of users">
         <ion-col class="col" col-11>
           <h2>{{patient.userId.name}}</h2>
         </ion-col>
@@ -46,13 +46,19 @@
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </ion-col>
       </ion-item>
-
+          
 
 
   </ion-card>
 
-  <div class="pad_rlt_25">
-      <span class="add_menor" (click)="add_minor()">+ Añadir farmacia</span>
-  </div>
+  <!--<div class="pad_rlt_25">
+        <span class="add_menor" (click)="add_minor()">+ Añadir farmacia</span>
+    </div> -->
 
 </ion-content>
+
+<ion-footer class="main-footer">
+  <ion-toolbar (click)="cancle()">
+    <ion-title>Cancelar proceso</ion-title>
+  </ion-toolbar>
+</ion-footer>

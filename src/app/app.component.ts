@@ -13,6 +13,7 @@ import { MedicalHistoryPage } from "./../pages/patient-info/medical-history/medi
 import { PatientSimptomPage } from "./../pages/patient-info/patient-simptom/patient-simptom";
 import { BodyMeasurementsPage } from "./../pages/patient-info/body-measurements/body-measurements";
 import { MedicalHistoryPhase3Page } from "./../pages/patient-info/medical-history/medical-history-phase3/medical-history-phase3";
+import { VitalsPage } from "./../pages/patient-info/vitals/vitals";
 
 @Component({
   templateUrl: "app.html"

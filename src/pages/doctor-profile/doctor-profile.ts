@@ -22,7 +22,7 @@ export class DoctorProfilePage {
   doctor: any = { firstName: "", lastName: "" };
   doc_id: string;
   currentUser: any;
-
+  tabBarElement: any;
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
@@ -93,6 +93,15 @@ export class DoctorProfilePage {
     this.menu.open();
   }
 
+  
+  ionViewDidEnter(){
+    console.log("tesing");
+    let elem = <HTMLElement>document.querySelector(".tabbar");
+    if (elem != null) {
+      elem.style.display = 'flex';
+    }
+  }
+
   openChat() {
     console.log(this.doctor, this.currentUser);
 
@@ -107,7 +116,7 @@ export class DoctorProfilePage {
         {
           user: this.doctor._id,
           read: 0,
-          name: this.doctor.firstName + " " + this.currentUser.lastName,
+          name: this.doctor.firstName + " " + this.doctor.lastName,
           avatar: this.doctor.avatar
         }
       ],

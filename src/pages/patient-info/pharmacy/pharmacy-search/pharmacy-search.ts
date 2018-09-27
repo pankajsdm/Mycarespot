@@ -19,4 +19,9 @@ export class PharmacySearchPage {
     this.navCtrl.push(PharmacyAddPage);
   }
 
+
+  cancle(){
+    this.navCtrl.pop();
+  }
+
 }

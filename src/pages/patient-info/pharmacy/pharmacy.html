@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Farmacia</ion-title>
+    <ion-title><span class="user_image"><img src="https://www.joomlack.fr/images/demos/demo2/on-top-of-earth.jpg" alt=""/></span> Farmacia</ion-title>
     <ion-buttons end class="right_button" (click)="search_pharmacy()">
       <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <form>
     <div class="pad_rlt_25">
       <div class="circle_icon">
         <ul>
@@ -24,58 +23,35 @@
           <li class="active fill">
             <ion-icon name="checkmark"></ion-icon>
           </li>
-          <li class="active">5</li>
-          <li>6</li>
+          <li class="active fill">5</li>
+          <li class="active">6</li>
+          <li>7</li>
+          <li>8</li>
         </ul>
       </div>
     </div>
-
+    
     <div class="pad_rlt_25">
       <span class="form_label">Seleccione la farmacia de su preferencia.</span>
     </div>
 
 
-    <ion-card>
-      <ion-item>
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-11>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-1>
-          <ion-icon name="ios-arrow-forward"></ion-icon>
-        </ion-col>
-      </ion-item>
+    <ion-card *ngIf="lists?.length > 0">
+
+      <ion-item (click)="summary(item._id)" *ngFor="let item of lists" >
+          <ion-col class="col" col-11>
+            <h2>{{item.name}}</h2>
+            <p>{{item.city}}</p>
+            <p>{{item.state}}, {{item.zip}}</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+
+
+
+
 
       <!-- <ion-item>
           <ion-col class="col" col-8>
@@ -100,9 +76,19 @@
               </ion-item> -->
 
     </ion-card>
-  </form>
 
-  <div class="pad_rlt_25">
-    <span class="add_menor" (click)="search_pharmacy()">+ Añadir farmacia</span>
+    <div class="no_data" *ngIf="lists?.length<1">
+        No ha añadido farmacia.
+    </div>
+
+
+  <div class="bottom_fixed_btn">
+    <span class="add_menor" (click)="search_pharmacy()">Saltar</span>
   </div>
 </ion-content>
+
+<ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer>

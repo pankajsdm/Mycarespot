@@ -54,7 +54,7 @@ export class TabsPage {
       this.tabs[0].enabled = true;
     }  */
 
-    console.log("defined Root", this.tabs);
+    console.log("defined Root", this.navParams);
     
   }
 

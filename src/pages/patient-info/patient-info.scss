@@ -5,7 +5,7 @@ page-patient-info {
   .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
   .toolbar-background {background: #00b4ff;}
   ion-title{text-align: center;}
-  ion-title .toolbar-title{color: #ffffff;}
+  ion-header .toolbar-title{color: #ffffff;}
   /* Ended common css*/
 
   /* Main Css*/
@@ -35,7 +35,7 @@ page-patient-info {
       margin-top: 15px;
       margin-bottom: 15px;
       float: left;
-      color: #2f2f2f;
+      color: #585757;
   }
 
   .circle_icon ul {

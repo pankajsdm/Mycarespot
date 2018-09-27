@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
-import { BodyMeasurementsPage } from './../../body-measurements/body-measurements';
+//import { BodyMeasurementsPage } from './../../body-measurements/body-measurements';
+import { VitalsPage } from './../../vitals/vitals';
 
 @Component({
   selector: 'page-medical-history-phase5',
@@ -82,7 +83,7 @@ export class MedicalHistoryPhase5Page {
             this.loading.dismiss();
             this.lists =  result; 
             if(this.lists.code==200){
-              this.navCtrl.push(BodyMeasurementsPage);
+              this.navCtrl.push(VitalsPage);
             }else{
               this.presentToast(this.lists.message);
             }
@@ -94,7 +95,11 @@ export class MedicalHistoryPhase5Page {
         this.presentToast('Oh no! No internet found.');
     }
 
-  } 
+  }
+  
+  cancle(){
+    this.navCtrl.pop();
+  }
 
   /* Show prgoress loader*/
   showLoader(){

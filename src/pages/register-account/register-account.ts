@@ -63,7 +63,7 @@ export class RegisterAccountPage {
   get vrfToken() { return this.verifyForm.controls; }
 
   presentProfileModal() {
-    let profileModal = this.modalCtrl.create(CountryCodePage, { userId: 8675309 });
+    let profileModal = this.modalCtrl.create(CountryCodePage);
     profileModal.onDidDismiss(data => {
       let spt = data.code.split('+');
       this.set_country_code = '+'+spt[1];
@@ -71,7 +71,7 @@ export class RegisterAccountPage {
       this.set_country_with_code = spt[1];
     });
     profileModal.present();
-  }
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterAccountPage');

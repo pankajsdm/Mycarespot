@@ -33,20 +33,32 @@
       <span class="form_label">¿Ha sido diagnosticado con alguna de las siguientes condiciones?</span>
     </div>
 
-      <div class="user_info">
+
+      <div class="user_info" (click)="choose('height')">
         <div class="title_text">Altura</div>
-          <ion-select (ionChange)="heightSelect(body.height)" interface="popover" [(ngModel)]="body.height" [ngModelOptions]="{standalone: true}">
+          <!-- <ion-select (ionChange)="heightSelect(body.height)" interface="popover" [(ngModel)]="body.height" [ngModelOptions]="{standalone: true}">
             <ion-option [value]="h" *ngFor="let h of heights">{{h}}"</ion-option> 
-          </ion-select>
-          <!-- <div class="select-text">5.6"</div> -->
+          </ion-select> -->
+          <div class="ion-select">
+              <div class="select-text">{{body.height}}"</div>
+          </div>
+
       </div>
       
-      <div class="user_info">
+      <div class="user_info" (click)="choose('weight')">
         <div class="title_text">Peso</div>
-          <ion-select (ionChange)="weightSelect(body.weight)" interface="popover" [(ngModel)]="body.weight" [ngModelOptions]="{standalone: true}">
+        <div class="ion-select">
+            <div class="select-text">{{body.weight}}</div>
+        </div>
+          <!-- <ion-select (ionChange)="weightSelect(body.weight)" interface="popover" [(ngModel)]="body.weight" [ngModelOptions]="{standalone: true}">
             <ion-option [value]="w" *ngFor="let w of weights">{{w}}</ion-option> 
-          </ion-select> 
+          </ion-select>  -->
       </div>
   
 
 </ion-content>
+<ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer>

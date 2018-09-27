@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ConversationPage {
   currentUser: any;
+  channels: any;
 
   constructor(
     public navCtrl: NavController,
@@ -27,9 +28,24 @@ export class ConversationPage {
         }
       })
       .subscribe(data => {
-        console.log("data", data);
+        this.channels = data;
+        for (let i = 0; i < this.channels.length; i++) {
+          this.channels[i].userShow = {};
+          for (let j = 0; j < this.channels[i].users.length; j++) {
+            if (this.channels[i].users[j]._id != this.currentUser._id) {
+              this.channels[i].userShow = this.channels[i].users[j];
+            } else {
+              this.channels[i].userShow.read = this.channels[i].users[j].read;
+            }
+          }
+        }
+        console.log("data", this.channels);
       });
   }
 
   userProfile() {}
+
+  openChat(item) {
+    console.log(item);
+  }
 }

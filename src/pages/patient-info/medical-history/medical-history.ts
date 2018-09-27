@@ -96,6 +96,10 @@ export class MedicalHistoryPage {
     this.diabetes = value;
   }
 
+  cancle(){
+    this.navCtrl.pop();
+  }
+
   /* Show prgoress loader*/
   showLoader(){
     this.loading = this.loadingCtrl.create({

@@ -98,6 +98,10 @@ export class MedicalHistoryPhase3Page {
       }
   } 
 
+  cancle(){
+    this.navCtrl.pop();
+  }
+
   /* Show prgoress loader*/
   showLoader(){
     this.loading = this.loadingCtrl.create({

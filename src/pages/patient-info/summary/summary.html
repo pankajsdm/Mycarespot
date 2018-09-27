@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title><span class="user_image"><img src="https://www.joomlack.fr/images/demos/demo2/on-top-of-earth.jpg" alt=""/></span>Seguro Médico</ion-title>
+      <ion-buttons end class="right_button">
+        <button ion-button color="royal">Editar</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <form>
+      <div class="pad_rlt_25">
+        <div class="circle_icon">
+          <ul>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">
+              <ion-icon name="checkmark"></ion-icon>
+            </li>
+            <li class="active fill">5</li>
+            <li class="active fill">6</li>
+            <li class="active">7</li>
+            <li>8</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="pad_rlt_25">
+        <span class="form_label">¿Seleccione su seguro medico?</span>
+      </div>
+  
+  
+      <ion-card>
+  
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <h2>Triple S</h2>
+            <p>Rafael J. Esteves</p>
+            <p>123456789</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+
+        <ion-item (click)="details()">
+          <ion-col class="col" col-11>
+            <h2>Triple S</h2>
+            <p>Rafael J. Esteves</p>
+            <p>123456789</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item> 
+      </ion-card>
+
+    </form>
+  
+    <div class="bottom_fixed_btn">
+      <span class="add_menor" (click)="search_pharmacy()">Saltar</span>
+    </div>
+  </ion-content>
+  
+  <ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  

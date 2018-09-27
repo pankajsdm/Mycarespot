@@ -8,6 +8,9 @@ page-vitals {
       ion-title .toolbar-title {
         color: #ffffff;
         font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
         .back-button {
           width: 0px;
@@ -73,7 +76,16 @@ page-vitals {
       .pad_rlt_25{padding: 0 25px; display: block;}
       #registro{padding: 10px 34px !important;}
       .form_label{font-weight: bold;font-size: 13px; margin-top: 15px;margin-bottom:15px;float: left;color: #919191;}
-
+      .title_content{
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        margin-top: -1px;
+        color: #919191;
+        text-align: left;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        b{color: #3c3c3c;}
+      }
       .user_info{
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
@@ -178,4 +190,9 @@ page-vitals {
         margin-bottom: 0px !important;
     }
     .list-header-ios{border-color: #eee !important;    text-transform: none;}
+    .title_header{
+      background: #d6d6d6;
+      padding: 5px;
+    }
+    
 }

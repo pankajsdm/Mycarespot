@@ -62,6 +62,10 @@ export class RiskFactorsPage {
     console.log("i ma checked", value);
     this.i_use_drugs = value;
   }
+
+  cancle(){
+    this.navCtrl.pop();
+  }
   
 
   selectAffirmations(){
