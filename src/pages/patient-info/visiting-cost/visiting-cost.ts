@@ -7,11 +7,17 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class VisitingCostPage {
 
+  user_picture: String;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VisitingCostPage');
+    this.user_picture = localStorage.getItem('user_picture');    
+  }
+
+  cancle(){
+    this.navCtrl.pop();
   }
 
 }

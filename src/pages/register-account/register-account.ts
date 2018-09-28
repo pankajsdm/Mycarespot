@@ -2,11 +2,12 @@
 
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavParams, ViewController, ModalController, ToastController, LoadingController, NavController, AlertController } from 'ionic-angular';
+import { NavParams, ViewController, ModalController, ToastController, LoadingController, NavController, AlertController, Keyboard } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { PasswordValidation } from '../../validators/password.validator';
 import { LoginPage } from '../login/login';
 import { CountryCodePage } from './country-code/country-code';
+
 
 @Component({
   selector: 'page-register-account',
@@ -32,6 +33,7 @@ export class RegisterAccountPage {
   loading: any;
   user_data: any;
   constructor(
+    private keyboard: Keyboard,
     public modalCtrl: ModalController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -171,7 +173,7 @@ export class RegisterAccountPage {
       title: title,
       subTitle: subtitle,
       buttons: ['Ok']
-    });
+    }); 
     alert.present();
   } 
 

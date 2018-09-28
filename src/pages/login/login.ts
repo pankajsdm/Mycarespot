@@ -18,7 +18,7 @@ export class LoginPage {
   private fb: any;
   isLoggedIn:boolean = false;
   public loginForm: FormGroup;
-  public user =  {email: 'rafael@yomail.com', password: '123456'};
+  public user =  {email: 'durgesh@yopmail.com', mobilePhone: '', password: '123456'};
   isSubmitted: boolean = false;
   online: Boolean = true;
   loading: any;
@@ -51,8 +51,18 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    
   }
 
+
+  identifyEmail(email){
+    let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (filter.test(email)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
 
 
   login(){
@@ -60,8 +70,13 @@ export class LoginPage {
     if(this.online){
       if(this.loginForm.valid){
         this.showLoader();
+
+        if(!(this.identifyEmail(this.user.email))){
+          this.user.mobilePhone = this.user.email;
+          delete this.user.email;
+        } 
+
         this.authService.post('patient/mobileUserLogin', this.user).then((result) => {
-        //this.authService.fetch('auth/local', this.user).then((result) => {
           this.loading.dismiss();
           this.user_data = result;  
           if(this.user_data.code==200){ 

@@ -17,6 +17,7 @@ export class PatientSimptomNextPage {
   loading: any;
   user_data: any;
   current_user: any;
+  user_picture: String;
 
   constructor(
     private toastCtrl: ToastController,
@@ -30,6 +31,7 @@ export class PatientSimptomNextPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientSimptomNextPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');   
   }
 
   riskFactors(param){

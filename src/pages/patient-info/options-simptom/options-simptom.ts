@@ -8,11 +8,14 @@ import { PatientSimptomPage } from './../patient-simptom/patient-simptom';
 })
 export class OptionsSimptomPage {
 
+  user_picture: String;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OptionsSimptomPage');
+    this.user_picture = localStorage.getItem('user_picture');   
   }
 
   optionSimptom(val){

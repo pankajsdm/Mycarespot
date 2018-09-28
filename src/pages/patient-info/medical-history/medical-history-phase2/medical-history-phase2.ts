@@ -16,6 +16,7 @@ export class MedicalHistoryPhase2Page {
   loading: any;
   user_data: any;
   current_user: any;
+  user_picture: String;
 
   constructor(
     private toastCtrl: ToastController,
@@ -29,6 +30,7 @@ export class MedicalHistoryPhase2Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPhase2Page');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');  
   }
 
   medicalHistoryPhase3(val){

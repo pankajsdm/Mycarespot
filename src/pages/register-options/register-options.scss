@@ -123,13 +123,25 @@ page-register-options {
     
     .no-scroll .scroll-content{overflow: hidden;}
     .register_option_text{ margin: 0 auto; width: 100%;}
-    .register_option_text p{ font-weight: bold; color: #757575;font-size: 13px; margin: 40px 0 13px 0;}
-    .terminos a{color: #00b4ff;}
-    .term_privacy{width: 82%;margin: 0 auto;}
-    .term_privacy span {color: #757575;}
+    .register_option_text p{ font-weight: bold; color: #757575;font-size: 13px; margin: 20px 0 13px 0;}
+    .terminos a{
+        color: #00b4ff;
+        text-align: center;
+        width: 100%;
+    }
+    .term_privacy{text-align:center;}
+    .term_privacy span {color: #757575; width:1%; float:left;}
 
     .bottom {padding: 15px 0;border-top: none; background: #fff;}
     
+    .social-btn1{
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+    } 
+
+    .social-btn1 img{position: static !important;margin: auto !important;height: 35px;}
+    .social-btn1 button{text-align: center;padding: 0px 10px !important;margin: 5px !important;float: left;border-radius: 50%;height: 90px;width: 90px;}
 
 }
 
@@ -146,5 +158,3 @@ page-register-options {
 display: block;
 padding: 0 34px;
 }
-.social-btn1 img{position: static !important;margin: auto !important;height: 35px;}
-.social-btn1 button{text-align: center;padding: 0px 10px !important;margin: 5px !important;float: left;border-radius: 50%;height: 75px;width: 75px;}

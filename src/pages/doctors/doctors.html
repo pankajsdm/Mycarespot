@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card>
 
-    <ion-item *ngFor="let doctor of doctors" class="flax_box" (click)="docProfile(doctor._id)">
+    <ion-item *ngFor="let doctor of doctors" class="flax_box" (click)="docProfile(doctor._id, doctor.avatar)">
       <ion-avatar item-start style="margin: 8px 6px 8px 0;">
         <img [src]="doctor.avatar">
       </ion-avatar>

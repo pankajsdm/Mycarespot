@@ -23,7 +23,8 @@ export class PatientSimptomPage {
   online: Boolean = true;
   loading: any;
   user_data: any;
-
+  user_picture: String;
+  
   constructor(
     private toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
@@ -35,6 +36,7 @@ export class PatientSimptomPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientSimptomPage');
+    this.user_picture = localStorage.getItem('user_picture');   
     this.user.country_code = 'PR +1';
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
     this.defineSymtoms();

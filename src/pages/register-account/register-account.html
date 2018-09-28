@@ -37,25 +37,30 @@
         <form *ngIf="!verificationProcess" id="registro" class="center" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
 
             <label id="registrateYConsultaAUnProvedor-input2">
-                <ion-input type="text" placeholder="Nombre" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
+                <ion-input type="text" placeholder="Primer nombre" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
             </label>
             
             
 
             <label id="registrateYConsultaAUnProvedor-input3">
-                <ion-input type="text" placeholder="Apellido" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
+                <ion-input type="text" placeholder="Apellido paterno" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
             </label>
 
             <ion-item class="fecha">
                 <ion-label class="label_text">Fecha de Nacimiento</ion-label>
-                <ion-datetime class="fechaClick" displayFormat="YYYY-MM-DD" pickerFormat="YYYY MMMM DD" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth" cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
+                <ion-datetime class="fechaClick" displayFormat="DD-MMMM-YYYY" pickerFormat="DD-MMMM-YYYY" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth" cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
             </ion-item>
+
+            <div class="gap" style="float:left; width: 100%;margin-top: 5px;" *ngIf="registration_type"></div>
 
             <label id="registrateYConsultaAUnProvedor-input5" *ngIf="registration_type">
                 <ion-input  type="email" placeholder="Correo Electrónico" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
             </label>
+            
 
-            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
+            <div class="gap" style="float:left; width: 100%;margin-top: 5px;" *ngIf="!registration_type"></div>
+
+            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type" >
                 <div class="phone_number">
                     <div class="select-ios" (click)="presentProfileModal()">
                         <div class="select-text">{{set_country_code}}</div>
@@ -64,6 +69,8 @@
                     <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
                 </div>
             </label>
+
+            <div class="gap" style="margin-bottom:5px; float:left; width: 100%;" *ngIf="!registration_type"></div>
 
             <!-- <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
                 <div class="phone_number">
@@ -107,7 +114,7 @@
 </div>
 
 
-<ion-footer class="main-footer">
+<ion-footer class="main-footer" [hidden]="keyboard.isOpen()">
         <ion-toolbar (click)="goToLogin()">
             <ion-title>¿Ya tienes cuenta?</ion-title>
         </ion-toolbar>
