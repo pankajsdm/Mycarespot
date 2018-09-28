@@ -27,6 +27,7 @@ import { MedicalCarePage } from "./../pages/medical-care/medical-care";
 import { DoctorsPage } from "../pages/doctors/doctors";
 import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
 import { ConversationPage } from "./../pages/conversation/conversation";
+import { ConversationDetailPage } from "./../pages/conversation-detail/conversation";
 import { MyhealthPage } from "./../pages/myhealth/myhealth";
 import { MyRecordsPage } from "./../pages/myhealth/my-records/my-records";
 import { MyDocumentsPage } from "./../pages/myhealth/my-documents/my-documents";
@@ -90,6 +91,7 @@ import { LikePipe } from "./../pipes/like.pipe";
     DoctorsPage,
     DoctorProfilePage,
     ConversationPage,
+    ConversationDetailPage,
     MyhealthPage,
     MyRecordsPage,
     MyDocumentsPage,
@@ -190,6 +192,7 @@ import { LikePipe } from "./../pipes/like.pipe";
     ListAppointmentsPage,
 
     ConversationPage,
+    ConversationDetailPage,
     RecoveryPasswordPage,
     RegisterOptionsPage,
     RegisterAccountPage,

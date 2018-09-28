@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { Config } from "../../app/app.config";
 import { HttpClient } from "@angular/common/http";
+import { ConversationDetailPage } from "../conversation-detail/conversation";
 
 @Component({
   selector: "page-conversation",
@@ -46,6 +47,10 @@ export class ConversationPage {
   userProfile() {}
 
   openChat(item) {
+    console.log("ConversationDetailPage", ConversationDetailPage);
+    this.navCtrl.push(ConversationDetailPage, {
+      _id: item._id
+    });
     console.log(item);
   }
 }
