@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastController, LoadingController, NavController, MenuController, NavParams } from 'ionic-angular';
-import { Config } from "../../app/app.config";
 import { PatientInfoPage } from './../patient-info/patient-info';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
-import { HttpClient } from "@angular/common/http";
 
 @Component({  
   selector: 'page-doctor-profile',
@@ -16,12 +14,10 @@ export class DoctorProfilePage {
   doctrArr: any;
   doctor: any = {firstName: '', lastName: ''};
   doc_id: string;
-  currentUser: any;
   tabBarElement: any;
   
 
   constructor(
-    private http: HttpClient,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
@@ -91,35 +87,6 @@ export class DoctorProfilePage {
     if (elem != null) {
       elem.style.display = 'flex';
     }
-  }
-
-  openChat() {
-    console.log(this.doctor, this.currentUser);
-
-    let channel = {
-      users: [
-        {
-          user: this.currentUser._id,
-          read: 0,
-          name: this.currentUser.firstName + " " + this.currentUser.lastName,
-          avatar: this.currentUser.avatar
-        },
-        {
-          user: this.doctor._id,
-          read: 0,
-          name: this.doctor.firstName + " " + this.doctor.lastName,
-          avatar: this.doctor.avatar
-        }
-      ],
-      from: this.currentUser._id,
-      to: this.doctor._id
-    };
-
-    this.http
-      .post(Config.url + Config.api.messenger.channel, channel)
-      .subscribe(data => {
-        console.log(data);
-      });
   }
 
 

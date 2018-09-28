@@ -9,8 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TimeAgoPipe } from "time-ago-pipe";
 import { MyApp } from './app.component';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { HttpClientModule } from "@angular/common/http";  
+  
 
 /* Defined page components here */
 import { LoginPage } from '../pages/login/login';
@@ -68,7 +67,9 @@ import { SchedulePage } from './../pages/schedule/schedule';
 import { AppointmentsPage } from './../pages/schedule/appointments/appointments';
 import { AppointmentsRequestPage } from './../pages/schedule/appointments-request/appointments-request';
 import { ListAppointmentsPage } from './../pages/schedule/list-appointments/list-appointments';
-import { TokenInterceptor } from "./app.token.interceptor";
+
+
+
 
 /* Defined pipe here */
 import { LikePipe } from './../pipes/like.pipe';
@@ -194,8 +195,7 @@ import { LikePipe } from './../pipes/like.pipe';
     StatusBar,
     SplashScreen,
     Facebook,
-    {provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi: true},
-    {provide: ErrorHandler, useClass: IonicErrorHandler,multi: true},
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonServiceProvider
   ]
 })
