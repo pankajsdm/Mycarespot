@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams, FabList, Events } from "ionic-angular";
 import { Config } from "../../app/app.config";
 import { HttpClient } from "@angular/common/http";
+import { ConversationDetailPage } from "./../conversation-detail/conversation-detail";
+
+let self;
 
 @Component({
-  selector: 'page-conversation',
-  templateUrl: 'conversation.html',
+  selector: "page-conversation",
+  templateUrl: "conversation.html"
 })
 export class ConversationPage {
   currentUser: any;
   channels: any;
+  isLoading = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    public events: Events
+  ) {
+    self = this;
+    events.subscribe("channel", data => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      self.channels = data;
+    });
+  }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad ConversationPage", Config);
@@ -28,18 +39,23 @@ export class ConversationPage {
         }
       })
       .subscribe(data => {
-        this.channels = data;
-        for (let i = 0; i < this.channels.length; i++) {
-          this.channels[i].userShow = {};
-          for (let j = 0; j < this.channels[i].users.length; j++) {
-            if (this.channels[i].users[j]._id != this.currentUser._id) {
-              this.channels[i].userShow = this.channels[i].users[j];
+        self.channels = data;
+        let read = 0;
+        for (let i = 0; i < self.channels.length; i++) {
+          self.channels[i].userShow = {};
+          for (let j = 0; j < self.channels[i].users.length; j++) {
+            if (self.channels[i].users[j]._id != this.currentUser._id) {
+              self.channels[i].userShow = self.channels[i].users[j];
             } else {
-              this.channels[i].userShow.read = this.channels[i].users[j].read;
+              read = self.channels[i].users[j].read;
             }
           }
+          self.channels[i].userShow.read = read;
         }
-        console.log("data", this.channels);
+
+        self.isLoading = true;
+
+        console.log("data", self.channels);
       });
   }
 
@@ -47,5 +63,8 @@ export class ConversationPage {
 
   openChat(item) {
     console.log(item);
+    this.navCtrl.push(ConversationDetailPage, {
+      _id: item._id
+    });
   }
 }

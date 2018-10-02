@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="channel && channel.userShow">{{channel.userShow.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="royal">
+        <ion-icon name="ios-videocam-outline"></ion-icon>
+      </button>
+      <button ion-button color="royal">
+        <ion-icon name="ios-mic-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>
+
+  <div class="list-message" *ngIf="isLoading">
+    <ul>
+      <li *ngFor="let item of messages; let i = index" [ngClass]="{'to': item.from.userId == currentUser._id}">
+        <img [src]="item.from.avatar" alt="" class="avatar-user" *ngIf="item.from.userId != currentUser._id && item.from.avatar">
+        <div class="box-message">
+          <div class="text" *ngIf="item.text">
+            {{item.text}}
+          </div>
+          <div class="time">{{item.createdAt | date: 'shortTime'}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div padding class="text-center" *ngIf="!isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+</ion-content>
+
+<div class="footer horizontal layout center">
+  <button ion-button outline>
+    <ion-icon name="ios-add-outline"></ion-icon>
+  </button>
+  <input type="text" placeholder="Text" [(ngModel)]="message.text">
+  <button ion-button outline (click)="sendMessage()">
+    <ion-icon name="ios-send-outline"></ion-icon>
+  </button>
+</div>
