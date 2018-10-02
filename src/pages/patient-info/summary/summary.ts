@@ -9,15 +9,21 @@ import { InsuranceDetailPage } from './../insurance-list/insurance-detail/insura
 })
 export class SummaryPage {
 
+  user_picture: String;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   } 
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SummaryPage');
+    this.user_picture = localStorage.getItem('user_picture');    
   }
 
   details(){
     this.navCtrl.push(InsuranceDetailPage);
+  }
+
+  cancle(){
+    this.navCtrl.pop();
   }
 
 }

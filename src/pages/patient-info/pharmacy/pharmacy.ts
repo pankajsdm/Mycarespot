@@ -17,6 +17,8 @@ export class PharmacyPage {
   rawMat: any;   
   lists: any;   
   current_user: any;
+  user_picture: String;
+  nodata_found = 'No ha añadido farmacia.';
 
   constructor( 
     public modalCtrl: ModalController,
@@ -31,6 +33,7 @@ export class PharmacyPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');    
     this.getPatientPharmacy();
   }
 

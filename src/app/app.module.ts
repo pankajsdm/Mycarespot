@@ -15,10 +15,8 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { TimeAgoPipe } from "time-ago-pipe";
 import { MyApp } from "./app.component";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpClientModule } from "@angular/common/http";
 
-/* Defined page components here */
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { HomePage } from "../pages/home/home";
@@ -28,6 +26,7 @@ import { DoctorsPage } from "../pages/doctors/doctors";
 import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
 import { ConversationPage } from "./../pages/conversation/conversation";
 import { ConversationDetailPage } from "./../pages/conversation-detail/conversation";
+
 import { MyhealthPage } from "./../pages/myhealth/myhealth";
 import { MyRecordsPage } from "./../pages/myhealth/my-records/my-records";
 import { MyDocumentsPage } from "./../pages/myhealth/my-documents/my-documents";
@@ -73,8 +72,6 @@ import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
 import { AppointmentsRequestPage } from "./../pages/schedule/appointments-request/appointments-request";
 import { ListAppointmentsPage } from "./../pages/schedule/list-appointments/list-appointments";
-
-import { TokenInterceptor } from "./app.token.interceptor";
 
 /* Defined pipe here */
 import { LikePipe } from "./../pipes/like.pipe";
@@ -203,12 +200,7 @@ import { LikePipe } from "./../pipes/like.pipe";
     StatusBar,
     SplashScreen,
     Facebook,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: ErrorHandler, useClass: IonicErrorHandler, multi: true },
     CommonServiceProvider
   ]
 })

@@ -21,6 +21,7 @@ export class MedicalHistoryPhase5Page {
   loading: any;
   user_data: any;
   patientId = '5b72f2b7df57caa1c9e0d9fa';
+  user_picture: String;
 
   constructor(
     private toastCtrl: ToastController,
@@ -34,6 +35,7 @@ export class MedicalHistoryPhase5Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPhase5Page');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');    
     this.defineSymtoms();
   }  
 

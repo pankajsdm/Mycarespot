@@ -24,6 +24,7 @@ export class PatientInfoPage {
   online: Boolean = true;
   loading: any;
   user_data: any;
+  user_picture: String;
 
   constructor(
     private event: Events,
@@ -35,17 +36,18 @@ export class PatientInfoPage {
     public formdata: FormBuilder,
     public navParams: NavParams
   ) {
-
+     
     this.registerForm = this.formdata.group({
       FirstName: ['', [Validators.required]],
     });
   }
 
-
+ 
 
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad PatientInfoPage');
+    this.user_picture = localStorage.getItem('user_picture');   
     this.getMinorList();
     this.event.subscribe('submitted', (paramsVar) => {
       if(paramsVar){

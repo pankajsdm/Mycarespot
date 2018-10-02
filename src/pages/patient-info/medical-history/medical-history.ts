@@ -22,7 +22,8 @@ export class MedicalHistoryPage {
   depression: string = 'No';
   stroke: string = 'No';
   diabetes: string = 'No';
-
+  user_picture: String;
+  
   constructor(
     private toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
@@ -35,6 +36,7 @@ export class MedicalHistoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');  
   }
 
   

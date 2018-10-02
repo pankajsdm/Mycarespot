@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title><span class="user_image"><img src="https://www.joomlack.fr/images/demos/demo2/on-top-of-earth.jpg" alt=""/></span> Farmacia</ion-title>
+    <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span> Farmacia</ion-title>
     <ion-buttons end class="right_button" (click)="search_pharmacy()">
       <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
@@ -77,9 +77,7 @@
 
     </ion-card>
 
-    <div class="no_data" *ngIf="lists?.length<1">
-        No ha añadido farmacia.
-    </div>
+    <div class="no_data" *ngIf="lists?.length<1">{{nodata_found}}</div>
 
 
   <div class="bottom_fixed_btn">

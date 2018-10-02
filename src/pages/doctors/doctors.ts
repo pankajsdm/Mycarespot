@@ -44,8 +44,9 @@ export class DoctorsPage {
       this.presentToast('Oh no! No internet found.');
     }
   }   
-
-  docProfile(_id){
+   
+  docProfile(_id, pic){
+    localStorage.setItem('user_picture', pic);
     this.navCtrl.push(DoctorProfilePage, {
       _id: _id
     });

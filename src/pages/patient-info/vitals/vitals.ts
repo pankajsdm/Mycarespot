@@ -17,6 +17,7 @@ export class VitalsPage {
   isSubmitted: boolean = false;
   online: Boolean = true;
   loading: any;   
+  user_picture: String;
   lists: any;   
   current_user: any;
   body = {
@@ -44,6 +45,8 @@ export class VitalsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VitalsPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');
+    
   }
 
  

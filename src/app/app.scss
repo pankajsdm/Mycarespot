@@ -273,7 +273,7 @@ ion-checkbox {
     vertical-align: middle;
 }
 
-.select-item {
+.select-item { 
     width: 30%;
     border-radius: 7px;
     border: 1px solid #D2D2D2;
@@ -689,7 +689,8 @@ span.back-button-text.back-button-text-ios {
     .toolbar-title{
       color: #00b4ff !important;
       font-weight: normal;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 12px;
     }
   }
 .no_data{
@@ -701,6 +702,15 @@ span.back-button-text.back-button-text-ios {
     font-weight: bold;
     border-top: 1px solid #d9d9d9;
 }
+
+ion-header .top{margin-top: 0px !important;}
+
+ion-title .toolbar-title{color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .user_image{
     display: flex;
     width: 30px;
@@ -718,3 +728,11 @@ span.back-button-text.back-button-text-ios {
       max-height: 100%;
     }
   }
+
+/* label#registrateYConsultaAUnProvedor-input5 {
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+    
+}  */
+

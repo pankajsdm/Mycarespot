@@ -139,7 +139,7 @@ export class RegisterOptionsPage {
 
     toast.present();
   }
-    
+      
 
   attached(p){}
 

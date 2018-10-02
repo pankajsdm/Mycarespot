@@ -1,76 +1,68 @@
-import { Component } from "@angular/core";
-import {
-  ToastController,
-  LoadingController,
-  NavController,
-  MenuController,
-  NavParams
-} from "ionic-angular";
-import { PatientInfoPage } from "./../patient-info/patient-info";
-import { CommonServiceProvider } from "../../providers/common-service/common-service";
+import { Component } from '@angular/core';
+import { ToastController, LoadingController, NavController, MenuController, NavParams } from 'ionic-angular';
 import { Config } from "../../app/app.config";
+import { PatientInfoPage } from './../patient-info/patient-info';
+import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { HttpClient } from "@angular/common/http";
 
-@Component({
-  selector: "page-doctor-profile",
-  templateUrl: "doctor-profile.html"
+@Component({  
+  selector: 'page-doctor-profile',
+  templateUrl: 'doctor-profile.html',
 })
 export class DoctorProfilePage {
+
   online: Boolean = true;
   loading: any;
   doctrArr: any;
-  doctor: any = { firstName: "", lastName: "" };
+  doctor: any = {firstName: '', lastName: ''};
   doc_id: string;
   currentUser: any;
   tabBarElement: any;
+  
+
   constructor(
+    private http: HttpClient,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
     public menu: MenuController,
-    public navParams: NavParams,
-    private http: HttpClient
-  ) {}
+    public navParams: NavParams
+  ) {
+    
+  }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad DoctorProfilePage");
-    this.currentUser = JSON.parse(localStorage.getItem("user_data"));
-
-    this.doc_id = this.navParams.get("_id");
+    console.log('ionViewDidLoad DoctorProfilePage');
+    this.doc_id =  this.navParams.get('_id');
     this.getDoctor(this.doc_id);
-  }
+  }   
 
-  getDoctor(_id) {
-    if (this.online) {
-      this.showLoader();
-      this.authService
-        .get("practioner/getPractionerProfileInformation/" + _id)
-        .then(
-          result => {
-            this.loading.dismiss();
-            this.doctrArr = result;
-            this.doctor = this.doctrArr.data[0];
-            console.log("doct", this.doctrArr.data[0]);
-          },
-          err => {
-            this.loading.dismiss();
-            this.presentToast("Something wrong! Please try later.");
-          }
-        );
-    } else {
-      this.presentToast("Oh no! No internet found.");
+  getDoctor(_id){ 
+    if(this.online){  
+        this.showLoader();
+        this.authService.get('practioner/getPractionerProfileInformation/'+_id).then((result) => {
+          this.loading.dismiss();
+          this.doctrArr = result;  
+          this.doctor = this.doctrArr.data[0];
+          console.log("doct", this.doctrArr.data[0]);
+        },(err) => {
+          this.loading.dismiss();
+          this.presentToast('Something wrong! Please try later.');
+        });
+    }else{
+      this.presentToast('Oh no! No internet found.');
     }
-  }
+  }  
 
-  patientInfo() {
+  patientInfo(){
     this.navCtrl.push(PatientInfoPage);
   }
 
-  /* Show prgoress loader*/
-  showLoader() {
+    /* Show prgoress loader*/
+  showLoader(){
     this.loading = this.loadingCtrl.create({
-      content: ""
+        content: ''
     });
     this.loading.present();
   }
@@ -80,20 +72,19 @@ export class DoctorProfilePage {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 10000,
-      position: "bottom",
+      position: 'bottom',
       dismissOnPageChange: true
     });
     toast.onDidDismiss(() => {
-      console.log("Dismissed toast");
+      console.log('Dismissed toast');
     });
     toast.present();
   }
 
-  openMenu() {
+  openMenu(){
     this.menu.open();
-  }
+  } 
 
-  
   ionViewDidEnter(){
     console.log("tesing");
     let elem = <HTMLElement>document.querySelector(".tabbar");
@@ -130,4 +121,6 @@ export class DoctorProfilePage {
         console.log(data);
       });
   }
+
+
 }

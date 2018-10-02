@@ -23,6 +23,7 @@ export class RiskFactorsPage {
   i_am_overweight: string = 'No';
   use_alchole: string = 'No';
   i_use_drugs: string = 'No';
+  user_picture: String;
 
   constructor(
     private toastCtrl: ToastController,
@@ -36,6 +37,7 @@ export class RiskFactorsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RiskFactorsPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    this.user_picture = localStorage.getItem('user_picture');  
   }
 
   funExercise(value){

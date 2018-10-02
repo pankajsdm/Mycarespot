@@ -23,7 +23,7 @@ export class MyApp {
   nav: Nav;
 
   rootPage: any = HomePage;
-  //rootPage:any = BodyMeasurementsPage;
+  //rootPage:any = VitalsPage;
   pages: any;
   user = { firstName: "", lastName: "" };
 
