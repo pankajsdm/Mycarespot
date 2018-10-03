@@ -56,11 +56,14 @@ export class MyApp {
       this.main_navigation();
       statusBar.styleDefault();
       splashScreen.hide();
+      this.socketCreation();
     });
+  }
+
+  socketCreation(){
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
-
+    if(currentUser){
     socket = io.connect("https://futucare.com");
-
     socket.on("message:save", doc => {
       if (currentUser && currentUser._id != doc.from.userId) {
         self.events.publish("message", doc);
@@ -129,6 +132,7 @@ export class MyApp {
 
         console.log("data", self.channels);
       });
+    }
   }
 
   main_navigation() {
