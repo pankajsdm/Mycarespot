@@ -22,6 +22,28 @@
           <div class="text" *ngIf="item.text">
             {{item.text}}
           </div>
+          <div class="image-message" *ngIf="item.image">
+            <img [src]="item.image" alt="" style="    max-width: 280px;
+            max-height: 150px;">
+          </div>
+
+          <div class="file-message" *ngIf="item.file">
+            <a class="box-file" href="{{item.file}}" target="_blank">
+              <div class="file-icon">
+                <i class="fa fa-file" aria-hidden="true"></i>
+              </div>
+              <div class="file-name">{{item.fileName}}</div>
+            </a>
+          </div>
+
+          <div class="file-video" *ngIf="item.video">
+            <video width="320" height="240" controls [src]="item.video">
+            </video>
+          </div>
+          <div class="file-video" *ngIf="item.audio">
+            <audio width="320" controls [src]="item.audio">
+            </audio>
+          </div>
           <div class="time">{{item.createdAt | date: 'shortTime'}}</div>
         </div>
       </li>
@@ -33,8 +55,9 @@
 </ion-content>
 
 <div class="footer horizontal layout center">
-  <button ion-button outline>
+  <button ion-button outline (click)="uploadImageCom.click()">
     <ion-icon name="ios-add-outline"></ion-icon>
+    <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)">
   </button>
   <input type="text" placeholder="Text" [(ngModel)]="message.text">
   <button ion-button outline (click)="sendMessage()">
