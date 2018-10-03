@@ -57,7 +57,11 @@ export class MyApp {
       this.main_navigation();
       statusBar.styleDefault();
       splashScreen.hide();
+      this.socketCreation();
     });
+<<<<<<< HEAD
+  }
+=======
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
     let my_media;
     document.addEventListener("deviceready", function() {
@@ -73,9 +77,12 @@ export class MyApp {
         }
       );
     });
+>>>>>>> 849056447203afbc076afce8a96876f4a398fb77
 
+  socketCreation(){
+    let currentUser = JSON.parse(localStorage.getItem("user_data"));
+    if(currentUser){
     socket = io.connect("https://futucare.com");
-
     socket.on("message:save", doc => {
       if (currentUser && currentUser._id != doc.from.userId) {
         self.events.publish("message", doc);
@@ -149,6 +156,7 @@ export class MyApp {
 
         console.log("data", self.channels);
       });
+    }
   }
 
   main_navigation() {
