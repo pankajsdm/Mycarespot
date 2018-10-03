@@ -1,5 +1,5 @@
 page-conversation-detail {
-  button.back-button.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+  button.back-button {
     width: 60px;
     color: #fff;
   }
@@ -7,11 +7,11 @@ page-conversation-detail {
     color: #fff;
   }
 
-  ion-buttons.bar-buttons.bar-buttons-md {
+  ion-buttons.bar-buttons {
     display: flex;
     color: #fff;
   }
-  button.bar-button.bar-button-md.bar-button-default.bar-button-default-md.bar-button-md-royal {
+  button.bar-button {
     font-size: 20px;
     color: #fff;
     padding: 0 12px;
@@ -36,9 +36,13 @@ page-conversation-detail {
     }
   }
 
-  button.button.button-md.button-outline.button-outline-md {
+  button.button {
     border: none;
     font-size: 25px;
+  }
+
+  .scroll-content {
+    margin-bottom: 60px !important;
   }
 
   .list-message {
@@ -93,5 +97,9 @@ page-conversation-detail {
         }
       }
     }
+  }
+
+  .toolbar-background.toolbar-background-ios {
+    background-color: #488aff;
   }
 }

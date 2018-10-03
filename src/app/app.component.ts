@@ -120,6 +120,10 @@ export class MyApp {
       }
     });
 
+    if (!currentUser) {
+      return
+    }
+
     this.http
       .get(Config.url + Config.api.messenger.channel, {
         params: {
