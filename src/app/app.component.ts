@@ -16,6 +16,7 @@ import { MedicalHistoryPhase3Page } from "./../pages/patient-info/medical-histor
 import { VitalsPage } from "./../pages/patient-info/vitals/vitals";
 import { HttpClient } from "@angular/common/http";
 import { Config } from "./app.config";
+declare let Media: any;
 
 import * as io from "socket.io-client";
 let socket;
@@ -58,7 +59,25 @@ export class MyApp {
       splashScreen.hide();
       this.socketCreation();
     });
+<<<<<<< HEAD
   }
+=======
+    let currentUser = JSON.parse(localStorage.getItem("user_data"));
+    let my_media;
+    document.addEventListener("deviceready", function() {
+      my_media = new Media(
+        "./confident.mp3",
+        // success callback
+        function() {
+          console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function(err) {
+          console.log("playAudio():Audio Error: " + err);
+        }
+      );
+    });
+>>>>>>> 849056447203afbc076afce8a96876f4a398fb77
 
   socketCreation(){
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
@@ -67,6 +86,7 @@ export class MyApp {
     socket.on("message:save", doc => {
       if (currentUser && currentUser._id != doc.from.userId) {
         self.events.publish("message", doc);
+        my_media.play();
       }
     });
 

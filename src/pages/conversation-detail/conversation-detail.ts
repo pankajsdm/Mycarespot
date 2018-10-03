@@ -1,5 +1,11 @@
 import { Component, ViewChild } from "@angular/core";
-import { NavController, NavParams, Content, Events } from "ionic-angular";
+import {
+  NavController,
+  NavParams,
+  Content,
+  Events,
+  LoadingController
+} from "ionic-angular";
 import { Config } from "../../app/app.config";
 import { HttpClient } from "@angular/common/http";
 
@@ -23,7 +29,8 @@ export class ConversationDetailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private http: HttpClient,
-    public events: Events
+    public events: Events,
+    public loadingCtrl: LoadingController
   ) {
     self = this;
     events.subscribe("message", doc => {
@@ -76,6 +83,9 @@ export class ConversationDetailPage {
         this.messages = data;
         this.isLoading = true;
         console.log(data);
+        setTimeout(() => {
+          self.content.scrollToBottom();
+        }, 1000);
       });
   }
 
@@ -144,6 +154,51 @@ export class ConversationDetailPage {
       });
 
     this.content.scrollToBottom();
+  }
+
+  uploadImage(event) {
+    let file = event.srcElement.files[0];
+    if (!file) return;
+    let formData: FormData = new FormData();
+    if (file.type.indexOf("image") != -1) {
+      self.message.fileType = "image";
+    } else if (file.type.indexOf("video") != -1) {
+      self.message.fileType = "video";
+    } else if (file.type.indexOf("audio") != -1) {
+      self.message.fileType = "audio";
+    } else {
+      self.message.fileType = "file";
+    }
+    self.message.fileName = file.name;
+
+    let url = Config.url + Config.api.messenger.uploadImage;
+    formData.append("file", file);
+    formData.append("user_id", self.currentUser._id);
+    let headers = new Headers();
+    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    let loading = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
+
+    loading.present();
+    self.http.post(url, formData).subscribe(
+      response => {
+        if (self.message.fileType == "image") {
+          self.message.image = response.data.imageUrl;
+        } else if (self.message.fileType == "video") {
+          self.message.video = response.data.imageUrl;
+        } else if (self.message.fileType == "audio") {
+          self.message.audio = response.data.imageUrl;
+        } else {
+          self.message.file = response.data.imageUrl;
+        }
+        self._sendMessage();
+        loading.dismiss();
+      },
+      () => {
+        loading.dismiss();
+      }
+    );
   }
 
   ionViewWillEnter() {
