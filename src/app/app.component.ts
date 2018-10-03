@@ -16,6 +16,7 @@ import { MedicalHistoryPhase3Page } from "./../pages/patient-info/medical-histor
 import { VitalsPage } from "./../pages/patient-info/vitals/vitals";
 import { HttpClient } from "@angular/common/http";
 import { Config } from "./app.config";
+declare let Media: any;
 
 import * as io from "socket.io-client";
 let socket;
@@ -58,12 +59,27 @@ export class MyApp {
       splashScreen.hide();
     });
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
+    let my_media;
+    document.addEventListener("deviceready", function() {
+      my_media = new Media(
+        "./confident.mp3",
+        // success callback
+        function() {
+          console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function(err) {
+          console.log("playAudio():Audio Error: " + err);
+        }
+      );
+    });
 
     socket = io.connect("https://futucare.com");
 
     socket.on("message:save", doc => {
       if (currentUser && currentUser._id != doc.from.userId) {
         self.events.publish("message", doc);
+        my_media.play();
       }
     });
 
