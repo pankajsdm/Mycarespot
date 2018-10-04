@@ -1,4 +1,8 @@
 page-conversation-detail {
+  .toolbar-background {
+    background: #00b4ff;
+  }
+
   button.back-button {
     width: 60px;
     color: #fff;
@@ -99,7 +103,4 @@ page-conversation-detail {
     }
   }
 
-  .toolbar-background.toolbar-background-ios {
-    background-color: #488aff;
-  }
 }

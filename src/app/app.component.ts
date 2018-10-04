@@ -57,8 +57,13 @@ export class MyApp {
       this.main_navigation();
       statusBar.styleDefault();
       splashScreen.hide();
+      this.socketCreation();
     });
+  }
+
+  socketCreation(){
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
+    if(currentUser){
     let my_media;
     document.addEventListener("deviceready", function() {
       my_media = new Media(
@@ -149,6 +154,7 @@ export class MyApp {
 
         console.log("data", self.channels);
       });
+    }
   }
 
   main_navigation() {
