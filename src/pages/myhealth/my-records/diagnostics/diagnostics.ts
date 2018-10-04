@@ -53,7 +53,9 @@ export class DiagnosticsPage {
     }else if(this.type=='allergies'){
       this.title = 'Alergias';
       this.alergias(this.currentUser.patientId);
-      
+    }else if(this.type=='medications'){
+      this.title = 'Medicamentos';
+      this.alergias(this.currentUser.patientId);
     }
   }
  
