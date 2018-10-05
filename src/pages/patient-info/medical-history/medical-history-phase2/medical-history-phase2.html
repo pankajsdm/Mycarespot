@@ -30,6 +30,10 @@
   
     <div class="clearfix"><span class="form_label">¿Esta tomando algún medicamento?</span></div>
     
+    <div class="clearfix loadingSpinner" *ngIf="isLoading">
+        <ion-spinner></ion-spinner>
+    </div>
+
     <ion-card>
       <ion-item (click)="medicalHistoryPhase3('SI')">
         <ion-col class="col" col-11>

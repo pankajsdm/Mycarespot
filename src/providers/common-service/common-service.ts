@@ -53,6 +53,21 @@ export class CommonServiceProvider {
         });
     });
   }
+  
+  delete(url) {
+      return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        let token = localStorage.getItem('token');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', token);
+        this.http.delete(this.api_url+url, {headers: headers})
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 
   put(url, body: any) {
       return new Promise((resolve, reject) => {

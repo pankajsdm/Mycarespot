@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { ToastController, ModalController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, ModalController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { VitalsChooserPage } from './vitals-chooser/vitals-chooser';
@@ -29,13 +29,13 @@ export class VitalsPage {
     breath: '12-28',
     pulse: '72-75'
   };
+  isLoading: Boolean = false;
 
   
   
   constructor( 
     public modalCtrl: ModalController,
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams) {
@@ -76,7 +76,7 @@ export class VitalsPage {
   otherBodyVitals(){
 
     if(this.online){
-      this.showLoader();
+      this.isLoading = true;
       let data = {
           patient_user_id: this.current_user._id,
           height: this.body.height,
@@ -87,7 +87,7 @@ export class VitalsPage {
           breaths_per_minute: this.body.breath
       }
       this.authService.post('patient/addPatientVitals', data).then((result) => {
-          this.loading.dismiss();
+        this.isLoading = false;
           this.lists =  result; 
           if(this.lists.code==200){
               this.navCtrl.push(PharmacyPage);
@@ -95,7 +95,7 @@ export class VitalsPage {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
     }else{
@@ -107,13 +107,6 @@ export class VitalsPage {
     this.navCtrl.pop();
   }
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {

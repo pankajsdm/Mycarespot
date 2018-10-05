@@ -4,6 +4,8 @@
     </div>
 </ion-header>
 <ion-content class="no-scroll">
+
+
     <div class="ion-content">
 
         <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -15,9 +17,14 @@
                     <ion-input type="password" placeholder="Contraseña" [(ngModel)]="user.password" formControlName="password" [ngClass]="{ 'input_invalid': isSubmitted && check.password.errors }"></ion-input>
                 </label>
                 <button type="submit" id="entrar-button5" class="btn btn-primary pull-right">Entra</button>
-            </div>    
-    
+            </div> 
+
+            <div class="loadingSpinner"> 
+                <ion-spinner *ngIf="isLoading"></ion-spinner>  
+            </div>
         </form>
+
+
 
         <div class="pad_rlt">
             <div id="entrar-markdown1"> 

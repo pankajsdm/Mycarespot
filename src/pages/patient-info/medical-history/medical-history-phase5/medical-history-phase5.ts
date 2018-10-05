@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 //import { BodyMeasurementsPage } from './../../body-measurements/body-measurements';
 import { VitalsPage } from './../../vitals/vitals';
@@ -22,10 +22,10 @@ export class MedicalHistoryPhase5Page {
   user_data: any;
   patientId = '5b72f2b7df57caa1c9e0d9fa';
   user_picture: String;
+  isLoading: Boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams
@@ -75,14 +75,14 @@ export class MedicalHistoryPhase5Page {
   bodyMeasurements(){
 
     if(this.online){
-        this.showLoader();
+        this.isLoading = true;
         this.current_user._id;
         let data = {
             patient_user_id: this.current_user._id,
             add_medicines_that_cause_allergies: this.disease
         }
         this.authService.post('patient/addHealthQuestions', data).then((result) => {
-            this.loading.dismiss();
+            this.isLoading = false;
             this.lists =  result; 
             if(this.lists.code==200){
               this.navCtrl.push(VitalsPage);
@@ -90,7 +90,7 @@ export class MedicalHistoryPhase5Page {
               this.presentToast(this.lists.message);
             }
         },(err) => {
-          this.loading.dismiss();
+            this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
         });
       }else{
@@ -103,13 +103,7 @@ export class MedicalHistoryPhase5Page {
     this.navCtrl.pop();
   }
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
+
 
   /* Creating toast */
   presentToast(msg) {

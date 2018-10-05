@@ -17,7 +17,7 @@ export class MyRecordsPage {
 
   sheets(){
   }
-
+  
   diagnostics(){
     this.navCtrl.push(DiagnosticsPage, {type: 'diagnostics'});
   }
@@ -33,8 +33,9 @@ export class MyRecordsPage {
     this.navCtrl.push(DiagnosticsPage, {type: 'allergies'});
   }
   medications(){
-    
+    this.navCtrl.push(DiagnosticsPage, {type: 'medications'});
   }
+
   implantable_devices(){
     
   }

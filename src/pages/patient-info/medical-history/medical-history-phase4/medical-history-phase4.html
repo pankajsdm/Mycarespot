@@ -29,6 +29,10 @@
 
   
     <div class="clearfix"><span class="form_label">¿Es alérgico a algún medicamento?</span></div>
+
+    <div class="clearfix loadingSpinner" *ngIf="isLoading">
+        <ion-spinner></ion-spinner>
+    </div>
     
     <ion-card>
       <ion-item (click)="medicalHistoryPhase5('SI')">

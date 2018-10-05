@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { MedicalHistoryPage } from './../medical-history/medical-history';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
@@ -24,10 +24,10 @@ export class RiskFactorsPage {
   use_alchole: string = 'No';
   i_use_drugs: string = 'No';
   user_picture: String;
+  isLoading: Boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams
@@ -68,12 +68,12 @@ export class RiskFactorsPage {
   cancle(){
     this.navCtrl.pop();
   }
-  
+    
 
   selectAffirmations(){
 
     if(this.online){
-      this.showLoader();
+     this.isLoading = true;
       let data = {
           patient_user_id: this.current_user._id,
           select_the_affirmations_that_apply_to_you: {
@@ -86,7 +86,7 @@ export class RiskFactorsPage {
           }
       } 
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-          this.loading.dismiss();
+        this.isLoading = false;
           this.lists =  result; 
           if(this.lists.code==200){
             this.navCtrl.push(MedicalHistoryPage);
@@ -94,7 +94,7 @@ export class RiskFactorsPage {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
 
@@ -103,13 +103,6 @@ export class RiskFactorsPage {
     }
   }
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {

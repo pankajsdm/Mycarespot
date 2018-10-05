@@ -5,8 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
 
+  <div class="no_data_found" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-card *ngIf="!isLoading">
     <ion-item *ngFor="let doctor of doctors" class="flax_box" (click)="docProfile(doctor._id, doctor.avatar)">
       <ion-avatar item-start style="margin: 8px 6px 8px 0;">
         <img [src]="doctor.avatar">
@@ -19,8 +23,8 @@
         <ion-icon name="ios-arrow-forward"></ion-icon>
       </ion-col>
     </ion-item>
-
   </ion-card>
+
 </ion-content>
 
 

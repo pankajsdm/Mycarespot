@@ -33,7 +33,11 @@
       <span class="form_label">¿Quien es el paciente?</span>
   </div>
 
-  <ion-card>
+  <div class="no_data_found" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-card *ngIf="!isLoading">
     <ion-item (click)="optionSimptom(defaultPatient._id)">
       <ion-col class="col" col-11>
         <h2>{{defaultPatient.name}}</h2>

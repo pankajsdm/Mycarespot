@@ -30,7 +30,7 @@ export class MyApp {
   nav: Nav;
 
   rootPage: any = HomePage;
-  //rootPage:any = VitalsPage;
+  //rootPage:any = MedicalHistoryPage;
   pages: any;
   user = { firstName: "", lastName: "" };
   channels = [];
@@ -60,7 +60,7 @@ export class MyApp {
       this.socketCreation();
     });
   }
-
+  
   socketCreation(){
     let currentUser = JSON.parse(localStorage.getItem("user_data"));
     if(currentUser){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavController, MenuController } from 'ionic-angular';
+import { ToastController,  NavController, MenuController } from 'ionic-angular';
 import { DoctorProfilePage } from './../doctor-profile/doctor-profile';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 
@@ -13,9 +13,9 @@ export class DoctorsPage {
   loading: any;
   doctrArr: any;
   doctors: any;
+  isLoading: Boolean = false;
 
   constructor(
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -29,15 +29,15 @@ export class DoctorsPage {
   }
      
   getDoctors(){
-    if(this.online){
-        this.showLoader();
+    if(this.online){  
+      this.isLoading = true;
         this.authService.get('users/getPRactionerList').then((result) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.doctrArr = result;  
           this.doctors = this.doctrArr.data; 
           console.log("doctors", this.doctors);
         },(err) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
         });
     }else{
@@ -50,14 +50,6 @@ export class DoctorsPage {
     this.navCtrl.push(DoctorProfilePage, {
       _id: _id
     });
-  }
-
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
   }
 
   /* Creating toast */

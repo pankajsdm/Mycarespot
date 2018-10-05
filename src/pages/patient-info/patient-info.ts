@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { Events, ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AddMinorPage } from '../add-minor/add-minor';
 import { PatientSimptomPage } from './patient-simptom/patient-simptom';
@@ -25,10 +25,10 @@ export class PatientInfoPage {
   loading: any;
   user_data: any;
   user_picture: String;
+  isLoading: Boolean = false;
 
   constructor(
     private event: Events,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -58,15 +58,15 @@ export class PatientInfoPage {
 
   getMinorList(){   
     if(this.online){
-      this.showLoader();
+      this.isLoading = true;
       this.authService.get('practioner/getAddedMinorsList').then((result) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.prctArr = result;  
         this.users = this.prctArr.data.children;
         this.defaultPatient =  this.prctArr.data._id;
         console.log("user", this.users);
       },(err) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
     }else{
@@ -91,13 +91,6 @@ export class PatientInfoPage {
     this.navCtrl.push(OptionsSimptomPage);
   }
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {
