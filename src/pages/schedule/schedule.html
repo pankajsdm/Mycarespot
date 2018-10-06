@@ -1,0 +1,46 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>Calendario</ion-title>
+      <ion-buttons end class="right_button">
+        <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+
+
+<ion-content>
+    <form>
+
+      <ion-card>
+        <ion-item (click)="appointmentRequest()">
+          <ion-col class="col" col-11>
+            <h2>Solicitudes de cita</h2>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+        <ion-item (click)="upcomingAppointments()">
+          <ion-col class="col" col-11>
+            <h2>Próximas citas</h2>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+        <ion-item (click)="pastAppointments()">
+          <ion-col class="col" col-11>
+            <h2>Citas pasadas</h2>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+      </ion-card>
+    </form>
+
+  </ion-content>
+  
+
