@@ -25,7 +25,8 @@ export class PatientSimptomPage {
   user_data: any;
   user_picture: String;
   isLoading: Boolean = false;
-  
+  error = '';
+  isError: Boolean = false;
   constructor(
     private toastCtrl: ToastController,
     public navCtrl: NavController, 
@@ -58,13 +59,13 @@ export class PatientSimptomPage {
   } 
 
   selectItem(value){
-    
+    this.isError = false;
     this.disease.push(value);
     console.log('Desease', this.disease);
     this.searchQuery = '';
     this.items = [];
 
-  }
+  } 
 
   removeItem(des){
     var index = this.disease.indexOf(des);
@@ -72,28 +73,35 @@ export class PatientSimptomPage {
         this.disease.splice(index, 1);
     }
     console.log('remain item', this.disease);
-  }
+  } 
 
   saveAndNextPhase(){
 
     if(this.online){
-        this.isLoading = true;
-        let data = {
-            patient_user_id: this.current_user._id,
-            symptom_list: this.disease
-        }
-        this.authService.post('patient/addHealthQuestions', data).then((result) => {
-            this.isLoading = false;
-            this.lists =  result; 
-            if(this.lists.code==200){
-                this.navCtrl.push(PatientSimptomNextPage);   
-            }else{
-                this.presentToast(this.lists.message);
+
+        if(this.disease.length==0){
+            this.isError = true;
+            this.error = 'El campo es obligatorio..';
+        }else{
+            this.isError = false;
+            this.isLoading = true;
+            let data = {
+                patient_user_id: this.current_user._id,
+                symptom_list: this.disease
             }
-        },(err) => {
-            this.isLoading = false;
-          this.presentToast('Something wrong! Please try later.');
-        });
+            this.authService.post('patient/addHealthQuestions', data).then((result) => {
+                this.isLoading = false;
+                this.lists =  result; 
+                if(this.lists.code==200){
+                    this.navCtrl.push(PatientSimptomNextPage);   
+                }else{
+                    this.presentToast(this.lists.message);
+                }
+            },(err) => {
+                this.isLoading = false;
+            this.presentToast('Something wrong! Please try later.');
+            });
+        }
       }else{
         this.presentToast('Oh no! No internet found.');
       }

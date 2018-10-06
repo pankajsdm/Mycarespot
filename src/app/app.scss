@@ -622,7 +622,10 @@ html segment {
 .bg-block.nav-lt .user-name{text-align:center;padding-top:1rem;font-weight:600;font-size:1.8rem;color:#FFF;}
 .user-name:first-letter {
     text-transform:capitalize;
-}
+}   
+.left-nav button{
+    border-bottom: 1px solid #ccc !important;
+} 
 
 span.back-button-text.back-button-text-ios {
     margin-left: 10px;
@@ -738,5 +741,12 @@ ion-title .toolbar-title{color: #ffffff;
     }
   }
   .loadingSpinner{text-align: center;}
+  .loadingSpinner p.searchError{
+    border: 1px solid #cc6e6e;
+    padding: 3px;
+    color: #cc6e6e;
+    float: left;
+    width: 100%;
+  }
 
 

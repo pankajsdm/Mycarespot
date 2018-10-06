@@ -7,7 +7,8 @@ import { CommonServiceProvider } from '../../providers/common-service/common-ser
 import { PasswordValidation } from '../../validators/password.validator';
 import { LoginPage } from '../login/login';
 import { CountryCodePage } from './country-code/country-code';
-
+import { Config } from "../../app/app.config";
+let self;
 
 @Component({
   selector: 'page-register-account',
@@ -32,6 +33,8 @@ export class RegisterAccountPage {
   online: Boolean = true;
   loading: any;
   user_data: any;
+  selectedPicture: any = 'assets/img/circle_plus.png';
+
   constructor(
     private keyboard: Keyboard,
     public modalCtrl: ModalController,
@@ -42,7 +45,7 @@ export class RegisterAccountPage {
     private toastCtrl: ToastController,
     public navCtrl: NavController, public navParams: NavParams
   ) {
-
+      self = this;
       this.verifyForm = this.formdata.group({
         code: ['', [Validators.required]],
       }); 
@@ -94,6 +97,29 @@ export class RegisterAccountPage {
     } 
     this.registerForm.controls['email'].updateValueAndValidity();
     this.registerForm.controls['mobilePhone'].updateValueAndValidity();
+  }
+
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  uploadImage(event) {
+    let file = event.srcElement.files[0];
+    if (!file) return;
+    let formData: FormData = new FormData();
+    formData.append("file", file);
+    let headers = new Headers();
+    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    console.log("file", file);
+    this.getBase64(file).then( (picture) => {
+      this.selectedPicture = picture; 
+    });
+
   }
 
  

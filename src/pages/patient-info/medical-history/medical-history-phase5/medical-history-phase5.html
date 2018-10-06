@@ -44,6 +44,10 @@
             <li (click)="selectItem(item.Name)" *ngFor="let item of items">{{ item.Name }} <a href="#"></a></li>
         </ul>
 
+        <div class="loadingSpinner" *ngIf="isError">
+          <p class="searchError">{{error}}</p>
+        </div>
+
         <ul class="search_tag" *ngIf="disease?.length > 0">
           <li *ngFor="let des of disease">{{des}} <a href="#" (click)="removeItem(des)"></a></li>
         </ul>

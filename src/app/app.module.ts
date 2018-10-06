@@ -74,6 +74,9 @@ import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
 import { AppointmentsRequestPage } from "./../pages/schedule/appointments-request/appointments-request";
 import { ListAppointmentsPage } from "./../pages/schedule/list-appointments/list-appointments";
+import { ProfilePage } from './../pages/profile/profile';
+import { ProfileDetailsPage } from './../pages/profile/profile-details/profile-details';
+
 import { AdjustmentsPage } from './../pages/adjustments/adjustments';
 /* Defined pipe here */
 import { LikePipe } from "./../pipes/like.pipe";
@@ -136,6 +139,8 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RegisterOptionsPage,
     RegisterAccountPage,
     CountryCodePage,
+    ProfilePage,
+    ProfileDetailsPage,
     AdjustmentsPage,
     LikePipe
   ],
@@ -201,6 +206,8 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RegisterOptionsPage,
     RegisterAccountPage,
     CountryCodePage,
+    ProfilePage,
+    ProfileDetailsPage,
     AdjustmentsPage
   ],
   exports: [LikePipe],

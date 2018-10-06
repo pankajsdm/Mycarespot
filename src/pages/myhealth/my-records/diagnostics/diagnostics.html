@@ -124,6 +124,41 @@
     </div>
   </div>
 
+
+
+  <!-- Handling Advance Directives  -->
+  <div *ngIf="type=='adv_directives'">
+    <ion-row class="top-element">
+      <ion-col col-9>
+        <p>Directive</p>
+      </ion-col>
+      <ion-col col-3>
+        <p>Date</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="top-element" style="background:none;" *ngIf="isLoading">
+      <ion-col col-12 center text-center>
+        <ion-spinner></ion-spinner>
+      </ion-col>
+    </ion-row>
+    <div id="listContainer" *ngIf="!isLoading">
+      <ion-row class="inner-element" *ngFor="let item of diagList">
+        <ion-col col-9>
+          <p>{{item.adv_dir_name}}</p>
+        </ion-col>
+        <ion-col col-3>
+          <span>{{item.record_date}}</span>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row class="inner-element no-border" *ngIf="diagList?.length < 1">
+      <ion-col col-12>
+        <p>{{no_data_found}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
   <!-- Handling Allergies  -->
   <div *ngIf="type=='allergies'">
     <ion-row class="top-element">

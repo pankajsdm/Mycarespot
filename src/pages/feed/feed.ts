@@ -5,8 +5,7 @@ import { DOCUMENT } from '@angular/common';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
-import { environment as ENV } from '../../environments/environment';
-
+import { Config } from "../../app/app.config";
   
 @Component({
   selector: 'page-feed',
@@ -24,11 +23,11 @@ export class FeedPage {
   feeds: any;
   current_user: any;
   current_lk_id: String;
-  backend_url = ENV.config.BACKEND_URL;
   customComment: any;
   replyComment: any;
   replySubComment: any;
   isLoading: Boolean = false;
+  backend_url = Config.backend_url;
 
   constructor(
     @Inject(DOCUMENT) document,

@@ -41,6 +41,10 @@
         <li *ngFor="let des of disease">{{des}} <a href="#" (click)="removeItem(des)"></a></li>
       </ul>
 
+      <div class="loadingSpinner" *ngIf="isError">
+        <p class="searchError">{{error}}</p>
+      </div>
+
       <div class="loadingSpinner" *ngIf="isLoading">
           <ion-spinner></ion-spinner>
       </div>

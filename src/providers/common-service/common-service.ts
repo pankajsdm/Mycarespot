@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { environment as ENV } from '../../environments/environment';
+import { Config } from "../../app/app.config";
 
 @Injectable()
 export class CommonServiceProvider {
 
-  common_url = ENV.config.COMMON_URL;
-  api_url = ENV.config.API_URL;
+  common_url = Config.common_url;
+  api_url = Config.api_url;
   constructor(public http: Http) {}
 
   fetch(url, dataObj) {

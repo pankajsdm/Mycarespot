@@ -50,6 +50,9 @@ export class DiagnosticsPage {
     }else if(this.type=='past_medical_history'){
       this.title = 'Historia médica pasada';
       this.past_medical_history(this.currentUser.patientId);
+    }else if(this.type=='adv_directives'){
+      this.title = 'Directrices avanzadas';
+      this.adv_directives(this.currentUser.patientId);
     }else if(this.type=='allergies'){
       this.title = 'Alergias';
       this.alergias(this.currentUser.patientId);
@@ -101,6 +104,20 @@ export class DiagnosticsPage {
           preventive_care: (this.diagArr.data.preventive_care)?this.diagArr.data.preventive_care:'Not applicable',
           family_health_history: (this.diagArr.data.family_health_history)?this.diagArr.data.family_health_history:'Not applicable',
           on_going_medical_problem: (this.diagArr.data.on_going_medical_problem)?this.diagArr.data.on_going_medical_problem:'Not applicable'
+        }
+      });
+    }
+  }
+
+  adv_directives(_id) {
+    if (this.online) {
+      this.isLoading = true;
+      this.authService.get('users/getAdvanceDirectiveList/' + _id).then(result => {
+        this.isLoading = false;
+        this.diagArr = result;
+        this.diagList = this.diagArr.data;
+        if(this.diagList.length==0){
+          this.no_data_found = 'Datos no encontrados...';
         }
       });
     }
