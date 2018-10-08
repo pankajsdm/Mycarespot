@@ -430,7 +430,7 @@ export class MyApp {
     self.isMuteAudio = false;
     self.isCall = false;
 
-    if (event) {
+    if (event) { 
       event.stopPropagation();
     }
 
