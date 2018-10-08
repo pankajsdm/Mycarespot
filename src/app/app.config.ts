@@ -10,7 +10,8 @@ export const Config = {
       readMessage: "/api/readMessage/",
       webrtc: "https://futucare.com/webrtc/api/webrtc",
       uploadImage: "/api/communication/uploadeImageForCommunication",
-      detailChannel: "/api/detailChannel/"
+      detailChannel: "/api/detailChannel/",
+      turn: "http://54.255.249.122/api/turn"
     }
   }
 };

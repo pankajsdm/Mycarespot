@@ -65,6 +65,14 @@ export class ConversationDetailPage {
           }
         }
 
+        if (!this.channel.userShow.name) {
+          this.channel.userShow.name =
+            this.channel.userShow.firstName +
+            " " +
+            this.channel.userShow.lastName;
+        }
+
+        this.channel.userShow._id = this.channel.userShow.user._id;
         self.http
           .post(Config.url + Config.api.messenger.readMessage, {
             channel: id,
@@ -199,6 +207,14 @@ export class ConversationDetailPage {
         loading.dismiss();
       }
     );
+  }
+
+  openCall(option) {
+    let message = {
+      option: option,
+      receiveUser: this.channel.userShow
+    };
+    self.events.publish("webrtc", message);
   }
 
   ionViewWillEnter() {

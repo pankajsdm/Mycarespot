@@ -58,6 +58,7 @@ page-conversation-detail {
         padding-left: 60px;
         min-height: 60px;
         margin-bottom: 10px;
+        overflow: hidden;
 
         .avatar-user {
           width: 40px;
@@ -102,5 +103,4 @@ page-conversation-detail {
       }
     }
   }
-
 }

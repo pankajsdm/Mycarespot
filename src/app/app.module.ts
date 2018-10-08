@@ -16,6 +16,7 @@ import { TimeAgoPipe } from "time-ago-pipe";
 import { MyApp } from "./app.component";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { SafePipe } from "./pipe";
 
 /* Defined page components here */
 import { LoginPage } from "../pages/login/login";
@@ -133,7 +134,8 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RegisterOptionsPage,
     RegisterAccountPage,
     CountryCodePage,
-    LikePipe
+    LikePipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -197,7 +199,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RegisterAccountPage,
     CountryCodePage
   ],
-  exports: [LikePipe],
+  exports: [LikePipe, SafePipe],
   providers: [
     StatusBar,
     SplashScreen,
