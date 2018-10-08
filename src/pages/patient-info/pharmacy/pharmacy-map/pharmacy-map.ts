@@ -42,7 +42,7 @@ export class PharmacyMapPage {
     console.log('ionViewDidLoad PharmacyMapPage');
     
   }
-  
+
   ionViewDidEnter(){
     // let infoWindow = new google.maps.InfoWindow({map: map});
     //Set latitude and longitude of some place
@@ -70,7 +70,7 @@ export class PharmacyMapPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-  }
+  } 
 
   updateSearchResults(){
     if (this.autocomplete.input == '') {

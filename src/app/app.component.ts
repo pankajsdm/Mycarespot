@@ -68,7 +68,7 @@ peerConnectionConfig = {
 })
 export class MyApp {
   @ViewChild(Nav)
-  nav: Nav;
+  nav: Nav; 
 
   rootPage: any = HomePage;
   //rootPage:any = PharmacyMapPage;

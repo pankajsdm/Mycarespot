@@ -80,6 +80,10 @@ page-pharmacy-map {
             border-radius: 2px;
             padding: 3px 20px 3px 10px;
         }
+
+        .my-location{position: relative;}
+        .my-location .icon{color: #00b6ff; position: absolute; right: 30px; bottom: 95px; font-size: 60px;}
+
         
 }
 .geolocation-btn{

@@ -20,9 +20,12 @@
       </ion-list>
     
       <div id='map'></div>
+      <div class="my-location" style="position:relative">
+        <ion-icon (click)="tryGeolocation()" name="ios-locate-outline"></ion-icon>
+      </div>
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
     <button class="geolocation-btn" ion-button full (click)="tryGeolocation()"> Try Geolocation </button>
-  </ion-footer>
+  </ion-footer> -->
 
