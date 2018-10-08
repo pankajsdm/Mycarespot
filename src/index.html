@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -30,6 +31,7 @@
   <link href="build/main.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo&libraries=places"></script>
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -45,5 +47,89 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+  <script src="https://s3-ap-southeast-1.amazonaws.com/stove-arstist/adapter.js"></script>
+  <script src="https://s3-ap-southeast-1.amazonaws.com/we-watch-movie/interact.min.js"></script>
+
+
+  <script>
+    // target elements with the "draggable" class
+
+    interact('.resize-drag')
+      // .draggable({
+      //   onmove: window.dragMoveListener,
+      //   restrict: {
+      //     restriction: 'parent',
+      //     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+      //   },
+      // })
+      .resizable({
+        // resize from all edges and corners
+        edges: { left: true, right: true, bottom: true, top: true },
+
+        // keep the edges inside the parent
+        restrictEdges: {
+          outer: 'parent',
+          endOnly: true,
+        },
+
+        // minimum size
+        restrictSize: {
+          min: { width: 200, height: 200 },
+        },
+
+        inertia: true,
+      })
+      .on('resizemove', function (event) {
+        var target = event.target,
+          x = (parseFloat(target.getAttribute('data-x')) || 0),
+          y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+        // update the element's style
+        target.style.width = event.rect.width + 'px';
+        target.style.height = event.rect.height + 'px';
+
+        // translate when resizing from top or left edges
+        x += event.deltaRect.left;
+        y += event.deltaRect.top;
+
+        target.style.webkitTransform = target.style.transform =
+          'translate(' + x + 'px,' + y + 'px)';
+
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+
+        if (window.cordova) {
+          console.log('resfresh')
+          cordova.plugins.iosrtc.refreshVideos()
+        }
+
+        //target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
+      });
+
+    function dragMoveListener(event) {
+      var target = event.target,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+      // translate the element
+      target.style.webkitTransform =
+        target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+
+      if (window.cordova) {
+        console.log('resfresh')
+        cordova.plugins.iosrtc.refreshVideos()
+      }
+    }
+
+    // this is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
+  </script>
 </body>
+
 </html>

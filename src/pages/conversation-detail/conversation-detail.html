@@ -2,10 +2,16 @@
   <ion-navbar>
     <ion-title *ngIf="channel && channel.userShow">{{channel.userShow.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button color="royal">
+      <button ion-button color="royal" (click)="openCall({
+        video: true,
+        audio: true
+      })">
         <ion-icon name="ios-videocam-outline"></ion-icon>
       </button>
-      <button ion-button color="royal">
+      <button ion-button color="royal" (click)="openCall({
+        video: false,
+        audio: true
+      })">
         <ion-icon name="ios-mic-outline"></ion-icon>
       </button>
     </ion-buttons>

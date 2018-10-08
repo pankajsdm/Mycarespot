@@ -1,4 +1,3 @@
-
 /* Defined required modules and component here */
 import {
   NgModule,
@@ -20,6 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Geolocation } from '@ionic-native/geolocation';
 
 //import {GoogleMaps} from '@ionic-native/google-maps';
+import { SafePipe } from "./pipe";
 
 /* Defined page components here */
 import { LoginPage } from "../pages/login/login";
@@ -77,10 +77,10 @@ import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
 import { AppointmentsRequestPage } from "./../pages/schedule/appointments-request/appointments-request";
 import { ListAppointmentsPage } from "./../pages/schedule/list-appointments/list-appointments";
-import { ProfilePage } from './../pages/profile/profile';
-import { ProfileDetailsPage } from './../pages/profile/profile-details/profile-details';
+import { ProfilePage } from "./../pages/profile/profile";
+import { ProfileDetailsPage } from "./../pages/profile/profile-details/profile-details";
 
-import { AdjustmentsPage } from './../pages/adjustments/adjustments';
+import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 /* Defined pipe here */
 import { LikePipe } from "./../pipes/like.pipe";
 
@@ -145,7 +145,8 @@ import { TokenInterceptor } from "./app.token.interceptor";
     ProfilePage,
     ProfileDetailsPage,
     AdjustmentsPage,
-    LikePipe
+    LikePipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -213,8 +214,8 @@ import { TokenInterceptor } from "./app.token.interceptor";
     ProfileDetailsPage,
     AdjustmentsPage
   ],
-  exports: [LikePipe],
-  providers: [  
+  exports: [LikePipe, SafePipe],
+  providers: [
     StatusBar,
     SplashScreen,
     Facebook,
