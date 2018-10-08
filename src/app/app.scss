@@ -821,6 +821,7 @@ ion-title .toolbar-title {
     z-index: -2;
     object-fit: contain;
     width: 100%;
+    min-height: 250px;
     height: auto;
   }
 }

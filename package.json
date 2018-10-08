@@ -74,10 +74,6 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       },
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo",
-        "API_KEY_FOR_IOS": "AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo"
-      },
       "cordova-plugin-iosrtc": {},
       "cordova-plugin-media": {
         "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
@@ -86,7 +82,13 @@
         "CAMERA_USAGE_DESCRIPTION": "your usage message",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": "your usage message"
       },
-      "cordova-plugin-audioroute": {}
+      "cordova-plugin-audioroute": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo",
+        "API_KEY_FOR_IOS": "AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo",
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+      }
     },
     "platforms": [
       "android",

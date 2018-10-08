@@ -1,16 +1,56 @@
-<ion-menu [content]="content" persistent="true">
+<div class="app-main">
+  <ion-menu [content]="content" persistent="true">
     <ion-content>
-        <div class="bg-block nav-lt" menuClose (click)="getProfile()">
-              <div class="user-img"> <img src="assets/img/marty-avatar.png"></div>
-              <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
-        </div>    
-        <ion-list no-lines class="left-nav">
-          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-            {{p.title}}
-          </button>
-          <button menuClose ion-item (click)="logout()">Salir 123</button>
-        </ion-list>
-    </ion-content>  
+      <div class="bg-block nav-lt" menuClose (click)="getProfile()">
+        <div class="user-img">
+          <img src="assets/img/marty-avatar.png">
+        </div>
+        <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+      </div>
+      <ion-list no-lines class="left-nav">
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+        <button menuClose ion-item (click)="logout()">Salir 123</button>
+      </ion-list>
+    </ion-content>
   </ion-menu>
-     
+
   <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</div>
+
+<div class="resize-drag window-call zooming" id="window-call" *ngIf="isCall">
+  <div class=""></div>
+  <!-- <div *ngIf="localStream">
+    <video [src]="localStream.src | safe:'url'" muted="muted" id="localVideo"></video>
+  </div> -->
+  <div *ngIf="localStream" id="local-video">
+    <video [src]="localStream.src | safe:'url'" playsinline autoplay muted="muted"></video>
+  </div>
+  <div class="box-video" [ngClass]="{'audio': remoteStream && !option.video}">
+    <div *ngIf="remoteStream" id="remote-video">
+      <video [src]="remoteStream.src | safe:'url'" autoplay></video>
+      <div class="only-audio">
+        {{receive.name}} Audio
+      </div>
+    </div>
+    <div class="calling-info" *ngIf="receive && receive.name && !remoteStream">
+      <div class="name-call">{{receive.name}}</div>
+      <div *ngIf="option && option.video">Video Calling</div>
+      <div *ngIf="option && !option.video">Audio Calling</div>
+    </div>
+  </div>
+
+  <div class="button-action">
+    <div class="horizontal layout">
+      <button class="button button-close" (click)="closeCallUser($event)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+
+      <button class="button button-accept" *ngIf="!localStream" (click)="startCall()">
+        <ion-icon name="ios-call-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+</div>
