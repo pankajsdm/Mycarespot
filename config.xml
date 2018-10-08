@@ -118,5 +118,6 @@
     </plugin>
     <plugin name="cordova-plugin-audioroute" spec="0.1.2" />
     <engine name="android" spec="^7.1.1" />
+    <allow-navigation href="http://192.168.56.1:8100" />
     <engine name="ios" spec="4.5.5" />
 </widget>

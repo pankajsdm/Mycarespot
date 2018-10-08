@@ -15,6 +15,9 @@ import { BodyMeasurementsPage } from "./../pages/patient-info/body-measurements/
 import { MedicalHistoryPhase3Page } from "./../pages/patient-info/medical-history/medical-history-phase3/medical-history-phase3";
 import { VitalsPage } from "./../pages/patient-info/vitals/vitals";
 import { HttpClient } from "@angular/common/http";
+import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
+import { ProfilePage } from "./../pages/profile/profile";
+import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 import { Config } from "./app.config";
 declare let cordova: any;
 declare let localStorage: any;
@@ -66,7 +69,7 @@ export class MyApp {
   nav: Nav;
 
   rootPage: any = HomePage;
-  //rootPage:any = VitalsPage;
+  //rootPage:any = PatientSimptomPage;
   pages: any;
   user = { firstName: "", lastName: "" };
   channels = [];
@@ -83,6 +86,8 @@ export class MyApp {
   public feedPage = "Feed";
   public aboutPage = "About";
   public contactPage = "Contact";
+  public ProfilePage = "Mi Perfil";
+  public AdjustmentsPage = "Ajustes";
 
   constructor(
     public events: Events,
@@ -270,15 +275,24 @@ export class MyApp {
   }
 
   main_navigation() {
-    this.pages = [{ title: this.feedPage, component: FeedPage }];
+    this.pages = [
+      { icon: "ios-contact", title: this.ProfilePage, component: ProfilePage },
+      {
+        icon: "ios-settings",
+        title: this.AdjustmentsPage,
+        component: AdjustmentsPage
+      }
+    ];
   }
 
   openPage(page) {
-    //this.nav.setRoot(page.component);
-    this.nav.setRoot(TabsPage, { page: page.component });
+    this.nav.setRoot(page.component);
   }
 
-  getProfile() {}
+  getProfile() {
+    let currentUser = JSON.parse(localStorage.getItem("user_data"));
+    this.nav.setRoot(ProfilePage, { _id: currentUser._id });
+  }
 
   _callVideo(message, isConnecting) {
     navigator.webkitGetUserMedia(

@@ -1,11 +1,5 @@
 import { Component } from "@angular/core";
-import {
-  ToastController,
-  LoadingController,
-  NavController,
-  MenuController,
-  NavParams
-} from "ionic-angular";
+import {ToastController,NavController,MenuController,NavParams} from "ionic-angular";
 import { PatientInfoPage } from "./../patient-info/patient-info";
 import { CommonServiceProvider } from "../../providers/common-service/common-service";
 import { HttpClient } from "@angular/common/http";
@@ -24,9 +18,9 @@ export class DoctorProfilePage {
   doc_id: string;
   tabBarElement: any;
   currentUser: any;
+  isLoading: Boolean = false;
 
   constructor(
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -39,24 +33,23 @@ export class DoctorProfilePage {
     console.log("ionViewDidLoad DoctorProfilePage");
     this.doc_id = this.navParams.get("_id");
     this.getDoctor(this.doc_id);
-
     this.currentUser = JSON.parse(localStorage.getItem("user_data"));
   }
 
   getDoctor(_id) {
     if (this.online) {
-      this.showLoader();
+      this.isLoading = true;
       this.authService
         .get("practioner/getPractionerProfileInformation/" + _id)
         .then(
           result => {
-            this.loading.dismiss();
+            this.isLoading = false;
             this.doctrArr = result;
             this.doctor = this.doctrArr.data[0];
             console.log("doct", this.doctrArr.data[0]);
           },
           err => {
-            this.loading.dismiss();
+            this.isLoading = false;
             this.presentToast("Something wrong! Please try later.");
           }
         );
@@ -69,13 +62,6 @@ export class DoctorProfilePage {
     this.navCtrl.push(PatientInfoPage);
   }
 
-  /* Show prgoress loader*/
-  showLoader() {
-    this.loading = this.loadingCtrl.create({
-      content: ""
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {

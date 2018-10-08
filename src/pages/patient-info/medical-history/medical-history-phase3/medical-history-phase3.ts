@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase4Page } from './../medical-history-phase4/medical-history-phase4';
     
@@ -24,10 +24,12 @@ export class MedicalHistoryPhase3Page {
   user_data: any;
   patientId = '5b72f2b7df57caa1c9e0d9fa';
   user_picture: String;
+  isLoading: Boolean = false;
+  error = '';
+  isError: Boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams
@@ -60,14 +62,14 @@ export class MedicalHistoryPhase3Page {
   } 
 
   selectItem(value){
-    
+    this.isError = false;
     this.disease.push(value);
     console.log('Desease', this.disease);
     this.searchQuery = '';
     this.items = [];
 
   }
-
+  
   removeItem(des){
     var index = this.disease.indexOf(des);
     if(index!=-1){
@@ -77,24 +79,29 @@ export class MedicalHistoryPhase3Page {
 
   medicalHistoryPhase4(){
     if(this.online){
-        this.showLoader();
-        this.current_user._id;
-        let data = {
-            patient_user_id: this.current_user._id,
-            add_the_medications_you_are_taking: this.disease
-        }
-        this.authService.post('patient/addHealthQuestions', data).then((result) => {
-            this.loading.dismiss();
-            this.lists =  result; 
-            if(this.lists.code==200){
-              this.navCtrl.push(MedicalHistoryPhase4Page);
-            }else{
-              this.presentToast(this.lists.message);
+        if(this.disease.length==0){
+            this.isError = true;
+            this.error = 'El campo es obligatorio..';
+        }else{
+            this.isLoading = true;
+            this.current_user._id;
+            let data = {
+                patient_user_id: this.current_user._id,
+                add_the_medications_you_are_taking: this.disease
             }
-        },(err) => {
-          this.loading.dismiss();
-          this.presentToast('Something wrong! Please try later.');
-        });
+            this.authService.post('patient/addHealthQuestions', data).then((result) => {
+                this.isLoading = false;
+                this.lists =  result; 
+                if(this.lists.code==200){
+                this.navCtrl.push(MedicalHistoryPhase4Page);
+                }else{
+                this.presentToast(this.lists.message);
+                }
+            },(err) => {
+                this.isLoading = false;
+            this.presentToast('Something wrong! Please try later.');
+            });
+        }
       }else{
         this.presentToast('Oh no! No internet found.');
       }
@@ -102,14 +109,6 @@ export class MedicalHistoryPhase3Page {
 
   cancle(){
     this.navCtrl.pop();
-  }
-
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
   }
 
   /* Creating toast */

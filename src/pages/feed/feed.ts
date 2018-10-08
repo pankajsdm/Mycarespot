@@ -3,10 +3,9 @@ import { AfterViewInit, Component, ElementRef} from '@angular/core';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavParams, ToastController, LoadingController, NavController, MenuController } from 'ionic-angular';
+import { NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
-import { environment as ENV } from '../../environments/environment';
-
+import { Config } from "../../app/app.config";
   
 @Component({
   selector: 'page-feed',
@@ -16,7 +15,7 @@ export class FeedPage {
 
   public commentForm: FormGroup;
   public childCommentForm: FormGroup;
-public cmt: {comments: any};
+  public cmt: {comments: any};
 
   online: Boolean = true;
   loading: any;
@@ -24,16 +23,16 @@ public cmt: {comments: any};
   feeds: any;
   current_user: any;
   current_lk_id: String;
-  backend_url = ENV.config.BACKEND_URL;
   customComment: any;
   replyComment: any;
   replySubComment: any;
+  isLoading: Boolean = false;
+  backend_url = Config.backend_url;
 
   constructor(
     @Inject(DOCUMENT) document,
     private elementRef:ElementRef,
     public formdata: FormBuilder,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -59,9 +58,9 @@ public cmt: {comments: any};
 
   getFeed(){
     if(this.online){
-        this.showLoader();
+        this.isLoading = true;
         this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=1').then((result) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.feedsArr = result;
           if(this.feedsArr.code=='401'){
             localStorage.clear();
@@ -70,7 +69,7 @@ public cmt: {comments: any};
             this.organizePost();
           }
         },(err) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
         });
     }else{
@@ -134,14 +133,12 @@ public cmt: {comments: any};
   postComment(id, index){
     let comment = this.commentForm.get('comments').value;
     if(comment!=''){
-      this.showLoader();
       this.commentForm.reset()
       let body = {created_by_user_id: this.current_user._id, feed_id: id, message: comment};
       this.authService.post('feeds/addComments', body).then((result) => {
         console.log("comment", result);
         this.replyComment = result;
         this.commentCreation(comment, index, this.replyComment.data._id);
-        this.loading.dismiss();
       },(err) => {  
         console.log("err", err);
       });
@@ -181,14 +178,12 @@ public cmt: {comments: any};
     console.log(cmt_index);
     console.log(cmt_id);
     if(comment!=''){
-      this.showLoader();
       this.childCommentForm.reset();
       let body = {created_by_user_id: this.current_user._id, message: comment};
       this.authService.put('feeds/addChildComments/'+cmt_id, body).then((result) => {
         console.log("comment", result);
         this.replySubComment = result;
         this.subCommentCreation(comment, index, cmt_index, this.replySubComment.data._id);
-        this.loading.dismiss();
       },(err) => {  
         console.log("err", err);
       }); 
@@ -361,15 +356,6 @@ public cmt: {comments: any};
   }
 
   
-
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
-
   /* Creating toast */
   presentToast(msg) {
     let toast = this.toastCtrl.create({

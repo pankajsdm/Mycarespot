@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { environment as ENV } from '../../environments/environment';
+import { Config } from "../../app/app.config";
 
 @Injectable()
 export class CommonServiceProvider {
 
-  common_url = ENV.config.COMMON_URL;
-  api_url = ENV.config.API_URL;
+  common_url = Config.common_url;
+  api_url = Config.api_url;
   constructor(public http: Http) {}
 
   fetch(url, dataObj) {
@@ -46,6 +46,21 @@ export class CommonServiceProvider {
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', token);
         this.http.get(this.api_url+url, {headers: headers})
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  
+  delete(url) {
+      return new Promise((resolve, reject) => {
+        let headers = new Headers();
+        let token = localStorage.getItem('token');
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', token);
+        this.http.delete(this.api_url+url, {headers: headers})
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {

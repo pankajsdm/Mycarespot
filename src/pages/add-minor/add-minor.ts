@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Events, NavParams, ToastController, LoadingController, NavController, AlertController } from 'ionic-angular';
+import { Events, NavParams, ToastController, NavController, AlertController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { LoginPage } from '../login/login';
 import { PatientInfoPage } from './../patient-info/patient-info';
@@ -23,10 +23,11 @@ export class AddMinorPage {
   online: Boolean = true;
   loading: any;
   user_data: any;
+  isLoading: Boolean = false;
+
   constructor(
     private event: Events,
     private alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
     public formdata: FormBuilder,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -68,9 +69,9 @@ export class AddMinorPage {
         Socialsecuritynumber: this.registerForm.get('social_security').value,
         relationshipToMinor: this.registerForm.get('relationship').value,
       }
-      this.showLoader();
+      this.isLoading = true;
       this.authService.post('patient/addMinorAccount', user).then((result) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.user = result;
         this.relationId = this.user.data.relationId;
         if(this.user.code==200){
@@ -80,7 +81,7 @@ export class AddMinorPage {
         }
 
       },(err) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
     }
@@ -99,9 +100,9 @@ export class AddMinorPage {
           userId: this.current_user._id,
           email: this.linkForm.get('email').value,
         }
-        this.showLoader();
+        this.isLoading = true;
         this.authService.post('patient/sendMailToGuardian', user).then((result) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.user = result;
           if(this.user.code==200){
             this.presentToast(this.user.message);
@@ -114,19 +115,11 @@ export class AddMinorPage {
             this.presentToast('Something wrong! Please try later.');
           }
         },(err) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
         });
       }
     }
-  }
-
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
   }
 
   /* Creating toast */

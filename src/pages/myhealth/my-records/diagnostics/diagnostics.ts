@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import {ToastController,LoadingController,NavController,MenuController,NavParams} from "ionic-angular";
+import {ToastController,NavController,MenuController,NavParams} from "ionic-angular";
 import { CommonServiceProvider } from "../../../../providers/common-service/common-service";
 
 @Component({
@@ -16,6 +16,7 @@ export class DiagnosticsPage {
   no_data_found: String = '';
   type: String;
   title: String;
+  isLoading: Boolean = false;
   pmh = {
     mayor_event: 'Loading...',
     developmental_history: 'Loading...',
@@ -27,7 +28,6 @@ export class DiagnosticsPage {
   }
 
   constructor( 
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
@@ -50,20 +50,23 @@ export class DiagnosticsPage {
     }else if(this.type=='past_medical_history'){
       this.title = 'Historia médica pasada';
       this.past_medical_history(this.currentUser.patientId);
+    }else if(this.type=='adv_directives'){
+      this.title = 'Directrices avanzadas';
+      this.adv_directives(this.currentUser.patientId);
     }else if(this.type=='allergies'){
       this.title = 'Alergias';
       this.alergias(this.currentUser.patientId);
     }else if(this.type=='medications'){
       this.title = 'Medicamentos';
-      this.alergias(this.currentUser.patientId);
+      this.medications(this.currentUser.patientId);
     }
   }
  
   diagnosis(_id) {
     if (this.online) {
-      this.showLoader();
+      this.isLoading = true;
       this.authService.get('diagnosis/getDiagnosis/' + _id).then(result => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.diagArr = result;
         this.diagList = this.diagArr.data;
         if(this.diagList.length==0){
@@ -75,9 +78,9 @@ export class DiagnosticsPage {
 
   social_history(_id) {
     if (this.online) {
-      this.showLoader();
+      this.isLoading = true;
       this.authService.get('patient/getSocialHistory/' + _id).then(result => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.diagArr = result;
         this.diagList = this.diagArr.data;
         if(this.diagList.length==0){
@@ -89,9 +92,9 @@ export class DiagnosticsPage {
 
   past_medical_history(_id){
     if (this.online) {
-      this.showLoader();
+      this.isLoading = true;
       this.authService.get('patient/getPastMedicalHistory/' + _id).then(result => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.diagArr = result;
         this.pmh = {
           mayor_event: (this.diagArr.data.mayor_event)?this.diagArr.data.mayor_event:'Not applicable',
@@ -106,11 +109,11 @@ export class DiagnosticsPage {
     }
   }
 
-  alergias(_id) {
+  adv_directives(_id) {
     if (this.online) {
-      this.showLoader();
-      this.authService.get('users/getPatientAlergy/' + _id).then(result => {
-        this.loading.dismiss();
+      this.isLoading = true;
+      this.authService.get('users/getAdvanceDirectiveList/' + _id).then(result => {
+        this.isLoading = false;
         this.diagArr = result;
         this.diagList = this.diagArr.data;
         if(this.diagList.length==0){
@@ -120,13 +123,35 @@ export class DiagnosticsPage {
     }
   }
 
-  /* Show prgoress loader*/
-  showLoader() {
-    this.loading = this.loadingCtrl.create({
-      content: ""
-    });
-    this.loading.present();
+  alergias(_id) {
+    if (this.online) {
+      this.isLoading = true;
+      this.authService.get('users/getPatientAlergy/' + _id).then(result => {
+        this.isLoading = false;
+        this.diagArr = result;
+        this.diagList = this.diagArr.data;
+        if(this.diagList.length==0){
+          this.no_data_found = 'Datos no encontrados...';
+        }
+      });
+    }
   }
+
+  medications(_id) {
+    if (this.online) {
+      this.isLoading = true;
+      this.authService.get('patient/getPatientSelfMedicationList/' + _id).then(result => {
+        this.isLoading = false;
+        this.diagArr = result;
+        this.diagList = this.diagArr.data;
+        
+        if(this.diagList.length==0){
+          this.no_data_found = 'Datos no encontrados...';
+        }
+      });
+    }
+  }
+
 
   /* Creating toast */
   presentToast(msg) {

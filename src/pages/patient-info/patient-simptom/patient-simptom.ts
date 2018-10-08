@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { PatientSimptomNextPage } from './patient-simptom-next/patient-simptom-next';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
@@ -24,10 +24,11 @@ export class PatientSimptomPage {
   loading: any;
   user_data: any;
   user_picture: String;
-  
+  isLoading: Boolean = false;
+  error = '';
+  isError: Boolean = false;
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams
@@ -58,13 +59,13 @@ export class PatientSimptomPage {
   } 
 
   selectItem(value){
-    
+    this.isError = false;
     this.disease.push(value);
     console.log('Desease', this.disease);
     this.searchQuery = '';
     this.items = [];
 
-  }
+  } 
 
   removeItem(des){
     var index = this.disease.indexOf(des);
@@ -72,28 +73,35 @@ export class PatientSimptomPage {
         this.disease.splice(index, 1);
     }
     console.log('remain item', this.disease);
-  }
+  } 
 
   saveAndNextPhase(){
 
     if(this.online){
-        this.showLoader();
-        let data = {
-            patient_user_id: this.current_user._id,
-            symptom_list: this.disease
-        }
-        this.authService.post('patient/addHealthQuestions', data).then((result) => {
-            this.loading.dismiss();
-            this.lists =  result; 
-            if(this.lists.code==200){
-                this.navCtrl.push(PatientSimptomNextPage);   
-            }else{
-                this.presentToast(this.lists.message);
+
+        if(this.disease.length==0){
+            this.isError = true;
+            this.error = 'El campo es obligatorio..';
+        }else{
+            this.isError = false;
+            this.isLoading = true;
+            let data = {
+                patient_user_id: this.current_user._id,
+                symptom_list: this.disease
             }
-        },(err) => {
-          this.loading.dismiss();
-          this.presentToast('Something wrong! Please try later.');
-        });
+            this.authService.post('patient/addHealthQuestions', data).then((result) => {
+                this.isLoading = false;
+                this.lists =  result; 
+                if(this.lists.code==200){
+                    this.navCtrl.push(PatientSimptomNextPage);   
+                }else{
+                    this.presentToast(this.lists.message);
+                }
+            },(err) => {
+                this.isLoading = false;
+            this.presentToast('Something wrong! Please try later.');
+            });
+        }
       }else{
         this.presentToast('Oh no! No internet found.');
       }
@@ -101,13 +109,6 @@ export class PatientSimptomPage {
     
   } 
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {
@@ -120,7 +121,7 @@ export class PatientSimptomPage {
 
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
-    });
+    }); 
 
     toast.present();
   }

@@ -86,6 +86,10 @@
         <p>Al solicitar acceso a la cuenta del menor,certificas que eres padre, madre o tutor legal del menor..</p>
       </form>
     </ion-list>
+
+    <div class="clearfix loadingSpinner" style="margin-top: 15px;" *ngIf="isLoading">
+        <ion-spinner></ion-spinner>
+    </div>
   </div>
 
 

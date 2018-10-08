@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Events, NavParams, ToastController, AlertController, LoadingController, NavController, MenuController } from 'ionic-angular';
+import { Events, NavParams, ToastController, AlertController, NavController, MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { FeedPage } from '../feed/feed';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
@@ -23,12 +23,12 @@ export class LoginPage {
   online: Boolean = true;
   loading: any;
   user_data: any;
-
+  isLoading: Boolean = false;
+  
   constructor(
     fb: Facebook,
     private alertCtrl: AlertController,
     public events: Events,
-    public loadingCtrl: LoadingController,
     public formdata: FormBuilder,
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
@@ -69,15 +69,14 @@ export class LoginPage {
     this.isSubmitted = true;
     if(this.online){
       if(this.loginForm.valid){
-        this.showLoader();
-
+        this.isLoading = true;
         if(!(this.identifyEmail(this.user.email))){
           this.user.mobilePhone = this.user.email;
           delete this.user.email;
         } 
 
         this.authService.post('patient/mobileUserLogin', this.user).then((result) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.user_data = result;  
           if(this.user_data.code==200){ 
             console.log("this.user_data", this.user_data.data);
@@ -91,7 +90,7 @@ export class LoginPage {
             this.presentAlert('Error', this.user_data.message);
           }
         },(err) => {
-          this.loading.dismiss();
+          this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
         });
     }
@@ -133,10 +132,10 @@ export class LoginPage {
       }
     })  
     .catch(e => console.log('Error logging into Facebook', e));
-  }
+  } 
 
   connectDb(token, id, first_name, last_name, email){
-    this.showLoader();
+    this.isLoading = true;
     let name = first_name+' '+last_name;
     let json =   {
       email: email, 
@@ -148,7 +147,7 @@ export class LoginPage {
     };
 
     this.authService.post('patient/facebookLogin', json).then((result) => {
-      this.loading.dismiss();
+      this.isLoading = false;
       this.user_data = result;  
       if(this.user_data.code==200){ 
         this.menu.enable(true); 
@@ -160,7 +159,7 @@ export class LoginPage {
         this.presentAlert('Error', this.user_data.message);
       }
     },(err) => {
-      this.loading.dismiss();
+      this.isLoading = false;
       this.presentToast('Something wrong! Please try later.');
     });
   }
@@ -174,12 +173,6 @@ export class LoginPage {
     alert.present();
   }
 
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

@@ -17,7 +17,7 @@ export class MyRecordsPage {
 
   sheets(){
   }
-
+    
   diagnostics(){
     this.navCtrl.push(DiagnosticsPage, {type: 'diagnostics'});
   }
@@ -28,25 +28,15 @@ export class MyRecordsPage {
     this.navCtrl.push(DiagnosticsPage, {type: 'past_medical_history'});
   }
   advanced_directives(){   
+    this.navCtrl.push(DiagnosticsPage, {type: 'adv_directives'});
   } 
   allergies(){
     this.navCtrl.push(DiagnosticsPage, {type: 'allergies'});
   }
   medications(){
-    
+    this.navCtrl.push(DiagnosticsPage, {type: 'medications'});
   }
-  implantable_devices(){
-    
-  }
-  encounters(){
-    
-  }
-  messages(){
-    
-  }
-  appointments(){
-    
-  }
+
   
 
 }

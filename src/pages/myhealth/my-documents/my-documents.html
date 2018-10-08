@@ -1,16 +1,22 @@
 <ion-header>
     <ion-navbar>
         <ion-title>Mis Documentos</ion-title>
+        <ion-buttons end class="right_button" (click)="uploadImageCom.click()">
+            <button ion-button color="royal">
+                <ion-icon ios="md-cloud-upload"></ion-icon>
+                <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
+            </button>
+        </ion-buttons>
     </ion-navbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
       <div class="no_data_found" *ngIf="isLoading">
         <ion-spinner></ion-spinner>
       </div>
-      
+
       <ion-card class="document" *ngIf="!isLoading">  
-        <ion-item *ngFor="let item of lists" >
+        <ion-item *ngFor="let item of lists" (click)="details(item._id, item.file_url)">
           <ion-col class="col" col-2>
               <img [src]="item.file_url">
           </ion-col>

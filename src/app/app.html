@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="app-main">
   <ion-menu [content]="content" persistent="true">
     <ion-content>
@@ -52,3 +53,22 @@
   </div>
 
 </div>
+=======
+
+<ion-menu [content]="content" persistent="true">
+  <ion-content>
+      <div class="bg-block nav-lt" menuClose (click)="getProfile()">
+            <div class="user-img"> <img src="assets/img/marty-avatar.png"></div>
+            <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+      </div>    
+      <ion-list no-lines class="left-nav">
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+        <button menuClose ion-item (click)="logout()">Salir</button>
+      </ion-list>
+  </ion-content>  
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+>>>>>>> 079ce5d4f5d44649423ea0ddb41b33d9f2f9b7d8

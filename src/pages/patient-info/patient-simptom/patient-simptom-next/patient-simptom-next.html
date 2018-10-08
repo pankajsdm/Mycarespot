@@ -9,22 +9,28 @@
 <ion-content>
 
   <form class="pad_rlt_25">
-  <div class="circle_icon">
-    <ul>
-      <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
-      <li class="active">2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-      <li>6</li>
-      <li>7</li>
-      <li>8</li>
-    </ul>
-  </div>
+    <div class="circle_icon">
+      <ul>
+        <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
+        <li class="active">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+      </ul>
+    </div>
   </form>
 
   <div class="clearfix"><span class="form_label">¿Qué síntomas esta presentando?</span></div>
   
+  
+  <div class="clearfix loadingSpinner" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+  </div>
+
+
   <ion-card>
     <ion-item (click)="riskFactors('Hoy')">
       <ion-col class="col" col-11>
@@ -80,9 +86,8 @@
         <ion-icon name="ios-arrow-forward"></ion-icon>
       </ion-col>
     </ion-item>
-
-
   </ion-card>
+
 </ion-content>
 
 <ion-footer class="main-footer">

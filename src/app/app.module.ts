@@ -31,6 +31,7 @@ import { ConversationDetailPage } from "./../pages/conversation-detail/conversat
 import { MyhealthPage } from "./../pages/myhealth/myhealth";
 import { MyRecordsPage } from "./../pages/myhealth/my-records/my-records";
 import { MyDocumentsPage } from "./../pages/myhealth/my-documents/my-documents";
+import { MyDocumentDetailsPage } from "./../pages/myhealth/my-documents/my-document-details/my-document-details";
 import { MySuppliersPage } from "./../pages/myhealth/my-suppliers/my-suppliers";
 import { MyPharmaciesPage } from "./../pages/myhealth/my-pharmacies/my-pharmacies";
 import { DiagnosticsPage } from "./../pages/myhealth/my-records/diagnostics/diagnostics";
@@ -73,7 +74,10 @@ import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
 import { AppointmentsRequestPage } from "./../pages/schedule/appointments-request/appointments-request";
 import { ListAppointmentsPage } from "./../pages/schedule/list-appointments/list-appointments";
+import { ProfilePage } from "./../pages/profile/profile";
+import { ProfileDetailsPage } from "./../pages/profile/profile-details/profile-details";
 
+import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 /* Defined pipe here */
 import { LikePipe } from "./../pipes/like.pipe";
 
@@ -95,6 +99,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     MyhealthPage,
     MyRecordsPage,
     MyDocumentsPage,
+    MyDocumentDetailsPage,
     MySuppliersPage,
     MyPharmaciesPage,
     DiagnosticsPage,
@@ -134,6 +139,9 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RegisterOptionsPage,
     RegisterAccountPage,
     CountryCodePage,
+    ProfilePage,
+    ProfileDetailsPage,
+    AdjustmentsPage,
     LikePipe,
     SafePipe
   ],
@@ -156,6 +164,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     MyhealthPage,
     MyRecordsPage,
     MyDocumentsPage,
+    MyDocumentDetailsPage,
     MySuppliersPage,
     MyPharmaciesPage,
     DiagnosticsPage,
@@ -197,7 +206,10 @@ import { TokenInterceptor } from "./app.token.interceptor";
     RecoveryPasswordPage,
     RegisterOptionsPage,
     RegisterAccountPage,
-    CountryCodePage
+    CountryCodePage,
+    ProfilePage,
+    ProfileDetailsPage,
+    AdjustmentsPage
   ],
   exports: [LikePipe, SafePipe],
   providers: [

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RiskFactorsPage } from '../../risk-factors/risk-factors';
-import { ToastController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
+import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase3Page } from './../medical-history-phase3/medical-history-phase3';
 
@@ -17,10 +17,10 @@ export class MedicalHistoryPhase2Page {
   user_data: any;
   current_user: any;
   user_picture: String;
+  isLoading: Boolean = false;
 
   constructor(
     private toastCtrl: ToastController,
-    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public authService: CommonServiceProvider,
     public navParams: NavParams
@@ -37,14 +37,14 @@ export class MedicalHistoryPhase2Page {
     console.log(val);
 
     if(this.online){
-      this.showLoader();
+      this.isLoading = true;
       let data = {
           patient_user_id: this.current_user._id,
           are_you_taking_any_medication: val
       }
       
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-          this.loading.dismiss();
+        this.isLoading = false;
           this.lists =  result; 
           if(this.lists.code==200){
               this.navCtrl.push(MedicalHistoryPhase3Page);
@@ -52,7 +52,7 @@ export class MedicalHistoryPhase2Page {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.loading.dismiss();
+        this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
     }else{
@@ -65,13 +65,6 @@ export class MedicalHistoryPhase2Page {
     this.navCtrl.pop();
   }
 
-  /* Show prgoress loader*/
-  showLoader(){
-    this.loading = this.loadingCtrl.create({
-        content: ''
-    });
-    this.loading.present();
-  }
 
   /* Creating toast */
   presentToast(msg) {
