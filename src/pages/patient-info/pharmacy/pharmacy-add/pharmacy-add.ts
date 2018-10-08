@@ -1,7 +1,7 @@
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PharmacyMapPage } from './../pharmacy-map/pharmacy-map';
-
 
 @Component({
   selector: 'page-pharmacy-add',
@@ -20,8 +20,9 @@ export class PharmacyAddPage {
     this.navCtrl.push(PharmacyMapPage);
   }
 
-  docProfile(){
-    
+  map(){
+    this.navCtrl.push(PharmacyMapPage);
   }
+
 
 }

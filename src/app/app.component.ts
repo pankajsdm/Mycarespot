@@ -1,3 +1,4 @@
+
 import { Component, ViewChild } from "@angular/core";
 import { Nav, Platform, Events } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
@@ -19,6 +20,7 @@ import { DoctorProfilePage } from './../pages/doctor-profile/doctor-profile';
 import { ProfilePage } from './../pages/profile/profile';
 import { AdjustmentsPage } from './../pages/adjustments/adjustments';
 import { Config } from "./app.config";
+import { PharmacyMapPage } from './../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map';
 declare let Media: any;
 
 import * as io from "socket.io-client";
@@ -33,7 +35,7 @@ export class MyApp {
   nav: Nav;
 
   rootPage: any = HomePage;
-  //rootPage:any = PatientSimptomPage;
+  //rootPage:any = PharmacyMapPage;
   pages: any;
   user = { firstName: "", lastName: "" };
   channels = [];

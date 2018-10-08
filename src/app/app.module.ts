@@ -17,6 +17,9 @@ import { TimeAgoPipe } from "time-ago-pipe";
 import { MyApp } from "./app.component";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { Geolocation } from '@ionic-native/geolocation';
+
+//import {GoogleMaps} from '@ionic-native/google-maps';
 
 /* Defined page components here */
 import { LoginPage } from "../pages/login/login";
@@ -211,10 +214,12 @@ import { TokenInterceptor } from "./app.token.interceptor";
     AdjustmentsPage
   ],
   exports: [LikePipe],
-  providers: [
+  providers: [  
     StatusBar,
     SplashScreen,
     Facebook,
+    Geolocation,
+    //GoogleMaps,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
