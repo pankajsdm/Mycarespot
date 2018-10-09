@@ -1,4 +1,3 @@
-
 import { Component, ViewChild } from "@angular/core";
 import { Nav, Platform, Events } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
@@ -20,7 +19,7 @@ import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
 import { ProfilePage } from "./../pages/profile/profile";
 import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 import { Config } from "./app.config";
-import { PharmacyMapPage } from './../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map';
+import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map";
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
@@ -68,7 +67,7 @@ peerConnectionConfig = {
 })
 export class MyApp {
   @ViewChild(Nav)
-  nav: Nav; 
+  nav: Nav;
 
   rootPage: any = HomePage;
   //rootPage:any = PharmacyMapPage;
@@ -93,7 +92,7 @@ export class MyApp {
 
   constructor(
     public events: Events,
-    platform: Platform,
+    public platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private http: HttpClient
@@ -297,34 +296,68 @@ export class MyApp {
   }
 
   _callVideo(message, isConnecting) {
-    navigator.webkitGetUserMedia(
-      message.option,
-      function(stream) {
-        self.localStream = stream;
-        self.localStream.src = window.URL.createObjectURL(stream);
-        if (!isConnecting) {
-          self.http
-            .post(Config.api.messenger.webrtc, {
-              to: message.receiveUser,
-              status: 1,
-              from: self.currentUser,
-              option: message.option
-            })
-            .subscribe(res => {});
-        } else {
-          self.connect(true);
-        }
+    if (self.platform.is("ios")) {
+      cordova.plugins.iosrtc.getUserMedia(
+        // constraints
+        message.option,
+        // success callback
+        function(stream) {
+          self.localStream = stream;
+          self.localStream.src = window.URL.createObjectURL(stream);
+          if (!isConnecting) {
+            self.http
+              .post(Config.api.messenger.webrtc, {
+                to: message.receiveUser,
+                status: 1,
+                from: self.currentUser,
+                option: message.option
+              })
+              .subscribe(res => {});
+          } else {
+            self.connect(true);
+          }
 
-        if (window.cordova) {
-          setTimeout(() => {
-            cordova.plugins.iosrtc.refreshVideos();
-          }, 1000);
+          if (window.cordova) {
+            setTimeout(() => {
+              cordova.plugins.iosrtc.refreshVideos();
+            }, 1000);
+          }
+        },
+        // failure callback
+        function(error) {
+          console.error("getUserMedia failed: ", error);
         }
-      },
-      function(e) {
-        console.log("No live audio input: " + e);
-      }
-    );
+      );
+    } else {
+      navigator.webkitGetUserMedia(
+        message.option,
+        function(stream) {
+          self.localStream = stream;
+          self.localStream.src = window.URL.createObjectURL(stream);
+          if (!isConnecting) {
+            self.http
+              .post(Config.api.messenger.webrtc, {
+                to: message.receiveUser,
+                status: 1,
+                from: self.currentUser,
+                option: message.option
+              })
+              .subscribe(res => {});
+          } else {
+            self.connect(true);
+          }
+
+          if (window.cordova) {
+            setTimeout(() => {
+              cordova.plugins.iosrtc.refreshVideos();
+            }, 1000);
+          }
+        },
+        function(e) {
+          console.log("No live audio input: " + e);
+        }
+      );
+    }
   }
 
   startCall() {
@@ -338,6 +371,7 @@ export class MyApp {
   }
 
   connect(isCaller) {
+    console.log("peerConnectionConfig", peerConnectionConfig);
     peerConnection = new RTCPeerConnection(peerConnectionConfig);
 
     peerConnection.onicecandidate = event => self.gotIceCandidate(event);
@@ -430,7 +464,7 @@ export class MyApp {
     self.isMuteAudio = false;
     self.isCall = false;
 
-    if (event) { 
+    if (event) {
       event.stopPropagation();
     }
 
