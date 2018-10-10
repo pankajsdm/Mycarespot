@@ -8,6 +8,7 @@ import { PasswordValidation } from '../../validators/password.validator';
 import { LoginPage } from '../login/login';
 import { CountryCodePage } from './country-code/country-code';
 import { Config } from "../../app/app.config";
+import { HttpClient } from "@angular/common/http";
 let self;
 
 @Component({
@@ -34,9 +35,12 @@ export class RegisterAccountPage {
   loading: any;
   user_data: any;
   selectedPicture: any = 'assets/img/circle_plus.png';
+  file_data = '';
+  filechooser:Boolean = false;
 
   constructor(
     private keyboard: Keyboard,
+    private http: HttpClient,
     public modalCtrl: ModalController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -110,11 +114,9 @@ export class RegisterAccountPage {
 
   uploadImage(event) {
     let file = event.srcElement.files[0];
+    this.file_data = file;
     if (!file) return;
-    let formData: FormData = new FormData();
-    formData.append("file", file);
-    let headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    this.filechooser = true;
     console.log("file", file);
     this.getBase64(file).then( (picture) => {
       this.selectedPicture = picture; 
@@ -130,19 +132,52 @@ export class RegisterAccountPage {
 
   submitRegistration(){
     this.isSubmitted = true;
-    if(this.registerForm.valid){
+    if(this.registerForm.valid && this.filechooser){
       this.showLoader();
       let api_url;
+      let formData: FormData = new FormData();
+      let headers = new Headers();
       if(this.reg_param=='mail'){
+        formData.append("email", this.user['email']);
         api_url = 'patient/registerMobileUserByEmail';
         delete this.user.mobilePhone;
       }else{
         api_url = 'patient/registerMobileUserByMobileNumber';
         delete this.user.email;
         this.user.countryCode = this.set_country_with_code;
+        formData.append("countryCode", this.set_country_with_code);
       }
-      console.log("user", this.user);
-      this.authService.post(api_url, this.user).then((result) => {
+      formData.append('file', this.file_data);
+      formData.append('FirstName', this.user['FirstName']);
+      formData.append("MiddleName", this.user['MiddleName']);
+      formData.append("LastName", this.user['LastName']);
+      formData.append("DateOfBirth", this.user['DateOfBirth']);
+      formData.append("Gender", this.user['Gender']);
+      formData.append("password", this.user['password']);
+      headers.append("Content-Type", "application/x-www-form-urlencoded");
+      
+      self.http.post(Config.api_url+'patient/registerMobileUserByEmail', formData)
+      .subscribe(res => {
+        this.loading.dismiss();
+        this.user_data = res; 
+        if(this.user_data.code==200){
+          if(this.reg_param=='mail'){
+            this.presentAlert('Success', this.user_data.message)
+            setTimeout(() => {
+              this.navCtrl.setRoot(LoginPage);
+            }, 1000);
+          }else{
+            this.mobile_verification_html(this.user.mobilePhone, this.user_data.data._id);
+          }
+        }else{
+          this.presentAlert('Error', this.user_data.message)
+        }
+      },(err) => {
+        this.loading.dismiss();
+        this.presentToast('Something wrong! Please try later.');
+      });
+
+      /* this.authService.post(api_url, this.user).then((result) => {
         this.loading.dismiss();
         this.user_data = result;  
         if(this.user_data.code==200){
@@ -160,7 +195,7 @@ export class RegisterAccountPage {
       },(err) => {
         this.loading.dismiss();
         this.presentToast('Something wrong! Please try later.');
-      });
+      }); */
     } 
   }     
 

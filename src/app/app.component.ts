@@ -73,6 +73,7 @@ export class MyApp {
   rootPage: any = HomePage;
   //rootPage:any = PharmacyMapPage;
   pages: any;
+  avatar = 'assets/img/marty-avatar.png';
   user = { firstName: "", lastName: "" };
   channels = [];
   isCall = false;
@@ -102,6 +103,7 @@ export class MyApp {
     events.subscribe("user:update", user => {
       this.user.firstName = user.firstName;
       this.user.lastName = user.lastName;
+      this.avatar = user.avatar; 
     });
 
     platform.ready().then(() => {

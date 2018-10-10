@@ -7,7 +7,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile-details.html',
 })
 export class ProfileDetailsPage {
-  user_data = {firstName: '', lastName: ''};
+  user_data = {firstName: '', lastName: '', avatar : ''};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
