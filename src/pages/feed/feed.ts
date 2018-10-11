@@ -288,7 +288,7 @@ export class FeedPage {
       unlck.addEventListener('click', () => {
         this.unlike_feed(feed_id);
       }, false);
-
+     
     }
   }
 

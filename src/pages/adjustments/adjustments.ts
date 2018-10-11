@@ -28,4 +28,8 @@ export class AdjustmentsPage {
     this.navCtrl.setRoot(TabsPage);
   }
 
+  details(){
+    console.log('details consoled');
+  }
+
 }

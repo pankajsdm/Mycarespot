@@ -1,13 +1,13 @@
 
 <ion-header>
     <ion-navbar>
-      <ion-buttons start (click)="home()">
+      <ion-buttons left (click)="home()">
           <button ion-button icon-only color="royal" class="top-little">
             <ion-icon name="ios-home"></ion-icon>
           </button>
       </ion-buttons>
       <ion-title>Ajustes</ion-title>
-      <ion-buttons end (click)="openMenu()">
+      <ion-buttons right (click)="openMenu()">
           <button ion-button icon-only color="royal"  class="top-little">
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -17,6 +17,62 @@
   </ion-header>
   
   
-  <ion-content padding>
+  <ion-content>
+      <ion-list-header>
+        <ion-label><strong>Cuenta</strong></ion-label>
+      </ion-list-header>
+
+      <ion-item no-lines (click)="details()">
+        <ion-col class="col" col-11>
+          <h3>Pagos</h3>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
   
+      <ion-list-header>
+          <ion-label><strong>Privacidad y Seguridad</strong></ion-label>
+      </ion-list-header>
+      <ion-item no-lines (click)="details()">
+        <ion-col class="col" col-11>
+          <h3>Cambiar Contraseña</h3>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1 >
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-list-header>
+          <ion-label><strong>Notificaciones</strong></ion-label>
+      </ion-list-header>
+      <ion-item no-lines (click)="details()">
+        <ion-col class="col" col-11>
+          <h3>Push Notificaciones</h3>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1 >
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+      <ion-item no-lines (click)="details()">
+        <ion-col class="col" col-11>
+          <h3>Email y Mensajes de Texto</h3>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1 >
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-list-header>
+          <ion-label><strong>Privacidad y Seguridad</strong></ion-label>
+      </ion-list-header>
+      <ion-item no-lines (click)="details()">
+        <ion-col class="col" col-11>
+          <h3>Cambiar Contraseña</h3>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1 >
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
   </ion-content>
