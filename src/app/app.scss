@@ -625,8 +625,8 @@ html segment {
   background: #00b4ff;
 }
 .bg-block.nav-lt .user-img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto;
@@ -708,6 +708,9 @@ span.back-button-text.back-button-text-ios {
 
 .main-footer {
   bottom: 0px !important;
+}
+.main-footer .toolbar-title {
+  font-size: 1.3rem;
 }
 
 ion-footer {

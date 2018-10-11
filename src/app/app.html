@@ -3,7 +3,7 @@
     <ion-content>
       <div class="bg-block nav-lt" menuClose (click)="getProfile()">
         <div class="user-img">
-          <img [src]="avatar">
+          <img [src]="avatar" height="60">
         </div>
         <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
       </div>
@@ -13,7 +13,7 @@
         </button>
         <button menuClose ion-item (click)="logout()">Salir</button>
       </ion-list>
-    </ion-content> 
+    </ion-content>  
   </ion-menu> 
 
   <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
