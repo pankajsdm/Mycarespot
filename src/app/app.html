@@ -3,7 +3,7 @@
     <ion-content>
       <div class="bg-block nav-lt" menuClose (click)="getProfile()">
         <div class="user-img">
-          <img src="assets/img/marty-avatar.png">
+          <img [src]="avatar">
         </div>
         <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
       </div>

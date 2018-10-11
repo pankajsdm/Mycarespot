@@ -5,7 +5,7 @@
     <div class="top" *ngIf="!verificationProcess">
         <div class="top-icon">
             <div class="circle_icon" (click)="uploadImageCom.click()">
-                <img [src]="selectedPicture"/>  
+                <img [ngClass]="{'file_invalid': isSubmitted && !filechooser}" [src]="selectedPicture"/>  
                 <span class="camera-span"><ion-icon name="camera"></ion-icon></span>
                 <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
             </div>   

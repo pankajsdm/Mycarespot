@@ -1,9 +1,9 @@
 <ion-header>
     <ion-navbar>
         <ion-title>Mis Documentos</ion-title>
-        <ion-buttons end class="right_button" (click)="uploadImageCom.click()">
+        <ion-buttons right class="right_button" (click)="uploadImageCom.click()">
             <button ion-button color="royal">
-                <ion-icon ios="md-cloud-upload"></ion-icon>
+                <ion-icon name="cloud-upload"></ion-icon>
                 <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
             </button>
         </ion-buttons>
