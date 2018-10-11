@@ -1,75 +1,158 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>General</ion-title>
     <ion-buttons end class="right_button">
-        <button ion-button color="royal">Finalizar</button>
+      <button ion-button color="royal">Finalizar</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="no-scroll">
-    <div id="profileContainer">
-      <ion-item no-padding no-lines text-center class="image_container_profile">
-        <p class="text_center_flex">
-          <span class="profile_img">
-            <img [src]="user_data.avatar" />
-          </span>
-        </p>
-        <p class="user_name">Cambiar Foto de Perfil</p>
-      </ion-item>
+<ion-content>
+  <div id="profileContainer">
+    <ion-item no-padding no-lines text-center class="image_container_profile">
+      <p class="text_center_flex">
+        <span class="profile_img">
+          <img [src]="user_data.avatar" />
+        </span>
+      </p>
+      <p class="user_name">Cambiar Foto de Perfil</p>
+    </ion-item>
 
-      <ion-list-header>
-          <ion-label>
-            <strong>General</strong>
-          </ion-label>
-      </ion-list-header>
+    <ion-list-header>
+      <ion-label>
+        <strong>General</strong>
+      </ion-label>
+    </ion-list-header>
 
-      <ion-grid no-padding>
-          <ion-row class="details-row">
-            <ion-col col-6>
-              <div>Primer Nombre</div>
-            </ion-col>
-            <ion-col col-6>
-              <div>{{user_data.firstName}}</div>
-            </ion-col>
-          </ion-row>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Primer Nombre</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>{{user_data.firstName}}</div>
+        </ion-col>
+      </ion-row>
 
-          <ion-row class="details-row">
-            <ion-col col-6>
-              <div>Apellido Paterno</div>
-            </ion-col>
-            <ion-col col-6>
-              <div>{{user_data.lastName}}</div>
-            </ion-col>
-          </ion-row>
-          <ion-row class="details-row">
-            <ion-col col-6>
-              <div>Apellido Materno</div>
-            </ion-col>
-            <ion-col col-6>
-              <div>Martinez</div>
-            </ion-col>
-          </ion-row>
-          <ion-row class="details-row">
-            <ion-col col-6>
-              <div>Fecha de nac.</div>
-            </ion-col>
-            <ion-col col-6>
-              <div>19-Octubre-1982</div>
-            </ion-col>
-          </ion-row>
-          <ion-row class="details-row">
-            <ion-col col-6>
-              <div>Genero</div>
-            </ion-col>
-            <ion-col col-6>
-              <div>Masculino</div>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Apellido Paterno</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>{{user_data.lastName}}</div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Apellido Materno</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>Martinez</div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Fecha de nac.</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>19-Octubre-1982</div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Genero</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>Masculino</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list-header>
+      <ion-label>
+        <strong>Contacto</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Móvil</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>787-459-4284</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Dirección</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>310 Avenida de Diego Condominio Plaza de Diego San Juan, PR. 00909</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-list-header>
+      <ion-label>
+        <strong>Pariente mas cercano</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Nombre</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>Rafael J. Esteves</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Relación</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>Padre</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Móvil</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>787-459-4284</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Email</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>rjesteves325@hotmail.com</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid no-padding>
+      <ion-row class="details-row">
+        <ion-col col-6>
+          <div>Dirección</div>
+        </ion-col>
+        <ion-col col-6>
+          <div>310 Avenida de Diego
+              Condominio Plaza de Diego
+              San Juan, PR. 00909</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 
   </div>
-  
-</ion-content>
 
+</ion-content>
