@@ -36,6 +36,8 @@ let audio;
 
 let peerConnection;
 let peerConnectionConfig: any;
+let my_media;
+
 peerConnectionConfig = {
   iceServers: [
     {
@@ -118,7 +120,7 @@ export class MyApp {
       self.isCall = true;
       self._callVideo(message);
       if (window.cordova) {
-        // audio.play();
+        audio.play();
       }
     });
 
@@ -133,6 +135,44 @@ export class MyApp {
     setTimeout(() => {
       if (window.cordova) {
         cordova.plugins.iosrtc.registerGlobals();
+        my_media = new Media(
+          "https://s3-ap-southeast-1.amazonaws.com/stove-arstist/confident.mp3",
+          // success callback
+          function() {
+            console.log("playAudio():Audio Success");
+          },
+          // error callback
+          function(err) {
+            console.log("playAudio():Audio Error: " + err);
+          }
+        );
+
+        audio = new Media(
+          "https://futucare.com/demo/assets/skype_ring.mp3",
+          // success callback
+          function() {
+            console.log("playAudio():Audio Success");
+          },
+          // error callback
+          function(err) {
+            console.log("playAudio():Audio Error: " + err);
+          }
+        );
+
+        if (platform.is("ios")) {
+          cordova.plugins.audioroute.overrideOutput(
+            "speaker",
+            function(success) {
+              console.log("success", success);
+              // Success
+            },
+            function(error) {
+              console.log("error", error);
+
+              // Error
+            }
+          );
+        }
       }
     }, 10000);
   }
@@ -145,39 +185,13 @@ export class MyApp {
         this.currentUser.firstName + " " + this.currentUser.lastName;
     }
     if (currentUser) {
-      let my_media;
-      document.addEventListener("deviceready", function() {
-        my_media = new Media(
-          "./confident.mp3",
-          // success callback
-          function() {
-            console.log("playAudio():Audio Success");
-          },
-          // error callback
-          function(err) {
-            console.log("playAudio():Audio Error: " + err);
-          }
-        );
-
-        audio = new Media(
-          "./skype_ring.mp3",
-          // success callback
-          function() {
-            console.log("playAudio():Audio Success");
-          },
-          // error callback
-          function(err) {
-            console.log("playAudio():Audio Error: " + err);
-          }
-        );
-      });
-
       socket = io.connect("https://futucare.com");
 
       socket.on("message:save", doc => {
         if (currentUser && currentUser._id != doc.from.userId) {
           self.events.publish("message", doc);
           if (window.codova) {
+            console.log("111111");
             my_media.play();
           }
         }
@@ -236,6 +250,9 @@ export class MyApp {
           self.receive = message.from;
           self.option = message.option;
           self.isCall = true;
+          if (window.cordova) {
+            audio.play();
+          }
         }
 
         if (message.status == 4 && self.currentUser._id == message.to._id) {
@@ -496,6 +513,9 @@ export class MyApp {
         .subscribe(res => {});
     }
     self.receive = {};
+    if (window.cordova) {
+      audio.stop();
+    }
   }
 
   muteAudio() {
