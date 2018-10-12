@@ -1,3 +1,5 @@
+
+
 /* Defined required modules and component here */
 import {
   NgModule,
@@ -20,12 +22,13 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 //import {GoogleMaps} from '@ionic-native/google-maps';
 import { SafePipe } from "./pipe";
-
+  
 /* Defined page components here */
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { HomePage } from "../pages/home/home";
-import { FeedPage } from "../pages/feed/feed";
+import { FeedPage } from "../pages/feed/feed"; 
+import { NotificationsPage } from './../pages/notifications/notifications';
 import { MedicalCarePage } from "./../pages/medical-care/medical-care";
 import { DoctorsPage } from "../pages/doctors/doctors";
 import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
@@ -94,6 +97,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     TabsPage,
     HomePage,
     FeedPage,
+    NotificationsPage,
     MedicalCarePage,
     DoctorsPage,
     DoctorProfilePage,
@@ -137,7 +141,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     AppointmentsPage,
     AppointmentsRequestPage,
     ListAppointmentsPage,
-
+ 
     RecoveryPasswordPage,
     RegisterOptionsPage,
     RegisterAccountPage,
@@ -161,6 +165,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     TabsPage,
     HomePage,
     FeedPage,
+    NotificationsPage,
     MedicalCarePage,
     DoctorsPage,
     DoctorProfilePage,

@@ -36,7 +36,7 @@ export class PharmacyMapPage {
 
   }
 
-
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyMapPage');
@@ -47,8 +47,9 @@ export class PharmacyMapPage {
     // let infoWindow = new google.maps.InfoWindow({map: map});
     //Set latitude and longitude of some place
     this.map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.9011, lng: -56.1645},
-      zoom: 15
+      //center: {lat: 40.4168, lng: 3.7038},
+      center: {lat: 30.7333, lng: 76.7794},
+      zoom: 10
     });
   }
 
@@ -71,7 +72,7 @@ export class PharmacyMapPage {
       console.log('Error getting location', error);
     });
   } 
-
+  
   updateSearchResults(){
     if (this.autocomplete.input == '') {
       this.autocompleteItems = [];
