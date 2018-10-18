@@ -125,6 +125,11 @@ export class MyApp {
       }
     });
 
+    events.subscribe("socket", () => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      self.socketCreation();
+    });
+
     // document.addEventListener("deviceready", function() {
     //   if (platform.is("ios")) {
     //     cordova.plugins.iosrtc.registerGlobals();
@@ -189,7 +194,7 @@ export class MyApp {
     }
     if (currentUser) {
       socket = io.connect("https://futucare.com");
-
+      console.log("1");
       socket.on("message:save", doc => {
         if (currentUser && currentUser._id != doc.from.userId) {
           self.events.publish("message", doc);
@@ -237,7 +242,7 @@ export class MyApp {
       });
 
       socket.on("webrtc:save", message => {
-        console.log("message", message);
+        console.log("message", message, self.currentUser);
         if (!message.to) {
           message.to = {};
         }
@@ -293,6 +298,9 @@ export class MyApp {
         });
 
       setTimeout(() => {
+        if (!window.cordova) {
+          return;
+        }
         console.log("notification", 1111111);
         window.plugins.OneSignal.getPermissionSubscriptionState(function(
           status
