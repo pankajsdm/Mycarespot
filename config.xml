@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.mycarespotv2773166" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.rafael.IonicMyCareSpot" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>myCareSpot</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="rafa@mycarespot.com" href="www.mycarespot.com">Mycarespot</author>
-    <content original-src="index.html" src="http://172.24.1.6:8101" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -125,6 +125,7 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo" />
     </plugin>
+    <plugin name="onesignal-cordova-plugin" spec="2.4.4" />
     <engine name="android" spec="^7.1.1" />
     <engine name="ios" spec="4.5.5" />
 </widget>

@@ -36,7 +36,6 @@ let audio;
 
 let peerConnection;
 let peerConnectionConfig: any;
-let my_media;
 
 peerConnectionConfig = {
   iceServers: [
@@ -74,7 +73,7 @@ export class MyApp {
   rootPage: any = HomePage;
   //rootPage:any = PharmacyMapPage;
   pages: any;
-  avatar = 'assets/img/marty-avatar.png';
+  avatar = "assets/img/marty-avatar.png";
   user = { firstName: "", lastName: "" };
   channels = [];
   isCall = false;
@@ -104,7 +103,7 @@ export class MyApp {
     events.subscribe("user:update", user => {
       this.user.firstName = user.firstName;
       this.user.lastName = user.lastName;
-      this.avatar = user.avatar; 
+      this.avatar = user.avatar;
     });
 
     platform.ready().then(() => {
@@ -137,17 +136,6 @@ export class MyApp {
     setTimeout(() => {
       if (window.cordova) {
         cordova.plugins.iosrtc.registerGlobals();
-        my_media = new Media(
-          "https://s3-ap-southeast-1.amazonaws.com/stove-arstist/confident.mp3",
-          // success callback
-          function() {
-            console.log("playAudio():Audio Success");
-          },
-          // error callback
-          function(err) {
-            console.log("playAudio():Audio Error: " + err);
-          }
-        );
 
         audio = new Media(
           "https://futucare.com/demo/assets/skype_ring.mp3",
@@ -175,6 +163,19 @@ export class MyApp {
             }
           );
         }
+
+        var notificationOpenedCallback = function(jsonData) {
+          console.log(
+            "notificationOpenedCallback: " + JSON.stringify(jsonData)
+          );
+        };
+
+        window["plugins"].OneSignal.startInit(Config.oneSignalAppId)
+          .inFocusDisplaying(
+            window.plugins.OneSignal.OSInFocusDisplayOption.Notification
+          )
+          .handleNotificationOpened(notificationOpenedCallback)
+          .endInit();
       }
     }, 10000);
   }
@@ -194,7 +195,6 @@ export class MyApp {
           self.events.publish("message", doc);
           if (window.codova) {
             console.log("111111");
-            my_media.play();
           }
         }
       });
@@ -291,6 +291,34 @@ export class MyApp {
 
           self.events.publish("channel", self.channels);
         });
+
+      setTimeout(() => {
+        console.log("notification", 1111111);
+        window.plugins.OneSignal.getPermissionSubscriptionState(function(
+          status
+        ) {
+          console.log(status);
+          status.subscriptionStatus.userId; // String: OneSignal Player ID
+          status.subscriptionStatus.pushToken; // String: Device Identifier from FCM/APNs
+          if (
+            localStorage.getItem("pushUserId") !=
+            status.subscriptionStatus.userId
+          ) {
+            self.http
+              .put(Config.url + Config.api.user.update + currentUser._id, {
+                pushToken: status.subscriptionStatus.pushToken,
+                userPush: status.subscriptionStatus.userId
+              })
+              .subscribe(data => {
+                console.log("data", data);
+                localStorage.setItem(
+                  "pushUserId",
+                  status.subscriptionStatus.userId
+                );
+              });
+          }
+        });
+      }, 5000);
     }
   }
 

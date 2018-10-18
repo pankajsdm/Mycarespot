@@ -15,6 +15,10 @@ export const Config = {
       uploadImage: "/api/communication/uploadeImageForCommunication",
       detailChannel: "/api/detailChannel/",
       turn: "http://54.255.249.122/api/turn"
+    },
+    user: {
+      update: "/api/users/"
     }
-  }
+  },
+  oneSignalAppId: "ea88ab2e-2454-41cc-8826-a2a193905061"
 };
