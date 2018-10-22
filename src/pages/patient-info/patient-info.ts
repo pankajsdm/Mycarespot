@@ -5,7 +5,7 @@ import { AddMinorPage } from '../add-minor/add-minor';
 import { PatientSimptomPage } from './patient-simptom/patient-simptom';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { OptionsSimptomPage } from './options-simptom/options-simptom';
-
+import { DoctorsPage } from "../doctors/doctors";
   
 @Component({
   selector: 'page-patient-info',
@@ -75,7 +75,7 @@ export class PatientInfoPage {
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 

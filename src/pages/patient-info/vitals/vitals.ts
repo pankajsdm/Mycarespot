@@ -5,7 +5,7 @@ import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@a
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { VitalsChooserPage } from './vitals-chooser/vitals-chooser';
 import { PharmacyPage } from './../pharmacy/pharmacy';
-
+import { DoctorsPage } from "../../doctors/doctors";
 
 
 @Component({
@@ -55,7 +55,7 @@ export class VitalsPage {
     profileModal.onDidDismiss(data => {
       console.log(data.code);
       if(val=='weight'){
-        this.body.weight = data.code;
+        this.body.weight = ''+data.code;
       }else if(val=='height'){
         this.body.height = data.code;
       }else if(val=='systolic'){
@@ -104,7 +104,7 @@ export class VitalsPage {
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 

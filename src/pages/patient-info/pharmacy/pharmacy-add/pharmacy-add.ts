@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PharmacyMapPage } from './../pharmacy-map/pharmacy-map';
+//import { DoctorsPage } from "../../../doctors/doctors";
 
 @Component({
   selector: 'page-pharmacy-add',

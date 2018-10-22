@@ -3,6 +3,7 @@ import { RiskFactorsPage } from '../../risk-factors/risk-factors';
 import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase3Page } from './../medical-history-phase3/medical-history-phase3';
+import { DoctorsPage } from "../../../doctors/doctors";
 
 @Component({
   selector: 'page-medical-history-phase2',
@@ -36,6 +37,9 @@ export class MedicalHistoryPhase2Page {
   medicalHistoryPhase3(val){
     console.log(val);
 
+    if(val=='No'){
+      this.navCtrl.pop();
+    }else{
     if(this.online){
       this.isLoading = true;
       let data = {
@@ -58,11 +62,12 @@ export class MedicalHistoryPhase2Page {
     }else{
       this.presentToast('Oh no! No internet found.');
     } 
+  }
 
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 

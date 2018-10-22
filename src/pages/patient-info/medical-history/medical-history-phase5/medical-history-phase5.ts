@@ -3,6 +3,7 @@ import { ToastController, NavParams, NavController, MenuController } from 'ionic
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 //import { BodyMeasurementsPage } from './../../body-measurements/body-measurements';
 import { VitalsPage } from './../../vitals/vitals';
+import { DoctorsPage } from "../../../doctors/doctors";
 
 @Component({
   selector: 'page-medical-history-phase5',
@@ -109,7 +110,7 @@ export class MedicalHistoryPhase5Page {
   }
   
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 

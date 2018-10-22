@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { InsuranceDetailPage } from './../insurance-list/insurance-detail/insurance-detail';
+import { DoctorsPage } from "../../doctors/doctors";
 
 @Component({
   selector: 'page-summary',
@@ -23,7 +24,7 @@ export class SummaryPage {
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 }

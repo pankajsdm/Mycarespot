@@ -3,6 +3,7 @@ import { RiskFactorsPage } from '../../risk-factors/risk-factors';
 import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase5Page } from './../medical-history-phase5/medical-history-phase5';
+import { DoctorsPage } from "../../../doctors/doctors";
 
 
 @Component({
@@ -59,7 +60,7 @@ export class MedicalHistoryPhase4Page {
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 

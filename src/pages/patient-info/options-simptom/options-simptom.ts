@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PatientSimptomPage } from './../patient-simptom/patient-simptom';
+import { DoctorsPage } from "../../doctors/doctors";
 
 @Component({
   selector: 'page-options-simptom',
@@ -23,7 +24,7 @@ export class OptionsSimptomPage {
   }
   
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
 }

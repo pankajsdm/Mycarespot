@@ -4,6 +4,7 @@ import { PharmacySearchPage } from './pharmacy-search/pharmacy-search';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 //import { PharmacyAddPage } from './pharmacy-add/pharmacy-add';
 import { SummaryPage } from './../summary/summary';
+import { DoctorsPage } from "../../doctors/doctors";
 
 @Component({
   selector: 'page-pharmacy',
@@ -64,7 +65,7 @@ export class PharmacyPage {
 
   
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
   /* Show prgoress loader*/

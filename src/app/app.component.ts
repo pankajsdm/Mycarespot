@@ -62,7 +62,7 @@ peerConnectionConfig = {
     }
   ]
 };
-
+  
 @Component({
   templateUrl: "app.html"
 })
@@ -70,8 +70,8 @@ export class MyApp {
   @ViewChild(Nav)
   nav: Nav;
 
-  rootPage: any = HomePage;
-  //rootPage:any = PharmacyMapPage;
+  //rootPage: any = HomePage;
+  rootPage:any = VitalsPage;
   pages: any;
   avatar = "assets/img/marty-avatar.png";
   user = { firstName: "", lastName: "" };

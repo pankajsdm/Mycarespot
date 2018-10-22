@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { MedicalHistoryPhase2Page } from './medical-history-phase2/medical-history-phase2';
+import { DoctorsPage } from "../../doctors/doctors";
 
 @Component({
   selector: 'page-medical-history',
@@ -99,7 +100,7 @@ export class MedicalHistoryPage {
   }
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
 
   /* Creating toast */

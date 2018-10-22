@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RiskFactorsPage } from '../../risk-factors/risk-factors';
 import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
-
+import { DoctorsPage } from "../../../doctors/doctors";
 
 
 @Component({
@@ -60,7 +60,7 @@ export class PatientSimptomNextPage {
   }   
 
   cancle(){
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DoctorsPage);
   }
     
 
