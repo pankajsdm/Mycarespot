@@ -68,6 +68,14 @@ export class DoctorsPage {
     toast.present();
   }
 
+  ionViewDidEnter() {
+    console.log("tesing");
+    let elem = <HTMLElement>document.querySelector(".tabbar");
+    if (elem != null) {
+      elem.style.display = "flex";
+    }
+  }
+
  
 
 }

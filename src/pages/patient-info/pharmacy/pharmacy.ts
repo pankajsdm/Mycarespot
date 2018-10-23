@@ -64,8 +64,13 @@ export class PharmacyPage {
   }
 
   
-  cancle(){
-    this.navCtrl.setRoot(DoctorsPage);
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
   }
 
   /* Show prgoress loader*/

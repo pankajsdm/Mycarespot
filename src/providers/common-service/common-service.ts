@@ -1,15 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
+import { AlertController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from "../../app/app.config";
+import { DoctorsPage } from "../../pages/doctors/doctors";
 
 @Injectable()
 export class CommonServiceProvider {
 
   common_url = Config.common_url;
   api_url = Config.api_url;
-  constructor(public http: Http) {}
+  action: Boolean = false;
+
+  constructor(
+    public http: Http, 
+    private alertCtrl: AlertController
+    ) {
+    }
 
   fetch(url, dataObj) {
     return new Promise((resolve, reject) => {
@@ -83,6 +91,30 @@ export class CommonServiceProvider {
           reject(err);
         });
     });
+  }
+
+
+
+  cancle(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar',
+      message: 'Te redirige en la pantalla del doctor.',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            this.action = false;
+          }
+        }, 
+        {
+          text: 'Sí',
+          handler: () => {
+            this.action = true;
+          }
+        }
+      ]
+    });
+    alert.present()
   }
 
 

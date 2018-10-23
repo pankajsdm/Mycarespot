@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PatientSimptomPage } from './../patient-simptom/patient-simptom';
 import { DoctorsPage } from "../../doctors/doctors";
+import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
 @Component({
   selector: 'page-options-simptom',
@@ -11,7 +12,7 @@ export class OptionsSimptomPage {
 
   user_picture: String;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public authService: CommonServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -23,8 +24,13 @@ export class OptionsSimptomPage {
     this.navCtrl.push(PatientSimptomPage);
   }
   
-  cancle(){
-    this.navCtrl.setRoot(DoctorsPage);
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
   }
 
 }

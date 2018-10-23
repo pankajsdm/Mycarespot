@@ -2,9 +2,9 @@
   <ion-navbar>
     <ion-title>Añadir menor</ion-title>
     <ion-buttons end class="right_button" [ngSwitch]="create_profile">
-      <button *ngSwitchCase="'create'" (click)="submitRegistration()" ion-button color="royal" [disabled]="(!registerForm.valid)">Añadir</button>
-      <!-- <button *ngSwitchCase="'create'" ion-button color="royal" [disabled]="(!registerForm.valid)">Añadir</button> -->
-     <button *ngSwitchCase="'link'" (click)="submitEmailLink()" ion-button color="royal" [disabled]="(!linkForm.valid)">Enlazar</button>
+      <button *ngSwitchCase="'create'" (click)="submitRegistration()" ion-button color="royal" [disabled]="(!registerForm.valid)"><ion-icon name="ios-checkmark-circle"></ion-icon></button>
+
+     <button *ngSwitchCase="'link'" (click)="submitEmailLink()" ion-button color="royal" [disabled]="(!linkForm.valid)"><ion-icon name="ios-send"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

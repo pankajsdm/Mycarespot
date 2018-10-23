@@ -154,10 +154,14 @@ import { TokenInterceptor } from "./app.token.interceptor";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      backButtonText: '',
+      backButtonIcon: 'ios-arrow-back',
+      iconMode: 'ios'
+    }), 
     HttpModule,
     HttpClientModule
-  ],
+  ], 
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,

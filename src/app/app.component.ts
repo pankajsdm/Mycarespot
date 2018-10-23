@@ -70,8 +70,8 @@ export class MyApp {
   @ViewChild(Nav)
   nav: Nav;
 
-  //rootPage: any = HomePage;
-  rootPage:any = VitalsPage;
+  rootPage: any = HomePage;
+  //rootPage:any = VitalsPage;
   pages: any;
   avatar = "assets/img/marty-avatar.png";
   user = { firstName: "", lastName: "" };
@@ -173,7 +173,7 @@ export class MyApp {
           console.log(
             "notificationOpenedCallback: " + JSON.stringify(jsonData)
           );
-        };
+        }; 
 
         window["plugins"].OneSignal.startInit(Config.oneSignalAppId)
           .inFocusDisplaying(

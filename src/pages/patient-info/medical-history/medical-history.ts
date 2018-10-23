@@ -99,8 +99,13 @@ export class MedicalHistoryPage {
     this.diabetes = value;
   }
 
-  cancle(){
-    this.navCtrl.setRoot(DoctorsPage);
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
   }
 
   /* Creating toast */

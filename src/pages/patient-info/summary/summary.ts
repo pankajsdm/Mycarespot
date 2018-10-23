@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { InsuranceDetailPage } from './../insurance-list/insurance-detail/insurance-detail';
 import { DoctorsPage } from "../../doctors/doctors";
+import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
 @Component({
   selector: 'page-summary',
@@ -11,7 +12,11 @@ import { DoctorsPage } from "../../doctors/doctors";
 export class SummaryPage {
 
   user_picture: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public authService: CommonServiceProvider
+  ) {
   } 
   
   ionViewDidLoad() {
@@ -23,8 +28,13 @@ export class SummaryPage {
     this.navCtrl.push(InsuranceDetailPage);
   }
 
-  cancle(){
-    this.navCtrl.setRoot(DoctorsPage);
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, MenuController, NavParams } from 'ionic-angular';
 import { MyRecordsPage } from './my-records/my-records';
 import { MySuppliersPage } from './my-suppliers/my-suppliers';
 import { MyPharmaciesPage } from './my-pharmacies/my-pharmacies';
@@ -11,7 +11,7 @@ import { MyDocumentsPage } from './my-documents/my-documents';
 })
 export class MyhealthPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public menu: MenuController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -29,5 +29,9 @@ export class MyhealthPage {
       this.navCtrl.push(MyDocumentsPage);
     }
   }
+
+  openMenu(){
+    this.menu.open();
+  } 
 
 }

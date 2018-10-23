@@ -55,7 +55,7 @@ export class FeedPage {
   }
 
 
-
+  
   getFeed(){
     if(this.online){
         this.isLoading = true;

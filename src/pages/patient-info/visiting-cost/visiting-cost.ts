@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { DoctorsPage } from "../../doctors/doctors";
+import { CommonServiceProvider } from '../../../providers/common-service/common-service';
+
 
 @Component({
   selector: 'page-visiting-cost',
@@ -8,7 +11,11 @@ import { NavController, NavParams } from 'ionic-angular';
 export class VisitingCostPage {
 
   user_picture: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public authService: CommonServiceProvider
+  ) {
   }
 
   ionViewDidLoad() {
@@ -16,8 +23,13 @@ export class VisitingCostPage {
     this.user_picture = localStorage.getItem('user_picture');    
   }
 
-  cancle(){
-    this.navCtrl.pop();
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
   }
 
 }

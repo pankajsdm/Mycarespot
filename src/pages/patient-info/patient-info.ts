@@ -74,23 +74,25 @@ export class PatientInfoPage {
     }
   }
 
-  cancle(){
-    this.navCtrl.setRoot(DoctorsPage);
-  }
-
-
+  
   add_minor(){
     this.navCtrl.push(AddMinorPage);
   }
 
-  /* simptoms(id){
-    this.navCtrl.push(PatientSimptomPage);
-  } */
+
 
   optionSimptom(id){
     this.navCtrl.push(OptionsSimptomPage);
   }
 
+  cancle() {
+    this.authService.cancle();
+    setTimeout(() => {
+      if(this.authService.action){
+        this.navCtrl.setRoot(DoctorsPage);
+      }
+    }, 2000);    
+  }
 
   /* Creating toast */
   presentToast(msg) {
