@@ -41,14 +41,14 @@ export class MedicalHistoryPhase2Page {
       this.navCtrl.pop();
     }else{
     if(this.online){
-      this.isLoading = true;
+      this.authService.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
           are_you_taking_any_medication: val
       }
       
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
           this.lists =  result; 
           if(this.lists.code==200){
               this.navCtrl.push(MedicalHistoryPhase3Page);
@@ -56,7 +56,7 @@ export class MedicalHistoryPhase2Page {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
         this.presentToast('Something wrong! Please try later.');
       });
     }else{

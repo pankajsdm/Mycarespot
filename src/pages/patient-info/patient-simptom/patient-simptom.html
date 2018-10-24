@@ -45,9 +45,14 @@
         <p class="searchError">{{error}}</p>
       </div>
 
-      <div class="loadingSpinner" *ngIf="isLoading">
+      <!-- <div class="loadingSpinner" *ngIf="isLoading">
           <ion-spinner></ion-spinner>
+      </div> -->
+
+      <div class="no_data_found" *ngIf="isLoading">
+        <ion-spinner></ion-spinner>
       </div>
+
 
       <!-- <div class="clearfix"><span class="form_label">¿Cuando comenzó a sentirte así?</span></div>
       <div class="centerData clearfix">

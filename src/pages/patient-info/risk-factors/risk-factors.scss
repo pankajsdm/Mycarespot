@@ -2,12 +2,13 @@ page-risk-factors {
   .toolbar-background {
       background: #00b4ff;
     }
+
+  
     ion-title {
       text-align: center;
     }
     ion-title .toolbar-title {
       color: #ffffff;
-      font-size: 1.5rem;
     }
     .back-button {
       width: 0px;
@@ -192,4 +193,6 @@ page-risk-factors {
     border-radius: 5px;
     padding: 0px 20px 0px 10px;
   }
-}
+} 
+
+/* page-risk-factors .user_info .item:hover{background: transparent;} */

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, ViewChild } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from "../../app/app.config";
@@ -12,10 +12,11 @@ export class CommonServiceProvider {
   common_url = Config.common_url;
   api_url = Config.api_url;
   action: Boolean = false;
-
+  public loading: any;
   constructor(
     public http: Http, 
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
     ) {
     }
 
@@ -115,6 +116,19 @@ export class CommonServiceProvider {
       ]
     });
     alert.present()
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: 'Processing...',
+        spinner: 'bubbles',
+        cssClass: 'spinner-loading'
+    });
+    this.loading.present();
+  }
+
+  hideLoader() {
+    this.loading.dismiss();
   }
 
 

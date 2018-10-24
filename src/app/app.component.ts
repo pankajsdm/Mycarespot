@@ -23,7 +23,7 @@ import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/p
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
-
+ 
 declare let navigator: any;
 declare let RTCPeerConnection: any;
 
@@ -33,7 +33,7 @@ import * as io from "socket.io-client";
 let socket;
 let self;
 let audio;
-
+  
 let peerConnection;
 let peerConnectionConfig: any;
 

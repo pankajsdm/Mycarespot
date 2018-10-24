@@ -1,18 +1,21 @@
 import { LoginPage } from './../login/login';
 import { AfterViewInit, Component, ElementRef} from '@angular/core';
-import { Inject }  from '@angular/core';
+import { Inject, ViewChild }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
+import { Content, NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { Config } from "../../app/app.config";
-  
+let self;
+
 @Component({
   selector: 'page-feed',
   templateUrl: 'feed.html',
 })
 export class FeedPage {
 
+  @ViewChild(Content)
+  content: Content;
   public commentForm: FormGroup;
   public childCommentForm: FormGroup;
   public cmt: {comments: any};
@@ -38,10 +41,13 @@ export class FeedPage {
     private toastCtrl: ToastController,
     public menu: MenuController,
   ) {
+    self = this;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedPage');
+   
+
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
     this.getFeed();
 
@@ -52,6 +58,13 @@ export class FeedPage {
     this.childCommentForm = this.formdata.group({
       child_comments: ['', [Validators.required]]
     });
+  }
+
+  ionViewWillEnter(){
+    console.log("I am again here");
+    setTimeout(() => {
+      self.content.scrollToTop();
+    }, 1000);
   }
 
 

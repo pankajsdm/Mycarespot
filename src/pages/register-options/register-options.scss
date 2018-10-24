@@ -6,6 +6,13 @@ page-register-options {
         p{font-weight: bold;}
     }
 
+    ion-footer {
+        .toolbar-title {
+          color: #00b6ff !important;
+          font-weight: 540;
+        }
+    }
+
     .btnFacebook{
         width:100%; 
         margin: 10px auto;

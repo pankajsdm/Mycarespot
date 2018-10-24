@@ -21,7 +21,11 @@ export class OptionsSimptomPage {
   }
 
   optionSimptom(val){
-    this.navCtrl.push(PatientSimptomPage);
+    if(val=='yes'){
+      this.navCtrl.push(PatientSimptomPage);
+    }else{
+      this.navCtrl.pop();
+    }
   }
   
   cancle() {

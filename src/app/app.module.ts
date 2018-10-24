@@ -22,8 +22,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 //import {GoogleMaps} from '@ionic-native/google-maps';
 import { SafePipe } from "./pipe";
-  
-/* Defined page components here */
+    
+/* Defined page components here */ 
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { HomePage } from "../pages/home/home";

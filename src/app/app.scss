@@ -95,8 +95,18 @@ p {
   }
 }
 
+.bar-button-ios[icon-only] ion-icon{color: #585757;}
+ion-icon.ion-ios-add,ion-icon.ion-md-add{color: #585757;}
+ion-icon.ion-ios-create, ion-icon.ion-md-create{color: #585757;}
+ion-icon.ion-ios-trash, ion-icon.ion-md-trash{color: #585757;}
+ion-icon.ion-ios-checkmark, ion-icon.ion-md-checkmark{color: #585757;}
+ion-icon.ion-ios-cloud-upload, ion-icon.ion-md-cloud-upload{color: #585757;}
+ion-icon.ion-ios-mic-outline, ion-icon.ion-md-mic-outline{color: #585757;}
+ion-icon.ion-ios-videocam-outline, ion-icon.ion-md-videocam-outline{color: #585757;}
+ion-icon.ion-ios-create-outline, ion-icon.ion-md-create-outline{color: #585757;}
+
 .top-little {
-  background-color: #00b4ff;
+  
   width: 100%;
   height: 65px;
   padding: 10px;
@@ -109,6 +119,9 @@ p {
     padding-top: 10px;
   }
 }
+  
+
+
 
 .bottom {
   margin: 0;
@@ -303,7 +316,7 @@ ion-checkbox {
 }
 
 ion-toolbar {
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid #ddd;
 }
 
 .alert-ios .alert-sub-title {
@@ -614,7 +627,8 @@ html segment {
 }
 
 .toolbar-background {
-  background: #00b4ff;
+  background:transparent !important;
+  border-bottom: 2px solid #ddd !important; 
 }
 
 .no-padding {
@@ -647,11 +661,12 @@ html segment {
 
 span.back-button-text.back-button-text-ios {
   margin-left: 10px;
-}
+} 
 
 .back-button.show-back-button{width: 40px;}
 .back-button-icon-ios{
   font-size: 2.4rem;
+  color: #585757;
 }
 
 
@@ -662,7 +677,7 @@ span.back-button-text.back-button-text-ios {
 }
 
 .right_button button {
-  color: #ffffff;
+  color: #585757;
   font-size: 2.1rem;
   font-weight: normal;
 }
@@ -703,6 +718,14 @@ span.back-button-text.back-button-text-ios {
   font-size: 18px;
 }
 
+.toolbar-title-ios {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #585757 !important;
+  pointer-events: auto;
+}
+
 .tab-button[aria-selected="true"] .tab-button-icon {
   color: #00b4ff;
 }
@@ -718,12 +741,13 @@ span.back-button-text.back-button-text-ios {
   font-size: 1.3rem;
 }
 
+ion-tabs .tabbar{background: #f7f7f7 !important;}
 ion-footer {
   .toolbar-background {
     background: transparent !important;
   }
   .toolbar-title {
-    color: #00b4ff !important;
+    color: #e23c3c !important;
     font-weight: normal;
     font-weight: bold;
     font-size: 12px;
@@ -871,3 +895,8 @@ ion-title .toolbar-title {
   position: relative;
   top: 40px;
 }
+
+button {-webkit-tap-highlight-color: #fff;}
+
+.user_info .item{min-width:45px !important;height: 45px !important;}
+.user_info .item:hover{background: transparent;}

@@ -55,9 +55,11 @@
       </li>
     </ul>
   </div>
-  <div padding class="text-center" *ngIf="!isLoading">
+
+  <div class="no_data_found" *ngIf="!isLoading">
     <ion-spinner></ion-spinner>
   </div>
+
 </ion-content>
 
 <div class="footer horizontal layout center">

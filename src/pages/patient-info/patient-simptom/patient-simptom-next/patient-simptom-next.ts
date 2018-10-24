@@ -36,14 +36,14 @@ export class PatientSimptomNextPage {
 
   riskFactors(param){
     if(this.online){
-        this.isLoading = true;
+        this.authService.showLoader();
         let data = {
             patient_user_id: this.current_user._id,
             when_did_you_start_to_feel_that_way: param
         }
         
         this.authService.post('patient/addHealthQuestions', data).then((result) => {
-          this.isLoading = false;
+          this.authService.hideLoader();
             this.lists =  result; 
             if(this.lists.code==200){
                 this.navCtrl.push(RiskFactorsPage);
@@ -51,7 +51,7 @@ export class PatientSimptomNextPage {
                 this.presentToast(this.lists.message);
             }
         },(err) => {
-          this.isLoading = false;
+          this.authService.hideLoader();
           this.presentToast('Something wrong! Please try later.');
         });
     }else{
