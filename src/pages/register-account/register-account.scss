@@ -207,6 +207,13 @@ page-register-account {
       }
     }
     ion-icon{color: #fff;}
+
+    ion-footer {
+      .toolbar-title {
+        color: #00b6ff !important;
+        font-weight: 540;
+      }
+  }
 }
 
 .top-icon .circle_icon{position: relative;width:90px;margin: 0px auto;}

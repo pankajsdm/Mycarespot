@@ -84,14 +84,14 @@ export class MedicalHistoryPhase5Page {
             this.isError = true;
             this.error = 'El campo es obligatorio..';
         }else{
-            this.isLoading = true;
+            this.authService.showLoader();
             this.current_user._id;
             let data = {
                 patient_user_id: this.current_user._id,
                 add_medicines_that_cause_allergies: this.disease
             }
             this.authService.post('patient/addHealthQuestions', data).then((result) => {
-                this.isLoading = false;
+                this.authService.hideLoader();
                 this.lists =  result; 
                 if(this.lists.code==200){
                 this.navCtrl.push(VitalsPage);
@@ -99,7 +99,7 @@ export class MedicalHistoryPhase5Page {
                 this.presentToast(this.lists.message);
                 }
             },(err) => {
-                this.isLoading = false;
+                this.authService.hideLoader();
             this.presentToast('Something wrong! Please try later.');
             });
         }
