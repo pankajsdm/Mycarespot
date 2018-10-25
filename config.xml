@@ -126,6 +126,7 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo" />
     </plugin>
     <plugin name="onesignal-cordova-plugin" spec="2.4.4" />
+    <plugin name="cordova-plugin-insomnia" spec="4.3.0" />
     <engine name="android" spec="^7.1.1" />
     <engine name="ios" spec="4.5.5" />
 </widget>

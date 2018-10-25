@@ -20,6 +20,8 @@ import { ProfilePage } from "./../pages/profile/profile";
 import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 import { Config } from "./app.config";
 import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map";
+import { Insomnia } from "@ionic-native/insomnia";
+
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
@@ -62,7 +64,7 @@ peerConnectionConfig = {
     }
   ]
 };
-  
+
 @Component({
   templateUrl: "app.html"
 })
@@ -97,7 +99,8 @@ export class MyApp {
     public platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private http: HttpClient
+    private http: HttpClient,
+    private insomnia: Insomnia
   ) {
     self = this;
     events.subscribe("user:update", user => {
@@ -140,6 +143,9 @@ export class MyApp {
 
     setTimeout(() => {
       if (window.cordova) {
+        self.insomnia
+          .keepAwake()
+          .then(() => console.log("success"), () => console.log("error"));
         cordova.plugins.iosrtc.registerGlobals();
 
         audio = new Media(
@@ -173,7 +179,7 @@ export class MyApp {
           console.log(
             "notificationOpenedCallback: " + JSON.stringify(jsonData)
           );
-        }; 
+        };
 
         window["plugins"].OneSignal.startInit(Config.oneSignalAppId)
           .inFocusDisplaying(

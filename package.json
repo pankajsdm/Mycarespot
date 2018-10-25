@@ -25,6 +25,7 @@
     "@ionic-native/facebook": "^4.12.0",
     "@ionic-native/geolocation": "^4.15.0",
     "@ionic-native/google-maps": "^4.14.0",
+    "@ionic-native/insomnia": "^4.16.0",
     "@ionic-native/splash-screen": "~4.11.0",
     "@ionic-native/status-bar": "~4.11.0",
     "@ionic/pro": "2.0.3",
@@ -39,6 +40,7 @@
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+    "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.1.0",
     "cordova-plugin-iosrtc": "4.0.2",
@@ -92,7 +94,8 @@
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
       },
       "cordova-plugin-request-location-accuracy": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-insomnia": {}
     },
     "platforms": [
       "android",
