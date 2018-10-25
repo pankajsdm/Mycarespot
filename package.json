@@ -96,8 +96,8 @@
       },
       "cordova-plugin-request-location-accuracy": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-insomnia": {},
-      "cordova-support-google-services": {}
+      "cordova-support-google-services": {},
+      "cordova-plugin-insomnia": {}
     },
     "platforms": [
       "ios",
