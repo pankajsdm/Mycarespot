@@ -13,13 +13,13 @@
         </button>
         <button menuClose ion-item (click)="logout()">Salir</button>
       </ion-list>
-    </ion-content>  
-  </ion-menu> 
+    </ion-content>
+  </ion-menu>
 
   <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 </div>
 
-<div class="resize-drag window-call zooming" id="window-call" *ngIf="isCall">
+<div class="resize-drag window-call" id="window-call" *ngIf="isCall" [ngClass]="{zooming: isZoomVideo}">
   <div class=""></div>
   <!-- <div *ngIf="localStream">
     <video [src]="localStream.src | safe:'url'" muted="muted" id="localVideo"></video>
@@ -30,6 +30,8 @@
   <div class="box-video" [ngClass]="{'audio': remoteStream && !option.video}">
     <div *ngIf="remoteStream" id="remote-video">
       <video [src]="remoteStream.src | safe:'url'" autoplay></video>
+      <!-- <video [src]="localStream.src | safe:'url'" playsinline autoplay muted="muted"></video> -->
+
       <div class="only-audio">
         {{receive.name}} Audio
       </div>
@@ -45,6 +47,9 @@
     <div class="horizontal layout">
       <button class="button button-close" (click)="closeCallUser($event)">
         <ion-icon name="close"></ion-icon>
+      </button>
+      <button class="button button-warning" (click)="zoomVideo()">
+        <ion-icon name="md-contract"></ion-icon>
       </button>
 
       <button class="button button-accept" *ngIf="!localStream" (click)="startCall()">

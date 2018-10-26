@@ -25,7 +25,7 @@ import { Insomnia } from "@ionic-native/insomnia";
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
- 
+
 declare let navigator: any;
 declare let RTCPeerConnection: any;
 
@@ -35,7 +35,7 @@ import * as io from "socket.io-client";
 let socket;
 let self;
 let audio;
-  
+
 let peerConnection;
 let peerConnectionConfig: any;
 
@@ -87,6 +87,7 @@ export class MyApp {
   remoteStream = null;
   receive: any;
   currentUser: any;
+  isZoomVideo = true;
 
   public feedPage = "Feed";
   public aboutPage = "About";
@@ -568,6 +569,15 @@ export class MyApp {
       self.localStream.getAudioTracks()[0].enabled = true;
     } else {
       self.localStream.getAudioTracks()[0].enabled = false;
+    }
+  }
+
+  zoomVideo() {
+    self.isZoomVideo = !self.isZoomVideo;
+    if (window.cordova) {
+      setTimeout(() => {
+        cordova.plugins.iosrtc.refreshVideos();
+      }, 1000);
     }
   }
 
