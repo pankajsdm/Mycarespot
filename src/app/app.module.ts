@@ -1,3 +1,4 @@
+
 /* Defined required modules and component here */
 import {
   NgModule,
@@ -18,7 +19,7 @@ import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Geolocation } from "@ionic-native/geolocation";
 import { Insomnia } from "@ionic-native/insomnia";
-
+import { Stripe } from '@ionic-native/stripe';
 //import {GoogleMaps} from '@ionic-native/google-maps';
 import { SafePipe } from "./pipe";
     
@@ -74,6 +75,7 @@ import { SummaryPage } from "./../pages/patient-info/summary/summary";
 import { InsuranceDetailPage } from "./../pages/patient-info/insurance-list/insurance-detail/insurance-detail";
 import { InsuranceListPage } from "./../pages/patient-info/insurance-list/insurance-list";
 import { VisitingCostPage } from "./../pages/patient-info/visiting-cost/visiting-cost";
+import { CardInfoPage } from './../pages/patient-info/visiting-cost/card-info/card-info';
 
 import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
@@ -135,6 +137,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     InsuranceDetailPage,
     InsuranceListPage,
     VisitingCostPage,
+    CardInfoPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -206,6 +209,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     InsuranceDetailPage,
     InsuranceListPage,
     VisitingCostPage,
+    CardInfoPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -235,6 +239,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
       useClass: TokenInterceptor,
       multi: true
     },
+    Stripe,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CommonServiceProvider
   ]

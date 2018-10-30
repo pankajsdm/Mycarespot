@@ -1,8 +1,8 @@
+
 import { Component, ViewChild } from "@angular/core";
 import { Nav, Platform, Events } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
@@ -19,13 +19,14 @@ import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
 import { ProfilePage } from "./../pages/profile/profile";
 import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 import { Config } from "./app.config";
+import { VisitingCostPage } from './../pages/patient-info/visiting-cost/visiting-cost';
 import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map";
 import { Insomnia } from "@ionic-native/insomnia";
 
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
-
+ 
 declare let navigator: any;
 declare let RTCPeerConnection: any;
 
@@ -35,7 +36,7 @@ import * as io from "socket.io-client";
 let socket;
 let self;
 let audio;
-
+  
 let peerConnection;
 let peerConnectionConfig: any;
 
@@ -72,7 +73,8 @@ export class MyApp {
   @ViewChild(Nav)
   nav: Nav;
 
-  rootPage: any = HomePage;
+  //rootPage: any = HomePage;
+  rootPage:any = VisitingCostPage;
   //rootPage:any = VitalsPage;
   pages: any;
   avatar = "assets/img/marty-avatar.png";
@@ -87,7 +89,6 @@ export class MyApp {
   remoteStream = null;
   receive: any;
   currentUser: any;
-  isZoomVideo = true;
 
   public feedPage = "Feed";
   public aboutPage = "About";
@@ -128,7 +129,7 @@ export class MyApp {
         audio.play();
       }
     });
-
+    
     events.subscribe("socket", () => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       self.socketCreation();
@@ -569,15 +570,6 @@ export class MyApp {
       self.localStream.getAudioTracks()[0].enabled = true;
     } else {
       self.localStream.getAudioTracks()[0].enabled = false;
-    }
-  }
-
-  zoomVideo() {
-    self.isZoomVideo = !self.isZoomVideo;
-    if (window.cordova) {
-      setTimeout(() => {
-        cordova.plugins.iosrtc.refreshVideos();
-      }, 1000);
     }
   }
 

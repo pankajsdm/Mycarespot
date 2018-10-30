@@ -214,4 +214,20 @@ page-visiting-cost {
         color: #fff;
       }
     }
+
+    .item-ios, .item-md{padding-left: 8px;
+      h2 {font-size: 14px; font-weight: bold;}
+      p {font-size: 12px;}
+    }
+
+    .label-ios, .label-md {
+      margin:8px 0px 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-container ion-item{border-bottom: 1px solid #ddd !important;}
+    .card-container h3{font-weight: bold; font-size: 12px; color: #555555;}
+    .card-container p{font-size: 11px;font-weight: bold;}
 }

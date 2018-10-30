@@ -4,7 +4,7 @@ import { ToastController, NavParams, NavController, MenuController } from 'ionic
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase5Page } from './../medical-history-phase5/medical-history-phase5';
 import { DoctorsPage } from "../../../doctors/doctors";
-
+import { VitalsPage } from './../../vitals/vitals';
 
 @Component({
   selector: 'page-medical-history-phase4',
@@ -38,7 +38,7 @@ export class MedicalHistoryPhase4Page {
   medicalHistoryPhase5(val){
     if(this.online){
       if(val=='No'){
-        this.navCtrl.pop();
+        this.navCtrl.push(VitalsPage);
       }else{
       this.authService.showLoader();
       let data = {

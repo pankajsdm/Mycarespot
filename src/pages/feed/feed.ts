@@ -6,6 +6,7 @@ import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@a
 import { Content, NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { Config } from "../../app/app.config";
+import {Observable} from 'rxjs';
 let self;
 
 @Component({
@@ -42,6 +43,11 @@ export class FeedPage {
     public menu: MenuController,
   ) {
     self = this;
+
+    Observable.interval(1000*60).subscribe(x => {
+      this.getFeed();
+    });
+
   }
 
   ionViewDidLoad() {
@@ -58,6 +64,7 @@ export class FeedPage {
     this.childCommentForm = this.formdata.group({
       child_comments: ['', [Validators.required]]
     });
+
   }
 
   ionViewWillEnter(){
@@ -67,6 +74,14 @@ export class FeedPage {
     }, 1000);
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 
   
   getFeed(){

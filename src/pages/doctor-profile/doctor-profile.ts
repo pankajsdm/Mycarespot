@@ -14,7 +14,7 @@ export class DoctorProfilePage {
   online: Boolean = true;
   loading: any;
   doctrArr: any;
-  doctor: any = { firstName: "", lastName: "" };
+  doctor: any = { title: '', firstName: "", lastName: "" };
   doc_id: string;
   tabBarElement: any;
   currentUser: any;
@@ -28,7 +28,7 @@ export class DoctorProfilePage {
     public navParams: NavParams,
     private http: HttpClient
   ) {}
-
+ 
   ionViewDidLoad() {
     console.log("ionViewDidLoad DoctorProfilePage");
     this.doc_id = this.navParams.get("_id");
@@ -46,6 +46,7 @@ export class DoctorProfilePage {
             this.isLoading = false;
             this.doctrArr = result;
             this.doctor = this.doctrArr.data[0];
+            this.doctor.title = 'Dr.';
             console.log("doct", this.doctrArr.data[0]);
           },
           err => {
@@ -91,7 +92,7 @@ export class DoctorProfilePage {
 
   openChat() {
     console.log(this.doctor, this.currentUser);
-
+ 
     let channel = {
       users: [
         {

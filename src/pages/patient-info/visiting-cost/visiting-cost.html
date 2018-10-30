@@ -70,17 +70,31 @@
         </ion-row>
       </ion-grid> 
 
+
+      <div class="card-container" *ngIf="card?.length > 0">
+        <ion-item no-lines no-padding (click)="makePayment()" *ngFor="let card_data of card" >
+          <ion-col class="col" col-11>
+            <h3>{{card_data.card_brand}} ****{{card_data.card_last4}} – Expira {{card_data.card_exp_month}}/{{card_data.card_exp_year}}</h3>
+            <p>{{user_data.firstName}} {{user_data.lastName}}</p>
+          </ion-col>
+          <ion-col class="col forward_icon" col-1>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item> 
+      </div>
+
+
       <ion-grid> 
-      <ion-row> 
-        <ion-col col-12><button block class="border_btn">+ Añadir método de pago</button></ion-col>  
-      </ion-row>
-    </ion-grid> 
+        <ion-row> 
+          <ion-col col-12><button block class="border_btn" (click)="addCard()">+ Añadir método de pago</button></ion-col>  
+        </ion-row>
+      </ion-grid> 
  
-          <ion-grid> 
-            <ion-row>  
-              <ion-col col-12><button block>Completar transacción</button></ion-col> 
-            </ion-row>
-          </ion-grid> 
+      <ion-grid> 
+        <ion-row>  
+          <ion-col col-12><button block>Completar transacción</button></ion-col> 
+        </ion-row>
+      </ion-grid> 
       <!-- <ion-list-header>
           Presión arterial
       </ion-list-header>

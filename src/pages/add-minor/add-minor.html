@@ -42,9 +42,9 @@
         </label>
 
         <ion-item class="fecha">
-          <ion-label class="label_text">Fecha de Nacimiento</ion-label>
-          <ion-datetime class="fechaClick" displayFormat="YYYY-MM-DD" pickerFormat="YYYY MMMM DD" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth"
-            cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
+          <!-- <ion-label class="label_text">Fecha de Nacimiento</ion-label> -->
+          <ion-datetime class="fechaClick" displayFormat="DD-MMMM-YYYY" pickerFormat="DD-MMMM-YYYY" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth"
+            cancelText="Cancelar" placeholder="Fecha de Nacimiento" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
         </ion-item>
 
         <label id="registrateYConsultaAUnProvedor-input7">

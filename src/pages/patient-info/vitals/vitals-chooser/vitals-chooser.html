@@ -73,5 +73,23 @@
         </ion-item>
     </ion-card>
 
+    <ion-card *ngIf="type=='months'" >
+        <ion-item (click)="choose(mnth)" *ngFor="let mnth of months" >
+            <ion-col class="col" col-8>
+            <h2>{{mnth}}</h2>
+            </ion-col>
+            <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="type=='years'" >
+        <ion-item (click)="choose(yrs)" *ngFor="let yrs of years" >
+            <ion-col class="col" col-8>
+            <h2>{{yrs}}</h2>
+            </ion-col>
+            <ion-col class="col forward_icon" col-4><span>Choose</span></ion-col>
+        </ion-item>
+    </ion-card>
+
 </ion-content>
 

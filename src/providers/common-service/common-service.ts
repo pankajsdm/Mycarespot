@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, ViewChild } from '@angular/core';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from "../../app/app.config";
@@ -15,6 +15,7 @@ export class CommonServiceProvider {
   public loading: any;
   constructor(
     public http: Http, 
+    private toastCtrl: ToastController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController
     ) {
@@ -118,6 +119,21 @@ export class CommonServiceProvider {
     alert.present()
   }
 
+  presentToast(msg, position) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 10000,
+      position: position,
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
   showLoader(){
     this.loading = this.loadingCtrl.create({
         content: 'Processing...',
@@ -130,6 +146,8 @@ export class CommonServiceProvider {
   hideLoader() {
     this.loading.dismiss();
   }
+
+
 
 
 
