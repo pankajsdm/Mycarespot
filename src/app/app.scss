@@ -95,18 +95,43 @@ p {
   }
 }
 
-.bar-button-ios[icon-only] ion-icon{color: #585757;}
-ion-icon.ion-ios-add,ion-icon.ion-md-add{color: #585757;}
-ion-icon.ion-ios-create, ion-icon.ion-md-create{color: #585757;}
-ion-icon.ion-ios-trash, ion-icon.ion-md-trash{color: #585757;}
-ion-icon.ion-ios-checkmark, ion-icon.ion-md-checkmark{color: #585757;}
-ion-icon.ion-ios-cloud-upload, ion-icon.ion-md-cloud-upload{color: #585757;}
-ion-icon.ion-ios-mic-outline, ion-icon.ion-md-mic-outline{color: #585757;}
-ion-icon.ion-ios-videocam-outline, ion-icon.ion-md-videocam-outline{color: #585757;}
-ion-icon.ion-ios-create-outline, ion-icon.ion-md-create-outline{color: #585757;}
+.bar-button-ios[icon-only] ion-icon {
+  color: #585757;
+}
+ion-icon.ion-ios-add,
+ion-icon.ion-md-add {
+  color: #585757;
+}
+ion-icon.ion-ios-create,
+ion-icon.ion-md-create {
+  color: #585757;
+}
+ion-icon.ion-ios-trash,
+ion-icon.ion-md-trash {
+  color: #585757;
+}
+ion-icon.ion-ios-checkmark,
+ion-icon.ion-md-checkmark {
+  color: #585757;
+}
+ion-icon.ion-ios-cloud-upload,
+ion-icon.ion-md-cloud-upload {
+  color: #585757;
+}
+ion-icon.ion-ios-mic-outline,
+ion-icon.ion-md-mic-outline {
+  color: #585757;
+}
+ion-icon.ion-ios-videocam-outline,
+ion-icon.ion-md-videocam-outline {
+  color: #585757;
+}
+ion-icon.ion-ios-create-outline,
+ion-icon.ion-md-create-outline {
+  color: #585757;
+}
 
 .top-little {
-  
   width: 100%;
   height: 65px;
   padding: 10px;
@@ -119,9 +144,6 @@ ion-icon.ion-ios-create-outline, ion-icon.ion-md-create-outline{color: #585757;}
     padding-top: 10px;
   }
 }
-  
-
-
 
 .bottom {
   margin: 0;
@@ -627,8 +649,8 @@ html segment {
 }
 
 .toolbar-background {
-  background:transparent !important;
-  border-bottom: 2px solid #ddd !important; 
+  background: transparent !important;
+  border-bottom: 2px solid #ddd !important;
 }
 
 .no-padding {
@@ -661,14 +683,15 @@ html segment {
 
 span.back-button-text.back-button-text-ios {
   margin-left: 10px;
-} 
+}
 
-.back-button.show-back-button{width: 40px;}
-.back-button-icon-ios{
+.back-button.show-back-button {
+  width: 40px;
+}
+.back-button-icon-ios {
   font-size: 2.4rem;
   color: #585757;
 }
-
 
 .bottom .link {
   color: #00b4ff;
@@ -741,7 +764,9 @@ span.back-button-text.back-button-text-ios {
   font-size: 1.3rem;
 }
 
-ion-tabs .tabbar{background: #f7f7f7 !important;}
+ion-tabs .tabbar {
+  background: #f7f7f7 !important;
+}
 ion-footer {
   .toolbar-background {
     background: transparent !important;
@@ -801,75 +826,6 @@ ion-title .toolbar-title {
   }
 }
 
-.window-call {
-  width: 300px;
-  min-height: 300px;
-  background-color: #000;
-  color: #fff;
-  z-index: 9999999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -150px;
-  margin-top: -150px;
-  border-radius: 5px;
-  .button-action {
-    .button {
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-      font-size: 20px;
-    }
-  }
-
-  .box-video {
-    min-height: 250px;
-
-    .only-audio {
-      display: none;
-    }
-
-    &.audio {
-      .only-audio {
-        display: block;
-        position: relative;
-        top: 40px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #remote-video,
-      #remote-video video {
-        height: 0 !important;
-      }
-    }
-  }
-
-  .button-close {
-    background-color: red;
-  }
-}
-
-#remote-video {
-  margin-top: 5px;
-  video {
-    z-index: -2;
-    object-fit: contain;
-    width: 100%;
-    min-height: 250px;
-    height: auto;
-  }
-}
-
-#local-video {
-  video {
-    max-height: 60px;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-  }
-}
-
 .name-call {
   font-size: 19px;
   text-align: center;
@@ -896,7 +852,97 @@ ion-title .toolbar-title {
   top: 40px;
 }
 
-button {-webkit-tap-highlight-color: #fff;}
+button {
+  -webkit-tap-highlight-color: #fff;
+}
 
-.user_info .item{min-width:45px !important;height: 45px !important;}
-.user_info .item:hover{background: transparent;}
+.user_info .item {
+  min-width: 45px !important;
+  height: 45px !important;
+}
+.user_info .item:hover {
+  background: transparent;
+}
+.user_info .item {
+  min-width: 45px !important;
+  height: 45px !important;
+}
+.user_info .item:hover {
+  background: transparent;
+}
+.toolbar-title.toolbar-title-md {
+  color: #424242;
+}
+ion-app {
+  background-color: transparent !important;
+}
+
+#local-video {
+  width: 90px;
+  height: 120px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  object-fit: contain;
+}
+
+#remote-video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  z-index: -2;
+}
+.invisible {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  position: fixed;
+  left: -9999;
+}
+
+#window-call {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+
+  &.calling {
+    background-color: transparent;
+  }
+}
+
+.button-action {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  margin: 0;
+
+  button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 20px;
+    font-size: 29px;
+    &.button-default {
+      background-color: #fff;
+    }
+
+    &.button-close {
+      background-color: #ff0000;
+
+      .ios-call-outline {
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Safari */
+        transform: rotate(45deg);
+      }
+    }
+
+    &.button-accept {
+      background-color: #449d44;
+    }
+  }
+}
