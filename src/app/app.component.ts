@@ -73,8 +73,8 @@ export class MyApp {
   @ViewChild(Nav)
   nav: Nav;
 
-  //rootPage: any = HomePage;
-  rootPage:any = VisitingCostPage;
+  rootPage: any = HomePage;
+  //rootPage:any = VisitingCostPage;
   //rootPage:any = VitalsPage;
   pages: any;
   avatar = "assets/img/marty-avatar.png";
@@ -562,7 +562,7 @@ export class MyApp {
     if (window.cordova) {
       audio.stop();
     }
-  }
+  } 
 
   muteAudio() {
     self.isMuteAudio = !self.isMuteAudio;

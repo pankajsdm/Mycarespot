@@ -15,6 +15,7 @@ export class VisitingCostPage {
   user_data: any = {firstName: '', lastName: ''};
   user_picture: String;
   card: any;
+  payment: any;
   cardArr: any;
   cardinfo: any = {
     number: '4242424242424242',
@@ -58,8 +59,28 @@ export class VisitingCostPage {
     this.navCtrl.push(CardInfoPage);
   }
 
-  makePayment(){
-    console.log("Payment is under construction...");
+  makePayment(customer_id){
+    console.log("Payment is under construction...", customer_id);
+    this.authService.showLoader();
+    let payment_data = {
+      amount: "20",
+      currency: "usd",
+      description: "This is the test payment",
+      customer: customer_id
+    }; 
+    this.authService.post('payment/createPayment', payment_data).then( (result) => {
+      this.authService.hideLoader();
+      console.log("The payment status", result);
+      this.payment = result;
+      if(this.payment.data.status=='succeeded'){
+        this.authService.presentAlert('Success', 'payment successfully made...', 'Ok');
+      }else{
+        this.authService.presentAlert('Error', 'Problem to make payment...', 'Dismiss');
+      }
+    }, (err) => {
+      this.authService.presentAlert('Error', 'Something wrong. Please try later.', 'Dismiss');
+      this.authService.hideLoader();
+    });
   }
 
   cancle() {

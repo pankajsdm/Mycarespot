@@ -3,7 +3,6 @@ import {  ModalController, NavParams, NavController, MenuController } from 'ioni
 import { PharmacySearchPage } from './../../patient-info/pharmacy/pharmacy-search/pharmacy-search';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
-
 @Component({
   selector: 'page-my-pharmacies',
   templateUrl: 'my-pharmacies.html',
@@ -46,6 +45,10 @@ export class MyPharmaciesPage {
         this.nodata_found = 'Something wrong...';
       });
     }
+  }
+
+  PharmacySearch(){
+
   }
 
 

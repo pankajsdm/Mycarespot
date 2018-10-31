@@ -95,6 +95,14 @@ export class CommonServiceProvider {
     });
   }
 
+  presentAlert(title, msg, button) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: msg,
+      buttons: [button]
+    });
+    alert.present();
+  }
 
 
   cancle(){

@@ -1,7 +1,7 @@
 
 <ion-header>
     <ion-navbar>
-      <ion-title>Mis Farmacias</ion-title>
+      <ion-title>Mis farmacias favoritas</ion-title>
       <ion-buttons end class="right_button" (click)="add_pharmacy()">
         <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
       </ion-buttons>
@@ -17,7 +17,7 @@
       </div>
       
       <ion-card *ngIf="!isLoading">
-        <ion-item *ngFor="let item of lists" >
+        <ion-item *ngFor="let item of lists" (click)="add_pharmacy()">
           <ion-col class="col" col-11>
             <h2>{{item.name}}</h2>
             <p>{{item.city}}</p>
