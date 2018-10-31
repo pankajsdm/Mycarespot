@@ -28,6 +28,8 @@ declare let Media: any;
 
 declare let navigator: any;
 declare let RTCPeerConnection: any;
+declare let RTCSessionDescription: any;
+declare let RTCIceCandidate: any;
 
 declare let window: any;
 
@@ -41,26 +43,24 @@ let peerConnectionConfig: any;
 
 peerConnectionConfig = {
   iceServers: [
-    {
-      url: "stun:global.stun.twilio.com:3478?transport=udp"
-    },
+    { url: "stun:global.stun.twilio.com:3478?transport=udp" },
     {
       url: "turn:global.turn.twilio.com:3478?transport=udp",
       username:
-        "a0897b157e239be554d549ad258aed7f181cdb96cc1d2712704dee6bc093e498",
-      credential: "/oGv5lQHgZUiST6GnHb5HlDokRePjDMQlcPVEsxw0zU="
+        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
+      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
     },
     {
       url: "turn:global.turn.twilio.com:3478?transport=tcp",
       username:
-        "a0897b157e239be554d549ad258aed7f181cdb96cc1d2712704dee6bc093e498",
-      credential: "/oGv5lQHgZUiST6GnHb5HlDokRePjDMQlcPVEsxw0zU="
+        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
+      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
     },
     {
       url: "turn:global.turn.twilio.com:443?transport=tcp",
       username:
-        "a0897b157e239be554d549ad258aed7f181cdb96cc1d2712704dee6bc093e498",
-      credential: "/oGv5lQHgZUiST6GnHb5HlDokRePjDMQlcPVEsxw0zU="
+        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
+      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
     }
   ]
 };
@@ -277,9 +277,16 @@ export class MyApp {
       if (!currentUser) {
         return;
       }
-      this.http.get(Config.api.messenger.turn).subscribe(response => {
-        peerConnectionConfig.iceServers = response;
-      });
+      // setTimeout(() => {
+      //   this.http
+      //   .post("https://futucare.com/webrtc/api/webrtc", {
+      //     isTurn: true
+      //   })
+      //   .subscribe(response => {
+      //     console.log(response);
+      //     peerConnectionConfig.iceServers = response;
+      //   });
+      // }, 5000)
       this.http
         .get(Config.url + Config.api.messenger.channel, {
           params: {
@@ -381,6 +388,7 @@ export class MyApp {
 
           if (window.cordova) {
             setTimeout(() => {
+              console.log('run')
               cordova.plugins.iosrtc.refreshVideos();
             }, 1000);
           }
@@ -491,6 +499,7 @@ export class MyApp {
   gotRemoteStream(event) {
     self.remoteStream = event.stream;
     self.remoteStream.src = window.URL.createObjectURL(event.stream);
+    console.log('remote video call done', event)
     if (window.cordova) {
       setTimeout(() => {
         cordova.plugins.iosrtc.refreshVideos();

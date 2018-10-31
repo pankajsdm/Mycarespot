@@ -1,4 +1,4 @@
-<div class="app-main">
+<div class="app-main" [ngClass]="{hide: isCall}">
   <ion-menu [content]="content" persistent="true">
     <ion-content>
       <div class="bg-block nav-lt" menuClose (click)="getProfile()">
@@ -19,18 +19,32 @@
   <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 </div>
 
-<div class="resize-drag window-call" id="window-call" *ngIf="isCall" [ngClass]="{zooming: isZoomVideo}">
-  <div class=""></div>
+<div class="window-call" id="window-call" *ngIf="isCall" [ngClass]="{calling: remoteStream}">
   <!-- <div *ngIf="localStream">
     <video [src]="localStream.src | safe:'url'" muted="muted" id="localVideo"></video>
   </div> -->
-  <div *ngIf="localStream" id="local-video">
-    <video [src]="localStream.src | safe:'url'" playsinline autoplay muted="muted"></video>
+
+  <video [src]="localStream.src | safe:'url'" playsinline autoplay muted="muted" id="local-video" *ngIf="localStream" class="resize-drag"></video>
+
+  <video [src]="remoteStream.src | safe:'url'" playsinline autoplay id="remote-video" *ngIf="remoteStream"></video>
+
+  <!-- <div *ngIf="localStream" [ngClass]="{'invisible': remoteStream && !option.video}">
+    <video [src]="remoteStream.src | safe:'url'" autoplay id="remote-video"></video>
+  </div> -->
+  <div style="position: absolute;top: 40%;width: 100%;    color: #fff;
+  font-weight: bold;">
+    <div class="only-audio" *ngIf="remoteStream && !option.video">
+      {{receive.name}} Audio
+    </div>
+    <div class="calling-info" *ngIf="receive && receive.name && !remoteStream">
+      <div class="name-call">{{receive.name}}</div>
+      <div *ngIf="option && option.video">Video Calling</div>
+      <div *ngIf="option && !option.video">Audio Calling</div>
+    </div>
   </div>
-  <div class="box-video" [ngClass]="{'audio': remoteStream && !option.video}">
+  <!-- <div class="box-video" [ngClass]="{'audio': remoteStream && !option.video}">
     <div *ngIf="remoteStream" id="remote-video">
       <video [src]="remoteStream.src | safe:'url'" autoplay></video>
-      <!-- <video [src]="localStream.src | safe:'url'" playsinline autoplay muted="muted"></video> -->
 
       <div class="only-audio">
         {{receive.name}} Audio
@@ -41,18 +55,22 @@
       <div *ngIf="option && option.video">Video Calling</div>
       <div *ngIf="option && !option.video">Audio Calling</div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="button-action">
-    <div class="horizontal layout">
+  <div class="button-action horizontal layout center center-justified">
+    <div class="">
       <button class="button button-close" (click)="closeCallUser($event)">
-        <ion-icon name="close"></ion-icon>
+        <ion-icon name="close" *ngIf="!remoteStream"></ion-icon>
+        <ion-icon name="ios-call-outline" *ngIf="remoteStream"></ion-icon>
       </button>
-      <button class="button button-warning" (click)="zoomVideo()">
+      <button class="button button-default" *ngIf="remoteStream">
+        <ion-icon name="ios-mic-outline"></ion-icon>
+      </button>
+      <!-- <button class="button button-warning" (click)="zoomVideo()">
         <ion-icon name="md-contract"></ion-icon>
-      </button>
+      </button> -->
 
-      <button class="button button-accept" *ngIf="!localStream" (click)="startCall()">
+      <button class="button button-accept" (click)="startCall()" *ngIf="!localStream">
         <ion-icon name="ios-call-outline"></ion-icon>
       </button>
     </div>
