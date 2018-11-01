@@ -1,4 +1,3 @@
-
 import { Component, ViewChild } from "@angular/core";
 import { Nav, Platform, Events } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
@@ -19,14 +18,14 @@ import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
 import { ProfilePage } from "./../pages/profile/profile";
 import { AdjustmentsPage } from "./../pages/adjustments/adjustments";
 import { Config } from "./app.config";
-import { VisitingCostPage } from './../pages/patient-info/visiting-cost/visiting-cost';
+import { VisitingCostPage } from "./../pages/patient-info/visiting-cost/visiting-cost";
 import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map";
 import { Insomnia } from "@ionic-native/insomnia";
 
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
- 
+
 declare let navigator: any;
 declare let RTCPeerConnection: any;
 declare let RTCSessionDescription: any;
@@ -38,7 +37,7 @@ import * as io from "socket.io-client";
 let socket;
 let self;
 let audio;
-  
+
 let peerConnection;
 let peerConnectionConfig: any;
 
@@ -129,7 +128,7 @@ export class MyApp {
         audio.play();
       }
     });
-    
+
     events.subscribe("socket", () => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       self.socketCreation();
@@ -278,16 +277,12 @@ export class MyApp {
       if (!currentUser) {
         return;
       }
-      // setTimeout(() => {
-      //   this.http
-      //   .post("https://futucare.com/webrtc/api/webrtc", {
-      //     isTurn: true
-      //   })
-      //   .subscribe(response => {
-      //     console.log(response);
-      //     peerConnectionConfig.iceServers = response;
-      //   });
-      // }, 5000)
+      this.http
+        .get("https://hybridappmarket.com/api/turn")
+        .subscribe(response => {
+          console.log('response', response);
+          peerConnectionConfig.iceServers = response;
+        });
       this.http
         .get(Config.url + Config.api.messenger.channel, {
           params: {
@@ -389,7 +384,7 @@ export class MyApp {
 
           if (window.cordova) {
             setTimeout(() => {
-              console.log('run')
+              console.log("run");
               cordova.plugins.iosrtc.refreshVideos();
             }, 1000);
           }
@@ -500,7 +495,7 @@ export class MyApp {
   gotRemoteStream(event) {
     self.remoteStream = event.stream;
     self.remoteStream.src = window.URL.createObjectURL(event.stream);
-    console.log('remote video call done', event)
+    console.log("remote video call done", event);
     if (window.cordova) {
       setTimeout(() => {
         cordova.plugins.iosrtc.refreshVideos();
@@ -571,7 +566,7 @@ export class MyApp {
     if (window.cordova) {
       audio.stop();
     }
-  } 
+  }
 
   muteAudio() {
     self.isMuteAudio = !self.isMuteAudio;
