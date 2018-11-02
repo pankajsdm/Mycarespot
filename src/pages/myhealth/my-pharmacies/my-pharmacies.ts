@@ -26,14 +26,14 @@ export class MyPharmaciesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyPharmaciesPage');
+    console.log('ionViewDidLoad load MyPharmaciesPage');
     this.currentUser = JSON.parse(localStorage.getItem('user_data'));
     this.getPharmacy(this.currentUser.patientId);
   }
 
   getPharmacy(_id) {
     if (this.online) {
-      
+      this.isLoading = true;
       this.authService.get('users/getPatientPharmacy/' + _id).then(result => {
         this.isLoading = false;
         this.rawMat = result;
@@ -42,6 +42,7 @@ export class MyPharmaciesPage {
           this.nodata_found = 'No tiene farmacias.';
         }
       },(err) =>{
+        this.isLoading = false;
         this.nodata_found = 'Something wrong...';
       });
     }
@@ -52,7 +53,11 @@ export class MyPharmaciesPage {
   }
 
   ionViewDidEnter() {
-    console.log("tesing");
+    
+    if(localStorage.getItem('pharmacy_add')){
+      this.getPharmacy(this.currentUser.patientId);
+      localStorage.removeItem('pharmacy_add');
+    }
     let elem = <HTMLElement>document.querySelector(".tabbar");
     if (elem != null) {
       elem.style.display = "flex";
@@ -63,5 +68,7 @@ export class MyPharmaciesPage {
   add_pharmacy(){
     this.navCtrl.push(PharmacySearchPage);
   }
+
+
 
 }

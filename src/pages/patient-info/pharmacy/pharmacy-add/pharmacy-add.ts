@@ -41,7 +41,7 @@ export class PharmacyAddPage {
         this.searchList = this.searchArr.data.Items;
         if(this.searchList.length==0){
           this.nodata_found = 'No se encontró una sola farmacia.';
-        }
+        } 
       }, (err) => {
         console.log("Something wrong...");
       });
@@ -49,27 +49,40 @@ export class PharmacyAddPage {
 
   addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId){
     this.authService.showLoader("Searching..."); 
+
+    let phoneFax = ''
+    if(primaryPhone !== null && primaryPhone !== '') {
+      phoneFax = primaryPhone;
+    }
+
     let add_ph = {
-      patientId: this.current_user._id,
+      patientId: this.current_user.patientId,
       name: storeName,
       city: city,
       state: state,
       zip: zipCode,
-      phoneOrFax: primaryPhone,
+      phoneOrFax: phoneFax,
       Address1: address1,
-      PharmacyId: pharmacyId
+      PharmacyId: ''+pharmacyId
     }
     this.authService.post('patient/addPatientPharmacy', add_ph).then((result) => {
       this.authService.hideLoader();
       this.responded_data = result;
-      console.log("Result", result);      
+      if(this.responded_data.code==200){
+        localStorage.setItem('pharmacy_add', '1');
+        this.authService.presentAlert("Success", "Farmacia añadido con éxito.", "Ok");
+      }else if(this.responded_data.code==208){
+        this.authService.presentAlert("Error", "Farmacia ya agregada para este paciente..", "Ok");
+      }
     }, (err) => {
       console.log("Something wrong...");
     });
   } 
 
   search_pharmacy(){
-    this.navCtrl.push(PharmacyPage);
+    //this.navCtrl.push(PharmacyPage);
+    this.navCtrl.remove(2,1);
+    this.navCtrl.pop();
   }
 
   map(){
