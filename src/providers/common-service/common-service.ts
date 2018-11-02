@@ -142,9 +142,9 @@ export class CommonServiceProvider {
     toast.present();
   }
 
-  showLoader(){
+  showLoader(title = 'Processing...'){
     this.loading = this.loadingCtrl.create({
-        content: 'Processing...',
+        content: title,
         spinner: 'bubbles',
         cssClass: 'spinner-loading'
     });

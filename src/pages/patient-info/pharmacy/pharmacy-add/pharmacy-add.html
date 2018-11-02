@@ -1,85 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Añadir farmacia</ion-title>
-    <ion-buttons end class="right_button" (click)="search_pharmacy()">
-      <button ion-button color="royal"><ion-icon name="ios-locate"></ion-icon></button>
+    <ion-buttons end class="right_button finalizar" (click)="search_pharmacy()">
+      <button ion-button color="royal">Finalizar</button>
     </ion-buttons>
+
   </ion-navbar>
 </ion-header>
-
+  
 <ion-content>
-    <ion-card>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
+  <ion-card *ngIf="searchList?.length > 0">
+      <ion-item *ngFor="let item of searchList" (click)="addData(item.StoreName, item.City, item.State, item.ZipCode, item.PrimaryPhone, item.Address1, item.PharmacyId)">
+        <ion-col class="col" col-11>
+          <h2>{{item.StoreName}}</h2>
+          <p>{{item.Address1}}</p>
+          <p>{{item.City}}, {{item.State}}, {{item.ZipCode}}</p>
         </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="add"></ion-icon>
+        </ion-col> 
       </ion-item>
-
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="map()">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-      </ion-item>
-
-    </ion-card>
+  </ion-card>
+  <div class="no_data_found" *ngIf="searchList?.length<1">{{nodata_found}}</div>
 </ion-content>

@@ -43,14 +43,15 @@ page-my-pharmacies {
     .pad_rlt_25{padding: 0 25px; display: block;}
     .item-ios, .item-md{padding-left: 8px;
       h2 {
-          font-size: 14px; font-weight: bold;
+          font-size: 12px; 
+          font-weight: bold;
         }
       p {
         font-size: 12px;
       }
     }
     .label-ios, .label-md {
-      margin:8px 0px 8px 0;
+      margin:1px 0px 1px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

@@ -1,9 +1,11 @@
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PatientSimptomPage } from './../patient-simptom/patient-simptom';
 import { DoctorsPage } from "../../doctors/doctors";
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { PatientSimptomNextPage } from './../patient-simptom/patient-simptom-next/patient-simptom-next';
+import { RiskFactorsPage } from './../risk-factors/risk-factors';
 
 @Component({
   selector: 'page-options-simptom',
@@ -25,7 +27,7 @@ export class OptionsSimptomPage {
     if(val=='yes'){
       this.navCtrl.push(PatientSimptomPage);
     }else{
-      this.navCtrl.push(PatientSimptomNextPage);
+      this.navCtrl.push(RiskFactorsPage);
     }
   }
   

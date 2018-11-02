@@ -148,7 +148,7 @@ export class MyApp {
           .keepAwake()
           .then(() => console.log("success"), () => console.log("error"));
         cordova.plugins.iosrtc.registerGlobals();
-
+          
         audio = new Media(
           "https://futucare.com/demo/assets/skype_ring.mp3",
           // success callback

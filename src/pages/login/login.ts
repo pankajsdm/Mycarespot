@@ -30,7 +30,7 @@ export class LoginPage {
   isLoggedIn: boolean = false;
   public loginForm: FormGroup;
   public user = {
-    email: "durgesh@yopmail.com",
+    email: "rafael@yomail.com",
     mobilePhone: "",
     password: "123456"
   };
