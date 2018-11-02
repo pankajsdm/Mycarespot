@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { RiskFactorsPage } from '../../risk-factors/risk-factors';
 import { ToastController, NavParams, NavController, MenuController } from 'ionic-angular';
@@ -5,6 +6,7 @@ import { CommonServiceProvider } from '../../../../providers/common-service/comm
 import { MedicalHistoryPhase3Page } from './../medical-history-phase3/medical-history-phase3';
 import { MedicalHistoryPhase4Page } from './../medical-history-phase4/medical-history-phase4';
 import { DoctorsPage } from "../../../doctors/doctors";
+import { VitalsPage } from './../../vitals/vitals';
 
 @Component({
   selector: 'page-medical-history-phase2',
@@ -39,7 +41,7 @@ export class MedicalHistoryPhase2Page {
     console.log(val);
 
     if(val=='No'){
-      this.navCtrl.push(MedicalHistoryPhase4Page);
+      this.navCtrl.push(VitalsPage);
     }else{
     if(this.online){
       this.authService.showLoader();

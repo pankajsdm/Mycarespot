@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { ToastController, ModalController, LoadingController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { PharmacySearchPage } from './pharmacy-search/pharmacy-search';
@@ -53,14 +54,18 @@ export class PharmacyPage {
     }else{
       this.presentToast('Oh no! No internet found.');
     } 
-  } 
-
-  search_pharmacy(){
-    this.navCtrl.push(PharmacySearchPage);
-  }
+  }   
 
   summary(id){
     this.navCtrl.push(SummaryPage);
+  }
+
+  search_pharmacy(){
+    this.navCtrl.push(PharmacySearchPage);
+  } 
+
+  saltar(id){
+    //this.navCtrl.push(PharmacySearchPage);
   }
 
   

@@ -1,7 +1,6 @@
 
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { VisitingCostPage } from './../../visiting-cost/visiting-cost';
 import { DoctorsPage } from "../../../doctors/doctors";
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 
@@ -28,7 +27,7 @@ export class InsuranceDetailPage {
   }
 
   confirm(){
-    this.navCtrl.push(VisitingCostPage);
+    this.navCtrl.pop();
   }
 
   cancle() {

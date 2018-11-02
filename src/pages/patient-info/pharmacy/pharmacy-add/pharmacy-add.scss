@@ -17,7 +17,12 @@ page-pharmacy-add {
     ion-col.col.col{float:left;}
     .forward_icon ion-icon{color: #6b5b5b;}
   
-  
+    .finalizar .button-inner{
+      color: #585757 !important;
+      font-size: 11px !important;
+      font-weight: bold !important;
+    }  
+
     .back-button {
         width: 0px;
         color: #fff;

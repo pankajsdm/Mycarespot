@@ -3,7 +3,7 @@
     <name>myCareSpot</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="rafa@mycarespot.com" href="www.mycarespot.com">Mycarespot</author>
-    <content original-src="index.html" src="http://172.24.1.6:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -129,5 +129,4 @@
     <plugin name="cordova-plugin-insomnia" spec="4.3.0" />
     <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.0.0" />
 </widget>

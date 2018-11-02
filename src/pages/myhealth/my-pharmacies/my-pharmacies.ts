@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import {  ModalController, NavParams, NavController, MenuController } from 'ionic-angular';
 import { PharmacySearchPage } from './../../patient-info/pharmacy/pharmacy-search/pharmacy-search';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
-
+  
 @Component({
   selector: 'page-my-pharmacies',
   templateUrl: 'my-pharmacies.html',
 })
 export class MyPharmaciesPage {
-
+  
   online: Boolean = true;
   loading: any;   
   rawMat: any;   
@@ -48,7 +48,15 @@ export class MyPharmaciesPage {
   }
 
   PharmacySearch(){
+    
+  }
 
+  ionViewDidEnter() {
+    console.log("tesing");
+    let elem = <HTMLElement>document.querySelector(".tabbar");
+    if (elem != null) {
+      elem.style.display = "flex";
+    }
   }
 
 
