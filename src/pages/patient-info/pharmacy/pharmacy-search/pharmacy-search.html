@@ -7,8 +7,8 @@
   
   <ion-content padding>
 
+      <button type="submit" class="button" (click)="searchNearMe()">Busca cerca de mi</button>
       <form id="registro" [formGroup]="searchForm"  (ngSubmit)="searchPharmacy()">
-        <button type="submit" class="button" (click)="searchNearMe()">Busca cerca de mi</button>
         <p class="text_black_center">O busca manualment</p>
         <label id="registrateYConsultaAUnProvedor-input2">
           <ion-input type="text" [(ngModel)]="search.zip" formControlName="zip" placeholder="Código postal"></ion-input>

@@ -36,7 +36,7 @@
       <span class="form_label">Seleccione la farmacia de su preferencia.</span>
     </div>
 
-    <ion-card>
+    <!-- <ion-card>
       <ion-item (click)="summary('2')">
         <ion-col class="col" col-11>
           <h2>Walgreens Drug Store 00217</h2>
@@ -47,50 +47,29 @@
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </ion-col>
       </ion-item>
-    </ion-card> 
+    </ion-card>  -->
 
-    <!--ion-card *ngIf="lists?.length > 0">
+    <ion-card *ngIf="lists?.length > 0">
 
       <ion-item (click)="summary(item._id)" *ngFor="let item of lists" >
         <ion-col class="col" col-11>
           <h2>{{item.name}}</h2>
           <p>{{item.city}}</p>
-          <p>{{item.state}}, {{item.zip}}</p>
+          <p>{{item.state}}, {{item.phoneOrFax}}</p>
         </ion-col>
         <ion-col class="col forward_icon" col-1>
           <ion-icon name="ios-arrow-forward"></ion-icon>
         </ion-col>
       </ion-item>
+      </ion-card>
 
-      <ion-item>
-        <ion-col class="col" col-8>
-          <h2>Walgreens Drug Store 00217</h2>
-          <p>1130 AVE ASHFORD</p>
-          <p>CONDADO, PR 00907-1230</p>
-        </ion-col>
-        <ion-col class="col forward_icon" col-4 (click)="docProfile(doctor._id)">
-          <button class="button" type="submit">Añadir</button>
-        </ion-col>
-        </ion-item>
-
-        <ion-item>
-          <ion-col class="col" col-8>
-            <h2>Walgreens Drug Store 00217</h2>
-            <p>1130 AVE ASHFORD</p>
-            <p>CONDADO, PR 00907-1230</p>
-          </ion-col>
-          <ion-col class="col forward_icon" col-4 (click)="docProfile(doctor._id)">
-            <button class="button" type="submit">Añadir</button>
-          </ion-col>
-        </ion-item>
-      </ion-card-->
-
-      <!-- <div class="no_data" *ngIf="lists?.length<1">{{nodata_found}}</div> -->
+      <div class="no_data" *ngIf="lists?.length<1">{{nodata_found}}</div>
 
 
-  <div class="bottom_fixed_btn">
+  <div class="bottom_fixed_btn" *ngIf="lists?.length<1">
     <span class="add_menor" (click)="saltar()">Saltar</span>
   </div>
+  
 </ion-content>
 
 <ion-footer class="main-footer">

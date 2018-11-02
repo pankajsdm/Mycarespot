@@ -20,7 +20,7 @@ export class PharmacyPage {
   lists: any;   
   current_user: any;
   user_picture: String;
-  nodata_found = 'No ha añadido farmacia.';
+  nodata_found = '';
 
   constructor( 
     public modalCtrl: ModalController,
@@ -43,10 +43,13 @@ export class PharmacyPage {
     
     if(this.online){
       this.showLoader();
-      this.authService.get('users/getPatientPharmacy/'+this.current_user._id).then((result) => {
+      this.authService.get('users/getPatientPharmacy/'+this.current_user.patientId).then((result) => {
           this.loading.dismiss();
           this.rawMat =  result; 
           this.lists = this.rawMat.data;
+          if(this.lists.length==0){
+            this.nodata_found = 'No tiene farmacias.';
+          }
       },(err) => { 
         this.loading.dismiss();
         this.presentToast('Something wrong! Please try later.');
@@ -101,5 +104,13 @@ export class PharmacyPage {
 
     toast.present();
   }
+
+  ionViewDidEnter() {
+    if(localStorage.getItem('pharmacy_add')){
+      this.getPatientPharmacy();
+      localStorage.removeItem('pharmacy_add');
+    }
+  }
+
 
 }
