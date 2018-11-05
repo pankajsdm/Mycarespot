@@ -40,22 +40,52 @@ export class PharmacySearchPage {
   }
 
   searchNearMe(){
-    this.navCtrl.push(PharmacyMapPage);
-  }
+    //this.navCtrl.push(PharmacyMapPage);
+    if(this.searchForm.get('zip').value=='' && this.searchForm.get('pharmacyName').value=='' && this.searchForm.get('phoneOrFax').value==''){
+      this.authService.presentAlert('Error', 'Please fill at least one field.', 'Ok');
+    }else{
+      console.log(this.searchForm.get('pharmacyName').value);
+
+      if(this.searchForm.get('zip').value=="" || isNaN(this.searchForm.get('zip').value)){
+        delete this.search.zip;
+      } else{
+        this.search.zip = parseInt(this.searchForm.get('zip').value);
+      }
+      if(this.searchForm.get('phoneOrFax').value=="" || isNaN(this.searchForm.get('phoneOrFax').value)){
+        delete this.search.phoneOrFax;
+      } else{
+        this.search.phoneOrFax = parseInt(this.searchForm.get('phoneOrFax').value);
+      }
+      setTimeout(() => {
+        this.navCtrl.push(PharmacyMapPage, {params: this.search});
+      }, 1000);
+      
+    }
+  } 
 
   searchPharmacy(){
     if(this.search.zip=='' && this.search.pharmacyName=='' && this.search.phoneOrFax==''){
       this.authService.presentAlert('Error', 'Please fill at least one field.', 'Ok');
     }else{
-      if(this.search.zip==""){
+      
+      if(this.search.zip=="" || isNaN(this.search.zip)){
           delete this.search.zip;
-      } 
-      if(this.search.phoneOrFax==""){
+      }else{
+        this.search.zip = parseInt(this.search.zip);
+      }
+
+      if(this.search.phoneOrFax=="" || isNaN(this.search.phoneOrFax)){
         delete this.search.phoneOrFax;
-      } 
-      this.navCtrl.push(PharmacyAddPage, {params: this.search});
+      }else{
+        this.search.phoneOrFax = parseInt(this.search.phoneOrFax);
+      }
+
+      setTimeout(() => {
+        this.navCtrl.push(PharmacyAddPage, {params: this.search});
+      }, 1000);
+      
     }
-    
+ 
   }
 
   ionViewDidEnter(){

@@ -140,7 +140,7 @@ export class MyApp {
     //     console.log(cordova.plugins.iosrtc);
     //     // load adapter.js
     //   }
-    // });
+    // }); 
 
     setTimeout(() => {
       if (window.cordova) {

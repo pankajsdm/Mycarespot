@@ -1,7 +1,7 @@
 import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, Platform  } from 'ionic-angular';
 import { Geolocation, Geoposition} from '@ionic-native/geolocation';
-
+import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 
 @Component({
   selector: 'page-pharmacy-map',
@@ -18,10 +18,16 @@ export class PharmacyMapPage {
   geocoder: any
   autocompleteItems: any;
   loading: any;
+  search_data: any;
+  museumList: any = [];
+  searchArr: any;
+  searchList: any;
 
   constructor( 
     public zone: NgZone,
-    public geolocation: Geolocation
+    public navParams: NavParams,
+    public geolocation: Geolocation,
+    public authService: CommonServiceProvider
   ) {
 
     this.geocoder = new google.maps.Geocoder;
@@ -34,23 +40,61 @@ export class PharmacyMapPage {
     this.autocompleteItems = [];
     this.markers = [];
 
+    this.search_data = this.navParams.get('params');
   }
-
- 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyMapPage');
-    
+
+    this.map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 25.82, lng: -124.39},
+      zoom:5,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    });
+
+
+    var bounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(25.82, -124.39),
+      new google.maps.LatLng(49.38, -66.94),
+    )
+    this.map.fitBounds(bounds);
+    let zoomChangeBoundsListener = 
+      google.maps.event.addListenerOnce(this.map, 'bounds_changed', function(event) {
+        if (this.getZoom()){
+            this.setZoom(3);
+        }
+    });
+    setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
+
+    /* this.map.event.addListener(marker, 'click', function() {
+      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+        'Place ID: ' + place.place_id + '<br>' +
+        place.formatted_address + '</div>');
+      infowindow.open(map, this);
+    }); */
+
+    this.searchPharmacy();
   }
 
-  ionViewDidEnter(){
-    // let infoWindow = new google.maps.InfoWindow({map: map});
-    //Set latitude and longitude of some place
-    this.map = new google.maps.Map(document.getElementById('map'), {
-      //center: {lat: 40.4168, lng: 3.7038},
-      center: {lat: 30.7333, lng: 76.7794},
-      zoom: 10
+  searchPharmacy(){
+    this.authService.showLoader("Searching..."); 
+    this.authService.post('patient/searchPharmacy', this.search_data).then((result) => {
+      this.authService.hideLoader();
+      this.searchArr = result;
+      this.searchList = this.searchArr.data.Items;
+      for (let index = 0; index < this.searchList.length; index++) {
+          this.addMarkersToMap(this.searchList[index]);
+      }
+    }, (err) => {
+      this.authService.hideLoader();
+      console.log("Something wrong...");
     });
+  } 
+  
+  addMarkersToMap(museum) {
+      var position = new google.maps.LatLng(museum.Latitude, museum.Longitude);
+      var museumMarker = new google.maps.Marker({position: position, title: museum.name});
+      museumMarker.setMap(this.map);
   }
 
   tryGeolocation(){
@@ -72,6 +116,11 @@ export class PharmacyMapPage {
       console.log('Error getting location', error);
     });
   } 
+
+
+  
+
+
   
   updateSearchResults(){
     if (this.autocomplete.input == '') {
@@ -119,6 +168,49 @@ export class PharmacyMapPage {
     this.markers = [];
   }
     
+
+  /* museums (){
+    this.museumList = [
+      {
+        "name": "National Museum",
+        "state" : "Delhi",
+        "latitude": 28.6117993,
+        "longitude": 77.2194934
+      },
+      {
+        "name": "National Science Centre,",
+        "state": "Delhi",
+        "latitude": 28.6132098,
+        "longitude": 77.245437
+      },
+      {
+        "name": "The Sardar Patel Museum",
+        "state": "Gujrat",
+        "latitude": 21.1699005,
+        "longitude": 72.7955734
+      },
+      {
+        "name": "Library of Tibetan Works and Archives",
+        "state": "Himachal",
+        "latitude": 32.2263696,
+        "longitude": 76.325326
+
+      },
+      {
+        "name": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
+        "state": "Maharashtra",
+        "latitude": 18.926873,
+        "longitude": 72.8326132
+      },
+      {
+        "name": "Namgyal Institute of Tibetology",
+        "state": "Sikkim",
+        "latitude": 27.315948,
+        "longitude": 88.6047829
+
+      }
+    ];
+  } */
   
 
 
