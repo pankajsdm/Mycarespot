@@ -22,6 +22,7 @@ export class PharmacyMapPage {
   museumList: any = [];
   searchArr: any;
   searchList: any;
+  infoWindows: any;
 
   constructor( 
     public zone: NgZone,
@@ -39,20 +40,23 @@ export class PharmacyMapPage {
     };
     this.autocompleteItems = [];
     this.markers = [];
-
     this.search_data = this.navParams.get('params');
+    this.infoWindows = [];
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyMapPage');
-
+    
+    var defaultLatLng = {lat: 25.82, lng: -124.39};
     this.map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 25.82, lng: -124.39},
+      center: defaultLatLng,
       zoom:5,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     });
 
-
+    /* Set other map attributes*/
     var bounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(25.82, -124.39),
       new google.maps.LatLng(49.38, -66.94),
@@ -65,14 +69,8 @@ export class PharmacyMapPage {
         }
     });
     setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
-
-    /* this.map.event.addListener(marker, 'click', function() {
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-        'Place ID: ' + place.place_id + '<br>' +
-        place.formatted_address + '</div>');
-      infowindow.open(map, this);
-    }); */
-
+    /*** End to define the attributes ***/
+  
     this.searchPharmacy();
   }
 
@@ -82,19 +80,70 @@ export class PharmacyMapPage {
       this.authService.hideLoader();
       this.searchArr = result;
       this.searchList = this.searchArr.data.Items;
-      for (let index = 0; index < this.searchList.length; index++) {
+      this.addMarkersToMap(this.searchList);
+      /* for (let index = 0; index < this.searchList.length; index++) {
           this.addMarkersToMap(this.searchList[index]);
-      }
+      } */
     }, (err) => {
       this.authService.hideLoader();
       console.log("Something wrong...");
     });
   } 
-  
-  addMarkersToMap(museum) {
-      var position = new google.maps.LatLng(museum.Latitude, museum.Longitude);
-      var museumMarker = new google.maps.Marker({position: position, title: museum.name});
-      museumMarker.setMap(this.map);
+
+  test(){
+    console.log("I am clicked...");
+  }
+
+  addInfoWindowToMarker(marker, ph_id, city, state, address, zip) {
+    
+    var infoWindowContent = '<div class="info_content">' +
+    //'<strong>'+marker.title+'</strong>' +
+    '<p><strong>'+marker.title+'</strong></p>' +
+    '<p>'+address+'</p>' +
+    '<p>'+city+', '+state+', '+zip+'</p>' +
+    '<p><button id="clickableItem" class="'+ph_id+'" type="button">Añadir</button></p>' +
+    '</div>';
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: infoWindowContent
+    });
+    marker.addListener('click', () => {
+      this.closeAllInfoWindows();
+      infoWindow.open(this.map, marker);
+    });
+    this.infoWindows.push(infoWindow);
+
+    
+    google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+      document.getElementById('clickableItem').addEventListener('click', () => {
+       
+        var classname = document.getElementById("clickableItem").className;
+        alert("id is"+classname); 
+      });
+    });
+
+
+
+  }
+
+
+  closeAllInfoWindows() {
+    for(let window of this.infoWindows) {
+      window.close();
+    }
+  }
+
+  addMarkersToMap(markers) {
+    for(let marker of markers) {
+      var position = new google.maps.LatLng(marker.Latitude, marker.Longitude);
+      var dogwalkMarker = new google.maps.Marker({
+        position: position,
+        title: marker.StoreName,
+        icon: 'assets/img/marker.png'
+      });
+      dogwalkMarker.setMap(this.map);
+      this.addInfoWindowToMarker(dogwalkMarker, marker.PharmacyId, marker.City, marker.State, marker.Address1, marker.ZipCode);
+    }
   }
 
   tryGeolocation(){
@@ -116,9 +165,6 @@ export class PharmacyMapPage {
       console.log('Error getting location', error);
     });
   } 
-
-
-  
 
 
   
