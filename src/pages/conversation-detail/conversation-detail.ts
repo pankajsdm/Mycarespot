@@ -210,11 +210,19 @@ export class ConversationDetailPage {
   }
 
   openCall(option) {
-    let message = {
+    if (!this.channel.userShow || !this.channel.userShow._id) {
+      return;
+    }
+    let params: any = {
       option: option,
-      receiveUser: this.channel.userShow
+      receive: {
+        _id: this.channel.userShow._id,
+        name: this.channel.userShow.name,
+        avatar: this.channel.userShow.avatar
+      }
     };
-    self.events.publish("webrtc", message);
+
+    self.events.publish("webrtc", params);
   }
 
   ionViewWillEnter() {
