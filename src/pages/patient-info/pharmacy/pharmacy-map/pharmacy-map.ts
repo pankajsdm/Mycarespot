@@ -23,6 +23,8 @@ export class PharmacyMapPage {
   searchArr: any;
   searchList: any;
   infoWindows: any;
+  current_user: any;
+  responded_data: any;
 
   constructor( 
     public zone: NgZone,
@@ -48,7 +50,7 @@ export class PharmacyMapPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyMapPage');
-    
+    this.current_user = JSON.parse(localStorage.getItem('user_data'));
     var defaultLatLng = {lat: 25.82, lng: -124.39};
     this.map = new google.maps.Map(document.getElementById('map'), {
       center: defaultLatLng,
@@ -90,17 +92,21 @@ export class PharmacyMapPage {
     });
   } 
 
-  test(){
-    console.log("I am clicked...");
-  }
 
-  addInfoWindowToMarker(marker, ph_id, city, state, address, zip) {
+
+  addInfoWindowToMarker(marker, ph_id, city, state, address, zip, phone) {
     
     var infoWindowContent = '<div class="info_content">' +
     //'<strong>'+marker.title+'</strong>' +
     '<p><strong>'+marker.title+'</strong></p>' +
     '<p>'+address+'</p>' +
     '<p>'+city+', '+state+', '+zip+'</p>' +
+    '<input type="hidden" id="storename" value="'+marker.title+'">' +
+    '<input type="hidden" id="city" value="'+city+'">' +
+    '<input type="hidden" id="state" value="'+state+'">' +
+    '<input type="hidden" id="zipCode" value="'+zip+'">' +
+    '<input type="hidden" id="primaryPhone" value="'+phone+'">' +
+    '<input type="hidden" id="address1" value="'+address+'">' +
     '<p><button id="clickableItem" class="'+ph_id+'" type="button">Añadir</button></p>' +
     '</div>';
 
@@ -113,18 +119,52 @@ export class PharmacyMapPage {
     });
     this.infoWindows.push(infoWindow);
 
-    
+    /* Get the information from info window */
     google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
       document.getElementById('clickableItem').addEventListener('click', () => {
-       
-        var classname = document.getElementById("clickableItem").className;
-        alert("id is"+classname); 
+        var pharmacyId = document.getElementById("clickableItem").className;
+        var storeName = document.getElementById("storename")['value'];
+        var city = document.getElementById("city")['value'];
+        var state = document.getElementById("state")['value'];
+        var zipCode = document.getElementById("storename")['value'];
+        var primaryPhone = document.getElementById("primaryPhone")['value'];
+        var address1 = document.getElementById("address1")['value'];
+        this. addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId);
       });
     });
-
-
-
   }
+
+  addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId){
+    this.authService.showLoader("Actualizando..."); 
+
+    let phoneFax = ''
+    if(primaryPhone !== null && primaryPhone !== '') {
+      phoneFax = primaryPhone;
+    }
+
+    let add_ph = {
+      patientId: this.current_user.patientId,
+      name: storeName,
+      city: city,
+      state: state,
+      zip: zipCode,
+      phoneOrFax: phoneFax,
+      Address1: address1,
+      PharmacyId: ''+pharmacyId
+    }
+    this.authService.post('patient/addPatientPharmacy', add_ph).then((result) => {
+      this.authService.hideLoader();
+      this.responded_data = result;
+      if(this.responded_data.code==200){
+        localStorage.setItem('pharmacy_add', '1');
+        this.authService.presentAlert("Success", "Farmacia añadido con éxito.", "Ok");
+      }else if(this.responded_data.code==208){
+        this.authService.presentAlert("Error", "Farmacia ya agregada para este paciente..", "Ok");
+      }
+    }, (err) => {
+      console.log("Something wrong...");
+    });
+  } 
 
 
   closeAllInfoWindows() {
@@ -142,7 +182,7 @@ export class PharmacyMapPage {
         icon: 'assets/img/marker.png'
       });
       dogwalkMarker.setMap(this.map);
-      this.addInfoWindowToMarker(dogwalkMarker, marker.PharmacyId, marker.City, marker.State, marker.Address1, marker.ZipCode);
+      this.addInfoWindowToMarker(dogwalkMarker, marker.PharmacyId, marker.City, marker.State, marker.Address1, marker.ZipCode, marker.PrimaryPhone);
     }
   }
 
@@ -165,8 +205,6 @@ export class PharmacyMapPage {
       console.log('Error getting location', error);
     });
   } 
-
-
   
   updateSearchResults(){
     if (this.autocomplete.input == '') {
