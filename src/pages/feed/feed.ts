@@ -3,10 +3,11 @@ import { AfterViewInit, Component, ElementRef} from '@angular/core';
 import { Inject, ViewChild }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Content, NavParams, ToastController, NavController, MenuController } from 'ionic-angular';
+import { Content, NavParams, ToastController, NavController, MenuController, ActionSheetController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { Config } from "../../app/app.config";
 import {Observable} from 'rxjs';
+import * as io from "socket.io-client";
 let self;
 
 @Component({
@@ -24,7 +25,10 @@ export class FeedPage {
   online: Boolean = true;
   loading: any;
   feedsArr: any;
+  socketFeedArr: any;
   feeds: any;
+  current_page: any = 1;  
+  deleteArr: any;
   current_user: any;
   current_lk_id: String;
   customComment: any;
@@ -32,6 +36,7 @@ export class FeedPage {
   replySubComment: any;
   isLoading: Boolean = false;
   backend_url = Config.backend_url;
+  private socket;
 
   constructor(
     @Inject(DOCUMENT) document,
@@ -41,19 +46,114 @@ export class FeedPage {
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
     public menu: MenuController,
+    public actionsheetCtrl: ActionSheetController
   ) {
-    self = this;
 
-    Observable.interval(1000*60).subscribe(x => {
-      this.getFeed();
-    });
+    self = this;
+    this.socket = io.connect("https://futucare.com");
+    this.detectNewFeedThroughSocket();
+    this.detectDeletionThroughSocket();
 
   }
 
-  ionViewDidLoad() {
+  detectNewFeedThroughSocket(){
+    this.socket.on("feed:save", doc => {
+      this.getFeed();
+    });
+  }
+
+  detectDeletionThroughSocket(){
+    this.socket.on("feed:remove", doc => {
+      this.getFeed();
+    });
+  }
+
+  doInfinite(infiniteScroll) {
+    //this.isLoading = true;
+      setTimeout(() => {
+      this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page='+this.current_page).then((result) => {
+        //this.isLoading = false;
+        this.socketFeedArr  =  result;
+        if(this.socketFeedArr.code=='401'){
+          localStorage.clear();
+          this.navCtrl.setRoot(LoginPage);
+        }else{  
+          for(var i=0; i < this.socketFeedArr.data.length; i++){
+            var json = {
+              _id: this.socketFeedArr.data[i]._id,
+              created_by_user_id: [{
+                firstName: this.socketFeedArr.data[i].created_by_user_id[0].firstName,
+                lastName: this.socketFeedArr.data[i].created_by_user_id[0].lastName,
+                avatar: this.socketFeedArr.data[i].created_by_user_id[0].avatar
+              }],
+              message: this.socketFeedArr.data[i].message,
+              createdAt: this.socketFeedArr.data[i].createdAt,
+              like: this.socketFeedArr.data[i].like,
+              Comments: this.socketFeedArr.data[i].Comments,
+            }
+            this.feeds.push(json);
+          }
+
+          console.log("new infinite", this.feeds);
+          
+          this.current_page = this.current_page + 1;
+        }
+      });
+      infiniteScroll.complete();
+    }, 500);
+  }
+
+  /*ionViewDidLeave() {
+    this.socket.unsubscribe();
+  } */
+
+  action(feed_id){
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Are you sure to delete?',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            this.deleteFeed(feed_id)
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+
+  deleteFeed(feed_id){
+    console.log("I am pushing...");
+    var json = {
+      _id: "5beab575b6b7d7a8b03a9854z",
+      created_by_user_id: {
+        firstName: "pankaj",
+        lastName: "Pandey"
+      },
+      message: 'This is pankaj'
+    }
+    this.feeds.push(json)
+
+    /* var elem = document.getElementById("card_"+feed_id);
+    this.authService.showLoader('Deleting....');
+    this.authService.delete('feeds/deletePostComment/'+feed_id).then((result) => {
+      this.authService.hideLoader();
+      this.deleteArr = result;
+      if(this.deleteArr.code==200){
+        elem.style.opacity = '0.2';
+        elem.parentNode.removeChild(elem);
+      }
+    }); */
+  }
+
+  ionViewDidLoad(){
     console.log('ionViewDidLoad FeedPage');
    
-
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
     this.getFeed();
 
@@ -83,19 +183,21 @@ export class FeedPage {
     }, 2000);
   }
 
-  
+
   getFeed(){
     if(this.online){
         this.isLoading = true;
-        this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=1').then((result) => {
+        this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page='+this.current_page).then((result) => {
           this.isLoading = false;
           this.feedsArr = result;
+          
           if(this.feedsArr.code=='401'){
             localStorage.clear();
             this.navCtrl.setRoot(LoginPage);
           }else{  
             this.organizePost();
           }
+
         },(err) => {
           this.isLoading = false;
           this.presentToast('Something wrong! Please try later.');
@@ -123,6 +225,7 @@ export class FeedPage {
       }
     }   
     this.feeds = this.feedsArr.data;
+    this.current_page = this.current_page + 1;
     console.log("feeds", this.feeds);
   }     
 
