@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild, NgZone } from "@angular/core";
 import { Nav, Platform, Events } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -21,49 +21,28 @@ import { Config } from "./app.config";
 import { VisitingCostPage } from "./../pages/patient-info/visiting-cost/visiting-cost";
 import { PharmacyMapPage } from "./../pages/patient-info/pharmacy/pharmacy-map/pharmacy-map";
 import { Insomnia } from "@ionic-native/insomnia";
+import RTCMultiConnection from "rtcmulticonnection";
+import $ from "jquery";
 
 declare let cordova: any;
 declare let localStorage: any;
 declare let Media: any;
-
+let ringCall;
 declare let navigator: any;
-declare let RTCPeerConnection: any;
-declare let RTCSessionDescription: any;
-declare let RTCIceCandidate: any;
 
 declare let window: any;
+
+declare let DetectRTC: any;
+let room;
+let connection;
+let iceServers: any = [];
 
 import * as io from "socket.io-client";
 let socket;
 let self;
-let audio;
+let $body = $("body");
 
 let peerConnection;
-let peerConnectionConfig: any;
-
-peerConnectionConfig = {
-  iceServers: [
-    { url: "stun:global.stun.twilio.com:3478?transport=udp" },
-    {
-      url: "turn:global.turn.twilio.com:3478?transport=udp",
-      username:
-        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
-      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
-    },
-    {
-      url: "turn:global.turn.twilio.com:3478?transport=tcp",
-      username:
-        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
-      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
-    },
-    {
-      url: "turn:global.turn.twilio.com:443?transport=tcp",
-      username:
-        "b98ff120fc4a6b80e496be39252cc476eb84e6c2019f1f2659f11160c69484af",
-      credential: "/t1s/DPSJaThwA4UXOCoDiI4HnejUDCXbH5LN6tLuc8="
-    }
-  ]
-};
 
 @Component({
   templateUrl: "app.html"
@@ -79,14 +58,11 @@ export class MyApp {
   avatar = "assets/img/marty-avatar.png";
   user = { firstName: "", lastName: "" };
   channels = [];
+  localVideo: any = null;
+  remoteVideo: any = null;
   isCall = false;
-  option = {
-    video: true,
-    audio: true
-  };
-  localStream = null;
-  remoteStream = null;
-  receive: any;
+  callOption: any = {};
+  callOptionReceive: any = {};
   currentUser: any;
 
   public feedPage = "Feed";
@@ -101,7 +77,8 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private http: HttpClient,
-    private insomnia: Insomnia
+    private insomnia: Insomnia,
+    private _ngZone: NgZone
   ) {
     self = this;
     events.subscribe("user:update", user => {
@@ -118,15 +95,14 @@ export class MyApp {
 
     this.socketCreation();
 
-    events.subscribe("webrtc", message => {
+    events.subscribe("webrtc", params => {
       // user and time are the same arguments passed in `events.publish(user, time)`
-      self.receive = message.receiveUser;
-      self.option = message.option;
-      self.isCall = true;
-      self._callVideo(message);
-      if (window.cordova) {
-        audio.play();
-      }
+      // self.receive = message.receiveUser;
+      // self.option = message.option;
+      // self.isCall = true;
+      console.log(params);
+      self.callOption = params;
+      self.openGroupCall();
     });
 
     events.subscribe("socket", () => {
@@ -148,33 +124,6 @@ export class MyApp {
           .keepAwake()
           .then(() => console.log("success"), () => console.log("error"));
         cordova.plugins.iosrtc.registerGlobals();
-          
-        audio = new Media(
-          "https://futucare.com/demo/assets/skype_ring.mp3",
-          // success callback
-          function() {
-            console.log("playAudio():Audio Success");
-          },
-          // error callback
-          function(err) {
-            console.log("playAudio():Audio Error: " + err);
-          }
-        );
-
-        if (platform.is("ios")) {
-          cordova.plugins.audioroute.overrideOutput(
-            "speaker",
-            function(success) {
-              console.log("success", success);
-              // Success
-            },
-            function(error) {
-              console.log("error", error);
-
-              // Error
-            }
-          );
-        }
 
         var notificationOpenedCallback = function(jsonData) {
           console.log(
@@ -188,8 +137,20 @@ export class MyApp {
           )
           .handleNotificationOpened(notificationOpenedCallback)
           .endInit();
+
+        ringCall = new Media(
+          "https://s3-us-west-2.amazonaws.com/stove-store/skype_ring.mp3",
+          // success callback
+          function() {
+            console.log("playAudio():Audio Success");
+          },
+          // error callback
+          function(err) {
+            console.log("playAudio():Audio Error: " + err);
+          }
+        );
       }
-    }, 10000);
+    }, 3000);
   }
 
   socketCreation() {
@@ -249,40 +210,30 @@ export class MyApp {
       });
 
       socket.on("webrtc:save", message => {
-        console.log("message", message, self.currentUser);
-        if (!message.to) {
-          message.to = {};
-        }
-        if (message.status == 2 && self.currentUser._id == message.to._id) {
-          self.gotMessageFromServer(message);
-        }
-
         if (message.status == 3 && self.currentUser._id == message.to._id) {
-          self.closeCallUser(null, true);
+          self.closeCall(true);
         }
         if (message.status == 1 && self.currentUser._id == message.to._id) {
-          self.receive = message.from;
-          self.option = message.option;
-          self.isCall = true;
-          if (window.cordova) {
-            audio.play();
-          }
-        }
+          self._ngZone.run(() => {
+            self.callOption = message.option;
+            self.callOption.receive = message.from;
+            room = message.room;
+            self.isCall = true;
+          });
 
-        if (message.status == 4 && self.currentUser._id == message.to._id) {
-          self.modalVideo = false;
+          if (window.cordova) {
+            ringCall.play();
+          }
         }
       });
 
       if (!currentUser) {
         return;
       }
-      this.http
-        .get("https://hybridappmarket.com/api/turn")
-        .subscribe(response => {
-          console.log('response', response);
-          peerConnectionConfig.iceServers = response;
-        });
+      self.http.get(Config.webrtc.turn).subscribe(data => {
+        console.log(data);
+        iceServers = data;
+      });
       this.http
         .get(Config.url + Config.api.messenger.channel, {
           params: {
@@ -360,225 +311,258 @@ export class MyApp {
     this.nav.setRoot(ProfilePage, { _id: currentUser._id });
   }
 
-  _callVideo(message, isConnecting) {
-    if (self.platform.is("ios")) {
-      cordova.plugins.iosrtc.getUserMedia(
-        // constraints
-        message.option,
-        // success callback
-        function(stream) {
-          self.localStream = stream;
-          self.localStream.src = window.URL.createObjectURL(stream);
-          if (!isConnecting) {
-            self.http
-              .post(Config.api.messenger.webrtc, {
-                to: message.receiveUser,
-                status: 1,
-                from: self.currentUser,
-                option: message.option
-              })
-              .subscribe(res => {});
-          } else {
-            self.connect(true);
-          }
+  logout() {
+    localStorage.clear();
+    this.nav.setRoot(LoginPage);
+  }
+
+  // Multiple RTC Connection
+
+  _initMultipleConnection() {
+    if (connection) {
+      connection.leave();
+    }
+    window.enableAdapter = false;
+
+    connection = new RTCMultiConnection();
+    // by default, socket.io server is assumed to be deployed on your own URL
+    connection.socketURL = Config.webrtc.rtc;
+    console.log("connection.socketURL", connection.socketURL);
+    connection.iceServers = iceServers;
+
+    // comment-out below line if you do not have your own socket.io server
+    // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+    connection.socketMessageEvent = "video-conference-demo";
+    connection.session = self.callOption.option;
+    connection.sdpConstraints.mandatory = {
+      OfferToReceiveAudio: self.callOption.option.audio,
+      OfferToReceiveVideo: self.callOption.option.video
+    };
+
+    if (!self.callOption.option.video) {
+      connection.mediaConstraints = {
+        audio: true,
+        video: false
+      };
+      console.log("11111");
+    }
+    connection.onstream = function(event) {
+      event.src = window.URL.createObjectURL(event.stream);
+
+      if (event.type === "local") {
+        if (!self.localVideo) {
+          self.localVideo = event;
+        }
+      } else {
+        if (!self.remoteVideo) {
+          self._ngZone.run(() => {
+            self.remoteVideo = event;
+          });
 
           if (window.cordova) {
-            setTimeout(() => {
-              console.log("run");
-              cordova.plugins.iosrtc.refreshVideos();
-            }, 1000);
+            ringCall.stop();
           }
-        },
-        // failure callback
-        function(error) {
-          console.error("getUserMedia failed: ", error);
         }
-      );
-    } else {
-      navigator.webkitGetUserMedia(
-        message.option,
-        function(stream) {
-          self.localStream = stream;
-          self.localStream.src = window.URL.createObjectURL(stream);
-          if (!isConnecting) {
-            self.http
-              .post(Config.api.messenger.webrtc, {
-                to: message.receiveUser,
-                status: 1,
-                from: self.currentUser,
-                option: message.option
-              })
-              .subscribe(res => {});
-          } else {
-            self.connect(true);
-          }
+      }
+      if (self.platform.is("ios")) {
+        setTimeout(() => {
+          window.cordova.plugins.audioroute.overrideOutput(
+            "speaker",
+            function(success) {
+              console.log("speaker");
+              // Success
+            },
+            function(error) {
+              console.log("error");
 
-          if (window.cordova) {
-            setTimeout(() => {
-              cordova.plugins.iosrtc.refreshVideos();
-            }, 1000);
-          }
-        },
-        function(e) {
-          console.log("No live audio input: " + e);
+              // Error
+            }
+          );
+          window.cordova.plugins.iosrtc.refreshVideos();
+        }, 1000);
+      }
+      console.log("1111", self.localVideo, self.remoteVideo);
+    };
+
+    connection.onstreamended = function(event) {
+      // var mediaElement = document.getElementById(event.streamid);
+      // if (mediaElement) {
+      //   mediaElement.parentNode.removeChild(mediaElement);
+      // }
+    };
+    connection.onMediaError = function(e) {
+      if (e.message === "Concurrent mic process limit.") {
+        if (DetectRTC.audioInputDevices.length <= 1) {
+          alert(
+            "Please select external microphone. Check github issue number 483."
+          );
+          return;
         }
-      );
-    }
+        var secondaryMic = DetectRTC.audioInputDevices[1].deviceId;
+        connection.mediaConstraints.audio = {
+          deviceId: secondaryMic
+        };
+        connection.join(connection.sessionid);
+      }
+    };
   }
 
-  startCall() {
-    // self.hasCalling = false;
-    self._callVideo(
-      {
-        option: self.option
-      },
-      true
-    );
-  }
+  openGroupCall() {
+    console.log(self.callOption);
+    self.isCall = true;
+    self._initMultipleConnection();
+    room = self.currentUser._id + "-" + new Date().getTime();
 
-  connect(isCaller) {
-    console.log("peerConnectionConfig", peerConnectionConfig);
-    peerConnection = new RTCPeerConnection(peerConnectionConfig);
-
-    peerConnection.onicecandidate = event => self.gotIceCandidate(event);
-    peerConnection.onaddstream = stream => self.gotRemoteStream(stream);
-    peerConnection.addStream(self.localStream);
-
-    if (isCaller) {
-      peerConnection
-        .createOffer()
-        .then(des => self.createdDescription(des))
-        .catch(this.errorHandler);
-    }
-  }
-
-  gotMessageFromServer(message) {
-    let self = this;
-    if (!peerConnection) self.connect(false);
-
-    let signal = message;
-    // Ignore messages from ourself
-    if (signal.to._id == self.receive._id) return;
-
-    if (signal.sdp) {
-      peerConnection
-        .setRemoteDescription(new RTCSessionDescription(signal.sdp))
-        .then(function() {
-          // Only create answers in response to offers
-          if (signal.sdp.type == "offer") {
-            peerConnection
-              .createAnswer()
-              .then(self.createdDescription)
-              .catch(self.errorHandler);
-          }
-        })
-        .catch(this.errorHandler);
-    } else if (signal.ice) {
-      peerConnection
-        .addIceCandidate(new RTCIceCandidate(signal.ice))
-        .catch(self.errorHandler);
-    }
-  }
-
-  gotIceCandidate(event) {
-    if (event.candidate != null) {
+    connection.open(room, function() {
+      if (!window.cordova) {
+        connection.extra.isDesktop = true;
+      }
+      connection.updateExtraData();
       self.http
         .post(Config.api.messenger.webrtc, {
-          ice: event.candidate,
-          to: self.receive,
-          status: 2
+          to: self.callOption.receive,
+          status: 1,
+          from: self.currentUser,
+          option: self.callOption,
+          room: room
         })
         .subscribe(res => {});
-    }
-  }
 
-  gotRemoteStream(event) {
-    self.remoteStream = event.stream;
-    self.remoteStream.src = window.URL.createObjectURL(event.stream);
-    console.log("remote video call done", event);
+      setInterval(() => {
+        if (window.cordova) {
+          window.cordova.plugins.iosrtc.refreshVideos();
+        }
+      }, 2000);
+    });
+
     if (window.cordova) {
-      setTimeout(() => {
-        cordova.plugins.iosrtc.refreshVideos();
-      }, 1000);
+      ringCall.play();
     }
   }
 
-  createdDescription(description) {
-    peerConnection
-      .setLocalDescription(description)
-      .then(function() {
-        self.http
-          .post(Config.api.messenger.webrtc, {
-            sdp: peerConnection.localDescription,
-            to: self.receive,
-            status: 2
-          })
-          .subscribe(res => {});
-      })
-      .catch(self.errorHandler);
+  joinMultipleCall() {
+    self._initMultipleConnection();
+    connection.join(room, function() {
+      if (!window.cordova) {
+        connection.extra.isDesktop = true;
+      }
+      connection.updateExtraData();
+    });
   }
 
-  errorHandler(error) {}
-
-  stopMediaTrack(stream) {
+  _stopMediaTrack(stream) {
     stream.getTracks().forEach(function(track) {
       track.stop();
     });
     stream = null;
   }
 
-  closeCallUser(event, isStop) {
-    self.isMuteAudio = false;
-    self.isCall = false;
-
-    if (event) {
-      event.stopPropagation();
+  closeCall(isRemote) {
+    if (connection) {
+      connection.leave();
+    }
+    room = null;
+    self._ngZone.run(() => {
+      self.isCall = false;
+    });
+    if (self.localVideo) {
+      console.log(self.localVideo);
+      self._stopMediaTrack(self.localVideo.stream);
+      self.localVideo = null;
+    }
+    if (self.remoteVideo) {
+      self._stopMediaTrack(self.remoteVideo.stream);
+      self.remoteVideo = null;
     }
 
-    if (self.localStream) {
-      self.stopMediaTrack(self.localStream);
-    }
-    if (self.remoteStream) {
-      self.stopMediaTrack(self.remoteStream);
-    }
-    if (peerConnection) {
-      peerConnection.close();
-      peerConnection = null;
-    }
-
-    setTimeout(function() {
-      self.remoteStream = null;
-      self.localStream = null;
-      if (window.cordova) {
-        cordova.plugins.iosrtc.refreshVideos();
-      }
-    }, 2000);
-    if (!isStop) {
+    if (!isRemote) {
       self.http
         .post(Config.api.messenger.webrtc, {
-          to: self.receive,
+          to: self.callOption.receive,
           status: 3,
           from: self.currentUser
         })
         .subscribe(res => {});
     }
-    self.receive = {};
+
     if (window.cordova) {
-      audio.stop();
+      ringCall.stop();
     }
   }
 
   muteAudio() {
-    self.isMuteAudio = !self.isMuteAudio;
-    if (!self.isMuteAudio) {
-      self.localStream.getAudioTracks()[0].enabled = true;
+    self.isMuted = !self.isMuted;
+    console.log(self.isMuted);
+
+    if (!self.platform.is("ios")) {
+      var $video = $("#local-video")[0];
+      console.log($video);
+      if (self.isMuted) {
+        $video.muted = true;
+      } else {
+        $video.muted = false;
+      }
     } else {
-      self.localStream.getAudioTracks()[0].enabled = false;
+      if (!self.isMuted) {
+        self.localVideo.stream.getAudioTracks()[0].enabled = true;
+        self.localVideo.stream.getAudioTracks()[0].muted = true;
+      } else {
+        self.localVideo.stream.getAudioTracks()[0].enabled = false;
+        self.localVideo.stream.getAudioTracks()[0].muted = false;
+      }
+
+      if (window.cordova) {
+        window.cordova.plugins.iosrtc.refreshVideos();
+      }
     }
   }
 
-  logout() {
-    localStorage.clear();
-    this.nav.setRoot(LoginPage);
+  minizeCall() {
+    $body.addClass("call-minize");
+    if (self.platform.is("ios")) {
+      setTimeout(() => {
+        window.cordova.plugins.iosrtc.refreshVideos();
+      }, 100);
+    }
+  }
+
+  switchCamera() {
+    alert("Updating...");
+  }
+
+  backVideo() {
+    $body.removeClass("call-minize");
+    if (self.platform.is("ios")) {
+      setTimeout(() => {
+        window.cordova.plugins.iosrtc.refreshVideos();
+      }, 100);
+    }
+  }
+
+  muteSpeaker() {
+    self.isVolume = !self.isVolume;
+    console.log(self.isVolume);
+
+    if (!self.platform.is("ios")) {
+      var $video = $("#remote-video")[0];
+      console.log($video);
+      if (self.isVolume) {
+        $video.muted = true;
+      } else {
+        $video.muted = false;
+      }
+    } else {
+      if (!self.isVolume) {
+        self.remoteVideo.stream.getAudioTracks()[0].enabled = true;
+        self.remoteVideo.stream.getAudioTracks()[0].muted = true;
+      } else {
+        self.remoteVideo.stream.getAudioTracks()[0].enabled = false;
+        self.remoteVideo.stream.getAudioTracks()[0].muted = false;
+      }
+
+      if (window.cordova) {
+        window.cordova.plugins.iosrtc.refreshVideos();
+      }
+    }
   }
 }

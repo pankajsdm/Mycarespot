@@ -883,72 +883,178 @@ ion-app {
   background-color: transparent !important;
 }
 
-#local-video {
-  width: 90px;
-  height: 120px;
-  position: absolute;
-  top: 30px;
-  left: 10px;
-  object-fit: contain;
-}
-
-#remote-video {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: contain;
-  z-index: -2;
-}
-.invisible {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-  position: fixed;
-  left: -9999;
-}
-
-#window-call {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-
-  &.calling {
-    background-color: transparent;
+.tab-content-app {
+  &.hidden {
+    display: none;
   }
 }
 
-.button-action {
-  position: absolute;
-  bottom: 0;
+.view-call {
+  display: none;
   width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #000;
   color: #fff;
-  margin: 0;
+  text-align: center;
 
-  button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin: 20px;
-    font-size: 29px;
-    &.button-default {
-      background-color: #fff;
+  &.active {
+    display: block;
+
+    &.bg-display {
+      background-color: transparent !important;
     }
+  }
 
-    &.button-close {
-      background-color: #ff0000;
-
-      .ios-call-outline {
-        -ms-transform: rotate(45deg); /* IE 9 */
-        -webkit-transform: rotate(45deg); /* Safari */
-        transform: rotate(45deg);
+  .calling {
+    margin-top: 120px;
+    .img {
+      border-radius: 50%;
+      border: 2px solid #f1f1f1;
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
 
-    &.button-accept {
-      background-color: #449d44;
+    .name {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
+
+    .option {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+
+  .button-action {
+    position: fixed;
+    bottom: 70px;
+    width: 100%;
+
+    button {
+      width: 80px;
+      height: 45px;
+    }
+
+    .button-md-danger {
+      color: #fff;
+    }
+  }
+
+  #local-video {
+    width: 90px;
+    height: 120px;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    object-fit: contain;
+  }
+
+  #remote-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -2;
+
+    &.desktop {
+      object-fit: contain;
+    }
+  }
+}
+
+ion-app {
+  background-color: transparent !important;
+}
+
+.ios .ion-page.show-page ~ .nav-decor {
+  background-color: transparent !important;
+}
+
+.close-call {
+  ion-icon {
+    transform: rotate(135deg);
+  }
+}
+
+.close-call {
+  background-color: #f53d3d !important;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: #f53d3d !important;
+  }
+}
+
+body.call-minize {
+  .view-call.active {
+    display: none !important;
+  }
+
+  .tab-content-app.hidden {
+    display: block !important;
+  }
+
+  .toolbar-title {
+    ion-icon {
+      display: none !important;
+    }
+  }
+
+  .toolbar-title ion-icon {
+    &.icon-open-call {
+      display: block !important;
+    }
+  }
+}
+
+.start-call {
+  background-color: #50ba69 !important;
+  ion-icon {
+    transform: rotate(-90deg);
+  }
+}
+
+.action-list {
+  position: fixed;
+  width: 100%;
+  bottom: 10px;
+  display: flex;
+  button {
+    background-color: transparent !important;
+    margin: 0 10px;
+    color: #fff !important;
+
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+}
+
+.get-back-button {
+  background-color: #f53d3d !important;
+  font-size: 20px !important;
+  display: none;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 20px;
+  bottom: 60px;
+}
+
+body.call-minize {
+  .get-back-button {
+    display: block;
   }
 }
