@@ -1,4 +1,4 @@
-let baseWebrtc = "https://hybridappmarket.com";
+let baseWebrtc = "https://video.futucare.com/";
 export const Config = {
   url: "https://futucare.com/api", //52.224.110.147
   common_url: "https://futucare.com/api/",
@@ -23,7 +23,7 @@ export const Config = {
   },
   oneSignalAppId: "ea88ab2e-2454-41cc-8826-a2a193905061",
   webrtc: {
-    turn: baseWebrtc + "/api/turn",
-    rtc: "https://rtcmulticonnection.herokuapp.com:443/"
+    turn: baseWebrtc + "api/turn",
+    rtc: baseWebrtc
   }
 };
