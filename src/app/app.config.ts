@@ -1,3 +1,4 @@
+let baseWebrtc = "https://video.futucare.com/";
 export const Config = {
   url: "https://futucare.com/api", //52.224.110.147
   common_url: "https://futucare.com/api/",
@@ -20,5 +21,9 @@ export const Config = {
       update: "/api/users/"
     }
   },
-  oneSignalAppId: "ea88ab2e-2454-41cc-8826-a2a193905061"
+  oneSignalAppId: "ea88ab2e-2454-41cc-8826-a2a193905061",
+  webrtc: {
+    turn: baseWebrtc + "api/turn",
+    rtc: baseWebrtc
+  }
 };

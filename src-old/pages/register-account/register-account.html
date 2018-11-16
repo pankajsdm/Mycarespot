@@ -1,0 +1,122 @@
+<div class="ion-content">
+    
+
+
+    <div class="top" *ngIf="!verificationProcess">
+        <div class="top-icon">
+            <div class="circle_icon" (click)="uploadImageCom.click()">
+                    <ion-icon ios="ios-person" md="md-person" [ngClass]="{'file_invalid': isSubmitted && !filechooser}"></ion-icon> 
+                <span class="camera-span"><ion-icon name="camera"></ion-icon></span>
+                <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
+            </div>   
+        </div>      
+    </div>
+
+    <div class="top" style="background-color: #0099ff !important;" *ngIf="verificationProcess">
+        <div class="circle_icon"> 
+            <img [src]="selectedPicture" />   
+        </div>         
+    </div> 
+
+
+    <!-- <div class="top" *ngIf="!verificationProcess">
+        <div class="circle_icon">
+            <img src="assets/img/circle_plus.png" />     
+        </div>         
+    </div>
+
+    <div class="top" style="background-color: #0099ff !important;" *ngIf="verificationProcess">
+        <div class="circle_icon"> 
+            <img src="assets/img/logo.png" />   
+        </div>         
+    </div>  -->
+
+    
+
+    <ion-content class="no-scroll">
+
+        <form *ngIf="!verificationProcess" id="registro" class="center" [formGroup]="registerForm" (ngSubmit)="submitRegistration()">
+
+            <label id="registrateYConsultaAUnProvedor-input2">
+                <ion-input type="text" placeholder="Primer nombre" [(ngModel)]='user.FirstName' formControlName="FirstName" [ngClass]="{ 'input_invalid': isSubmitted && check.FirstName.errors }"></ion-input>
+            </label>
+            
+            
+
+            <label id="registrateYConsultaAUnProvedor-input3">
+                <ion-input type="text" placeholder="Apellido paterno" [(ngModel)]='user.LastName' formControlName="LastName" [ngClass]="{ 'input_invalid': isSubmitted && check.LastName.errors }"></ion-input>
+            </label>
+
+            <ion-item class="fecha">
+                <ion-label class="label_text">Fecha de Nacimiento</ion-label>
+                <ion-datetime class="fechaClick" displayFormat="DD-MMMM-YYYY" pickerFormat="DD-MMMM-YYYY" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth" cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
+            </ion-item>
+
+            <div class="gap" style="float:left; width: 100%;margin-top: 5px;" *ngIf="registration_type"></div>
+
+            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="registration_type">
+                <ion-input  type="email" placeholder="Correo Electrónico" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
+            </label>
+            
+
+            <div class="gap" style="float:left; width: 100%;margin-top: 5px;" *ngIf="!registration_type"></div>
+
+            <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type" >
+                <div class="phone_number">
+                    <div class="select-ios" (click)="presentProfileModal()">
+                        <div class="select-text">{{set_country_code}}</div>
+                    </div>
+
+                    <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+                </div>
+            </label>
+
+            <div class="gap" style="margin-bottom:5px; float:left; width: 100%;" *ngIf="!registration_type"></div>
+
+            <!-- <label id="registrateYConsultaAUnProvedor-input5" *ngIf="!registration_type">
+                <div class="phone_number">
+                    <ion-select interface="popover" [(ngModel)]="user.country_code" formControlName="country_code">
+                        <ion-option value="PR +1">PR +1</ion-option> 
+                        <ion-option value="Ind +91">Ind +91</ion-option> 
+                        <ion-option value="Aus +61">Aus +61</ion-option> 
+                    </ion-select>
+                    <ion-input  type="text" placeholder="Teléfono celular" [(ngModel)]='user.mobilePhone' formControlName="mobilePhone" [ngClass]="{ 'input_invalid': isSubmitted && check.mobilePhone.errors }"></ion-input>
+                </div>
+            </label> -->
+            
+
+            <label id="registrateYConsultaAUnProvedor-input7">
+                <ion-input type="password" placeholder="Contraseña" [(ngModel)]='user.password' formControlName="password" ng-minlength="8" ng-maxlength="20" [ngClass]="{ 'input_invalid': isSubmitted && check.password.errors }"></ion-input>
+            </label>
+
+            <label>
+                <ion-input ng-model="confirm" type="password" [(ngModel)]='user.c_password' formControlName="c_password" placeholder="Confirmar contraseña" ng-minlength="2" [ngClass]="{ 'input_invalid': isSubmitted && check.c_password.errors }"></ion-input>
+            </label>
+
+            <label>
+                <ion-segment [(ngModel)]="user.Gender" formControlName="Gender" [ngClass]="{ 'input_invalid': isSubmitted && check.Gender.errors }">
+                    <ion-segment-button value="1" style="width:100px;">Hombre</ion-segment-button>
+                    <ion-segment-button value="2" style="width:100px;">Mujer</ion-segment-button>
+                </ion-segment>
+            </label>
+
+            <button type="submit"  class="button">Regístrate</button> 
+        </form>
+
+        <form *ngIf="verificationProcess" id="registro" class="center" [formGroup]="verifyForm" (ngSubmit)="tokenVerification()">
+            <p>Please enter token in order to verify your cellphone number.</p>
+            <div class="phone_number">
+                <ion-input type="number" placeholder="Teléfono celular" [(ngModel)]='verf.code' formControlName="code" [ngClass]="{ 'input_invalid': isSubmittedVrfToken && vrfToken.code.errors }"></ion-input>
+            </div>
+        
+        <button type="submit" class="button">Send</button> 
+        </form>
+    </ion-content>
+</div>
+
+
+<ion-footer class="main-footer" [hidden]="keyboard.isOpen()">
+        <ion-toolbar (click)="goToLogin()">
+            <ion-title>¿Ya tienes cuenta?</ion-title>
+        </ion-toolbar>
+    </ion-footer>

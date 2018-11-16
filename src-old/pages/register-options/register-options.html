@@ -1,0 +1,46 @@
+<ion-header>
+        <div class="top">
+            <img src="assets/img/logo.png">
+            <p>Regístrate para ver tus registros médicos, hacer citas y consultar proveedores.</p>
+        </div>
+    </ion-header>
+    <ion-content class="no-scroll">
+            <div class="pad_rlt">
+                <div class="register_option_text">
+                    <p>Puedes registrarte utilizando cualquiers de las siguientes opciones:</p>
+                </div>
+                <div class="social-btn1">
+                    <button class="btnFacebook" (click)="facebook() ">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                        <div class="special-text">Reg&iacute;strate con Facebook</div>
+                    </button>
+                    <button class="btnMail" (click)="register('mail')">
+                        <ion-icon name="mail"></ion-icon>
+                        <div class="special-text">Reg&iacute;strate con tu Email</div>
+                    </button>
+                    <button class="btnMobile" (click)="register('mobile')">
+                        <ion-icon name="phone-portrait"></ion-icon>
+                        <div class="special-text">Reg&iacute;strate con tu tel&eacute;fono</div>
+                    </button>
+                </div>
+            </div>
+        <div class="terminos ">
+            <h5>Al registrarte, confirmas que leiste nuestros</h5>
+            <div class="term_privacy ">
+                <a (click)="attached('t')" >Terminos de Uso</a>
+                <a (click)="attached('t')">y</a>
+                <a (click)="attached('p')">Politicas de privacidad</a>
+            </div>
+        </div>
+    </ion-content>  
+   <!--  <ion-footer>    
+        <div class="bottom">
+            <label>&iquest;Ya tienes cuenta?  <span class="link" (click)="goToLogin()">Entrar aquí</span></label>
+        </div>
+    </ion-footer> -->
+    <ion-footer class="main-footer">
+        <ion-toolbar (click)="goToLogin()">
+            <ion-title>¿Ya tienes cuenta?</ion-title>
+        </ion-toolbar>
+    </ion-footer>
+    

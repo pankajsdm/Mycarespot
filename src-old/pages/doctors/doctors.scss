@@ -1,0 +1,87 @@
+
+page-doctors {
+    /* Common css*/
+    .item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .toolbar-background {background: #f7f7f7;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #555555; font-size: 15px;}
+   
+    
+    /* Ended common css*/
+
+    /* Main Css*/
+    .bar-buttons-ios .bar-button-default-ios{height: 37px;}
+    //.content-ios .scroll-content{margin-top: 115px !important;}
+    ion-buttons {margin: 0;}
+    .toolbar-md{padding: 0px;}
+    ion-item.item.item-block{border-bottom: 1px solid #d9d9d9; padding: 5px 10px !important; font-size: 14px;color:#555555;}
+    ion-item.item.item-block:hover{background-color: #d9d9d9;}
+    ion-col.col.col{float:left;}
+    .forward_icon ion-icon{color: #6b5b5b;}
+    .label-ios, .label-md {
+        margin:0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+}
+.flax_box .label-ios{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+.flax_box .item-inner{
+    padding-right: 0px;
+}
+.search_tag{
+    display: block;
+    width: 100%;
+    padding: 0px 0 10px 0;
+    margin: 0px;
+    float: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.searchbar-ios{
+    border-bottom: 0px;
+}
+.search_tag li{
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 13px;
+    background: #00B6FF;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+.search_tag li a{
+    float: right;
+    background: url(../../assets/img/cross.png) no-repeat right top;
+    background-size: 12px;
+    width: 13px;
+    height: 13px;
+}
+.item-ios h2{font-size: 15px;}
+.span-body {font-size:14px;color:#555555; font-weight: normal;}
+.toolbar-background-md{
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d9d9d9;
+}
+.tabs-ios .tabbar{
+    border-top: 1px solid #d9d9d9;
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios{
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #f7f7f7;
+}
+.toolbar-background-ios {
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0px;
+}
+

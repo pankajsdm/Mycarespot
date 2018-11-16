@@ -1,8 +1,8 @@
 page-pharmacy-add {
     .item-md.item-block .item-inner{padding-right: 0px;}
     .card-md, .card-ios{width: 100%; margin: 0;}
-    .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-    .toolbar-background {background: #0099ff;}
+    .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
+    .toolbar-background {background: #00b4ff;}
     ion-title{text-align: center;}
     ion-title .toolbar-title{color: #ffffff;}
     /* Ended common css*/
@@ -13,11 +13,16 @@ page-pharmacy-add {
     ion-buttons {margin: 0;}
     .bar-button-default-md, .bar-button-default-ios{color: #fff;}
     .toolbar-md{padding: 0px;}
-    ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
+    ion-item.item.item-block{border-bottom: 1px solid #ddd;}
     ion-col.col.col{float:left;}
     .forward_icon ion-icon{color: #6b5b5b;}
   
-  
+    .finalizar .button-inner{
+      color: #585757 !important;
+      font-size: 11px !important;
+      font-weight: bold !important;
+    }  
+
     .back-button {
         width: 0px;
         color: #fff;
@@ -26,7 +31,7 @@ page-pharmacy-add {
     .add_menor {
         margin-top: 13px;
         float: left;
-        color: #0099ff;
+        color: #00b4ff;
     }
   
     .form_label {
@@ -59,7 +64,7 @@ page-pharmacy-add {
         position: relative;
       }
       .circle_icon ul li.active {
-        background: #0099ff;
+        background: #00b4ff;
       }
       .circle_icon ul li:after {
         content: '';
@@ -75,7 +80,7 @@ page-pharmacy-add {
         content: none;
       }
       .circle_icon ul li.fill:after {
-        background: #0099ff;
+        background: #00b4ff;
       }
       .pad_rlt_10{padding: 0 10px; display: block;}
       .pad_rlt_25{padding: 0 25px; display: block;}

@@ -1,0 +1,40 @@
+page-adjustments {
+    .item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
+    .toolbar-background {background: #0099ff;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #ffffff;}
+    /* Ended common css*/
+   
+    /* Main Css*/
+    .bar-buttons-ios .bar-button-default-ios{height: 37px;}
+    //.content-ios .scroll-content{margin-top: 115px !important;}
+    ion-buttons {margin: 0;}
+    .bar-button-default-md, .bar-button-default-ios{color: #fff;}
+    .toolbar-md{padding: 0px;}
+    ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
+    ion-col.col.col{float:left;}
+    .forward_icon ion-icon{color: #6b5b5b;}
+
+    .profile_img {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        overflow: hidden;
+        border: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        img{width: 100%;}
+    }
+    .text_center_flex{    
+        display: flex;
+        justify-content: space-around;
+    }   
+    .list-header-md, .list-header-ios{height: 40px;margin-bottom: 0;border-bottom: 1px solid #ccc;border-top: none;}
+    .image_container_profile{border-bottom: 1px solid #d9d9d9 !important;}
+    .image_container_profile .user_name{color: #00b6ff;margin: 10px 0px 5px;}
+    .details-row{border-bottom: 1px solid #d9d9d9;padding: 10px;}
+   
+}

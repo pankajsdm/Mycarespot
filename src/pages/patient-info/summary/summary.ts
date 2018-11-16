@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { InsuranceDetailPage } from './../insurance-list/insurance-detail/insurance-detail';
 import { DoctorsPage } from "../../doctors/doctors";
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
+import { VisitingCostPage } from './../visiting-cost/visiting-cost';
 
 @Component({
   selector: 'page-summary',
@@ -17,7 +18,7 @@ export class SummaryPage {
     public navParams: NavParams,
     public authService: CommonServiceProvider
   ) {
-  } 
+  }   
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SummaryPage');
@@ -25,6 +26,10 @@ export class SummaryPage {
   }
 
   details(){
+    this.navCtrl.push(VisitingCostPage);
+  }
+
+  editDetail(){
     this.navCtrl.push(InsuranceDetailPage);
   }
 

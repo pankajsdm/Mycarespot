@@ -1,0 +1,57 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title><h2 class="user_image"><img [src]="user_picture" alt="picture"/></h2>Síntomas</ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+  <form class="pad_rlt_25">
+    <div class="circle_icon">
+      <ul>
+        <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
+        <li class="active">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+      </ul>
+    </div>
+  </form>
+  <div class="clearfix"><h2 class="form_label">¿Desde cuando est&aacute; presentando estos s&iacute;ntomas?</h2></div>
+  <div class="clearfix loadingSpinner" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+  </div>
+  <ion-card>
+    <ion-item (click)="riskFactors('Hoy')">
+      <h2>Hoy</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="riskFactors('Ayer')">
+      <h2>Ayer</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_semana')">
+      <h2>Hace alrededor de 1 semana</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_un_mes')">
+      <h2>Hace alrededor de 1 un mes</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="riskFactors('Hace_alrededor_de_1_un_año')">
+      <h2>Hace alrededor de 1 un año</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="riskFactors('Hace_mas_de_1_un_año')">
+      <h2>Hace mas de 1 un año</h2>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer>

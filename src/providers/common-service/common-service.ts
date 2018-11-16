@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, ViewChild } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from "../../app/app.config";
@@ -12,10 +12,12 @@ export class CommonServiceProvider {
   common_url = Config.common_url;
   api_url = Config.api_url;
   action: Boolean = false;
-
+  public loading: any;
   constructor(
     public http: Http, 
-    private alertCtrl: AlertController
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
     ) {
     }
 
@@ -93,6 +95,14 @@ export class CommonServiceProvider {
     });
   }
 
+  presentAlert(title, msg, button) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: msg,
+      buttons: [button]
+    });
+    alert.present();
+  }
 
 
   cancle(){
@@ -116,6 +126,36 @@ export class CommonServiceProvider {
     });
     alert.present()
   }
+
+  presentToast(msg, position) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 10000,
+      position: position,
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
+  showLoader(title = 'Processing...'){
+    this.loading = this.loadingCtrl.create({
+        content: title,
+        spinner: 'bubbles',
+        cssClass: 'spinner-loading'
+    });
+    this.loading.present();
+  }
+
+  hideLoader() {
+    this.loading.dismiss();
+  }
+
+
 
 
 

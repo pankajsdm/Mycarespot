@@ -1,6 +1,7 @@
 import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, Platform  } from 'ionic-angular';
-
+import { Geolocation, Geoposition} from '@ionic-native/geolocation';
+import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 
 @Component({
   selector: 'page-pharmacy-map',
@@ -8,26 +9,13 @@ import { NavController, NavParams, Platform  } from 'ionic-angular';
 })  
 
 export class PharmacyMapPage {
-  @ViewChild('map') mapElement: ElementRef;
-  map: any;
-  markers: any;
-  autocomplete: any;
-  GoogleAutocomplete: any;
-  GooglePlaces: any;
-  geocoder: any
-  autocompleteItems: any;
-  loading: any;
 
-  constructor( 
 
-  ) {
 
   
-
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Map Phage');
   }
-
- 
-  
 
 
 }

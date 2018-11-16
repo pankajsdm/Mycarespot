@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Mis Documentos</ion-title>
+        <ion-buttons right class="right_button" (click)="uploadImageCom.click()">
+            <button ion-button color="royal">
+                <ion-icon name="cloud-upload"></ion-icon>
+                <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header> 
+
+<ion-content>
+      <div class="no_data_found" *ngIf="isLoading">
+        <ion-spinner></ion-spinner>
+      </div>
+
+      <ion-card class="document" *ngIf="!isLoading">  
+        <ion-item *ngFor="let item of lists" (click)="details(item._id, item.file_url)">
+          <ion-col class="col" col-2>
+              <img [src]="item.file_url">
+          </ion-col>
+          <ion-col class="col" col-9>
+            <h2>{{item.file_name}}</h2>
+            <p>11 de Julio del 2018 @ 9:00 PM</p>   
+          </ion-col>
+          <ion-col class="col forward_icon" col-1 (click)="docProfile()">
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+      </ion-card>
+
+      <div class="no_data_found" *ngIf="lists?.length<1">{{nodata_found}}</div>
+</ion-content>
+

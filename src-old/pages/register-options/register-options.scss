@@ -1,0 +1,134 @@
+page-register-options {
+    .top{
+        padding: 0px 40px !important;
+        height: 250px !important;
+        img{padding: 70px 0px 0px 0px !important}
+        p{font-weight: bold;}
+    }
+    .social-btn1 .special-text {
+        display: inline-block;
+        height: 27px;
+        vertical-align: middle;
+    }
+    .social-btn1 ion-icon {
+        font-size: 30px !important;
+        margin: 0px 5px 0px 0px;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+        color: #ffffff;
+    }
+    .btnFacebook{
+        width:100%; 
+        margin: 10px auto;
+        background-color:#3b5998;
+        text-align: center;
+        color:white; 
+        position: relative !important;
+        padding: 2px !important;
+        height: 44px;
+    }
+    .btnMail{
+        width: 100%;
+        margin: 10px auto;
+        background-color:#e8e8ea;
+        text-align: center;
+        color:white; 
+        position: relative !important;
+        padding: 2px !important;
+        height: 44px;
+    }
+    .btnMobile{
+        width: 100%;
+        margin: 10px auto;
+        background-color:#0099ff;
+        text-align: center;
+        color:white; 
+        position: relative !important;
+        padding: 2px !important;
+        height: 44px;
+    }
+    .scroll-content{
+        margin-top: 285px !important;
+    }
+    .separador{
+        position: relative;
+        height: 30px;
+        border-bottom: 2px solid #eeeeee;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .lao{
+        color: #BDBDBD;
+        text-align: center;
+        margin: 0 0 0 46%;
+        padding: 10px;
+        background-color: white;
+        position: absolute;
+        bottom:-16px;
+    }
+    .registrate{
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1em;
+        p{
+            text-align: center;
+            color: #0099ff;
+        }
+    }
+    .terminos{
+        margin-bottom: 15px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        h5{
+            color:#555555;
+            font-size: 13px;
+            margin-top:0px;
+            text-align: center; 
+            padding-top: 0px;
+            margin-bottom: 0px;
+        }
+        .link{
+            color: #0099ff;
+            margin-top: -30px;
+        }
+    }
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+    .register_option_text{ 
+        margin: 0px 0px 15px 0px; 
+        width: 100%;
+    }
+    .register_option_text p{ 
+        font-weight: normal; 
+        color: #555555;
+        font-size: 14px; 
+        margin: 0px;
+    }
+    .terminos a{
+        color: #0099ff;
+        text-align: center;
+        font-size: 13px;
+        width: 100%;
+    }
+    .term_privacy{
+        text-align:center;
+    }
+    .term_privacy span {
+        color: #757575; 
+        width:1%; 
+        float:left;
+    }
+    .bottom {
+        padding: 15px 0;
+        border-top: none; 
+        background: #fff;
+    } 
+    .pad_rlt{
+        display: block;
+        padding: 0px 35px 0px 35px;
+    }
+}

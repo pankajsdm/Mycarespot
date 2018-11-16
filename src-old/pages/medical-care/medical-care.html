@@ -1,0 +1,25 @@
+
+
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Cuidado Medico</ion-title>
+      <ion-buttons end (click)="openMenu()">
+        <button ion-button icon-only color="royal"  class="top-little">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-scroll">
+  <ion-card>
+    <ion-item (click)="suppliers()">
+      <span>Todos lo Proveedores</span>
+      <ion-icon class="pull-right" name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="suppliers()">
+      <span>Mis proveedores favoritos</span>
+      <ion-icon class="pull-right" name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-card>
+</ion-content>

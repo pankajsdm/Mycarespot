@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>Todos los Proveedores</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="no_data_found" *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+  </div>
+  <ion-card *ngIf="!isLoading">
+    <ion-item *ngFor="let doctor of doctors" class="flax_box" (click)="docProfile(doctor._id, doctor.avatar)">
+      <ion-avatar item-start style="margin: 0px 6px 0px 0px;">
+        <img [src]="doctor.avatar">
+      </ion-avatar>
+      <span class="span-body">Dr. {{doctor.firstName}} {{doctor.lastName}}</span>
+      <ion-icon name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-card>
+</ion-content>

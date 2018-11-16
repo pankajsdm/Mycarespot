@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="channel && channel.userShow">{{channel.userShow.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="royal" (click)="openCall({
+        video: true,
+        audio: true
+      })">
+        <ion-icon name="ios-videocam-outline"></ion-icon>
+      </button>
+      <button ion-button color="royal" (click)="openCall({
+        video: false,
+        audio: true
+      })">
+        <ion-icon name="ios-mic-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>
+
+  <div class="list-message" *ngIf="isLoading">
+    <ul>
+      <li *ngFor="let item of messages; let i = index" [ngClass]="{'to': item.from.userId == currentUser._id}">
+        <img [src]="item.from.avatar" alt="" class="avatar-user" *ngIf="item.from.userId != currentUser._id && item.from.avatar">
+        <div class="box-message">
+          <div class="text" *ngIf="item.text">
+            {{item.text}}
+          </div>
+          <div class="image-message" *ngIf="item.image">
+            <img [src]="item.image" alt="" style="    max-width: 280px;
+            max-height: 150px;">
+          </div>
+
+          <div class="file-message" *ngIf="item.file">
+            <a class="box-file" href="{{item.file}}" target="_blank">
+              <div class="file-icon">
+                <i class="fa fa-file" aria-hidden="true"></i>
+              </div>
+              <div class="file-name">{{item.fileName}}</div>
+            </a>
+          </div>
+
+          <div class="file-video" *ngIf="item.video">
+            <video width="320" height="240" controls [src]="item.video">
+            </video>
+          </div>
+          <div class="file-video" *ngIf="item.audio">
+            <audio width="320" controls [src]="item.audio">
+            </audio>
+          </div>
+          <div class="time">{{item.createdAt | date: 'shortTime'}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div padding class="text-center" *ngIf="!isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+</ion-content>
+
+<div class="footer horizontal layout center">
+  <button ion-button outline (click)="uploadImageCom.click()">
+    <ion-icon name="ios-add-outline"></ion-icon>
+    <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)">
+  </button>
+  <input type="text" placeholder="Text" [(ngModel)]="message.text">
+  <button ion-button outline (click)="sendMessage()">
+    <ion-icon name="ios-send-outline"></ion-icon>
+  </button>
+</div>

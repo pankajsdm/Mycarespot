@@ -37,7 +37,7 @@ export class TabsPage {
       
   this.tabs = [
       {root: FeedPage, icon: "home", enabled: false},
-      {root: MedicalCarePage, icon: "medkit", enabled: false},
+      {root: DoctorsPage, icon: "medkit", enabled: false},
       {root: ConversationPage, icon: "chatbubbles", enabled: false},
       //{root: NotificationsPage, icon: "notifications", enabled: false},
       {root: MyhealthPage, icon: "heart", enabled: false},

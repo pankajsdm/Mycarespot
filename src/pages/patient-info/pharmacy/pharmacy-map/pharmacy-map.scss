@@ -18,7 +18,7 @@ page-pharmacy-map {
         margin: 0;
     }
     .toolbar-background {
-        background: #0099ff;
+        background: #00b4ff;
     }
     ion-title {
         text-align: center;
@@ -74,7 +74,7 @@ page-pharmacy-map {
         .searchbar-ios.searchbar-left-aligned .searchbar-input {
             padding-left: 10px;
         }
-        .scroll-content{margin-top:52px !important;}
+        /* .scroll-content{margin-top:52px !important;} */
 
         .searchbar-md .searchbar-input,  .searchbar-ios .searchbar-input,{
             border-radius: 2px;
@@ -83,6 +83,29 @@ page-pharmacy-map {
 
         .my-location{position: relative;}
         .my-location .icon{color: #00b6ff; position: absolute; right: 30px; bottom: 95px; font-size: 45px;}
+
+        .info_content strong{ 
+            color: #000;
+            font-size: 12px;
+            margin-bottom: 5px;
+            text-align: center;
+            float: left;
+            width: 100%;
+        }
+        .info_content p{
+            margin: 0;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+        }
+        .info_content button{
+            border: 1px solid #00b4ff !important;
+            color: #00b4ff !important;
+            background: none;
+        }
+        .info_content .para_hidden{
+            display: none;
+        }
 
         
 }

@@ -1,13 +1,12 @@
 page-visiting-cost {
     .toolbar-background {
-        background: #0099ff;
+        background: #00b4ff;
       }
       ion-title {
         text-align: center;
       }
       ion-title .toolbar-title {
         color: #ffffff;
-        font-size: 1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -54,7 +53,7 @@ page-visiting-cost {
         position: relative;
       }
       .circle_icon ul li.active {
-        background: #0099ff;
+        background: #00b4ff;
       }
       .circle_icon ul li:after {
         content: '';
@@ -70,7 +69,7 @@ page-visiting-cost {
         content: none;
       }
       .circle_icon ul li.fill:after {
-        background: #0099ff;
+        background: #00b4ff;
       }
       .pad_rlt_10{padding: 0 10px; display: block;}
       .pad_rlt_25{padding: 0 25px; display: block;}
@@ -78,8 +77,8 @@ page-visiting-cost {
       .form_label{font-weight: bold;font-size: 13px; margin-top: 15px;margin-bottom:15px;float: left;color: #919191;}
 
       .user_info{
-        border-top: 1px solid #d9d9d9;
-        border-bottom: 1px solid #d9d9d9;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
         margin-top: -1px;
         display: flex;
         justify-content: space-between;
@@ -114,9 +113,9 @@ page-visiting-cost {
 
         }
         .item:hover{
-          background: #EDEDED; color: #0099ff;
-          .label-ios{color:#0099ff;}
-          ion-label{color: #0099ff !important;}
+          background: #EDEDED; color: #00b4ff;
+          .label-ios{color:#00b4ff;}
+          ion-label{color: #00b4ff !important;}
         }
         .item:last-child {
           min-width: 52px;
@@ -124,8 +123,8 @@ page-visiting-cost {
         }
         .item-md .radio-md{margin: 0px;}
         .item-radio-checked{background:#EDEDED;
-          .label-ios{color:#0099ff;}
-          ion-label{color: #0099ff !important;}
+          .label-ios{color:#00b4ff;}
+          ion-label{color: #00b4ff !important;}
         }
         .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #919191;}
         button{padding: 0px; margin: 0px; position: relative;}
@@ -194,7 +193,7 @@ page-visiting-cost {
       .discount{color:#ff3199;}
     }
     .text-input-ios, .text-input-md{
-      border: 1px solid #d9d9d9;
+      border: 1px solid #ddd;
       border-radius: 5px;
       padding: 5px 10px;
       margin: 0px;
@@ -205,14 +204,30 @@ page-visiting-cost {
     button{height: 40px;}
     .border_btn{
       background: #fff;
-      border: 2px solid #0099ff;
-      color: #0099ff;
+      border: 2px solid #00b4ff;
+      color: #00b4ff;
       transition: ease-in-out 0.5s;
       -webkit-transition: ease-in-out 0.5s;
       outline: none;
       &:hover{
-        background: #0099ff; 
+        background: #00b4ff; 
         color: #fff;
       }
     }
+
+    .item-ios, .item-md{padding-left: 8px;
+      h2 {font-size: 14px; font-weight: bold;}
+      p {font-size: 12px;}
+    }
+
+    .label-ios, .label-md {
+      margin:8px 0px 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-container ion-item{border-bottom: 1px solid #ddd !important;}
+    .card-container h3{font-weight: bold; font-size: 12px; color: #555555;}
+    .card-container p{font-size: 11px;font-weight: bold;}
 }

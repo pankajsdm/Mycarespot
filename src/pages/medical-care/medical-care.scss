@@ -26,6 +26,9 @@ ion-title .toolbar-title{
 ion-buttons {
     margin: 0;
 }
+.bar-button-default-md, .bar-button-default-ios{
+    color: #fff;
+}
 .item-md{
     border-bottom: 1px solid #d9d9d9;
     padding: 5px 10px !important;

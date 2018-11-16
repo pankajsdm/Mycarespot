@@ -1,5 +1,4 @@
 
-
 /* Defined required modules and component here */
 import {
   NgModule,
@@ -18,17 +17,18 @@ import { TimeAgoPipe } from "time-ago-pipe";
 import { MyApp } from "./app.component";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { Geolocation } from '@ionic-native/geolocation';
-
+import { Geolocation } from "@ionic-native/geolocation";
+import { Insomnia } from "@ionic-native/insomnia";
+import { Stripe } from '@ionic-native/stripe';
 //import {GoogleMaps} from '@ionic-native/google-maps';
 import { SafePipe } from "./pipe";
-  
-/* Defined page components here */
+    
+/* Defined page components here */ 
 import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { HomePage } from "../pages/home/home";
-import { FeedPage } from "../pages/feed/feed"; 
-import { NotificationsPage } from './../pages/notifications/notifications';
+import { FeedPage } from "../pages/feed/feed";
+import { NotificationsPage } from "./../pages/notifications/notifications";
 import { MedicalCarePage } from "./../pages/medical-care/medical-care";
 import { DoctorsPage } from "../pages/doctors/doctors";
 import { DoctorProfilePage } from "./../pages/doctor-profile/doctor-profile";
@@ -75,6 +75,7 @@ import { SummaryPage } from "./../pages/patient-info/summary/summary";
 import { InsuranceDetailPage } from "./../pages/patient-info/insurance-list/insurance-detail/insurance-detail";
 import { InsuranceListPage } from "./../pages/patient-info/insurance-list/insurance-list";
 import { VisitingCostPage } from "./../pages/patient-info/visiting-cost/visiting-cost";
+import { CardInfoPage } from './../pages/patient-info/visiting-cost/card-info/card-info';
 
 import { SchedulePage } from "./../pages/schedule/schedule";
 import { AppointmentsPage } from "./../pages/schedule/appointments/appointments";
@@ -136,12 +137,13 @@ import { TokenInterceptor } from "./app.token.interceptor";
     InsuranceDetailPage,
     InsuranceListPage,
     VisitingCostPage,
+    CardInfoPage,
 
     SchedulePage,
     AppointmentsPage,
     AppointmentsRequestPage,
     ListAppointmentsPage,
- 
+
     RecoveryPasswordPage,
     RegisterOptionsPage,
     RegisterAccountPage,
@@ -154,14 +156,14 @@ import { TokenInterceptor } from "./app.token.interceptor";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{
-      backButtonText: '',
-      backButtonIcon: 'ios-arrow-back',
-      iconMode: 'ios'
-    }), 
+    IonicModule.forRoot(MyApp, {
+      backButtonText: "",
+      backButtonIcon: "ios-arrow-back",
+      iconMode: "ios"
+    }),
     HttpModule,
     HttpClientModule
-  ], 
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -207,6 +209,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     InsuranceDetailPage,
     InsuranceListPage,
     VisitingCostPage,
+    CardInfoPage,
 
     SchedulePage,
     AppointmentsPage,
@@ -229,12 +232,14 @@ import { TokenInterceptor } from "./app.token.interceptor";
     SplashScreen,
     Facebook,
     Geolocation,
+    Insomnia,
     //GoogleMaps,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
+    Stripe,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CommonServiceProvider
   ]

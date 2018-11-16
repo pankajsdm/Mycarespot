@@ -1,0 +1,93 @@
+ion-app._gmaps_cdv_ .nav-decor{
+    background-color: transparent !important;
+}
+
+page-pharmacy-map {
+ /* Common css*/
+    .item-md.item-block .item-inner {
+        padding-right: 0px;
+    }
+
+    .back-button {
+        width: 0px;
+        color: #fff;
+    }
+    .card-md,
+    .card-ios {
+        width: 100%;
+        margin: 0;
+    }
+    .toolbar-background {
+        background: #0099ff;
+    }
+    ion-title {
+        text-align: center;
+    }
+    #map {
+        height: 100%;
+      }
+
+      .searchedListing {
+        display: block;
+        width: 100%;
+        padding: 0px 0 10px 0;
+        margin: 0px;
+        float: left;
+      }
+
+      .searchedListing li{
+          list-style: none;
+          display: block;
+          width: 100%;
+          padding: 10px 15px;
+          color: #000;
+          font-size: 13px;
+          margin: 2px 0px;
+          border-bottom: 1px solid #ccc;
+      
+      }
+
+        .searchbar-ios.searchbar-left-aligned .searchbar-search-icon{
+            right: 3px;
+            top: 19px !important;
+            left: initial !important;
+            background-size: 16px;
+        }
+        .searchbar-md.searchbar-left-aligned .searchbar-search-icon{
+          right: 3px;
+          top: 19px !important;
+          left: initial !important;
+          background-size: 16px;
+        }
+        .searchbar-ios{
+            border-top: none;
+            padding: 0;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        input.searchbar-input {
+            border: 1px solid #ccc;
+            padding-left: 12px;
+        }
+
+        .searchbar-ios.searchbar-left-aligned .searchbar-input {
+            padding-left: 10px;
+        }
+        .scroll-content{margin-top:52px !important;}
+
+        .searchbar-md .searchbar-input,  .searchbar-ios .searchbar-input,{
+            border-radius: 2px;
+            padding: 3px 20px 3px 10px;
+        }
+
+        .my-location{position: relative;}
+        .my-location .icon{color: #00b6ff; position: absolute; right: 30px; bottom: 95px; font-size: 45px;}
+
+        
+}
+.geolocation-btn{
+    margin: 0px;
+    padding: 0px;
+}
+  

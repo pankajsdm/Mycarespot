@@ -37,13 +37,13 @@ export class MedicalHistoryPhase4Page {
 
   medicalHistoryPhase5(val){
     if(this.online){
-      this.isLoading = true;
+      this.authService.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
           are_you_allergic_to_any_medications: val
       }
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
           this.lists =  result; 
           if(this.lists.code==200){
               this.navCtrl.push(MedicalHistoryPhase5Page);
@@ -51,7 +51,7 @@ export class MedicalHistoryPhase4Page {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
         this.presentToast('Something wrong! Please try later.');
       });
     }else{

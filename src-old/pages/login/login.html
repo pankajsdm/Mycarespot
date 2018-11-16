@@ -1,0 +1,39 @@
+<ion-header>
+    <div class="page-login top">
+        <img src="assets/img/logo.png">
+    </div>
+</ion-header>
+<ion-content class="no-scroll">
+    <div class="ion-content">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="pad_rlt">
+                <label>
+                    <ion-input type="email" placeholder="Correo Electrónico" [(ngModel)]="user.email" formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
+                </label>
+                <label>
+                    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="user.password" formControlName="password" [ngClass]="{ 'input_invalid': isSubmitted && check.password.errors }"></ion-input>
+                </label>
+                <button type="submit" id="entrar-button5" class="btn btn-primary pull-right">Entra</button>
+            </div> 
+
+            <div class="loadingSpinner"> 
+                <ion-spinner *ngIf="isLoading"></ion-spinner>  
+            </div>
+        </form>
+        <div class="pad_rlt">
+            <div id="entrar-markdown1"> 
+                <p class="reset"><a href="#" (click)="goToRecovery()">¿Olvido su contraseña?</a> </p> 
+            </div>
+            <span class="or">o</span>
+            <button class="btnFacebook" (click)="facebook() ">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <div class="special-text">Entra con Facebook</div>
+            </button>
+        </div>    
+    </div> 
+</ion-content>
+<ion-footer class="main-footer">
+    <ion-toolbar (click)="goToRegister()">
+        <ion-title>¿No tienes cuenta?</ion-title>
+    </ion-toolbar>
+</ion-footer>

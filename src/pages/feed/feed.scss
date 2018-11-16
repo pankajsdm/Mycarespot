@@ -23,6 +23,8 @@ page-feed {
         .item-ios ion-avatar[item-start]{
             margin: 0px 6px 0px 0px;
         }
+
+        .bar-buttons-ios .bar-button-default-ios{height: 37px;}
         .comment_container{border-top: 1px solid #d9d9d9;}
         .parent_comment img, .child_comment img{
             border-radius: 50%;

@@ -44,7 +44,7 @@ export class MedicalHistoryPage {
   medicalHistoryPhase2(){
 
     if(this.online){
-      this.isLoading = true;
+      this.authService.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
           have_you_been_diagnosed_with_any_of_the_following_conditions: {
@@ -58,7 +58,7 @@ export class MedicalHistoryPage {
           }
       } 
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
           this.lists =  result; 
           if(this.lists.code==200){
             this.navCtrl.push(MedicalHistoryPhase2Page);
@@ -66,7 +66,7 @@ export class MedicalHistoryPage {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
         this.presentToast('Something wrong! Please try later.');
       });
 

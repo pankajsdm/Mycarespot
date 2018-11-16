@@ -120,6 +120,7 @@ page-add-minor {
             width:100%;
           }
           .scroll-content{
+            margin-top: 70px!important;
             // margin-top: 0px !important;
             //overflow: visible;
           }
@@ -244,6 +245,7 @@ page-add-minor {
 
     .circle_icon img{
       width: 87px;
+      padding: 0;
     }
     .tab_section{
       .segment{border: 0px;box-shadow: none; border-radius: 0px;}

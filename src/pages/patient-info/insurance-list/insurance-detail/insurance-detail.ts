@@ -28,7 +28,7 @@ export class InsuranceDetailPage {
   }
 
   confirm(){
-    this.navCtrl.push(VisitingCostPage);
+    this.navCtrl.pop();
   }
 
   cancle() {

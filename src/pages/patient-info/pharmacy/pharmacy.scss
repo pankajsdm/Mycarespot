@@ -1,9 +1,9 @@
 page-pharmacy {
   /* Common css*/
-  .toolbar-background-md, .toolbar-ios{border-bottom:1px solid #d9d9d9;}
+  .item-md.item-block .item-inner{padding-right: 0px;}
   .card-md, .card-ios{width: 100%; margin: 0;}
-  .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-  .toolbar-background {background: #f7f7f7;}
+  .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
+  .toolbar-background {background: #00b4ff;}
   ion-title{text-align: center;}
   ion-title .toolbar-title{color: #ffffff;
     display: flex;
@@ -18,7 +18,7 @@ page-pharmacy {
   ion-buttons {margin: 0;}
   .bar-button-default-md, .bar-button-default-ios{color: #fff;}
   .toolbar-md{padding: 0px;}
-  ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
+  ion-item.item.item-block{border-bottom: 1px solid #ddd;}
   ion-col.col.col{float:left;}
   .forward_icon ion-icon{color: #6b5b5b;}
   ion-item.item.item-block:last-child{margin-bottom: 0px;}
@@ -31,76 +31,62 @@ page-pharmacy {
   .add_menor {
       margin-top: 13px;
       float: left;
-      color: #0099ff;
+      color: #00b4ff;
   }
 
-  .form_label{font-weight: bold;font-size: 14px;padding: 15px 10px 15px 10px; width: 100%; border-bottom: 1px solid #d9d9d9; float: left;color: #555555; margin:0px 0px 15px 0px;}
-    .circle_icon ul {
-      padding: 15px 20px 0px 20px !important;
-      background-color: #ffffff;
-      margin: 0px !important;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
+  .form_label {
+      font-size: 13px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      float: left;
+      color: #585757;
+      font-weight: bold;
+  }
+
+
+
+  .circle_icon ul {
+      padding: 0;
+      margin: 14px 0px;
       display: flex;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
       justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
       align-items: center;
-      border-bottom: none;
     }
     .circle_icon ul li {
       list-style: none;
       padding: 0px;
-      line-height: 25px;
-      font-size: 12px;
-      font-weight: normal;
-      width: 25px;
-      height: 25px;
+      line-height: 15px;
+      font-size: 10px;
+      font-weight: bold;
+      width: 15px;
+      height: 15px;
       text-align: center;
-      background: #e8e8ea;
+      background: #ededed;
       border-radius: 100%;
-      color: #a1a1a1;
+      color: #fff;
       position: relative;
-      border: 1px solid #e8e8ea;
     }
     .circle_icon ul li.active {
-      background: #ffffff;
-      border: 1px solid #0099ff;
-      color: #0099ff;
-    }
-    .circle_icon ul li.fill {
-      background: #0099ff;
-      border: 1px solid #0099ff;
-      color: #ffffff;
+      background: #00b4ff;
     }
     .circle_icon ul li:after {
       content: '';
-      //position: absolute;
-      //top: 11px;
-      //height: 1px;
-      //background: #a1a1a1;
-      //left: 15px;
-      //width: 57px;
-      //z-index: 0;
+      position: absolute;
+      top: 7px;
+      height: 2px;
+      background: #ededed;
+      left: 15px;
+      width: 45px;
+      z-index: 0;
     }
     .circle_icon ul li:last-child:after {
       content: none;
     }
     .circle_icon ul li.fill:after {
-      background: #0099ff;
+      background: #00b4ff;
     }
-    .add_menor {
-      margin-top: 13px;
-      float: left;
-      color: #0099ff;
-    }
-    .pad_rlt_10{padding: 0px; display: block;}
-    .pad_rlt_25{padding: 0px; display: block;}
+    .pad_rlt_10{padding: 0 10px; display: block;}
+    .pad_rlt_25{padding: 0 15px; display: block;}
     .item-ios, .item-md{padding-left: 8px;
       h2 {
           font-size: 14px; font-weight: bold;

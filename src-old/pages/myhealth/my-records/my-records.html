@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Mi Registros</ion-title>
+        <ion-buttons end>
+          <button ion-button color="royal"></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+      <ion-item (click)="sheets()">
+        <ion-col class="col" col-11>
+            <h2>Sábanas </h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="diagnostics()">
+        <ion-col class="col" col-11>
+            <h2>Diagnósticos</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="social_history()">
+        <ion-col class="col" col-11>
+            <h2>Historia Social</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="past_medical_history()">
+        <ion-col class="col" col-11>
+            <h2>Historia medica pasada</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="advanced_directives()">
+        <ion-col class="col" col-11>
+            <h2>Directrices avanzadas</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="allergies()">
+        <ion-col class="col" col-11>
+            <h2>Alergias</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+      <ion-item (click)="medications()">
+        <ion-col class="col" col-11>
+            <h2>Medicamentos</h2>
+        </ion-col>
+        <ion-col class="col forward_icon" col-1>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-item>
+
+    </ion-card>
+    </ion-content>
+  

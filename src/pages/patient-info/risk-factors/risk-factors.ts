@@ -78,7 +78,7 @@ export class RiskFactorsPage {
   selectAffirmations(){
 
     if(this.online){
-     this.isLoading = true;
+      this.authService.showLoader();
       let data = {
           patient_user_id: this.current_user._id,
           select_the_affirmations_that_apply_to_you: {
@@ -91,7 +91,7 @@ export class RiskFactorsPage {
           }
       } 
       this.authService.post('patient/addHealthQuestions', data).then((result) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
           this.lists =  result; 
           if(this.lists.code==200){
             this.navCtrl.push(MedicalHistoryPage);
@@ -99,7 +99,7 @@ export class RiskFactorsPage {
               this.presentToast(this.lists.message);
           }
       },(err) => {
-        this.isLoading = false;
+        this.authService.hideLoader();
         this.presentToast('Something wrong! Please try later.');
       });
 

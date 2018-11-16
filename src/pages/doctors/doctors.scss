@@ -6,6 +6,7 @@ page-doctors {
     .toolbar-background {background: #f7f7f7;}
     ion-title{text-align: center;}
     ion-title .toolbar-title{color: #555555; font-size: 15px;}
+    .back-button{width:0px;color: #fff;}
    
     
     /* Ended common css*/
@@ -14,6 +15,7 @@ page-doctors {
     .bar-buttons-ios .bar-button-default-ios{height: 37px;}
     //.content-ios .scroll-content{margin-top: 115px !important;}
     ion-buttons {margin: 0;}
+    .bar-button-default-md, .bar-button-default-ios{color: #555555;}
     .toolbar-md{padding: 0px;}
     ion-item.item.item-block{border-bottom: 1px solid #d9d9d9; padding: 5px 10px !important; font-size: 14px;color:#555555;}
     ion-item.item.item-block:hover{background-color: #d9d9d9;}

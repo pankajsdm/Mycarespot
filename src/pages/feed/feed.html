@@ -28,9 +28,11 @@
       <ion-card-content>
         <p class="inner-feed-p" *ngIf="feed.message">{{feed.message}}</p>
       </ion-card-content>
+
       <div *ngIf="feed.media" class="main-feed-image-container">
         <img src="{{backend_url}}{{feed.media}}">
       </div>
+
       <ion-row class="comment-like-text">
           <ion-col>
             <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
@@ -132,6 +134,9 @@
             </form>
         </ion-col>
     </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
 </ion-content>
 

@@ -608,6 +608,12 @@ html segment {
 .text-center {
   text-align: center;
 }
+
+.bar-button-md, .bar-button-default-ios {
+  color: #555555 !important;
+  font-size: 15px !important;
+  padding: 0px !important;
+}
 .no-padding {
   padding: 0;
 }
@@ -639,13 +645,13 @@ html segment {
 span.back-button-text.back-button-text-ios {
   margin-left: 10px;
 }
-.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default, .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
-  color:#0099ff;
-  width:0px;
-}
+
+.back-button.show-back-button{width: 0px; padding: 15px !important; margin: 0px 0px 0px 0px !important; min-width: 0px !important; color:#0099ff}
 .back-button-icon-ios{
   font-size: 2.4rem;
 }
+
+
 .bottom .link {
   color: #0099ff;
   font-weight: bold;
@@ -849,7 +855,7 @@ span.back-button-text.back-button-text-ios {
 .tabs-ios .tab-button-icon, .tabs-md .tab-button-icon{
   margin-top: 0px;
   margin-bottom: 0px;
-  min-width: 24px;;
+  min-width: auto;
   height: auto;
   font-size: 24px;
   color: #555555;

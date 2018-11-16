@@ -1,11 +1,11 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span>Seguro Médico</ion-title>
-      <ion-buttons end class="right_button">
-        <button ion-button color="royal"><ion-icon name="md-create"></ion-icon></button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span>Seguro Médico</ion-title>
+    <ion-buttons end class="right_button" (click)="editDetail()">
+      <button ion-button color="royal"><ion-icon name="md-create"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
   
   <ion-content>
     <form>
@@ -49,17 +49,6 @@
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </ion-col>
         </ion-item>
-
-        <ion-item (click)="details()">
-          <ion-col class="col" col-11>
-            <h2>Triple S</h2>
-            <p>Rafael J. Esteves</p>
-            <p>123456789</p>
-          </ion-col>
-          <ion-col class="col forward_icon" col-1>
-            <ion-icon name="ios-arrow-forward"></ion-icon>
-          </ion-col>
-        </ion-item> 
       </ion-card>
 
     </form>

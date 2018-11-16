@@ -1,0 +1,85 @@
+page-medical-care {
+/* Common css*/
+.item-md.item-block .item-inner{
+    padding-right: 0px;
+}
+.card-md, .card-ios{
+    width: 100%; margin: 0;
+}
+.toolbar-background {
+    background: #f7f7f7;
+}
+ion-title{
+    text-align: center;
+}
+ion-title .toolbar-title{
+    color: #555555; 
+    font-size:15px
+}
+.no-scroll .scroll-content{
+    overflow: hidden;
+/* Ended common css*/
+
+/* Main Css*/ 
+}
+//.content-ios .scroll-content{margin-top: 115px !important;}
+ion-buttons {
+    margin: 0;
+}
+.item-md{
+    border-bottom: 1px solid #d9d9d9;
+    padding: 5px 10px !important;
+}
+.item-ios{
+    padding: 5px 10px !important;
+}
+.item-md:hover, .item-ios:hover{
+    background-color: #d9d9d9;
+}
+ion-col.col.col{
+    float:left;
+}
+ion-icon .pull-right{
+    color: #555555 !important;
+}
+.item-inner{
+    padding: 0px !important;
+}
+.label-ios{
+    margin-right: 0px !important;
+}
+.item-md h2{
+    margin: 0px;
+    font-size: 14px;
+    font-weight: normal;
+}
+.label-md, .label-ios{
+    font-size: 14px;
+    color: #555555;
+    font-weight: normal;
+}
+.item-md col{
+    padding:0px;
+}
+.pull-right{
+    float: right;
+}
+.card-ios > .item:last-child{
+    border: 1px solid #d9d9d9;
+}
+.tabs-ios .tabbar{
+    border-top: 1px solid #d9d9d9;
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios{
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #f7f7f7;
+}
+.toolbar-background-ios {
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0px;
+}
+
+}
