@@ -46,6 +46,7 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="AllowInlineMediaPlayback" value="true" />
         <hook src="hooks/iosrtc-swift-support.js" type="after_platform_add" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
@@ -126,6 +127,8 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyBn6Ew0FQxCU2_C4Yi5yo2qJ2qFvjG2MSo" />
     </plugin>
     <plugin name="onesignal-cordova-plugin" spec="2.4.4" />
-    <engine name="android" spec="^7.1.1" />
+    <plugin name="cordova-plugin-insomnia" spec="4.3.0" />
+    <plugin name="cordova-plugin-stripe" spec="^1.5.3" />
     <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.0.0" />
 </widget>
