@@ -21,12 +21,15 @@
   </div>
     
   <div id="feedContainer" *ngIf="!isLoading">
-    <ion-card *ngFor="let feed of feeds; let i=index">
+    <ion-card id="card_{{feed._id}}" *ngFor="let feed of feeds; let i=index">
       <ion-item>
         <ion-avatar item-start> 
           <img [src]="feed.created_by_user_id[0].avatar">
         </ion-avatar>
-        <h2>{{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}</h2>
+        <h2>
+          {{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}
+          <!--<span class="action" (click)="action(feed._id)"><ion-icon name="more"></ion-icon></span> -->
+        </h2>
         <p>{{feed.createdAt | date}}</p>   
       </ion-item>
       <ion-card-content>
@@ -135,30 +138,10 @@
             </form>
         </ion-col>
     </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
   </div>
+
 </ion-content>
-
 <style>.social-cards ion-col {padding: 0;}</style>
-
-<!-- <div [innerHTML]="feed.like | like: feed._id"></div> -->
-<!-- <ion-header>
-  <ion-navbar>
-      <img src="assets/img/logo.png">
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header> -->
-
-<!-- <ion-header>
-    <div class="top-little">
-      <img src="assets/img/logo.png">
-    </div>
-    <ion-buttons end>
-        <button ion-button icon-only (click)="presentPopover($event)">
-          <ion-icon name="more"></ion-icon>
-        </button>
-      </ion-buttons>
-</ion-header> -->
