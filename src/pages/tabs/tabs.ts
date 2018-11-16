@@ -37,11 +37,11 @@ export class TabsPage {
       
   this.tabs = [
       {root: FeedPage, icon: "home", enabled: false},
-      {root: MedicalCarePage, icon: "briefcase", enabled: false},
-      {root: ConversationPage, icon: "chatboxes", enabled: false},
-      {root: NotificationsPage, icon: "notifications", enabled: false},
+      {root: MedicalCarePage, icon: "medkit", enabled: false},
+      {root: ConversationPage, icon: "chatbubbles", enabled: false},
+      //{root: NotificationsPage, icon: "notifications", enabled: false},
       {root: MyhealthPage, icon: "heart", enabled: false},
-      {root: SchedulePage, icon: "calendar", enabled: false},
+      //{root: SchedulePage, icon: "calendar", enabled: false},
     ];  
     
     /* let getComponentFromNavPArams = navParams.get('page');

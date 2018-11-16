@@ -1,6 +1,6 @@
 page-patient-info {
   .toolbar-background {
-    background: #00b4ff;
+    background: #0099ff;
   }
   ion-title {
     text-align: center;
@@ -39,7 +39,7 @@ page-patient-info {
   ion-buttons {margin: 0;}
   .bar-button-default-md, .bar-button-default-ios{color: #fff;}
   .toolbar-md{padding: 0px;}
-  ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+  ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
   ion-col.col.col{float:left;}
   .forward_icon ion-icon{color: #6b5b5b;}
   .item-inner{padding: 0px !important;}
@@ -70,7 +70,7 @@ page-patient-info {
     position: relative;
   }
   .circle_icon ul li.active {
-    background: #00b4ff;
+    background: #0099ff;
   }
   .circle_icon ul li:after {
     content: '';
@@ -86,12 +86,12 @@ page-patient-info {
     content: none;
   }
   .circle_icon ul li.fill:after {
-    background: #00b4ff;
+    background: #0099ff;
   }
   .add_menor {
     margin-top: 13px;
     float: left;
-    color: #00b4ff;
+    color: #0099ff;
   }
   .centerData {
 
@@ -106,7 +106,7 @@ page-patient-info {
     }
     a{
         font-size: 12px;
-        color: #00b4ff;
+        color: #0099ff;
     }
   }
 
@@ -128,7 +128,7 @@ page-patient-info {
       padding: 5px 0px 0 6px;
       font-size: 12px; margin: 0px;
       border-right: 1px solid #d2d2d2;
-      border-radius: 0px;    color: #00b4ff;
+      border-radius: 0px;    color: #0099ff;
       .select-icon{display: none;}
       .select-text { padding-top: 7px;}
     }
@@ -139,7 +139,7 @@ page-patient-info {
       display: inline-block;
       font-size: 12px; margin: 0px;
       border-right: 1px solid #d2d2d2;
-      border-radius: 0px;    color: #00b4ff;
+      border-radius: 0px;    color: #0099ff;
       .select-icon{display: none;}
       .select-text { padding-top: 0px;}
     }

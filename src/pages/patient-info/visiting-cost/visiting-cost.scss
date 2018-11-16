@@ -1,6 +1,6 @@
 page-visiting-cost {
     .toolbar-background {
-        background: #00b4ff;
+        background: #0099ff;
       }
       ion-title {
         text-align: center;
@@ -54,7 +54,7 @@ page-visiting-cost {
         position: relative;
       }
       .circle_icon ul li.active {
-        background: #00b4ff;
+        background: #0099ff;
       }
       .circle_icon ul li:after {
         content: '';
@@ -70,7 +70,7 @@ page-visiting-cost {
         content: none;
       }
       .circle_icon ul li.fill:after {
-        background: #00b4ff;
+        background: #0099ff;
       }
       .pad_rlt_10{padding: 0 10px; display: block;}
       .pad_rlt_25{padding: 0 25px; display: block;}
@@ -78,8 +78,8 @@ page-visiting-cost {
       .form_label{font-weight: bold;font-size: 13px; margin-top: 15px;margin-bottom:15px;float: left;color: #919191;}
 
       .user_info{
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #d9d9d9;
+        border-bottom: 1px solid #d9d9d9;
         margin-top: -1px;
         display: flex;
         justify-content: space-between;
@@ -114,9 +114,9 @@ page-visiting-cost {
 
         }
         .item:hover{
-          background: #EDEDED; color: #00b4ff;
-          .label-ios{color:#00b4ff;}
-          ion-label{color: #00b4ff !important;}
+          background: #EDEDED; color: #0099ff;
+          .label-ios{color:#0099ff;}
+          ion-label{color: #0099ff !important;}
         }
         .item:last-child {
           min-width: 52px;
@@ -124,8 +124,8 @@ page-visiting-cost {
         }
         .item-md .radio-md{margin: 0px;}
         .item-radio-checked{background:#EDEDED;
-          .label-ios{color:#00b4ff;}
-          ion-label{color: #00b4ff !important;}
+          .label-ios{color:#0099ff;}
+          ion-label{color: #0099ff !important;}
         }
         .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #919191;}
         button{padding: 0px; margin: 0px; position: relative;}
@@ -194,7 +194,7 @@ page-visiting-cost {
       .discount{color:#ff3199;}
     }
     .text-input-ios, .text-input-md{
-      border: 1px solid #ddd;
+      border: 1px solid #d9d9d9;
       border-radius: 5px;
       padding: 5px 10px;
       margin: 0px;
@@ -205,13 +205,13 @@ page-visiting-cost {
     button{height: 40px;}
     .border_btn{
       background: #fff;
-      border: 2px solid #00b4ff;
-      color: #00b4ff;
+      border: 2px solid #0099ff;
+      color: #0099ff;
       transition: ease-in-out 0.5s;
       -webkit-transition: ease-in-out 0.5s;
       outline: none;
       &:hover{
-        background: #00b4ff; 
+        background: #0099ff; 
         color: #fff;
       }
     }

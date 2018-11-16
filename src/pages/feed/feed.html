@@ -26,10 +26,11 @@
         <p>{{feed.createdAt | date}}</p>   
       </ion-item>
       <ion-card-content>
-        <p *ngIf="feed.message">{{feed.message}}</p>
+        <p class="inner-feed-p" *ngIf="feed.message">{{feed.message}}</p>
       </ion-card-content>
-      <img *ngIf="feed.media" src="{{backend_url}}{{feed.media}}">
-    
+      <div *ngIf="feed.media" class="main-feed-image-container">
+        <img src="{{backend_url}}{{feed.media}}">
+      </div>
       <ion-row class="comment-like-text">
           <ion-col>
             <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
@@ -37,7 +38,7 @@
             - <span id="total_share_{{feed._id}}">0</span> Share</ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="feed-card-division">
         <ion-col id="status_{{feed._id}}">
 
           <button *ngIf="feed.me_like" ion-button color="primary" clear small icon-start (click)="unlike(feed._id)"><ion-icon name='thumbs-up'></ion-icon></button>

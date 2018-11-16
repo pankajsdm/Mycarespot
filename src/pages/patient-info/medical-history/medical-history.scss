@@ -1,6 +1,7 @@
 page-medical-history {
+  .toolbar-background-md, .toolbar-ios{border-bottom:1px solid #d9d9d9;}
   .toolbar-background {
-    background: #00b4ff;
+    background: #f7f7f7;
   }
   ion-title {
     text-align: center;
@@ -29,63 +30,84 @@ page-medical-history {
     color: #847676
   }
   .circle_icon ul {
-    padding: 0;
-    margin: 14px 0px;
+    padding: 15px 20px 0px 20px !important;
+    background-color: #ffffff;
+    margin: 0px !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
+    border-bottom: none;
   }
   .circle_icon ul li {
     list-style: none;
     padding: 0px;
-    line-height: 15px;
-    font-size: 10px;
-    font-weight: bold;
-    width: 15px;
-    height: 15px;
+    line-height: 25px;
+    font-size: 12px;
+    font-weight: normal;
+    width: 25px;
+    height: 25px;
     text-align: center;
-    background: #ededed;
+    background: #e8e8ea;
     border-radius: 100%;
-    color: #fff;
+    color: #a1a1a1;
     position: relative;
+    border: 1px solid #e8e8ea;
   }
   .circle_icon ul li.active {
-    background: #00b4ff;
+    background: #ffffff;
+    border: 1px solid #0099ff;
+    color: #0099ff;
   }
-  .circle_icon ul li:after {
-    content: '';
-    position: absolute;
-    top: 7px;
-    height: 2px;
-    background: #ededed;
-    left: 15px;
-    width: 45px;
-    z-index: 0;
-  }
-  .circle_icon ul li:last-child:after {
-    content: none;
-  }
-  .circle_icon ul li.fill:after {
-    background: #00b4ff;
-  }
-  .pad_rlt_10{padding: 0 10px; display: block;}
-  .pad_rlt_25{padding: 0 25px; display: block;}
+    .circle_icon ul li.fill {
+      background: #0099ff;
+      border: 1px solid #0099ff;
+      color: #ffffff;
+    }
+    .circle_icon ul li:after {
+      content: '';
+      //position: absolute;
+      //top: 11px;
+      //height: 1px;
+      //background: transparent;
+      //left: 15px;
+      //width: 57px;
+      //z-index: 0;
+    }
+    .circle_icon ul li:last-child:after {
+      content: none;
+    }
+    .circle_icon ul li.fill:after {
+      background: #0099ff;
+    }
+  .pad_rlt_10{padding: 0px; display: block;}
+  .pad_rlt_25{padding: 0px; display: block;}
   #registro{padding: 10px 34px !important;}
-  .form_label{font-weight: bold;font-size: 13px; margin-top: 15px;margin-bottom:15px;float: left;color: #585757;}
+  .form_label{font-weight: bold;font-size: 14px; margin: 0px;padding: 15px 10px 15px 10px; width: 100%; border-bottom: 1px solid #d9d9d9; float: left;color: #555555;} 
 
   .user_info{
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin-top: -1px;
+    border-bottom: 1px solid #d9d9d9;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:0px 0px;
+    padding:7px 0px;
     width: 100%;
     color: #919191;
     .title_text{
       font-size: 14px;
-      padding: 10px 0 10px 10px;
+      padding: 0px 0px 0px 10px;
+      color: #555555;
+    }
+  .list-md .item[no-lines]{
+    border-radius: 50%;
     }
     .item-block{min-height: 4.4rem;}
     .list{
@@ -99,30 +121,37 @@ page-medical-history {
     }
     .label-ios {
       margin: 0;
-      color: #919191;
+      color: #555555;
+      font-weight: normal;
+    }
+    .list-md .item[no-lines]{
+      border-radius: 50%;
     }
     .item-ios .radio-ios{margin: 0px;}
-    .item{font-size: 13px;
-      min-width: 55px;
-      padding: 11px 4px;
+    .item{font-size: 14px;
+      font-size: 13px;
+      width: 50px;
+      height: 50px;
+      margin: 0px 3px;
+      border-radius: 50%;
       .item-inner{padding: 0px 0 0 0px;}
 
     }
     .item:hover{
-      background: #EDEDED; color: #00b4ff;
-      .label-ios{color:#00b4ff;}
-      ion-label{color: #00b4ff !important;}
+      background: #d9d9d9; color: #0099ff;
+      .label-ios{color:#0099ff;}
+      ion-label{color: #0099ff !important;}
     }
     .item:last-child {
       min-width: 52px;
       .input-wrapper{width:100%;}
     }
     .item-md .radio-md{margin: 0px;}
-    .item-radio-checked{background:#EDEDED;
-      .label-ios{color:#00b4ff;}
-      ion-label{color: #00b4ff !important;}
+    .item-radio-checked{background:#d9d9d9;
+      .label-ios{color:#0099ff;}
+      ion-label{color: #0099ff !important;}
     }
-    .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #919191;}
+    .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #555555; font-size: 14px; font-weight: normal}
     button{padding: 0px; margin: 0px;}
     h6{font-size: 14px;}
     p{margin: 0px;}
@@ -151,7 +180,7 @@ page-medical-history {
       }
     }
     .item.item-radio:last-child {
-        min-width: 60px;
+        min-width: 50px;
     }
     .radio-ios .radio-checked .radio-inner {
         top: 0px;
@@ -180,8 +209,8 @@ page-medical-history {
     .map{
       display: inline-block;
       width: 100%;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #d9d9d9;
     }
     
-    .user_info ion-list ion-item.item-radio-checked{border-radius: 50%;height: 55px;width: 55px;}
+    .user_info ion-list ion-item.item-radio-checked{border-radius: 50%;height: 50px;}
 }

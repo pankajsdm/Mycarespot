@@ -2,8 +2,8 @@ page-summary {
 /* Common css*/
 .item-md.item-block .item-inner{padding-right: 0px;}
 .card-md, .card-ios{width: 100%; margin: 0;}
-.card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
-.toolbar-background {background: #00b4ff;}
+.card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
+.toolbar-background {background: #0099ff;}
 ion-title{text-align: center;}
 ion-title .toolbar-title{color: #ffffff;
   display: flex;
@@ -18,7 +18,7 @@ ion-title .toolbar-title{color: #ffffff;
 ion-buttons {margin: 0;}
 .bar-button-default-md, .bar-button-default-ios{color: #fff;}
 .toolbar-md{padding: 0px;}
-ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
 ion-col.col.col{float:left;}
 .forward_icon ion-icon{color: #6b5b5b;}
 ion-item.item.item-block:last-child{margin-bottom: 0px;}
@@ -31,7 +31,7 @@ ion-item.item.item-block:last-child{margin-bottom: 0px;}
 .add_menor {
     margin-top: 13px;
     float: left;
-    color: #00b4ff;
+    color: #0099ff;
 }
 
 .form_label {
@@ -67,7 +67,7 @@ ion-item.item.item-block:last-child{margin-bottom: 0px;}
     position: relative;
   }
   .circle_icon ul li.active {
-    background: #00b4ff;
+    background: #0099ff;
   }
   .circle_icon ul li:after {
     content: '';
@@ -83,7 +83,7 @@ ion-item.item.item-block:last-child{margin-bottom: 0px;}
     content: none;
   }
   .circle_icon ul li.fill:after {
-    background: #00b4ff;
+    background: #0099ff;
   }
   .pad_rlt_10{padding: 0 10px; display: block;}
   .pad_rlt_25{padding: 0 15px; display: block;}
