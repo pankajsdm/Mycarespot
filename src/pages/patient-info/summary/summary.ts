@@ -18,7 +18,7 @@ export class SummaryPage {
     public navParams: NavParams,
     public authService: CommonServiceProvider
   ) {
-  } 
+  }   
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SummaryPage');

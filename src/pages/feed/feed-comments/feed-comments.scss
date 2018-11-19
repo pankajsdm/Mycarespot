@@ -1,0 +1,144 @@
+page-feed-comments {
+     /* Common css*/
+     .card-md, .card-ios{width: 100%;margin: 0;}
+     /* Ended common css*/
+
+     ion-buttons {margin: 0;}
+     .bar-button-default-md, .bar-button-default-ios{color: #0099ff; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
+ 
+     ion-row.comment-like-text.row {
+         padding: 10px;
+         border-bottom: 1px solid #d9d9d9;
+         border-top: 1px solid #d9d9d9;
+         font-size: 14px;
+         color: #555555;
+         height: 40px;
+     }
+     .item-ios{
+         padding: 10px 10px 10px 10px;
+         border-bottom: 1px solid #d9d9d9;
+     }
+     .item-ios ion-avatar[item-start]{
+         margin: 0px 6px 0px 0px;
+     }
+
+     .bar-buttons-ios .bar-button-default-ios{height: 37px;}
+     .comment_container{border-top: 1px solid #d9d9d9;}
+     .parent_comment img, .child_comment img{
+         border-radius: 50%;
+         overflow: hidden;
+         width: 40px;
+         height: 40px;
+         float:left;
+         margin: 0 10px 0 0;
+     }
+     .child_comment{margin-left: 20px;margin-top: 10px;}
+     .child_comment_form{margin-top: 10px;}
+     .comment_form{border-top: none;}
+     .feed_show{display:block !important;}
+     .feed_hidden{display:none !important;}
+     .comment_container .time_ago{float:right;font-size: 10px;}
+     .comment_activities .comment_liked{
+         color: #0099ff;
+         font-size: 13px;
+     }
+     .comment_activities .comment_unliked{
+         color: #443f3f;
+         font-size: 13px;
+     }
+     .comment_activities .common_span{
+         color: #443f3f;
+         font-size: 13px;
+     }
+
+     .top-little img {
+         padding-top: 0px;
+         width: 20px;
+     }
+
+     .subcomment_text{padding:0;}
+     .subcomment_text input{
+         border: 1px solid #d9d9d9;
+         padding: 3px;
+         width: 96%;
+         height: 30px;
+     }
+     .text-input {
+         margin: 0px;
+     }
+     .item-md{
+         padding: 10px 10px 8px 10px;
+         border-bottom: 1px solid #d9d9d9;
+     }
+     .item-md ion-avatar[item-start]{
+         margin:0px 6px 0px 0px;
+     }
+     .item-md h2, .item-ios h2 {
+         margin: 0px;
+         color: #555555;
+         font-size: 14px;
+     }
+     .item-md p {
+         margin: 0px;
+         color: #555555;
+         font-size: 13px;
+     }
+     .card-md p, .item-ios p:last-child {
+         margin: 0px;
+         color: #555555;
+         font-size: 10px;
+         text-align: left !important;
+     }
+     .inner-feed-p {
+         margin: 0px;
+         color: #555555;
+         font-size: 14px !important;
+         text-align: left !important;
+         padding: 10px;
+     }
+     .feed-card-division{
+         border-bottom: 5px solid #d9d9d9
+     }
+     .main-feed-image-container img{
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+     }
+     .main-feed-image-container{
+         height: 300px;
+     }
+     .card-content-md, .card-content-ios {
+         padding: 0px !important;
+     }
+     .button-clear-md-primary, .button-clear-ios-primary{
+         border-color: transparent;
+         color: #555;
+         background-color: transparent;
+         margin: 0;
+         padding: 20px !important;
+     }
+     [icon-left] ion-icon, [icon-start] ion-icon{
+         padding: 0px;
+         line-height: 0;
+         font-size: 18px;
+     }
+     .tabs-ios .tabbar{
+         border-top: 1px solid #d9d9d9;
+         background: #f7f7f7;
+     }
+     .header-ios .toolbar-ios{
+         border-bottom: 1px solid #d9d9d9;
+         background-color: #f7f7f7;
+     }
+     .toolbar-background-ios {
+         background: #f7f7f7;
+     }
+     .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+         border-width: 0px;
+     }
+
+     ion-icon.ion-ios-close{
+        font-size: 30px !important;
+        color: #0099ff;
+      }
+}

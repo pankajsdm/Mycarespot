@@ -1,0 +1,82 @@
+page-login {
+    h5{
+		color:#757575;
+		font-size: 1em;
+		margin-top:15px;
+		text-align: center; 
+		padding-top: 25px;
+	}
+	.link{
+		color: #00B4FF;
+		margin-top: -30px;
+	}	
+	.no-scroll .scroll-content{
+     	overflow: hidden;
+	}
+	.text-input-ios {
+        margin: 0 auto;
+        width: 100%;
+        padding: 10px 10px 10px 20px;
+    }
+    .text-input {
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 7px;
+        border: 1px solid #D2D2D2;
+        padding: 10px 10px 10px 20px;
+        margin-top: 10px;
+        font-size: 1em;
+        font-family: 'helvetica-normal', 'arial', 'sans-serif';
+    }
+     .bottom {padding: 28px;border-top: none; height: 60px; background: #fff;}
+
+     button {
+        font-weight: bold;
+    }
+
+    ion-footer {
+        .toolbar-title {
+          color: #00b6ff !important;
+          font-weight: 540;
+        }
+    }
+    
+
+}
+
+
+.btnFacebook{
+    width: 100%;
+    margin:15px 0 0 0;
+    background-color:#3b5998;
+    text-align: left;
+    color:white; 
+    text-align: center;
+    padding: 0 10px !important;
+    position: relative !important;
+    .facebookIcon{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 10px 0 0;
+        position: relative !important;
+        left: auto !important;
+        top: 0 !important;
+    }
+    p{
+        display: inline-block;
+        vertical-align: middle;
+        color: white !important;
+        line-height: 0;
+        font-size: 1em;
+    }
+   
+}   
+.reset{
+    font-size: 12px;
+    text-align: center;
+    a{color: #00b4ff;}
+}
+.or{
+    display: block;
+    text-align: center;
+}

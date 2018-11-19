@@ -1,0 +1,35 @@
+page-card-info {
+   
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+  
+    .text-input {
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 7px;
+        border: 1px solid #D2D2D2;
+        padding: 10px 10px 10px 20px;
+        margin-bottom: 15px;
+        font-size: 1em;
+        font-family: 'helvetica-normal', 'arial', 'sans-serif';
+    }
+    
+    .top{
+        padding: 44px 3px 20px !important;
+        background-color: #ffffff;
+        p{ padding: 0 50px;}
+    }
+
+    .center ion-item{
+        padding-left: 15px;
+        border: 1px solid #ccc !important;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #999;
+        height: 0px; 
+        padding-top: 0;
+    }
+     
+
+}

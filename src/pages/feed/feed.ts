@@ -3,10 +3,12 @@ import { AfterViewInit, Component, ElementRef} from '@angular/core';
 import { Inject, ViewChild }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Content, NavParams, ToastController, NavController, MenuController, ActionSheetController } from 'ionic-angular';
+import { Content, NavParams, ToastController, NavController, MenuController, ActionSheetController, ModalController } from 'ionic-angular';
+import { FeedCommentsPage } from "./feed-comments/feed-comments";
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
+
 import { Config } from "../../app/app.config";
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import * as io from "socket.io-client";
 let self;
 
@@ -46,14 +48,13 @@ export class FeedPage {
     public authService: CommonServiceProvider,
     private toastCtrl: ToastController,
     public menu: MenuController,
+    public modalCtrl: ModalController,
     public actionsheetCtrl: ActionSheetController
   ) {
 
     self = this;
     this.socket = io.connect("https://futucare.com");
-    this.detectNewFeedThroughSocket();
-    this.detectDeletionThroughSocket();
-
+    //this.detectNewFeedThroughSocket();
   }
 
   detectNewFeedThroughSocket(){
@@ -262,6 +263,8 @@ export class FeedPage {
   }
 
   postComment(id, index){
+    console.log("commented...");
+    this.current_page = 1;
     let comment = this.commentForm.get('comments').value;
     if(comment!=''){
       this.commentForm.reset()
@@ -319,9 +322,16 @@ export class FeedPage {
         console.log("err", err);
       }); 
     }
+  } 
 
+
+  commentsFeed(feed_id){
+    let profileModal = this.modalCtrl.create(FeedCommentsPage, { feed_id: feed_id });
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    profileModal.present();
   }
-
 
   /* Counter for like and unlike */
   likeCounter(id, type){
@@ -395,7 +405,7 @@ export class FeedPage {
     });
   }
 
-
+  
   /* Unlike feed by user first time */
   unlike(id){
     console.log("meunliked", id);
@@ -485,7 +495,6 @@ export class FeedPage {
       }, false);
     }
   }
-
   
   /* Creating toast */
   presentToast(msg) {

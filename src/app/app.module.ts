@@ -28,6 +28,7 @@ import { LoginPage } from "../pages/login/login";
 import { TabsPage } from "../pages/tabs/tabs";
 import { HomePage } from "../pages/home/home";
 import { FeedPage } from "../pages/feed/feed";
+import { FeedCommentsPage } from "../pages/feed/feed-comments/feed-comments";
 import { NotificationsPage } from "./../pages/notifications/notifications";
 import { MedicalCarePage } from "./../pages/medical-care/medical-care";
 import { DoctorsPage } from "../pages/doctors/doctors";
@@ -98,6 +99,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     TabsPage,
     HomePage,
     FeedPage,
+    FeedCommentsPage,
     NotificationsPage,
     MedicalCarePage,
     DoctorsPage,
@@ -171,6 +173,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     TabsPage,
     HomePage,
     FeedPage,
+    FeedCommentsPage,
     NotificationsPage,
     MedicalCarePage,
     DoctorsPage,

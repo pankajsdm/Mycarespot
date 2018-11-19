@@ -2,8 +2,8 @@ page-my-pharmacies {
     /* Common css*/
   .item-md.item-block .item-inner{padding-right: 0px;}
   .card-md, .card-ios{width: 100%; margin: 0;}
-  .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
-  .toolbar-background {background: #00b4ff;}
+  .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
+  .toolbar-background {background: #0099ff;}
   ion-title{text-align: center;}
   ion-title .toolbar-title{color: #ffffff;}
   /* Ended common css*/
@@ -14,7 +14,7 @@ page-my-pharmacies {
   ion-buttons {margin: 0;}
   .bar-button-default-md, .bar-button-default-ios{color: #fff;}
   .toolbar-md{padding: 0px;}
-  ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+  ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
   ion-col.col.col{float:left;}
   .forward_icon ion-icon{color: #6b5b5b;}
 
@@ -27,7 +27,7 @@ page-my-pharmacies {
   .add_menor {
       margin-top: 13px;
       float: left;
-      color: #00b4ff;
+      color: #0099ff;
   }
 
   .form_label {
@@ -43,15 +43,14 @@ page-my-pharmacies {
     .pad_rlt_25{padding: 0 25px; display: block;}
     .item-ios, .item-md{padding-left: 8px;
       h2 {
-          font-size: 12px; 
-          font-weight: bold;
+          font-size: 14px; font-weight: bold;
         }
       p {
         font-size: 12px;
       }
     }
     .label-ios, .label-md {
-      margin:1px 0px 1px 0;
+      margin:8px 0px 8px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

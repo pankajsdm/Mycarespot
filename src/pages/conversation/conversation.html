@@ -19,8 +19,9 @@
           <ion-searchbar debounce="10"></ion-searchbar>
         </ion-col>
       </ion-row>
+
       <ion-item *ngFor="let item of channels; let i=index">
-        <ion-avatar item-start style="margin: 8px 6px 8px 0;" (click)="userProfile()">
+        <ion-avatar item-start style="margin: 0px 6px 0px 0;" (click)="userProfile()">
           <img src="http://4.bp.blogspot.com/-ZzOpik5sFZg/UleI27zMJyI/AAAAAAAAHgs/nQEZnjiSn9M/s1600/profileicon.jpg" *ngIf="!item.userShow.avatar">
           <img [src]="item.userShow.avatar" *ngIf="item.userShow.avatar">
         </ion-avatar>
@@ -38,7 +39,7 @@
     </ion-card>
   </div>
 
-  <div class="no_data_found" *ngIf="!isLoading">
+  <div padding class="text-center" *ngIf="!isLoading">
     <ion-spinner></ion-spinner>
   </div>
 

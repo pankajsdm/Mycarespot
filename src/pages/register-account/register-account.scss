@@ -1,13 +1,23 @@
 page-register-account {
+  .ion-ios-person:before {
+    font-size: 80px;
+    color: #ffffff;
+    width: 80px;
+    text-align: center;
+    height: 80px;
+    padding: 10px;
+    border-radius: 500px;
+    background-color: #e8e8ea;
+  }
   .no-scroll .scroll-content{
     overflow: hidden;
   }
-  
     .label_text{
         text-align:left;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
         font-size: 1em;
         color: #9E9E9E;
+        margin: 0px;
       }  
       .radio-button{
         color: #9E9E9E;
@@ -31,21 +41,22 @@ page-register-account {
       .text-input {
         margin: 0 auto;
         width: 100%;
-        border-radius: 7px;
-        border: 1px solid #D2D2D2;
-        padding: 10px 10px 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #d9d9d9;
+        padding: 10px;
+        height: 44px;
         margin-bottom: 15px;
-        font-size: 1em;
+        font-size: 14px;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
       }
       .select-ios {
         width: 30%;
         display:inline-block;
-        border-radius:7px;
-        border:1px solid #D2D2D2;
+        border-radius:5px;
+        border:1px solid #d9d9d9;
         padding:5px;
         margin: 5px 5px 0 0;
-        font-size: 1em;
+        font-size: 14px;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
         text-align: center;
         color: #9E9E9E;
@@ -103,30 +114,34 @@ page-register-account {
       .fecha {
         margin: 0 auto;
         width: 100%;
-        border-radius: 7px;
-        border: 1px solid #D2D2D2;
-        padding: 0px 0px 0px 20px;
+        border-radius: 5px;
+        border: 1px solid #D9D9D9;
+        padding: 0px 10px;
+        height: 44px;
         margin-bottom: 10px;
-        font-size: 1em;
+        font-size: 14PX;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
         position: relative;
       }
-      .item-ios.item-block .item-inner{
+      .datetime-md {
+        padding: 0PX;
+      }
+      .item-ios.item-block .item-inner, .item-md.item-block .item-inner{
         border-bottom: none;
       }
       .item-block{
         min-height: 3.9rem;
       }
-      .platform-ios .circle_icon span{ top: 5px !important;}
-
+      .platform-ios .circle_icon span{ 
+        top: 5px !important;
+      }
       .top{
-        padding: 10px 0 !important;
+        padding: 0px 0px 15px 0px !important;
         background-color: #ffffff;
         p{ padding: 0 50px;}
       }
-      
       .datetime-text {
-        color: #9E9E9E;
+        color: #a1a1a1;
       }
       .radio-ios{
         background-color: white;
@@ -138,88 +153,157 @@ page-register-account {
         top:2px;
         left:9px;
       }
-      .bottom {padding: 28px;border-top: none; height: 60px; background: #fff;}
-
+      .bottom {
+        padding: 28px;
+        border-top: none; 
+        height: 60px; 
+        background: #fff;
+      }
       .toolbar-ios, .toolbar-md {
         padding: 4px;
         padding-left: 4px;
         padding-right: 4px;
         min-height: 44px;
-    }
-    .button{margin: 5px 0 10px 0 !important; font-weight: bold;}
-    .datetime{border-radius: 6px;}
-    .segment{display: inline-flex; padding: 0;margin: 0 0 10px 0;}
-    .segment-button{border-left: 1px solid #ddd; color: #9c9c9c !important;}
-    .segment-button.segment-activated{color: #fff !important;
-      background-color: #00b4ff !important;}
-    .datetime.input_invalid, .segment.input_invalid{border: 1px solid red;}
-    .center{
-      padding: 0 30px;
-      margin: 0 auto !important;
-    }
-    .segment-ios .segment-button{
-      border-color: #D2D2D2;
-    } 
-
-    .phone_number .input_invalid {
-      border: 1px solid red;
-      border-radius: 4px;
-    }
-
-    .input-cover{
-      position: relative !important;
-    }
-
-
-    .phone_number{
-      border: 1px solid #D2D2D2;
-      margin: 0 0 10px 0;
-      border-radius: 5px;
-      display: flex;
-      position: relative;
-      .select-ios{
-        border: 0px;
-        width: 60px;
-        display: inline-block;
-        padding: 5px 0px 0 6px;
-        font-size: 12px; margin: 0px;
-        border-right: 1px solid #d2d2d2;
-        border-radius: 0px;    color: #00b4ff;
-        .select-icon{display: none;}
-        .select-text { padding-top: 7px;}
       }
-      .select-md{
-        border: 0px;
-        width: 60px;
-        padding: 11px 0px 0 6px;
-        display: inline-block;
-        font-size: 12px; margin: 0px;
-        border-right: 1px solid #d2d2d2;
-        border-radius: 0px;    color: #00b4ff;
-        .select-icon{display: none;}
-        .select-text { padding-top: 0px;}
+      .button{
+        margin: 5px 0 10px 0 !important; 
+        font-weight: bold;
       }
-      .text-input{
-        width:100%;
-        display: inline-block;
-        margin: 0px;
-        border: 0px;
+      .datetime{
+        border-radius: 5px;
       }
-    }
-    ion-icon{color: #fff;}
+      .segment{
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        padding: 0;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+        border: 1px solid #d9d9d9;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .segment-md .segment-button {
+        border: none;
+        color: #a1a1a1 !important ;
+        border-bottom-width: 0px !important;
+        text-transform: none;
+        font-size: 14px;
+        padding: 0px !important;
+        line-height: 41px;
+        font-weight: normal;
+        opacity: 1;
+      }
+      .segment-button.segment-activated{
+        color: #fff !important;
+        background-color: #0099ff !important;
+      }
+      .segment-button.segment-activated:first-of-type{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 5px;
+        margin-right: 0;
+      }
+      .segment-button.segment-activated:last-of-type{
+        border-top-left-radius: 0px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 0px;
+        margin-right: 0;
+      }
+      .datetime.input_invalid, .segment.input_invalid{
+        border: 1px solid red;
+      }
+      .center{
+        padding: 0 35px;
+        margin: 0 auto !important;
+      }
+      .phone_number .input_invalid {
+        border: 1px solid red;
+        border-radius: 4px;
+      }
 
-    ion-footer {
-      .toolbar-title {
-        color: #00b6ff !important;
-        font-weight: 540;
+      .input-cover{
+        position: relative !important;
       }
-  }
+      .phone_number{
+        border: 1px solid #D2D2D2;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+        display: flex;
+        position: relative;
+        .select-ios{
+          border: 0px;
+          width: 60px;
+          display: inline-block;
+          padding: 5px 0px 0 6px;
+          font-size: 12px; margin: 0px;
+          border-right: 1px solid #d2d2d2;
+          border-radius: 0px;    color: #0099ff;
+          .select-icon{display: none;}
+          .select-text { padding-top: 7px;}
+        }
+        .select-md{
+          border: 0px;
+          width: 60px;
+          padding: 11px 0px 0 6px;
+          display: inline-block;
+          font-size: 12px; margin: 0px;
+          border-right: 1px solid #d2d2d2;
+          border-radius: 0px;    
+          color: #0099ff;
+          .select-icon{
+            display: none;
+          }
+          .select-text { 
+            padding-top: 0px;
+          }
+        }
+        .text-input{
+          width:100%;
+          display: inline-block;
+          margin: 0px;
+          border: 0px;
+        }
+        ion-icon{
+          color: #a1a1a1;
+          font-size: 14px;}
+      }
+      .top-icon .circle_icon{
+          position: relative;
+          width:90px;
+          margin: 0px auto;
+      }
+      .circle_icon img {
+        width: 87px;
+        border-radius: 50%; 
+        padding: 0px !important
+      }
+      .top{
+        height: auto !important;
+        margin-top: 15px;
+      }
+      .camera-span{    
+        background: #e8e8ea;
+        right: -8px;
+        bottom: 5px;
+        position: absolute;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0px;
+        height: 22px;
+        width: 22px;
+        border: 2px solid #ffffff;}
+      .camera-span i.fas{
+        color: #a1a1a1 !important;
+      }
+      .segment-ios .segment-button{
+        border-color:#0099ff; 
+        color: #0099ff !important;
+      }
+      .segment-button.segment-activated{
+        color: #fff !important;
+      }
 }
-
-.top-icon .circle_icon{position: relative;width:90px;margin: 0px auto;}
-.circle_icon img {width: 87px;border-radius: 50%;}
-.top{height: auto;margin-top: 15px;}
-.camera-span{background: #0099ff;right: 0;bottom: 10px;position: absolute;border-radius: 50%;cursor: pointer;padding: 7px;height: 30px;width: 30px;}
-.camera-span i.fas{color: #fff;}
-page-register-account .segment-ios .segment-button{border-color:#0099ff; color: #0099ff !important;}
-page-register-account .segment-button.segment-activated{color: #fff !important;}

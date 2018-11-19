@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Buscar farmacia</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+
+      <button type="submit" class="button" (click)="searchNearMe()">Busca cerca de mi</button>
+      <form id="registro" [formGroup]="searchForm"  (ngSubmit)="searchPharmacy()">
+        <p class="text_black_center">O busca manualment</p>
+        <label id="registrateYConsultaAUnProvedor-input2">
+          <ion-input type="text" [(ngModel)]="search.zip" formControlName="zip" placeholder="Código postal"></ion-input>
+        </label>
+        <label id="registrateYConsultaAUnProvedor-input2">
+          <ion-input type="text" [(ngModel)]="search.pharmacyName" formControlName="pharmacyName" placeholder="Nombre de farmacia"></ion-input>
+        </label>
+        <label id="registrateYConsultaAUnProvedor-input2">
+          <ion-input type="text" [(ngModel)]="search.phoneOrFax" formControlName="phoneOrFax" placeholder="Teléfono"></ion-input>
+        </label>
+        <button type="submit" class="button">Buscar</button>
+      </form>
+
+  </ion-content>
+
+  <!-- <ion-footer class="main-footer">
+    <ion-toolbar (click)="cancle()">
+      <ion-title>Cancelar proceso</ion-title>
+    </ion-toolbar>
+  </ion-footer> -->

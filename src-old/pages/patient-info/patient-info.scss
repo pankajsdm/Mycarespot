@@ -1,0 +1,106 @@
+page-patient-info {
+  /* Common css*/
+  .item-md.item-block .item-inner{padding-right: 0px;}
+  .card-md, .card-ios{width: 100%; margin: 0;}
+  .card-ios{box-shadow: none;border-bottom: 1px solid #ddd;}
+  .toolbar-background {background: #00b4ff;}
+  ion-title{text-align: center;}
+  ion-header .toolbar-title{color: #ffffff;}
+  /* Ended common css*/
+
+  /* Main Css*/
+  .bar-buttons-ios .bar-button-default-ios{height: 37px;}
+  //.content-ios .scroll-content{margin-top: 115px !important;}
+  ion-buttons {margin: 0;}
+  .bar-button-default-md, .bar-button-default-ios{color: #fff;}
+  .toolbar-md{padding: 0px;}
+  ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+  ion-col.col.col{float:left;}
+  .forward_icon ion-icon{color: #6b5b5b;}
+
+
+  .back-button {
+      width: 0px;
+      color: #fff;
+  }
+
+  .add_menor {
+      margin-top: 13px;
+      float: left;
+      color: #00b4ff;
+  }
+
+  .form_label {
+      font-size: 13px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      float: left;
+      color: #585757;
+  }
+
+  .circle_icon ul {
+      padding: 0;
+      margin: 14px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .circle_icon ul li {
+      list-style: none;
+      padding: 0px;
+      line-height: 15px;
+      font-size: 10px;
+      font-weight: bold;
+      width: 15px;
+      height: 15px;
+      text-align: center;
+      background: #ededed;
+      border-radius: 100%;
+      color: #fff;
+      position: relative;
+    }
+    .circle_icon ul li.active {
+      background: #00b4ff;
+    }
+    .circle_icon ul li:after {
+      content: '';
+      position: absolute;
+      top: 7px;
+      height: 2px;
+      background: #ededed;
+      left: 15px;
+      width: 57px;
+      z-index: 0;
+    }
+    .circle_icon ul li:last-child:after {
+      content: none;
+    }
+    .circle_icon ul li.fill:after {
+      background: #00b4ff;
+    }
+    .pad_rlt_10{padding: 0 10px; display: block;}
+    .pad_rlt_25{padding: 0 25px; display: block;}
+    .item-ios, .item-md{padding-left: 8px;
+      h2 {
+          font-size: 14px; 
+        }
+      p {
+        font-size: 12px;
+      }
+    }
+    .label-ios, .label-md {
+      margin:8px 0px 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .forward_icon{text-align: right;}
+    .item-ios.item-block .item-inner{padding-right: 0px;}
+    .forward_icon .button{width: 74px;}
+    .clearfix {
+      padding: 0px 14px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+}

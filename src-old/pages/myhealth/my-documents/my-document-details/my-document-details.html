@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>View</ion-title>
+    <!-- <ion-buttons end class="right_button" style="margin-right: 11px;">
+        <button ion-button color="royal">
+            <ion-icon ios="md-cloud-upload"></ion-icon>
+        </button>
+    </ion-buttons> -->
+    <ion-buttons end class="right_button" (click)="confirmDelete()">
+        <button ion-button color="royal">
+          <ion-icon name="ios-trash"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-col col-12 center text-center *ngIf="isLoading">
+      <ion-spinner></ion-spinner>
+    </ion-col>
+    <ion-card>
+      <div class="viewImage">
+        <img [src]="url"/>
+      </div>
+    </ion-card>
+</ion-content>

@@ -1,11 +1,11 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span>Seguro Médico</ion-title>
-      <ion-buttons end class="right_button" (click)="editDetail()">
-        <button ion-button color="royal"><ion-icon name="md-create"></ion-icon></button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span>Seguro Médico</ion-title>
+    <ion-buttons end class="right_button" (click)="editDetail()">
+      <button ion-button color="royal"><ion-icon name="md-create"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
   
   <ion-content>
     <form>
@@ -35,9 +35,10 @@
       <div class="pad_rlt_25">
         <span class="form_label">¿Seleccione su seguro medico?</span>
       </div>
-
+  
+  
       <ion-card>
-
+  
         <ion-item (click)="details()">
           <ion-col class="col" col-11>
             <h2>Triple S</h2>
@@ -49,6 +50,7 @@
           </ion-col>
         </ion-item>
       </ion-card>
+
     </form>
   
     <div class="bottom_fixed_btn">

@@ -3,9 +3,9 @@ page-doctors {
     /* Common css*/
     .item-md.item-block .item-inner{padding-right: 0px;}
     .card-md, .card-ios{width: 100%; margin: 0;}
-    .toolbar-background {background: #00b4ff;}
+    .toolbar-background {background: #f7f7f7;}
     ion-title{text-align: center;}
-    ion-title .toolbar-title{color: #ffffff;}
+    ion-title .toolbar-title{color: #555555; font-size: 15px;}
     .back-button{width:0px;color: #fff;}
    
     
@@ -15,13 +15,14 @@ page-doctors {
     .bar-buttons-ios .bar-button-default-ios{height: 37px;}
     //.content-ios .scroll-content{margin-top: 115px !important;}
     ion-buttons {margin: 0;}
-    .bar-button-default-md, .bar-button-default-ios{color: #fff;}
+    .bar-button-default-md, .bar-button-default-ios{color: #555555;}
     .toolbar-md{padding: 0px;}
-    ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+    ion-item.item.item-block{border-bottom: 1px solid #d9d9d9; padding: 5px 10px !important; font-size: 14px;color:#555555;}
+    ion-item.item.item-block:hover{background-color: #d9d9d9;}
     ion-col.col.col{float:left;}
     .forward_icon ion-icon{color: #6b5b5b;}
     .label-ios, .label-md {
-        margin:8px 0px 8px 0;
+        margin:0px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -31,7 +32,7 @@ page-doctors {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 5px 0px 5px 0;
+    margin: 0px;
 }
 .flax_box .item-inner{
     padding-right: 0px;
@@ -66,3 +67,23 @@ page-doctors {
     height: 13px;
 }
 .item-ios h2{font-size: 15px;}
+.span-body {font-size:14px;color:#555555; font-weight: normal;}
+.toolbar-background-md{
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d9d9d9;
+}
+.tabs-ios .tabbar{
+    border-top: 1px solid #d9d9d9;
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios{
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #f7f7f7;
+}
+.toolbar-background-ios {
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0px;
+}
+

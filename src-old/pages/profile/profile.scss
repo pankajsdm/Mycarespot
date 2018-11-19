@@ -1,0 +1,23 @@
+page-profile {
+    /* Common css*/
+.item-md.item-block .item-inner{padding-right: 0px;}
+.card-md, .card-ios{width: 100%; margin: 0;}
+.toolbar-background {background: #00b4ff;}
+ion-title{text-align: center;}
+ion-title .toolbar-title{color: #ffffff;}
+.no-scroll .scroll-content{overflow: hidden;}
+/* Ended common css*/
+
+/* Main Css*/ 
+.bar-buttons-ios .bar-button-default-ios{height: 37px;}
+//.content-ios .scroll-content{margin-top: 115px !important;}
+ion-buttons {margin: 0;}
+.bar-button-default-md, .bar-button-default-ios{color: #fff;}
+.toolbar-md{padding: 0px;}
+ion-item.item.item-block{border-bottom: 1px solid #ddd;}
+ion-col.col.col{float:left;}
+.forward_icon ion-icon{color: #6b5b5b;}
+.item-inner{padding: 0px !important;}
+.label-ios{margin-right: 0px !important;}
+   
+}

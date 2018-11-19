@@ -8,7 +8,7 @@ page-conversation {
     margin: 0;
   }
   .toolbar-background {
-    background: #00b4ff;
+    background: #0099ff;
   }
   ion-title {
     text-align: center;
@@ -33,6 +33,7 @@ page-conversation {
     border-top: none;
   }
   .ion-ios-create-outline {
+    color: #fff;
     font-size: 20px;
   }
 
@@ -47,7 +48,7 @@ page-conversation {
     padding: 0px;
   }
   ion-item.item.item-block {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #d9d9d9;
   }
   ion-col.col.col {
     float: left;

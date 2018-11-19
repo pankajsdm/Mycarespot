@@ -24,8 +24,6 @@ export class VitalsChooserPage {
   tempratureArr = [95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106];
   breathsArr = ['10-30', '12-28', '12-18', '17–23', '18–25', '20–30', '25–40', '30–60'];
   pulseArr = ['62-64', '64-68', '68-70', '70-72', '72-74', '75-76', '78-80'];
-  months: any = [];
-  years: any  = [];
   type: String;
   title: String;
   
@@ -35,20 +33,11 @@ export class VitalsChooserPage {
     public navParams: NavParams) {
 
       this.weights = Array(500).fill(1).map((x,i)=>i+1);
-
-      for (let i = 1; i < 32; i++) {
-        this.months.push(i);
-      }
-       
-      for (let j = 2019; j < 2031; j++) {
-        this.years.push(j);
-      }
-  } 
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VitalsChooserPage');
     this.type =  this.navParams.get('value');
-
     if(this.type=='weight'){
       this.title = 'Libras';
     }else if(this.type=='height'){
@@ -61,10 +50,6 @@ export class VitalsChooserPage {
       this.title = 'Temperatura';
     }else if(this.type=='pulse'){
       this.title = 'Pulsos por min';
-    }else if(this.type=='months'){
-      this.title = 'Meses';
-    }else if(this.type=='years'){
-      this.title = 'Años';
     }else{
       this.title = 'respiración';
     }

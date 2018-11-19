@@ -12,31 +12,27 @@
 
 <ion-content class="cards-bg social-cards">
 
-  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher> -->
-
   <div class="no_data_found" *ngIf="isLoading">
       <ion-spinner></ion-spinner>
   </div>
     
   <div id="feedContainer" *ngIf="!isLoading">
-    <ion-card id="card_{{feed._id}}" *ngFor="let feed of feeds; let i=index">
+    <ion-card *ngFor="let feed of feeds; let i=index">
       <ion-item>
         <ion-avatar item-start> 
           <img [src]="feed.created_by_user_id[0].avatar">
         </ion-avatar>
-        <h2>
-          {{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}
-          <!--<span class="action" (click)="action(feed._id)"><ion-icon name="more"></ion-icon></span> -->
-        </h2>
+        <h2>{{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}</h2>
         <p>{{feed.createdAt | date}}</p>   
       </ion-item>
       <ion-card-content>
-        <p *ngIf="feed.message">{{feed.message}}</p>
+        <p class="inner-feed-p" *ngIf="feed.message">{{feed.message}}</p>
       </ion-card-content>
-      <img *ngIf="feed.media" src="{{backend_url}}{{feed.media}}">
-    
+
+      <div *ngIf="feed.media" class="main-feed-image-container">
+        <img src="{{backend_url}}{{feed.media}}">
+      </div>
+
       <ion-row class="comment-like-text">
           <ion-col>
             <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
@@ -44,7 +40,7 @@
             - <span id="total_share_{{feed._id}}">0</span> Share</ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="feed-card-division">
         <ion-col id="status_{{feed._id}}">
 
           <button *ngIf="feed.me_like" ion-button color="primary" clear small icon-start (click)="unlike(feed._id)"><ion-icon name='thumbs-up'></ion-icon></button>
@@ -55,11 +51,12 @@
         </ion-col>
 
           <ion-col>
-            <button ion-button color="primary" clear small icon-start>
+            <button ion-button color="primary" clear small icon-start (click)="commentsFeed(feed._id)">
               <ion-icon name='text'></ion-icon>
               <!-- Comment -->
             </button>
           </ion-col>
+
           <ion-col>
               <button ion-button color="primary" clear small icon-start>
                 <ion-icon name='share'></ion-icon>
@@ -139,9 +136,32 @@
         </ion-col>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
-
 </ion-content>
+
 <style>.social-cards ion-col {padding: 0;}</style>
+
+<!-- <div [innerHTML]="feed.like | like: feed._id"></div> -->
+<!-- <ion-header>
+  <ion-navbar>
+      <img src="assets/img/logo.png">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header> -->
+
+<!-- <ion-header>
+    <div class="top-little">
+      <img src="assets/img/logo.png">
+    </div>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+</ion-header> -->

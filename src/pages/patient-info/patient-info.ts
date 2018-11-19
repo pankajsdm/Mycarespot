@@ -110,7 +110,7 @@ export class PatientInfoPage {
     toast.present();
   }
 
-  ionViewDidEnter(){
+ ionViewDidEnter(){
     let elem = <HTMLElement>document.querySelector(".tabbar");
     if (elem != null) {
       elem.style.display = 'none';
