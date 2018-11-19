@@ -10,7 +10,8 @@ page-feed {
     
         ion-row.comment-like-text.row {
             padding: 10px;
-            border-bottom: 1px solid #d9d9d9;
+            border-bottom: none;
+            margin: 0px 10px;
             border-top: 1px solid #d9d9d9;
             font-size: 14px;
             color: #555555;
@@ -18,21 +19,20 @@ page-feed {
         }
         .item-ios{
             padding: 10px 10px 10px 10px;
-            border-bottom: 1px solid #d9d9d9;
+            border-bottom: none;
         }
         .item-ios ion-avatar[item-start]{
             margin: 0px 6px 0px 0px;
         }
 
         .bar-buttons-ios .bar-button-default-ios{height: 37px;}
-        .comment_container{border-top: 1px solid #d9d9d9;}
         .parent_comment img, .child_comment img{
             border-radius: 50%;
             overflow: hidden;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             float:left;
-            margin: 0 10px 0 0;
+            margin: 0px 6px 0px 0px;
         }
         .child_comment{margin-left: 20px;margin-top: 10px;}
         .child_comment_form{margin-top: 10px;}
@@ -70,7 +70,7 @@ page-feed {
         }
         .item-md{
             padding: 10px 10px 8px 10px;
-            border-bottom: 1px solid #d9d9d9;
+            border-bottom: none;
         }
         .item-md ion-avatar[item-start]{
             margin:0px 6px 0px 0px;
@@ -80,31 +80,41 @@ page-feed {
             color: #555555;
             font-size: 14px;
         }
-        .item-md p {
+        .item-md p, .item-ios h4, {
             margin: 0px;
             color: #555555;
             font-size: 13px;
+            display: block;
         }
-        .card-md p, .item-ios p:last-child {
+        .card-md p:last-child, .item-ios p:last-child {
             margin: 0px;
-            color: #555555;
+            color: #a1a1a1;
+            font-weight: normal;
             font-size: 10px;
             text-align: left !important;
         }
         .inner-feed-p {
             margin: 0px;
-            color: #555555;
+            color: #555555 !important;
             font-size: 14px !important;
             text-align: left !important;
-            padding: 10px;
+            padding: 0px 10px 10px 10px;
         }
         .feed-card-division{
-            border-bottom: 5px solid #d9d9d9
+            border-bottom: 5px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+        }
+        .item-ios p{
+            margin: 0px;
         }
         .main-feed-image-container img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-top: 1px solid #d9d9d9;
+        }
+        .label-ios, .label-md {
+            display: inline-block !important;
         }
         .main-feed-image-container{
             height: 300px;
