@@ -137,8 +137,10 @@ page-feed-comments {
          border-width: 0px;
      }
 
-     ion-icon.ion-ios-close{
+    ion-icon.ion-ios-close{
         font-size: 30px !important;
         color: #0099ff;
-      }
+    }
+
+    .comment_form .parent_comment_form{border-bottom: 1px solid #ddd;}
 }

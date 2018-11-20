@@ -55,10 +55,9 @@
           </button>
         </ion-col>
       </ion-row>
-      <ion-item *ngFor="let comment of feed.Comments; let j=index;">
+
+      <!-- <ion-item *ngFor="let comment of feed.Comments; let j=index;">
         <div class="parent_comment">
-          <!-- <ion-avatar item-start (click)="userDetail()">
-          </ion-avatar> -->
           <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
           <ion-icon name="person" *ngIf="!comment.created_by_user_id.avatar"></ion-icon>
           <h2>{{comment.created_by_user_id.firstName}} {{comment.created_by_user_id.lastName}}</h2>
@@ -83,7 +82,7 @@
           <ion-card-content>
             <p>{{chld_comment.message}}</p>
           </ion-card-content>
-        </div>
+        </div> 
         <form style="display:none;" class="child_comment_form" id="child_comment_form_{{comment._id}}" [formGroup]="childCommentForm" (ngSubmit)="postSubComment(feed._id, i, j, comment._id)">
           <ion-item class="subcomment_text">
             <ion-input id="comment_text_{{feed._id}}" formControlName="child_comments" placeholder="Write a comment" type="text"></ion-input> 
@@ -92,8 +91,8 @@
             <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
           </button>
         </form>
-      </ion-item>
-      <form class="comment_form" [formGroup]="commentForm" (ngSubmit)="postComment(feed._id, i)">
+      </ion-item> -->
+      <!-- <form class="comment_form" [formGroup]="commentForm" (ngSubmit)="postComment(feed._id, i)">
         <ion-row class="row"> 
             <ion-col class="col" col-10="">
                 <ion-item>
@@ -106,8 +105,9 @@
                 </button>
             </ion-col>
         </ion-row>
-      </form>
+      </form> -->
     </ion-card>
+
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
@@ -115,26 +115,3 @@
 </ion-content>
 
 <style>.social-cards ion-col {padding: 0;}</style>
-
-<!-- <div [innerHTML]="feed.like | like: feed._id"></div> -->
-<!-- <ion-header>
-  <ion-navbar>
-      <img src="assets/img/logo.png">
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header> -->
-
-<!-- <ion-header>
-    <div class="top-little">
-      <img src="assets/img/logo.png">
-    </div>
-    <ion-buttons end>
-        <button ion-button icon-only (click)="presentPopover($event)">
-          <ion-icon name="more"></ion-icon>
-        </button>
-      </ion-buttons>
-</ion-header> -->

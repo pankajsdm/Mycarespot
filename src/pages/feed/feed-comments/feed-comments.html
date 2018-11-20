@@ -53,7 +53,8 @@
                         {{comment.created_by_user_id.lastName}} 
                         <span class="time_ago">{{comment.createdAt | timeAgo }}</span>
                       </h4>
-                      <p>{{comment.message}}</p>  
+                      <p>{{comment.message}}</p> 
+
                       <div class="comment_activities">
                           
                           <ion-col id="sub_comment_{{comment._id}}">
@@ -70,23 +71,34 @@
                       </div>
                   </div>
 
+                  
+
                   <div class="child_comment" *ngFor="let chld_comment of comment.child_comment;">
-                      
+
                     <img *ngIf="chld_comment.created_by_user_id.avatar" [src]="chld_comment.created_by_user_id.avatar">
                     <img *ngIf="!chld_comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
     
                     <h4>{{chld_comment.created_by_user_id.firstName}} {{chld_comment.created_by_user_id.lastName}} <span class="time_ago">{{chld_comment.datetime | timeAgo }}</span></h4>
                     <p>{{chld_comment.message}}</p>
-                </div>
+                  </div>
+
+                <form style="display:none;" class="child_comment_form" id="child_comment_form_{{comment._id}}" [formGroup]="childCommentForm" (ngSubmit)="postSubComment(feeds._id, j, comment._id)">
+                    <ion-item class="subcomment_text">
+                      <ion-input id="comment_text_{{feeds._id}}" formControlName="child_comments" placeholder="Write a comment" type="text"></ion-input> 
+                    </ion-item>
+                    <button style="display:none;" type="submit" >
+                      <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
+                    </button>
+                </form>
 
               </ion-item>
             </div>
 
 
             <form class="comment_form" [formGroup]="commentForm" (ngSubmit)="postComment(feeds._id)">
-              <ion-row class="row"> 
-                  <ion-col class="col" col-10="">
-                      <ion-item>
+              <ion-row class="row parent_comment_form"> 
+                  <ion-col class="col" col-12="">
+                      <ion-item no-lines>
                           <ion-input id="comment_text_{{feeds._id}}" formControlName="comments" placeholder="Write a comment" type="text"></ion-input> 
                       </ion-item>
                     </ion-col>

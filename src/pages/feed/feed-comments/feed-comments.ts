@@ -12,7 +12,7 @@ import { Config } from "../../../app/app.config";
 export class FeedCommentsPage {
 
   public commentForm: FormGroup;
-  //public childCommentForm: FormGroup;
+  public childCommentForm: FormGroup;
   
   online: Boolean = true;
   loading: any;
@@ -22,6 +22,7 @@ export class FeedCommentsPage {
   feed_id: String;
   customComment: any;
   replyComment: any;
+  replySubComment: any;
   current_page: any = 1;  
   current_user: any;
   isLoading: Boolean = false;
@@ -42,14 +43,15 @@ export class FeedCommentsPage {
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedCommentsPage');
+    this.current_user = JSON.parse(localStorage.getItem('user_data'));
     this.feed_id =  this.navParams.get('feed_id');
     this.getFeed(this.feed_id);
 
     
 
-    /* this.childCommentForm = this.formdata.group({
+    this.childCommentForm = this.formdata.group({
       child_comments: ['', [Validators.required]]
-    }); */
+    });
 
   }
 
@@ -62,8 +64,8 @@ export class FeedCommentsPage {
             localStorage.clear();
             this.navCtrl.setRoot(LoginPage);
           }else{  
-            this.feeds = this.feedsArr.data;
-            this.isLoading = false;
+            //this.feeds = this.feedsArr.data;
+            this.organizePost();            
           }
         },(err) => {
           this.isLoading = false;
@@ -72,30 +74,21 @@ export class FeedCommentsPage {
     }
   }  
 
+  
   organizePost(){
     
-
-    /*   if(this.checkAvailableID(this.feedsArr.data.like)){
-        this.feedsArr.data['me_like'] = true;
-      }else{
-        this.feedsArr.data['me_like'] = false;
-      }  */
-
-      this.feeds = this.feedsArr.data;
-      console.log("feeds", this.feeds);
-      
-
-      /* for(var j=0; j < this.feedsArr.data[i].Comments.length; j++){
-        if(this.checkAvailableID(this.feedsArr.data[i].Comments[j].like)){
-          this.feedsArr.data[i].Comments[j]['me_like'] = true;
+      for(var j=0; j < this.feedsArr.data.Comments.length; j++){
+        if(this.checkAvailableID(this.feedsArr.data.Comments[j].like)){
+          this.feedsArr.data.Comments[j]['me_like'] = true;
         }else{
-          this.feedsArr.data[i].Comments[j]['me_like'] = false;
+          this.feedsArr.data.Comments[j]['me_like'] = false;
         }
-      } */
-    
-    //
+      }
+      this.feeds = this.feedsArr.data;
+      this.isLoading = false;
+      console.log("feeds", this.feeds);
     //this.current_page = this.current_page + 1;
-    //console.log("feeds", this.feeds);
+
   }
   
   checkAvailableID(arr){
@@ -107,6 +100,51 @@ export class FeedCommentsPage {
     return false;
   }
 
+
+  replayComment(cmt_id){ 
+    var x  = document.getElementById('child_comment_form_'+cmt_id);  
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  subCommentCreation(comment, cmt_index, comment_id){
+    var cur_date = new Date();
+    this.customComment = {
+      child_comment: [],
+      like: [],
+      createdAt: cur_date,
+      created_by_user_id:{
+        avatar: this.current_user.avatar,
+        firstName: this.current_user.firstName,
+        lastName: this.current_user.lastName,
+        _id: this.current_user._id
+      },
+      _id: comment_id,
+      message: comment,
+    }
+    this.feedsArr.data.Comments[cmt_index].child_comment.push(this.customComment);
+  }   
+
+  postSubComment(feed_id,  cmt_index, cmt_id){
+    let comment = this.childCommentForm.get('child_comments').value;
+    console.log(feed_id);
+    console.log(cmt_index);
+    console.log(cmt_id);
+    if(comment!=''){
+      this.childCommentForm.reset();
+      let body = {created_by_user_id: this.current_user._id, message: comment};
+      this.authService.put('feeds/addChildComments/'+cmt_id, body).then((result) => {
+        console.log("comment", result);
+        this.replySubComment = result;
+        this.subCommentCreation(comment, cmt_index, this.replySubComment.data._id);
+      },(err) => {  
+        console.log("err", err);
+      }); 
+    }
+  } 
 
 
   /* Bind like feed*/
@@ -171,7 +209,6 @@ export class FeedCommentsPage {
       unlck.addEventListener('click', () => {
         this.unlike_feed(feed_id);
       }, false);
-     
     }
   }
 
@@ -288,7 +325,7 @@ export class FeedCommentsPage {
       message: comment,
     }
     this.feedsArr.data.Comments.push(this.customComment);
-  }
+  } 
 
   postComment(id){
     console.log("commented...");
@@ -300,15 +337,12 @@ export class FeedCommentsPage {
       this.authService.post('feeds/addComments', body).then((result) => {
         console.log("comment", result);
         this.replyComment = result;
-        //this.commentCreation(comment, this.replyComment.data._id);
+        this.commentCreation(comment, this.replyComment.data._id);
       },(err) => {  
         console.log("err", err);
       });
     }
   }
-
-
-  
 
   dismiss() {
     this.viewCtrl.dismiss();
