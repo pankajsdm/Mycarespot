@@ -19,6 +19,7 @@ page-diagnostics {
     ion-col span {font-size: 11px;}
     .user_info{border-bottom: 1px solid #d9d9d9;;}
     .user_info h6{font-size: 14px;}
-    .user_info p{margin: 0px;}
+    .user_info p{margin: 0px; text-align: left !important;}
+    ion-row p{margin: 0px; text-align: left !important;}
     .no-border{border:none !important;}
 }
