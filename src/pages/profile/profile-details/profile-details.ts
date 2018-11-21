@@ -12,7 +12,7 @@ export class ProfileDetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfileDetailsPage');
+    console.log('ionViewDidLoad ProfileDetailsPage view');
     this.user_data = JSON.parse(localStorage.getItem('user_data'));
   }
 

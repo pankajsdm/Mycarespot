@@ -1,7 +1,6 @@
 page-profile-details {
     .item-md.item-block .item-inner{padding-right: 0px;}
     .card-md, .card-ios{width: 100%; margin: 0;}
-    .toolbar-background {background: #0099ff;}
     ion-title{text-align: center;}
     ion-title .toolbar-title{color: #ffffff;}
     .back-button{width:0px;color: #fff;}
@@ -22,8 +21,18 @@ page-profile-details {
         display: flex;
         justify-content: space-around;
     }   
-    .list-header-md, .list-header-ios{height: 40px;margin-bottom:0;border-bottom: 1px solid #ccc;border-top: none;}
+    .list-header-md, .list-header-ios{
+        height: 40px;margin-bottom:0;border-bottom: 1px solid #ccc;border-top: none;
+    }
     .image_container_profile{border-bottom: 1px solid #d9d9d9 !important;}
     .image_container_profile .user_name{color: #00b6ff;margin: 10px 0px 5px;}
     .details-row{border-bottom: 1px solid #d9d9d9;padding: 10px;}
+
+    .label-ios{
+        display: flex;
+        flex-direction: column;
+        margin-top: 3%; 
+        margin-bottom: 3%;
+        
+    }
 }
