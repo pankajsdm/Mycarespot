@@ -6,10 +6,18 @@ page-medical-history {
   ion-title {
     text-align: center;
   }
+ 
   ion-title .toolbar-title {
     color: #ffffff;
     font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .toolbar-ios ion-title{
+    padding: 0!important;
+  }
+
   .back-button {
     width: 0px;
     color: #fff;
@@ -123,6 +131,7 @@ page-medical-history {
       margin: 0;
       color: #555555;
       font-weight: normal;
+      justify-content: center;
     }
     .list-md .item[no-lines]{
       border-radius: 50%;

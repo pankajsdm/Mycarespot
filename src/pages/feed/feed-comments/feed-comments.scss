@@ -24,6 +24,15 @@ page-feed-comments {
 
      .bar-buttons-ios .bar-button-default-ios{height: 37px;}
      .comment_container{border-top: 1px solid #d9d9d9;}
+     .parent_comment{width: 100%;}
+     .parent_comment h4, .child_comment h4
+     {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        color: #333;
+        text-transform: capitalize;
+     }
      .parent_comment img, .child_comment img{
          border-radius: 50%;
          overflow: hidden;
@@ -32,23 +41,29 @@ page-feed-comments {
          float:left;
          margin: 0 10px 0 0;
      }
-     .child_comment{margin-left: 20px;margin-top: 10px;}
-     .child_comment_form{margin-top: 10px;}
+     .child_comment{margin-left: 20px;margin-top: 15px;}
+     .child_comment_form{margin-top: 10px;margin-left: 50px;
+        ion-item{border-bottom: none;}
+    }
      .comment_form{border-top: none;}
      .feed_show{display:block !important;}
      .feed_hidden{display:none !important;}
-     .comment_container .time_ago{float:right;font-size: 10px;}
+     .comment_container .time_ago{font-size: 10px;color: #524f4f;font-weight: 100;}
+     .comment_activities{
+        padding-left: 45px;
+        margin-top: 7px;
+     }
      .comment_activities .comment_liked{
          color: #0099ff;
-         font-size: 13px;
+         font-size: 12px;
      }
      .comment_activities .comment_unliked{
          color: #443f3f;
-         font-size: 13px;
+         font-size: 12px;
      }
      .comment_activities .common_span{
          color: #443f3f;
-         font-size: 13px;
+         font-size: 12px;
      }
 
      .top-little img {
@@ -77,6 +92,7 @@ page-feed-comments {
          margin: 0px;
          color: #555555;
          font-size: 14px;
+         font-weight: 600;
      }
      .item-md p {
          margin: 0px;
@@ -84,10 +100,23 @@ page-feed-comments {
          font-size: 13px;
      }
      .card-md p, .item-ios p:last-child {
-         margin: 0px;
-         color: #555555;
-         font-size: 10px;
-         text-align: left !important;
+        color: #8e9093;
+        font-size: 1.3rem;
+        text-align: left !important;
+     }
+     .item-ios p
+     {
+        overflow: inherit;
+        font-size: 1.3rem;
+        line-height: normal;
+        text-overflow: inherit;
+        color: #8e9093;
+        margin: 0 0 2px;
+        font-weight: 500;
+        text-align: left!important;
+        margin-top: 6px;
+        width: 100%;
+        white-space: normal;
      }
      .inner-feed-p {
          margin: 0px;
@@ -143,4 +172,8 @@ page-feed-comments {
     }
 
     .comment_form .parent_comment_form{border-bottom: 1px solid #ddd;}
+
+    /* 21-11-2018 stylesheet added */
+    .label-ios{flex-direction: column;align-items: normal;}
 }
+

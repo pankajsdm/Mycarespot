@@ -3,8 +3,7 @@ page-insurance-detail {
 .item-md.item-block .item-inner{padding-right: 0px;}
 .card-md, .card-ios{width: 100%; margin: 0;}
 .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-.toolbar-background {background: #0099ff;}
-ion-title{text-align: center;}
+
 ion-title .toolbar-title{color: #ffffff;
   display: flex;
   justify-content: center;
@@ -13,6 +12,10 @@ ion-title .toolbar-title{color: #ffffff;
 
 .right_button button {
   font-size: 30px;
+}
+
+ion-icon.icon.icon-ios.ion-ios-checkmark{
+  font-size: 24px;
 }
     
 /* Main Css*/

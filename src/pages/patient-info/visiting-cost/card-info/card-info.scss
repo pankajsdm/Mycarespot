@@ -3,6 +3,17 @@ page-card-info {
     .no-scroll .scroll-content{
         overflow: hidden;
     }
+
+    ion-title .toolbar-title {
+        color: #ffffff;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .toolbar-ios ion-title{
+        padding: 0!important;
+      }
   
     .text-input {
         margin: 0 auto;
@@ -16,8 +27,12 @@ page-card-info {
     }
     
     .top{
-        padding: 44px 3px 20px !important;
         background-color: #ffffff;
+        max-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 41px!important;
         p{ padding: 0 50px;}
     }
 

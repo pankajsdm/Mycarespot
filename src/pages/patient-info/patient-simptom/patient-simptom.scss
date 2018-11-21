@@ -5,7 +5,7 @@ page-patient-simptom {
       .item-md.item-block .item-inner{padding-right: 0px;}
       .card-md, .card-ios{width: 100%; margin: 0;}
       .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-      ion-title{text-align: center;}
+      
       ion-header .toolbar-title{color: #555555; font-size: 15px; border-bottom: none !important}
       ion-header {border-bottom: none !important}
       /* Ended common css*/
@@ -21,6 +21,17 @@ page-patient-simptom {
       ion-col.col.col{float:left;}
       .forward_icon ion-icon{color: #555555;}
 
+
+      ion-title .toolbar-title {
+        color: #ffffff;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .toolbar-ios ion-title{
+        padding: 0!important;
+      }
 
       .back-button {
           width: 0px;

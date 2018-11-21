@@ -5,7 +5,6 @@ page-patient-info {
   .item-md.item-block .item-inner{padding-right: 0px;}
   .card-md, .card-ios{width: 100%; margin: 0;}
   .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-  ion-title{text-align: center;}
   ion-header .toolbar-title{color: #555555; font-size: 15px; border-bottom: none !important}
   ion-header {border-bottom: none !important}
   /* Ended common css*/
@@ -21,6 +20,18 @@ page-patient-info {
   ion-col.col.col{float:left;}
   .forward_icon ion-icon{color: #555555;}
 
+
+
+  ion-title .toolbar-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .toolbar-ios ion-title{
+    padding: 0!important;
+  }
 
   .back-button {
       width: 0px;
@@ -41,62 +52,7 @@ page-patient-info {
       color: #555555;
   }
 
-  .circle_icon ul {
-    padding: 15px 20px 0px 20px !important;
-    background-color: #ffffff;
-    margin: 0px !important;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border-bottom: none;
-    }
-    .circle_icon ul li {
-      list-style: none;
-      padding: 0px;
-      line-height: 25px;
-      font-size: 12px;
-      font-weight: normal;
-      width: 25px;
-      height: 25px;
-      text-align: center;
-      background: #e8e8ea;
-      border-radius: 100%;
-      color: #a1a1a1;
-      position: relative;
-      border: 1px solid #e8e8ea;
-    }
-    .circle_icon ul li.active {
-      background: transparent;
-      border: 1px solid #0099ff;
-      color: #0099ff;
-    }
-    .circle_icon ul li:after {
-      content: '';
-      //position: absolute;
-      //top: 11px;
-      //height: 1px;
-      //background: transparent;
-      //left: 15px;
-      //width: 57px;
-      //z-index: 0;
-    }
-    .circle_icon ul li:last-child:after {
-      content: none;
-    }
-    .circle_icon ul li.fill:after {
-      background: #0099ff;
-    }
-    .pad_rlt_10{padding: 0px; display: block;}
-    .pad_rlt_25{padding: 0px; display: block;}
+   
     .item-ios, .item-md{padding-left: 8px;
       h2 {
           font-size: 14px; margin:0px; color:#555555; 

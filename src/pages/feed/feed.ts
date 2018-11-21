@@ -54,12 +54,14 @@ export class FeedPage {
 
     self = this;
     this.socket = io.connect("https://futucare.com");
-    //this.detectNewFeedThroughSocket();
+    this.detectNewFeedThroughSocket();
   }
 
   detectNewFeedThroughSocket(){
     this.socket.on("feed:save", doc => {
-      this.getFeed();
+      console.log("doc", doc);
+      //this.feeds.unshift(doc);
+      //this.getFeed();
     });
   }
 

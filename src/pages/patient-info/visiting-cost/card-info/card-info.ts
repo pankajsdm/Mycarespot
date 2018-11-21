@@ -40,7 +40,7 @@ export class CardInfoPage {
   }   
  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VisitingCostPage');
+    console.log('ionViewDidLoad CardInfoPage');
     this.user_picture = localStorage.getItem('user_picture');    
     this.user_data   = JSON.parse(localStorage.getItem('user_data'));    
 

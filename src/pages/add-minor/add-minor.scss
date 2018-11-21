@@ -1,8 +1,5 @@
 page-add-minor {
-    
-        .toolbar-background {
-            background: #0099ff;
-          }
+  
           ion-title {
             text-align: center;
           }
@@ -239,13 +236,14 @@ page-add-minor {
         }
     }
 
-    .femaleSection p{font-size: 12px; text-align: justify;}
+    .femaleSection p{font-size: 12px; text-align: justify!important;
+      margin-bottom: 10px;}
 }
 
 
-    .circle_icon img{
+    .top > .circle_icon>img{
       width: 87px;
-      padding: 0;
+      padding: 0 !important;
     }
     .tab_section{
       .segment{border: 0px;box-shadow: none; border-radius: 0px;}

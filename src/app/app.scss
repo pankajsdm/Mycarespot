@@ -836,6 +836,7 @@ span.back-button-text.back-button-text-ios {
   .item-ios.item-block .item-inner {
     border-bottom: 1px solid #d9d9d9;
     padding: 0px !important;
+    background-position: right calc(-2px + env(safe-area-inset-right)) center!important;
   }
   .md ion-footer .toolbar:last-child {
     padding-bottom: calc(constant(safe-area-inset-bottom) + 4px);
@@ -911,6 +912,5 @@ span.back-button-text.back-button-text-ios {
     align-items: center;
     padding: 0px !important;
   }
-
 
 }

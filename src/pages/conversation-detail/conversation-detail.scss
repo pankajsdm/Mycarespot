@@ -1,7 +1,5 @@
 page-conversation-detail {
-  .toolbar-background {
-    background: #00b4ff;
-  }
+
 
   button.back-button {
     width: 60px;
@@ -18,7 +16,7 @@ page-conversation-detail {
   button.bar-button {
     font-size: 20px;
     color: #fff;
-    padding: 0 12px;
+    padding: 0 12px!important;
   }
 
   .footer {
@@ -48,6 +46,8 @@ page-conversation-detail {
   .scroll-content {
     margin-bottom: 60px !important;
   }
+
+
 
   .list-message {
     ul {

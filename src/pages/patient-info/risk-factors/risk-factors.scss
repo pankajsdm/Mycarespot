@@ -9,6 +9,12 @@ page-risk-factors {
     ion-title .toolbar-title {
       color: #ffffff;
       font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .toolbar-ios ion-title{
+      padding: 0!important;
     }
     .back-button {
       width: 0px;
@@ -119,6 +125,7 @@ page-risk-factors {
       .label-ios {
         margin: 0;
         color: #919191;
+        justify-content: center;
       }
       .item-ios .radio-ios{
         margin: 0px;
@@ -131,6 +138,7 @@ page-risk-factors {
         font-size: 13px;
         width: 50px;
         margin: 0px 3px;
+        border-radius: 50%;
         .item-inner{padding: 0px 0 0 0px;}
 
       }
