@@ -60,8 +60,27 @@ export class FeedPage {
   detectNewFeedThroughSocket(){
     this.socket.on("feed:save", doc => {
       console.log("doc", doc);
-      //this.feeds.unshift(doc);
-      //this.getFeed();
+      if (!doc.feed_id) {
+        if (!doc.Comments) doc.Comments = [];
+        if (!doc.like) doc.like = [];
+        if (!doc.media) doc.media = '';
+        var json = {
+          _id: doc._id,
+          created_by_user_id: [{
+            firstName: doc.created_by_user_id.firstName,
+            lastName: doc.created_by_user_id.lastName,
+            avatar: doc.created_by_user_id.avatar
+          }],
+          message: doc.message,
+          media: doc.media,
+          createdAt: doc.createdAt,
+          like: doc.like,
+          Comments: doc.Comments
+        };
+        console.log("json", json);
+        this.feeds.unshift(json);
+        this.authService.presentToast('Encontré un nuevo feed ...', 'middle');
+      }
     });
   }
 
@@ -82,6 +101,9 @@ export class FeedPage {
           this.navCtrl.setRoot(LoginPage);
         }else{  
           for(var i=0; i < this.socketFeedArr.data.length; i++){
+
+            if (!this.socketFeedArr.data[i].media) this.socketFeedArr.data[i].media = '';
+
             var json = {
               _id: this.socketFeedArr.data[i]._id,
               created_by_user_id: [{
@@ -90,6 +112,7 @@ export class FeedPage {
                 avatar: this.socketFeedArr.data[i].created_by_user_id[0].avatar
               }],
               message: this.socketFeedArr.data[i].message,
+              media: this.socketFeedArr.data[i].media,
               createdAt: this.socketFeedArr.data[i].createdAt,
               like: this.socketFeedArr.data[i].like,
               Comments: this.socketFeedArr.data[i].Comments,
@@ -104,7 +127,7 @@ export class FeedPage {
       });
       infiniteScroll.complete();
     }, 500);
-  }
+  } 
 
   /*ionViewDidLeave() {
     this.socket.unsubscribe();
