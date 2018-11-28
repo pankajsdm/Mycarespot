@@ -7,15 +7,18 @@
 
 <div class="ion-content">
     <ion-content class="no-scroll">
-        <div class="top">
-            <div class="circle_icon">
-                <img src="assets/img/credit-card.png" />     
-            </div>  
-               
-            <!-- <pre>{{customer | json}}</pre> -->
-            <!-- <pre>{{customer.id}}</pre> -->
-        </div>
+        
         <form id="registro" class="center" [formGroup]="cardForm" (ngSubmit)="saveCard()">
+          
+            <div class="top">
+                <div class="circle_icon">
+                    <img src="assets/img/credit-card.png" />     
+                </div>  
+                   
+                <!-- <pre>{{customer | json}}</pre> -->
+                <!-- <pre>{{customer.id}}</pre> -->
+            </div>
+
           <label id="registrateYConsultaAUnProvedor-input2">
             <ion-input [(ngModel)]="card.number" formControlName="number" placeholder="Número de tarjeta" [ngClass]="{ 'input_invalid': isSubmitted && check.number.errors }"></ion-input>
           </label>

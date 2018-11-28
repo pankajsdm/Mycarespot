@@ -53,33 +53,63 @@ export class FeedPage {
   ) {
 
     self = this;
-    this.socket = io.connect("https://futucare.com");
+    this.socket = io.connect(Config.home_url);
     this.detectNewFeedThroughSocket();
-  }
+  }  
 
   detectNewFeedThroughSocket(){
     this.socket.on("feed:save", doc => {
       console.log("doc", doc);
-      if (!doc.feed_id) {
+      if (doc.feed_id) {
+
         if (!doc.Comments) doc.Comments = [];
         if (!doc.like) doc.like = [];
         if (!doc.media) doc.media = '';
-        var json = {
-          _id: doc._id,
-          created_by_user_id: [{
-            firstName: doc.created_by_user_id.firstName,
-            lastName: doc.created_by_user_id.lastName,
-            avatar: doc.created_by_user_id.avatar
-          }],
-          message: doc.message,
-          media: doc.media,
-          createdAt: doc.createdAt,
-          like: doc.like,
-          Comments: doc.Comments
-        };
-        console.log("json", json);
-        this.feeds.unshift(json);
-        this.authService.presentToast('Encontré un nuevo feed ...', 'middle');
+        let newFeed = false;
+
+        for (let i = 0; i < this.feeds.length; i++) {
+          if (this.feeds[i]._id == doc._id) {
+            let isCheckComment = false;
+            
+            for (let j = 0;j < this.feeds[i].Comments.length;j++) {
+							if (this.feeds[i].Comments[j]._id == doc._id) {
+								if (this.feeds[i].Comments[i].child_comment != doc.child_comment) {
+									return;
+								}
+								this.feeds[i].Comments[j] = doc;
+								isCheckComment = true;
+								break;
+							}
+            }
+            
+            if (!isCheckComment) {
+							this.feeds[i].Comments.push(doc);
+						}
+
+            break;
+            
+					}   
+        } 
+      }else{
+        doc.created_by_user_id = [doc.created_by_user_id];
+				if (!doc.Comments) doc.Comments = [];
+
+				let isCheck = false;
+
+				for (let i = 0; i < this.feeds.length; i++) {
+					if (this.feeds[i]._id == doc._id) {
+						this.feeds[i].message = doc.message;
+
+						if (this.feeds[i].media) {
+							this.feeds[i].media = doc.media;
+						}
+						isCheck = true;
+						break;
+					}
+				}
+				if (!isCheck) {
+					this.feeds.unshift(doc);
+				}
       }
     });
   }
@@ -202,7 +232,6 @@ export class FeedPage {
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
@@ -232,6 +261,7 @@ export class FeedPage {
       this.presentToast('Oh no! No internet found.');
     }
   }   
+
 
   organizePost(){
     for(var i=0; i < this.feedsArr.data.length; i++){
