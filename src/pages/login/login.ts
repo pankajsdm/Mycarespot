@@ -13,7 +13,7 @@ import {
   AlertController,
   NavController,
   MenuController
-} from "ionic-angular";
+} from "ionic-angular"; 
 import { TabsPage } from "../tabs/tabs";
 import { FeedPage } from "../feed/feed";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";

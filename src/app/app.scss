@@ -924,6 +924,20 @@ ion-footer {
   }
 }
 
+ion-header {
+  ion-title {text-align: center;}
+  ion-title .toolbar-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+
 .tab-content-app {
   &.hidden {
     display: none;

@@ -1,5 +1,6 @@
 let baseWebrtc = "https://video.futucare.com/";
 export const Config = {
+  home_url: "https://futucare.com", //52.224.110.147
   url: "https://futucare.com/api", //52.224.110.147
   common_url: "https://futucare.com/api/",
   api_url: "https://futucare.com/api/api/",

@@ -1,20 +1,5 @@
 page-card-info {
    
-    .no-scroll .scroll-content{
-        overflow: hidden;
-    }
-
-    ion-title .toolbar-title {
-        color: #ffffff;
-        font-size: 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .toolbar-ios ion-title{
-        padding: 0!important;
-      }
-  
     .text-input {
         margin: 0 auto;
         width: 100%;
@@ -25,14 +10,14 @@ page-card-info {
         font-size: 1em;
         font-family: 'helvetica-normal', 'arial', 'sans-serif';
     }
-    
+     
     .top{
         background-color: #ffffff;
         max-height: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 41px!important;
+        margin-top: 60px!important;
         p{ padding: 0 50px;}
     }
 

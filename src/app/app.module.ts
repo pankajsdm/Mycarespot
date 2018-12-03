@@ -124,7 +124,7 @@ import { TokenInterceptor } from "./app.token.interceptor";
     MedicalHistoryPhase3Page,
     MedicalHistoryPhase4Page,
     MedicalHistoryPhase5Page,
-
+  
     BodyMeasurementsPage,
     BodyMeasurementChooserPage,
 
