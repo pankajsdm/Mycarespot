@@ -6,7 +6,7 @@ import { PatientSimptomPage } from './patient-simptom/patient-simptom';
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 import { OptionsSimptomPage } from './options-simptom/options-simptom';
 import { DoctorsPage } from "../doctors/doctors";
-  
+
 @Component({
   selector: 'page-patient-info',
   templateUrl: 'patient-info.html',
@@ -16,8 +16,8 @@ export class PatientInfoPage {
   registerForm: FormGroup;
   users: any;
   prctArr: any;
-  isSubmittedMinor: boolean =  false;
-  defaultPatient = {name: '', _id: ''};
+  isSubmittedMinor: boolean = false;
+  defaultPatient = { name: '', _id: '' };
   registration_type: boolean;
   reg_param: string;
   isSubmitted: boolean = false;
@@ -36,62 +36,56 @@ export class PatientInfoPage {
     public formdata: FormBuilder,
     public navParams: NavParams
   ) {
-     
+
     this.registerForm = this.formdata.group({
       FirstName: ['', [Validators.required]],
     });
   }
 
- 
-
   ionViewDidLoad() {
-
     console.log('ionViewDidLoad PatientInfoPage');
-    this.user_picture = localStorage.getItem('user_picture');   
+    this.user_picture = localStorage.getItem('user_picture');
     this.getMinorList();
     this.event.subscribe('submitted', (paramsVar) => {
-      if(paramsVar){
+      if (paramsVar) {
         this.getMinorList();
       }
     });
   }
 
-  getMinorList(){   
-    if(this.online){
+  getMinorList() {
+    if (this.online) {
       this.isLoading = true;
       this.authService.get('practioner/getAddedMinorsList').then((result) => {
         this.isLoading = false;
-        this.prctArr = result;  
+        this.prctArr = result;
         this.users = this.prctArr.data.children;
-        this.defaultPatient =  this.prctArr.data._id;
+        this.defaultPatient = this.prctArr.data._id;
         console.log("user", this.users);
-      },(err) => {
+      }, (err) => {
         this.isLoading = false;
         this.presentToast('Something wrong! Please try later.');
       });
-    }else{
+    } else {
       this.presentToast('Oh no! No internet found.');
     }
   }
 
-  
-  add_minor(){
+  add_minor() {
     this.navCtrl.push(AddMinorPage);
   }
 
-
-
-  optionSimptom(id){
+  optionSimptom(id) {
     this.navCtrl.push(OptionsSimptomPage);
   }
 
   cancle() {
     this.authService.cancle();
     setTimeout(() => {
-      if(this.authService.action){
+      if (this.authService.action) {
         this.navCtrl.setRoot(DoctorsPage);
       }
-    }, 2000);    
+    }, 2000);
   }
 
   /* Creating toast */
@@ -110,11 +104,11 @@ export class PatientInfoPage {
     toast.present();
   }
 
- ionViewDidEnter(){
+  ionViewDidEnter() {
     let elem = <HTMLElement>document.querySelector(".tabbar");
     if (elem != null) {
       elem.style.display = 'none';
     }
   }
- 
+
 }
