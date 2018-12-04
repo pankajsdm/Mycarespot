@@ -198,7 +198,6 @@ export class PharmacyMapPage {
       });
       this.markers.push(marker);
       this.map.setCenter(pos);
-
     }).catch((error) => {
       console.log('Error getting location', error);
     });
