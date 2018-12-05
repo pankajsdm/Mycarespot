@@ -29,19 +29,27 @@ export class PharmacyMapPage {
   constructor(
     public zone: NgZone,
     public navParams: NavParams,
-
+    public geolocation: Geolocation,
+    public authService: CommonServiceProvider
   ) {
 
+    this.geocoder = new google.maps.Geocoder;
+    let elem = document.createElement("div")
+    this.GooglePlaces = new google.maps.places.PlacesService(elem);
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = {
+      input: ''
+    };
+    this.autocompleteItems = [];
+    this.markers = [];
+    this.search_data = this.navParams.get('params');
+    this.infoWindows = [];
   }
 
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PharmacyMapPage');
-    
-  //}
-
-  
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
     var defaultLatLng = { lat: 25.82, lng: -124.39 };
     this.map = new google.maps.Map(document.getElementById('map'), {
@@ -69,19 +77,19 @@ export class PharmacyMapPage {
   }
 
   searchPharmacy() {
-    /*this.authService.showLoader("Searching...");
+    this.authService.showLoader("Searching...");
     this.authService.post('patient/searchPharmacy', this.search_data).then((result) => {
       this.authService.hideLoader();
       this.searchArr = result;
       this.searchList = this.searchArr.data.Items;
-      this.addMarkersToMap(this.searchList);*/
+      this.addMarkersToMap(this.searchList);
       /* for (let index = 0; index < this.searchList.length; index++) {
           this.addMarkersToMap(this.searchList[index]);
       } */
-    /*}, (err) => {
+    }, (err) => {
       this.authService.hideLoader();
       console.log("Something wrong...");
-    });*/
+    });
   }
 
   addInfoWindowToMarker(marker, ph_id, city, state, address, zip, phone) {
@@ -125,7 +133,7 @@ export class PharmacyMapPage {
   }
 
   addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId) {
-    //this.authService.showLoader("Actualizando...");
+    this.authService.showLoader("Actualizando...");
 
     let phoneFax = ''
     if (primaryPhone !== null && primaryPhone !== '') {
@@ -142,7 +150,7 @@ export class PharmacyMapPage {
       Address1: address1,
       PharmacyId: '' + pharmacyId
     }
-    /*this.authService.post('patient/addPatientPharmacy', add_ph).then((result) => {
+    this.authService.post('patient/addPatientPharmacy', add_ph).then((result) => {
       this.authService.hideLoader();
       this.responded_data = result;
       if (this.responded_data.code == 200) {
@@ -153,7 +161,7 @@ export class PharmacyMapPage {
       }
     }, (err) => {
       console.log("Something wrong...");
-    });*/
+    });
   }
 
 
@@ -178,7 +186,7 @@ export class PharmacyMapPage {
 
   tryGeolocation() {
     this.clearMarkers();
-    /*this.geolocation.getCurrentPosition().then((resp) => {
+    this.geolocation.getCurrentPosition().then((resp) => {
       let pos = {
         lat: resp.coords.latitude,
         lng: resp.coords.longitude
@@ -192,7 +200,7 @@ export class PharmacyMapPage {
       this.map.setCenter(pos);
     }).catch((error) => {
       console.log('Error getting location', error);
-    });*/
+    });
   }
 
   updateSearchResults() {
