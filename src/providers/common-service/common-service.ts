@@ -14,48 +14,18 @@ export class CommonServiceProvider {
   action: Boolean = false;
   public loading: any;
   constructor(
-    public http: Http, 
+    public http: Http,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController
-    ) {
-    }
+  ) {
+  }
 
   fetch(url, dataObj) {
     return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        this.http.post(this.common_url+url, dataObj, {headers: headers})
-          .subscribe(res => {
-            resolve(res.json());
-          }, (err) => {
-            reject(err);
-          });
-    });
-  }
-
-  post(url, dataObj) {
-    return new Promise((resolve, reject) => {
-        let token = localStorage.getItem('token');
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', token);
-        this.http.post(this.api_url+url, dataObj, {headers: headers})
-          .subscribe(res => {
-            resolve(res.json());
-          }, (err) => {
-            reject(err);
-          });
-    });
-  }
-
-  get(url) {
-      return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        let token = localStorage.getItem('token');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', token);
-        this.http.get(this.api_url+url, {headers: headers})
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post(this.common_url + url, dataObj, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -63,14 +33,44 @@ export class CommonServiceProvider {
         });
     });
   }
-  
+
+  post(url, dataObj) {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem('token');
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', token);
+      this.http.post(this.api_url + url, dataObj, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  get(url) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      let token = localStorage.getItem('token');
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', token);
+      this.http.get(this.api_url + url, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   delete(url) {
-      return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        let token = localStorage.getItem('token');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', token);
-        this.http.delete(this.api_url+url, {headers: headers})
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      let token = localStorage.getItem('token');
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', token);
+      this.http.delete(this.api_url + url, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -80,13 +80,13 @@ export class CommonServiceProvider {
   }
 
   put(url, body: any) {
-      return new Promise((resolve, reject) => {
-        let headers = new Headers();
-        let token = localStorage.getItem('token');
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', token);
-        
-        this.http.put(this.api_url+url, body, {headers: headers})
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      let token = localStorage.getItem('token');
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', token);
+
+      this.http.put(this.api_url + url, body, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -104,8 +104,7 @@ export class CommonServiceProvider {
     alert.present();
   }
 
-
-  cancle(){
+  cancle() {
     let alert = this.alertCtrl.create({
       title: 'Confirmar',
       message: 'Te redirige en la pantalla del doctor.',
@@ -115,7 +114,7 @@ export class CommonServiceProvider {
           handler: () => {
             this.action = false;
           }
-        }, 
+        },
         {
           text: 'Sí',
           handler: () => {
@@ -142,11 +141,11 @@ export class CommonServiceProvider {
     toast.present();
   }
 
-  showLoader(title = 'Processing...'){
+  showLoader(title = 'Processing...') {
     this.loading = this.loadingCtrl.create({
-        content: title,
-        spinner: 'bubbles',
-        cssClass: 'spinner-loading'
+      content: title,
+      spinner: 'bubbles',
+      cssClass: 'spinner-loading'
     });
     this.loading.present();
   }
@@ -154,9 +153,5 @@ export class CommonServiceProvider {
   hideLoader() {
     this.loading.dismiss();
   }
-
-
-
-
 
 }

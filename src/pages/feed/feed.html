@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="top-little" start> <img src="assets/img/logo.png"></ion-title>
     <ion-buttons end (click)="openMenu()">
-      <button ion-button icon-only color="royal"  class="top-little">
+      <button ion-button icon-only color="royal" class="top-little">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
@@ -10,16 +10,16 @@
 </ion-header>
 <ion-content class="cards-bg social-cards">
   <div class="no_data_found" *ngIf="isLoading">
-      <ion-spinner></ion-spinner>
+    <ion-spinner></ion-spinner>
   </div>
   <div id="feedContainer" *ngIf="!isLoading">
     <ion-card *ngFor="let feed of feeds; let i=index">
       <ion-item>
-        <ion-avatar item-start> 
+        <ion-avatar item-start>
           <img [src]="feed.created_by_user_id[0].avatar">
         </ion-avatar>
         <h2>{{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}</h2>
-        <p>{{feed.createdAt | date}}</p>   
+        <p>{{feed.createdAt | date}}</p>
       </ion-item>
       <ion-card-content>
         <p class="inner-feed-p" *ngIf="feed.message">{{feed.message}}</p>
@@ -28,17 +28,19 @@
         <img src="{{backend_url}}{{feed.media}}">
       </div>
       <ion-row class="comment-like-text">
-          <ion-col>
-            <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
-            - <span id="total_comment_{{feed._id}}">{{feed.Comments?.length}}</span> Comments
-            - <span id="total_share_{{feed._id}}">0</span> Share
-          </ion-col>
+        <ion-col>
+          <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
+          - <span id="total_comment_{{feed._id}}">{{feed.Comments?.length}}</span> Comments
+          - <span id="total_share_{{feed._id}}">0</span> Share
+        </ion-col>
       </ion-row>
       <ion-row class="feed-card-division">
         <ion-col id="status_{{feed._id}}">
-          <button *ngIf="feed.me_like" ion-button color="primary" clear small icon-start (click)="unlike(feed._id)"><ion-icon name='thumbs-up'></ion-icon></button>
+          <button *ngIf="feed.me_like" ion-button color="primary" clear small icon-start (click)="unlike(feed._id)">
+            <ion-icon name='thumbs-up'></ion-icon>
+          </button>
           <button *ngIf="!feed.me_like" ion-button color="primary" clear small icon-start (click)="like(feed._id)">
-              <ion-icon name='ios-thumbs-up-outline'></ion-icon>
+            <ion-icon name='ios-thumbs-up-outline'></ion-icon>
           </button>
         </ion-col>
         <ion-col>
@@ -114,4 +116,8 @@
   </div>
 </ion-content>
 
-<style>.social-cards ion-col {padding: 0;}</style>
+<style>
+  .social-cards ion-col {
+    padding: 0;
+  }
+</style>

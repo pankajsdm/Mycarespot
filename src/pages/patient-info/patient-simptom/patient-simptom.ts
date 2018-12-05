@@ -51,6 +51,7 @@ export class PatientSimptomPage {
     if (val && val.trim() != '') {
       this.items = this.symtoms;
       this.items = this.items.filter((item) => {
+          if(!this.disease.includes(item.translations.fr.name.toLowerCase()))
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
     }else{
@@ -64,7 +65,6 @@ export class PatientSimptomPage {
     console.log('Desease', this.disease);
     this.searchQuery = '';
     this.items = [];
-
   } 
 
   removeItem(des){
@@ -76,9 +76,7 @@ export class PatientSimptomPage {
   } 
 
   saveAndNextPhase(){
-
     if(this.online){
-
         if(this.disease.length==0){
             this.isError = true;
             this.error = 'El campo es obligatorio..';
@@ -104,11 +102,8 @@ export class PatientSimptomPage {
         }
       }else{
         this.presentToast('Oh no! No internet found.');
-      }
-
-    
-  } 
-
+      }    
+  }
 
   /* Creating toast */
   presentToast(msg) {
@@ -125,7 +120,6 @@ export class PatientSimptomPage {
 
     toast.present();
   }
-
 
   cancle() {
     this.authService.cancle();
@@ -429,9 +423,5 @@ export class PatientSimptomPage {
       ];
   
   }
-
-
-
-
 
 }
