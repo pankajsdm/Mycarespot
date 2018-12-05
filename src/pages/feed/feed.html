@@ -9,6 +9,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="cards-bg social-cards">
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="no_data_found" *ngIf="isLoading">
     <ion-spinner></ion-spinner>
   </div>
@@ -19,7 +22,7 @@
           <img [src]="feed.created_by_user_id[0].avatar">
         </ion-avatar>
         <h2>{{feed.created_by_user_id[0].firstName}} {{feed.created_by_user_id[0].lastName}}</h2>
-        <p>{{feed.createdAt | date}}</p>
+        <p class="feed-date">{{feed.createdAt | date}}</p>
       </ion-item>
       <ion-card-content>
         <p class="inner-feed-p" *ngIf="feed.message">{{feed.message}}</p>
@@ -31,7 +34,7 @@
         <ion-col>
           <span id="total_like_{{feed._id}}">{{feed.like?.length}}</span> Likes
           - <span id="total_comment_{{feed._id}}">{{feed.Comments?.length}}</span> Comments
-          - <span id="total_share_{{feed._id}}">0</span> Share
+          <!-- - <span id="total_share_{{feed._id}}">0</span> Share -->
         </ion-col>
       </ion-row>
       <ion-row class="feed-card-division">
@@ -39,23 +42,22 @@
           <button *ngIf="feed.me_like" ion-button color="primary" clear small icon-start (click)="unlike(feed._id)">
             <ion-icon name='thumbs-up'></ion-icon>
           </button>
-          <button *ngIf="!feed.me_like" ion-button color="primary" clear small icon-start (click)="like(feed._id)">
+          <button *ngIf="!feed.me_like" ion-button color="primary" class="like-icon" clear small icon-start (click)="like(feed._id)">
             <ion-icon name='ios-thumbs-up-outline'></ion-icon>
           </button>
         </ion-col>
+        <!-- Comment -->
         <ion-col>
-
           <button ion-button color="primary" clear small icon-start (click)="commentsFeed(feed._id)">
             <ion-icon name='text'></ion-icon>
-            <!-- Comment -->
           </button>
         </ion-col>
-        <ion-col>
+        <!-- Share -->
+        <!-- <ion-col>
           <button ion-button color="primary" clear small icon-start>
-            <ion-icon name='share'></ion-icon>
-            <!-- Share -->
+            <ion-icon name='share'></ion-icon>           
           </button>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
 
       <!-- <ion-item *ngFor="let comment of feed.Comments; let j=index;">

@@ -13,12 +13,13 @@
                 <label>
                     <ion-input type="password" placeholder="Contraseña" [(ngModel)]="user.password" formControlName="password" [ngClass]="{ 'input_invalid': isSubmitted && check.password.errors }"></ion-input>
                 </label>
+                <div class="spinnerBtn">
                 <button type="submit" id="entrar-button5" class="btn btn-primary pull-right">Entra</button>
-            </div> 
-
-            <div class="loadingSpinner"> 
-                <ion-spinner *ngIf="isLoading"></ion-spinner>  
+                <div class="loadingSpinner" *ngIf="isLoading"> 
+                    <ion-spinner *ngIf="isLoading" color="dark"></ion-spinner>  
+                </div>
             </div>
+            </div>             
         </form>
         <div class="pad_rlt">
             <div id="entrar-markdown1"> 

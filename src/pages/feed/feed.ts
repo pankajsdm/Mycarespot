@@ -55,7 +55,14 @@ export class FeedPage {
     self = this;
     this.socket = io.connect(Config.home_url);
     this.detectNewFeedThroughSocket();
-  }  
+  }
+  
+  pullToRefresh(refresher) {
+    setTimeout(() => {
+      this.refresh();
+      refresher.complete();
+    }, 2000);
+  }
 
   detectNewFeedThroughSocket() {
     this.socket.on("feed:save", doc => {
@@ -123,42 +130,45 @@ export class FeedPage {
   doInfinite(infiniteScroll) {
     //this.isLoading = true;
     setTimeout(() => {
-      this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=' + this.current_page).then((result) => {
-        //this.isLoading = false;
-        this.socketFeedArr = result;
-        if (this.socketFeedArr.code == '401') {
-          localStorage.clear();
-          this.navCtrl.setRoot(LoginPage);
-        } else {
-          for (var i = 0; i < this.socketFeedArr.data.length; i++) {
-
-            if (!this.socketFeedArr.data[i].media) this.socketFeedArr.data[i].media = '';
-
-            var json = {
-              _id: this.socketFeedArr.data[i]._id,
-              created_by_user_id: [{
-                firstName: this.socketFeedArr.data[i].created_by_user_id[0].firstName,
-                lastName: this.socketFeedArr.data[i].created_by_user_id[0].lastName,
-                avatar: this.socketFeedArr.data[i].created_by_user_id[0].avatar
-              }],
-              message: this.socketFeedArr.data[i].message,
-              media: this.socketFeedArr.data[i].media,
-              createdAt: this.socketFeedArr.data[i].createdAt,
-              like: this.socketFeedArr.data[i].like,
-              Comments: this.socketFeedArr.data[i].Comments,
-            }
-            this.feeds.push(json);
-          }
-
-          console.log("new infinite", this.feeds);
-
-          this.current_page = this.current_page + 1;
-        }
-      });
+      this.refresh();
       infiniteScroll.complete();
     }, 500);
   }
 
+  refresh(){
+    this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=' + this.current_page).then((result) => {
+      //this.isLoading = false;
+      this.socketFeedArr = result;
+      if (this.socketFeedArr.code == '401') {
+        localStorage.clear();
+        this.navCtrl.setRoot(LoginPage);
+      } else {
+        for (var i = 0; i < this.socketFeedArr.data.length; i++) {
+
+          if (!this.socketFeedArr.data[i].media) this.socketFeedArr.data[i].media = '';
+
+          var json = {
+            _id: this.socketFeedArr.data[i]._id,
+            created_by_user_id: [{
+              firstName: this.socketFeedArr.data[i].created_by_user_id[0].firstName,
+              lastName: this.socketFeedArr.data[i].created_by_user_id[0].lastName,
+              avatar: this.socketFeedArr.data[i].created_by_user_id[0].avatar
+            }],
+            message: this.socketFeedArr.data[i].message,
+            media: this.socketFeedArr.data[i].media,
+            createdAt: this.socketFeedArr.data[i].createdAt,
+            like: this.socketFeedArr.data[i].like,
+            Comments: this.socketFeedArr.data[i].Comments,
+          }
+          this.feeds.push(json);
+        }
+
+        console.log("new infinite", this.feeds);
+
+        this.current_page = this.current_page + 1;
+      }
+    });
+  }
   /*ionViewDidLeave() {
     this.socket.unsubscribe();
   } */

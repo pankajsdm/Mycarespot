@@ -20,7 +20,6 @@ export class TabsPage {
   tabs: any;
 
   constructor(public navParams: NavParams) {
-
   
   /* this.tab2Root = AboutPage;
   this.tab3Root = ContactPage;
@@ -58,6 +57,14 @@ export class TabsPage {
     console.log("defined Root", this.navParams);
     
   }
+
+  onTabChange($event){
+    console.log("onTabChange >>>>>>>>", $event)
+  }
+
+  // scrollTop(page){
+  //   console.log(">>>>>>>>>>>>>>>>> ", page)
+  // }
 
 
 }

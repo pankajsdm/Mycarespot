@@ -45,7 +45,7 @@ page-feed {
             font-size: 13px;
         }
         .comment_activities .comment_unliked{
-            color: #443f3f;
+            // color: #443f3f;
             font-size: 13px;
         }
         .comment_activities .common_span{
@@ -123,7 +123,7 @@ page-feed {
         }
         .button-clear-md-primary, .button-clear-ios-primary{
             border-color: transparent;
-            color: #a1a1a1;
+            color: #488aff;
             background-color: transparent;
             margin: 0;
             padding: 20px !important;
@@ -146,6 +146,10 @@ page-feed {
         }
         .header-ios .toolbar-ios:last-child .toolbar-background-ios {
             border-width: 0px;
+        }
+        .feed-card-division ion-col {
+            border-right: 0.5px solid;
+            border-color: #999;
         }
     }
     

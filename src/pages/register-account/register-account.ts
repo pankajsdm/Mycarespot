@@ -119,7 +119,9 @@ export class RegisterAccountPage {
     this.filechooser = true;
     console.log("file", file);
     this.getBase64(file).then( (picture) => {
+      console.log(">>>>>>>>>>>:: ", this.selectedPicture)
       this.selectedPicture = picture; 
+      console.log(":::::::::::::::::::::::::: ", this.selectedPicture)
     });
 
   }
