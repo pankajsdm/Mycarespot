@@ -8,7 +8,7 @@ page-login {
 		padding-top: 25px;
 	}
 	.link{
-		color: #0099ff;
+		color: #0084ff;
 		margin-top: -30px;
 	}	
 	.no-scroll .scroll-content{
@@ -39,6 +39,12 @@ page-login {
      button {
         font-weight: bold;
     }
+    .toolbar-title {
+        font-size: 14px !important;
+    }
+    .btnFacebook {
+        margin: 11px 0px 0px 0px !important;
+    }
      .btnFacebook ion-icon {
         font-size: 30px !important;
         margin: 0px 5px 0px 0px;
@@ -48,14 +54,12 @@ page-login {
         display: inline-block;
         color: #ffffff;
      }
-    .top {
-        height: 250px !important;
-        padding: 0px !important;
-        background-color: #0099ff;
+    .top{
+        height: auto !important;
+        padding: 50px 35px 50px 35px !important;
+        background-color: #0084ff;
         margin-top: 0;
-    }
-    .top img {
-        padding: 89px !important;
+        img{width: 16%;}
     }
     .btnFacebook{
         width: 100%;
@@ -79,10 +83,10 @@ page-login {
     }
     a {
         text-decoration: none;
-        color: #0099ff;
+        color: #0084ff;
     }
     a:hover {
-        color: #0099ff !important;
+        color: #0084ff !important;
     }
     .or {
         display: block;

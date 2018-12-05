@@ -1,6 +1,6 @@
 page-patient-info {
   .toolbar-background {
-    background: #0099ff;
+    background: #0084ff;
   }
   ion-title {
     text-align: center;
@@ -70,7 +70,7 @@ page-patient-info {
     position: relative;
   }
   .circle_icon ul li.active {
-    background: #0099ff;
+    background: #0084ff;
   }
   .circle_icon ul li:after {
     content: '';
@@ -86,12 +86,12 @@ page-patient-info {
     content: none;
   }
   .circle_icon ul li.fill:after {
-    background: #0099ff;
+    background: #0084ff;
   }
   .add_menor {
     margin-top: 13px;
     float: left;
-    color: #0099ff;
+    color: #0084ff;
   }
   .centerData {
 
@@ -106,7 +106,7 @@ page-patient-info {
     }
     a{
         font-size: 12px;
-        color: #0099ff;
+        color: #0084ff;
     }
   }
 
@@ -128,7 +128,7 @@ page-patient-info {
       padding: 5px 0px 0 6px;
       font-size: 12px; margin: 0px;
       border-right: 1px solid #d2d2d2;
-      border-radius: 0px;    color: #0099ff;
+      border-radius: 0px;    color: #0084ff;
       .select-icon{display: none;}
       .select-text { padding-top: 7px;}
     }
@@ -139,7 +139,7 @@ page-patient-info {
       display: inline-block;
       font-size: 12px; margin: 0px;
       border-right: 1px solid #d2d2d2;
-      border-radius: 0px;    color: #0099ff;
+      border-radius: 0px;    color: #0084ff;
       .select-icon{display: none;}
       .select-text { padding-top: 0px;}
     }

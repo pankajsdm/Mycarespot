@@ -61,12 +61,12 @@ page-risk-factors {
       }
       .circle_icon ul li.active {
         background: #ffffff;
-        border: 1px solid #0099ff;
-        color: #0099ff;
+        border: 1px solid #0084ff;
+        color: #0084ff;
       }
       .circle_icon ul li.fill {
-        background: #0099ff;
-        border: 1px solid #0099ff;
+        background: #0084ff;
+        border: 1px solid #0084ff;
         color: #ffffff;
       }
       .circle_icon ul li:after {
@@ -83,7 +83,7 @@ page-risk-factors {
         content: none;
       }
       .circle_icon ul li.fill:after {
-        background: #0099ff;
+        background: #0084ff;
       }
     .pad_rlt_10{padding: 0px; display: block;}
     .pad_rlt_25{padding: 0px; display: block;}
@@ -134,9 +134,9 @@ page-risk-factors {
 
       }
       .item:hover{
-        background: #d9d9d9; color: #0099ff;
-        .label-ios{color:#0099ff;}
-        ion-label{color: #0099ff !important;}
+        background: #d9d9d9; color: #0084ff;
+        .label-ios{color:#0084ff;}
+        ion-label{color: #0084ff !important;}
       }
       .item:last-child {
         min-width: 52px;
@@ -144,8 +144,8 @@ page-risk-factors {
       }
       .item-md .radio-md{margin: 0px;}
       .item-radio-checked{background:#d9d9d9;
-        .label-ios{color:#0099ff;}
-        ion-label{color: #0099ff !important;}
+        .label-ios{color:#0084ff;}
+        ion-label{color: #0084ff !important;}
       }
       .item-radio-checked:hover{
         background:#d9d9d9;

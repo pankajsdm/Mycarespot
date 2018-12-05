@@ -1,8 +1,10 @@
 page-register-options {
     .top{
-        padding: 0px 40px !important;
-        height: 250px !important;
-        img{padding: 70px 0px 0px 0px !important}
+        height: auto !important;
+        padding: 50px 35px 50px 35px !important;
+        background-color: #0084ff;
+        margin-top: 0;
+        img{width: 16%;}
         p{font-weight: bold;}
     }
     .social-btn1 .special-text {
@@ -21,7 +23,7 @@ page-register-options {
     }
     .btnFacebook{
         width:100%; 
-        margin: 10px auto;
+        margin: 0px 0px 15px 0px;
         background-color:#3b5998;
         text-align: center;
         color:white; 
@@ -31,7 +33,7 @@ page-register-options {
     }
     .btnMail{
         width: 100%;
-        margin: 10px auto;
+        margin: 15px 0px 15px 0px;
         background-color:#e8e8ea;
         text-align: center;
         color:white; 
@@ -41,8 +43,8 @@ page-register-options {
     }
     .btnMobile{
         width: 100%;
-        margin: 10px auto;
-        background-color:#0099ff;
+        margin: 0px 0px 15px 0px;
+        background-color:#0084ff;
         text-align: center;
         color:white; 
         position: relative !important;
@@ -50,7 +52,7 @@ page-register-options {
         height: 44px;
     }
     .scroll-content{
-        margin-top: 285px !important;
+        //margin-top: 285px !important;
     }
     .separador{
         position: relative;
@@ -74,7 +76,7 @@ page-register-options {
         font-size: 1em;
         p{
             text-align: center;
-            color: #0099ff;
+            color: #0084ff;
         }
     }
     .terminos{
@@ -91,7 +93,7 @@ page-register-options {
             margin-bottom: 0px;
         }
         .link{
-            color: #0099ff;
+            color: #0084ff;
             margin-top: -30px;
         }
     }
@@ -106,10 +108,10 @@ page-register-options {
         font-weight: normal; 
         color: #555555;
         font-size: 14px; 
-        margin: 0px;
+        margin: 13px 0px 0px 0px;
     }
     .terminos a{
-        color: #0099ff;
+        color: #0084ff;
         text-align: center;
         font-size: 13px;
         width: 100%;

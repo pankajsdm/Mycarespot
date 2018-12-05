@@ -1,6 +1,6 @@
 page-body-measurements {
     .toolbar-background {
-        background: #0099ff;
+        background: #0084ff;
       }
       ion-title {
         text-align: center;
@@ -51,7 +51,7 @@ page-body-measurements {
         position: relative;
       }
       .circle_icon ul li.active {
-        background: #0099ff;
+        background: #0084ff;
       }
       .circle_icon ul li:after {
         content: '';
@@ -67,7 +67,7 @@ page-body-measurements {
         content: none;
       }
       .circle_icon ul li.fill:after {
-        background: #0099ff;
+        background: #0084ff;
       }
       .pad_rlt_10{padding: 0 10px; display: block;}
       .pad_rlt_25{padding: 0 25px; display: block;}
@@ -111,9 +111,9 @@ page-body-measurements {
 
         }
         .item:hover{
-          background: #EDEDED; color: #0099ff;
-          .label-ios{color:#0099ff;}
-          ion-label{color: #0099ff !important;}
+          background: #EDEDED; color: #0084ff;
+          .label-ios{color:#0084ff;}
+          ion-label{color: #0084ff !important;}
         }
         .item:last-child {
           min-width: 52px;
@@ -121,8 +121,8 @@ page-body-measurements {
         }
         .item-md .radio-md{margin: 0px;}
         .item-radio-checked{background:#EDEDED;
-          .label-ios{color:#0099ff;}
-          ion-label{color: #0099ff !important;}
+          .label-ios{color:#0084ff;}
+          ion-label{color: #0084ff !important;}
         }
         .item-radio-checked.item-md ion-label, .item-radio.item-md ion-label{color: #919191;}
         button{padding: 0px; margin: 0px; position: relative;}

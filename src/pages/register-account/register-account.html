@@ -6,14 +6,14 @@
         <div class="top-icon">
             <div class="circle_icon" (click)="uploadImageCom.click()">
                     <!--ion-icon ios="ios-person" md="md-person" [ngClass]="{'file_invalid': isSubmitted && !filechooser}"></ion-icon--> 
-                    <img [src]="selectedPicture" />
+                    <ion-icon name="contact"></ion-icon>
                 <span class="camera-span"><ion-icon name="camera"></ion-icon></span>
                 <input type="file" #uploadImageCom style="visibility: hidden; position: fixed; z-index: -99999" (change)="uploadImage($event)"> 
             </div>   
         </div>      
     </div>
 
-    <div class="top" style="background-color: #0099ff !important;" *ngIf="verificationProcess">
+    <div class="top" style="background-color: #0084ff !important;" *ngIf="verificationProcess">
         <div class="circle_icon"> 
             <img [src]="selectedPicture" />   
         </div>         
@@ -26,7 +26,7 @@
         </div>         
     </div>
 
-    <div class="top" style="background-color: #0099ff !important;" *ngIf="verificationProcess">
+    <div class="top" style="background-color: #0084ff !important;" *ngIf="verificationProcess">
         <div class="circle_icon"> 
             <img src="assets/img/logo.png" />   
         </div>         
@@ -49,14 +49,14 @@
             </label>
 
             <ion-item class="fecha">
-                <ion-label class="label_text">Fecha de Nacimiento</ion-label>
+                <ion-label class="label_text">Fecha de nacimiento</ion-label>
                 <ion-datetime class="fechaClick" displayFormat="DD-MMMM-YYYY" pickerFormat="DD-MMMM-YYYY" [(ngModel)]="user.DateOfBirth" formControlName="DateOfBirth" cancelText="Cancelar" doneText="Seleccionar" [ngClass]="{ 'input_invalid': isSubmitted && check.DateOfBirth.errors }"></ion-datetime>
             </ion-item>
 
             <div class="gap" style="float:left; width: 100%;margin-top: 5px;" *ngIf="registration_type"></div>
 
             <label id="registrateYConsultaAUnProvedor-input5" *ngIf="registration_type">
-                <ion-input  type="email" placeholder="Correo Electrónico" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
+                <ion-input  type="email" placeholder="Correo electrónico" [(ngModel)]='user.email' formControlName="email" [ngClass]="{ 'input_invalid': isSubmitted && check.email.errors }"></ion-input>
             </label>
             
 

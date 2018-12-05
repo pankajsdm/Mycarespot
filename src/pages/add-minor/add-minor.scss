@@ -176,7 +176,7 @@ page-add-minor {
         .segment-button{border-left: 1px solid #d9d9d9; color: #9c9c9c;}
 
         .segment-button.segment-activated{
-          color: #04b4ff !important;
+          color: #0084ff !important;
           background-color: transparent !important;
         }
         .datetime.input_invalid, .segment.input_invalid{border: 1px solid red;}
@@ -215,7 +215,7 @@ page-add-minor {
             padding: 5px 0px 0 6px;
             font-size: 12px; margin: 0px;
             border-right: 1px solid #d2d2d2;
-            border-radius: 0px;    color: #0099ff;
+            border-radius: 0px;    color: #0084ff;
             .select-icon{display: none;}
             .select-text { padding-top: 7px;}
         }
@@ -226,7 +226,7 @@ page-add-minor {
             display: inline-block;
             font-size: 12px; margin: 0px;
             border-right: 1px solid #d2d2d2;
-            border-radius: 0px;    color: #0099ff;
+            border-radius: 0px;    color: #0084ff;
             .select-icon{display: none;}
             .select-text { padding-top: 0px;}
         }
@@ -257,5 +257,5 @@ page-add-minor {
       background: transparent;
     }
     ion-segment-button.segment-button.segment-activated{
-      border-color: #04b4ff !important;
+      border-color: #0084ff !important;
     }

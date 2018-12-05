@@ -43,6 +43,7 @@ page-register-account {
         width: 100%;
         border-radius: 5px;
         border: 1px solid #d9d9d9;
+        color: #555555;
         padding: 10px;
         height: 44px;
         margin-bottom: 15px;
@@ -136,8 +137,10 @@ page-register-account {
         top: 5px !important;
       }
       .top{
-        padding: 0px 0px 15px 0px !important;
+        height: auto !important;
+        padding: 35px 0px 5px 0px !important;
         background-color: #ffffff;
+        margin-top: 0;
         p{ padding: 0 50px;}
       }
       .datetime-text {
@@ -169,53 +172,6 @@ page-register-account {
         margin: 5px 0 10px 0 !important; 
         font-weight: bold;
       }
-      .datetime{
-        border-radius: 5px;
-      }
-      .segment{
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        padding: 0;
-        margin: 0 0 10px 0;
-        border-radius: 5px;
-        border: 1px solid #d9d9d9;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-      }
-      .segment-md .segment-button {
-        border: none;
-        color: #a1a1a1 !important ;
-        border-bottom-width: 0px !important;
-        text-transform: none;
-        font-size: 14px;
-        padding: 0px !important;
-        line-height: 41px;
-        font-weight: normal;
-        opacity: 1;
-      }
-      .segment-button.segment-activated{
-        color: #fff !important;
-        background-color: #0099ff !important;
-      }
-      .segment-button.segment-activated:first-of-type{
-        border-top-left-radius: 5px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 5px;
-        margin-right: 0;
-      }
-      .segment-button.segment-activated:last-of-type{
-        border-top-left-radius: 0px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 0px;
-        margin-right: 0;
-      }
-      .datetime.input_invalid, .segment.input_invalid{
-        border: 1px solid red;
-      }
       .center{
         padding: 0 35px;
         margin: 0 auto !important;
@@ -241,7 +197,7 @@ page-register-account {
           padding: 5px 0px 0 6px;
           font-size: 12px; margin: 0px;
           border-right: 1px solid #d2d2d2;
-          border-radius: 0px;    color: #0099ff;
+          border-radius: 0px;    color: #0084ff;
           .select-icon{display: none;}
           .select-text { padding-top: 7px;}
         }
@@ -253,7 +209,7 @@ page-register-account {
           font-size: 12px; margin: 0px;
           border-right: 1px solid #d2d2d2;
           border-radius: 0px;    
-          color: #0099ff;
+          color: #0084ff;
           .select-icon{
             display: none;
           }
@@ -283,7 +239,6 @@ page-register-account {
       }
       .top{
         height: auto !important;
-        margin-top: 50px;
       }
       .camera-span{    
         background: #e8e8ea;
@@ -299,11 +254,70 @@ page-register-account {
       .camera-span i.fas{
         color: #a1a1a1 !important;
       }
-      .segment-ios .segment-button{
-        border-color:#0099ff; 
-        color: #0099ff !important;
+      .datetime{
+        border-radius: 5px;
+      }
+      .segment{
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        padding: 0;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
       }
       .segment-button.segment-activated{
         color: #fff !important;
+        background-color: #0084ff !important;
       }
+      .segment-ios .segment-button:first-of-type, .segment-md .segment-button:first-of-type {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 5px;
+        margin-right: 0;
+      }
+      .segment-ios .segment-button:last-of-type, .segment-md .segment-button:last-of-type{
+        border-top-left-radius: 0px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 0px;
+        margin-right: 0;
+      }
+      .datetime.input_invalid, .segment.input_invalid{
+        border: 1px solid red;
+      }
+      .segment-ios .segment-button, .segment-md .segment-button{
+        border: 1px solid #0084ff; 
+        color: #0084ff !important;
+        height: 44px;
+        line-height: 43px;
+        font-size: 14px;
+        font-weight: normal;
+      }
+      .segment-md .segment-button {
+        text-transform: none;
+        font-size: 14px;
+        opacity: 1;
+      }
+      .segment-md .segment-button:first-of-type, .segment-md .segment-button:first-of-type {
+        border-right: none;
+      }
+      .segment-button.segment-activated{
+        color: #fff !important;
+        font-weight: normal;
+      }
+      .datetime-ios .datetime-placeholder{
+        color: #555555;
+      }
+      .ion-ios-contact{
+        font-size: 100px;
+        color: #e8e8ea;
+      }
+      .ion-ios-camera{
+        font-size: 12px;
+      }
+
 }

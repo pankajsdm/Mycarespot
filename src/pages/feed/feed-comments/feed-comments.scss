@@ -4,7 +4,7 @@ page-feed-comments {
      /* Ended common css*/
 
      ion-buttons {margin: 0;}
-     .bar-button-default-md, .bar-button-default-ios{color: #0099ff; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
+     .bar-button-default-md, .bar-button-default-ios{color: #0084ff; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
  
      ion-row.comment-like-text.row {
          padding: 10px;
@@ -15,8 +15,7 @@ page-feed-comments {
          height: 40px;
      }
      .item-ios{
-         padding: 10px 10px 10px 10px;
-         border-bottom: 1px solid #d9d9d9;
+         padding: 10px 10px 0px 10px;
      }
      .item-ios ion-avatar[item-start]{
          margin: 0px 6px 0px 0px;
@@ -36,10 +35,10 @@ page-feed-comments {
      .parent_comment img, .child_comment img{
          border-radius: 50%;
          overflow: hidden;
-         width: 40px;
-         height: 40px;
+         width: 36px;
+         height: 36px;
          float:left;
-         margin: 0 10px 0 0;
+         margin: 0 6px 0 0;
      }
      .child_comment{margin-left: 20px;margin-top: 15px;}
      .child_comment_form{margin-top: 10px;margin-left: 50px;
@@ -54,7 +53,7 @@ page-feed-comments {
         margin-top: 7px;
      }
      .comment_activities .comment_liked{
-         color: #0099ff;
+         color: #0084ff;
          font-size: 12px;
      }
      .comment_activities .comment_unliked{
@@ -87,21 +86,28 @@ page-feed-comments {
      }
      .item-md ion-avatar[item-start]{
          margin:0px 6px 0px 0px;
-     }
-     .item-md h2, .item-ios h2 {
-         margin: 0px;
-         color: #555555;
-         font-size: 14px;
-         font-weight: 600;
-     }
+    }
+    .item-md h2, .item-ios h2 {
+        margin: 0px;
+        color: #555555;
+        font-size: 14px;
+    }
+    .item-md p, .item-ios h4, {
+        margin: 0px;
+        color: #555555;
+        font-size: 13px;
+        display: block;
+    }
      .item-md p {
          margin: 0px;
          color: #555555;
          font-size: 13px;
      }
      .card-md p, .item-ios p:last-child {
-        color: #8e9093;
-        font-size: 1.3rem;
+        margin: 0px;
+        color: #a1a1a1;
+        font-weight: normal;
+        font-size: 12px;
         text-align: left !important;
      }
      .item-ios p
@@ -168,7 +174,7 @@ page-feed-comments {
 
     ion-icon.ion-ios-close{
         font-size: 30px !important;
-        color: #0099ff;
+        color: #0084ff;
     }
 
     .comment_form .parent_comment_form{border-bottom: 1px solid #ddd;}
