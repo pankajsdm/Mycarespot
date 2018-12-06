@@ -17,12 +17,12 @@ export class RiskFactorsPage {
   loading: any;
   user_data: any;
 
-  i_exercise: string = 'Si';
-  i_smoke: string = 'No';
+  i_exercise: string = 'No se';
+  i_smoke: string = 'No se';
   i_had_unsafe_sex: string = 'No se';
-  i_am_overweight: string = 'No';
-  use_alchole: string = 'No';
-  i_use_drugs: string = 'No';
+  i_am_overweight: string = 'No se';
+  use_alchole: string = 'No se';
+  i_use_drugs: string = 'No se';
   user_picture: String;
   isLoading: Boolean = false;
 
