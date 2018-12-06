@@ -269,9 +269,9 @@ page-patient-simptom {
         left: 10px !important;
     }
     .searchbar-md.searchbar-left-aligned .searchbar-search-icon {
-        right: 7px;
+        // right: 7px;
         top: 13px !important;
-        left: initial !important;
+        left: 10px !important;
         background-size: 20px;
     }
     .searchbar-ios,
@@ -319,7 +319,7 @@ page-patient-simptom {
         width: 14px;
         height: 14px;
     }
-    .searchbar-ios .searchbar-clear-icon {
+    .searchbar-md .searchbar-clear-icon, .searchbar-ios .searchbar-clear-icon {
         right: 15px;
         top: 0px;
         background-size: 14px;

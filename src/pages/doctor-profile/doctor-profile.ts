@@ -19,6 +19,7 @@ export class DoctorProfilePage {
   tabBarElement: any;
   currentUser: any;
   isLoading: Boolean = false;
+  basicInfo: any = {};
 
   constructor(
     public navCtrl: NavController,
@@ -46,7 +47,9 @@ export class DoctorProfilePage {
             this.isLoading = false;
             this.doctrArr = result;
             this.doctor = this.doctrArr.data[0];
+            this.basicInfo = this.doctor.basic_information;
             console.log("doct", this.doctrArr.data[0]);
+            console.log(">>>>>>>>>>>>>>>>>>> : ", this.basicInfo.bio_summary)
           },
           err => {
             this.isLoading = false;
@@ -120,5 +123,14 @@ export class DoctorProfilePage {
           _id: channel.data._id
         });
       });
+  }
+
+  getLanguages(){
+    if(this.basicInfo && this.basicInfo.languages){
+      let lng = this.basicInfo.languages;
+      return lng.slice(0, lng.length)
+    } else {
+      return ''
+    }    
   }
 }

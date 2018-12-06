@@ -9,7 +9,7 @@
   <div class="no_data_found" *ngIf="isLoading">
       <ion-spinner></ion-spinner>
   </div>
-  <div id="profileContainer" *ngIf="!isLoading">
+  <div id="profileContainer" *ngIf="!isLoading && doctor.firstName">
     <ion-item text-center class="image_container_profile">
       <span class="text_center_flex" *ngIf="doctor.avatar">
         <span class="profile_img">
@@ -27,12 +27,11 @@
     </ion-item>
     <div class="user_info">
       <span class="span-class-1">Bio</span>
-      <span>It is a logn established for fact a reader will be distracted by the readable content a page when looking at its great
-        way.</span>
+      <span>{{basicInfo?.bio_summary}}</span>
     </div>
     <div class="user_info">
       <span class="span-class-1">Language</span>
-      <span>English, Spanish</span>
+      <span>{{getLanguages()}}</span>
     </div>
     <div class="user_info">
       <span class="span-class-1">Education</span>
