@@ -22,13 +22,13 @@
           <label id="registrateYConsultaAUnProvedor-input2">
             <ion-input [(ngModel)]="card.number" formControlName="number" placeholder="Número de tarjeta" [ngClass]="{ 'input_invalid': isSubmitted && check.number.errors }"></ion-input>
           </label>
-          <!-- (click)="choose('months')" -->
+          <!-- readonly="true" (click)="choose('months')" -->
           <label id="registrateYConsultaAUnProvedor-input2">
-            <ion-input [(ngModel)]="card.expMonth" formControlName="expMonth" placeholder="Elegir mes de expiración" readonly="true" [ngClass]="{ 'input_invalid': isSubmitted && check.expMonth.errors }"></ion-input>
+            <ion-input [(ngModel)]="card.expMonth" formControlName="expMonth" placeholder="Elegir mes de expiración" [ngClass]="{ 'input_invalid': isSubmitted && check.expMonth.errors }"></ion-input>
           </label>
-          <!-- (click)="choose('years')" -->
+          <!-- readonly="true" (click)="choose('years')" -->
           <label id="registrateYConsultaAUnProvedor-input2">
-            <ion-input [(ngModel)]="card.expYear" formControlName="expYear" placeholder="Elegir Año de expiración" readonly="true" [ngClass]="{ 'input_invalid': isSubmitted && check.expYear.errors }"></ion-input>
+            <ion-input [(ngModel)]="card.expYear" formControlName="expYear" placeholder="Elegir Año de expiración" [ngClass]="{ 'input_invalid': isSubmitted && check.expYear.errors }"></ion-input>
           </label>
           <label id="registrateYConsultaAUnProvedor-input2">
             <ion-input [(ngModel)]="card.cvc" formControlName="cvc" placeholder="CVC" [ngClass]="{ 'input_invalid': isSubmitted && check.cvc.errors }"></ion-input>

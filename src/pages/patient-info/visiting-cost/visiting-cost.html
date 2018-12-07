@@ -83,7 +83,7 @@
           {{card_data.card_exp_month}}/{{card_data.card_exp_year}}</h3>
         <p>{{user_data.firstName}} {{user_data.lastName}}</p>
       </ion-col>
-      <ion-col class="col forward_icon" (click)="removeCard()" col-1>
+      <ion-col class="col forward_icon" (click)="removeCard(card_data.stripe_customer_id,card_data.card_id)" col-1>
         <ion-icon name="ios-trash"></ion-icon>
       </ion-col>
     </ion-item>

@@ -123,15 +123,17 @@ export class VisitingCostPage {
   }
 
   deleteCard(data) {
-    this.authService.showLoader();
+    // this.authService.showLoader();
     this.authService.post('payment/deleteCard', data).then((result : any) => {
-      this.authService.hideLoader();       
+      // this.authService.hideLoader();       
       if (result.code == 200) {
+        this.card = [];
         this.authService.presentToast(result.message, 'middle');        
       } else {
         this.authService.presentToast(result.message, 'bottom');
       }
     }, (err) => {
+      // this.authService.hideLoader();
       this.authService.presentToast("Something went wrong...", 'bottom');
     });
   }
