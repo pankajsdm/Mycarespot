@@ -225,9 +225,9 @@ ion-item.item.item-block.item-select {
   left: 10px !important;
 }
 .searchbar-md.searchbar-left-aligned .searchbar-search-icon{
-  right: 7px;
+  // right: 7px;
   top: 13px !important;
-  left: initial !important;
+  left: 10px !important;
   background-size: 20px;
 }
 .searchbar-ios, .searchbar-md{
@@ -288,5 +288,8 @@ input.searchbar-input {
     float: left;
     width: auto;
     margin: 15px 10px;
+  }
+  .searchbar-md .searchbar-clear-icon{
+    top: 0 !important;
   }
 }
