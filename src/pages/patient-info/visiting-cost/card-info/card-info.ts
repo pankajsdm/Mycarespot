@@ -42,9 +42,7 @@ export class CardInfoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CardInfoPage');
     this.user_picture = localStorage.getItem('user_picture');    
-    this.user_data   = JSON.parse(localStorage.getItem('user_data'));    
-
-    
+    this.user_data   = JSON.parse(localStorage.getItem('user_data'));
   }
 
   choose(val){
@@ -67,7 +65,7 @@ export class CardInfoPage {
       this.authService.showLoader();
       this.stripe.setPublishableKey('pk_test_2wmvXUXermvXMepFVD0rFGpP');
       this.stripe.createCardToken(this.card).then((token) => {
-        console.log("Token It is", token.id);
+        console.log("Token It is", token);
         
         let data = {     
           email: this.user_data.email, 

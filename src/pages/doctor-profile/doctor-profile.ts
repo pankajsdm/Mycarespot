@@ -48,10 +48,10 @@ export class DoctorProfilePage {
             this.doctrArr = result;
             this.doctor = this.doctrArr.data[0];
             this.basicInfo = this.doctor.basic_information;
-            this.backgroundInfo = this.doctor.background_information;
-            
+            if(this.doctor.background_information){
+              this.backgroundInfo = this.doctor.background_information;
+            }            
             console.log("doct", this.doctrArr.data[0]);
-            console.log(">>>>>>>>>>>>>>>>>>> : ", this.basicInfo.bio_summary)
           },
           err => {
             this.isLoading = false;

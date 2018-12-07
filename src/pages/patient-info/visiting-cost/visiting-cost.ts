@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Events, NavController, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams, AlertController } from 'ionic-angular';
 import { DoctorsPage } from "../../doctors/doctors";
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 import { CardInfoPage } from './../../patient-info/visiting-cost/card-info/card-info';
@@ -29,7 +29,8 @@ export class VisitingCostPage {
     public navParams: NavParams,
     private stripe: Stripe,
     private event: Events,
-    public authService: CommonServiceProvider
+    public authService: CommonServiceProvider,
+    public alertCtrl: AlertController
   ) {
   }    
 
@@ -90,6 +91,30 @@ export class VisitingCostPage {
         this.navCtrl.setRoot(DoctorsPage);
       }
     }, 2000);    
+  }
+
+  removeCard(){
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar',
+      message: 'Te redirige en la pantalla del doctor.',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log("clicked no")
+            // this.action = false;
+          }
+        },
+        {
+          text: 'Sí',
+          handler: () => {
+            console.log("clicked yes")
+            // this.action = true;
+          }
+        }
+      ]
+    });
+    alert.present()
   }
 
 }
