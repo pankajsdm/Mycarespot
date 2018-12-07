@@ -19,7 +19,7 @@ export class CardInfoPage {
   customer: any = {id: ''};
   res: any;
   isSubmitted: boolean = false;
-  card: any = { number: '', expMonth: '', expYear: '', cvc: ''};
+  card: any = { number: '4242424242424242', expMonth: '05', expYear: '2025', cvc: '123'};
  
   constructor(
     public navCtrl: NavController, 
@@ -66,18 +66,22 @@ export class CardInfoPage {
       this.stripe.setPublishableKey('pk_test_2wmvXUXermvXMepFVD0rFGpP');
       this.stripe.createCardToken(this.card).then((token) => {
         console.log("Token It is", token);
-        
+        // alert(JSON.stringify(token))
+        let cd :any = token.card;
+        // alert(cd.id)
         let data = {     
           email: this.user_data.email, 
           cardToken: token.id,
           patient_genral_info_id: this.user_data.patientId,
-          created_by_user_id: this.user_data._id
+          created_by_user_id: this.user_data._id,
+          card_id: cd.id
         }      
         this.authService.post('payment/createCard', data).then((result) => {
           this.authService.hideLoader();
           this.res = result;  
           this.customer = this.res.data;
           if(this.res.code==200){
+            
             this.authService.presentToast("Card added successfully...", 'middle');
             setTimeout(() => {
               this.navCtrl.pop().then( () => {
@@ -85,7 +89,7 @@ export class CardInfoPage {
               });
             }, 1000); 
           }else{
-            this.authService.presentToast("Card information is wrong...", 'bottom');
+            this.authService.presentToast(this.res.message, 'bottom');
           } 
         },(err) => {  
           this.authService.presentToast("Card information is wrong...", 'bottom');
@@ -93,7 +97,7 @@ export class CardInfoPage {
       }); 
     }
 
-  }   
+  }  
 
   cancle() {
     this.authService.cancle();
