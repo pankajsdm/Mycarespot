@@ -87,6 +87,10 @@ export class MyApp {
       this.avatar = user.avatar;
     });
 
+    events.subscribe("user:logout", () => {
+      this.logout();
+    });
+
     platform.ready().then(() => {
       this.main_navigation();
       statusBar.styleDefault();

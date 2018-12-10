@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { Inject, ViewChild } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Content, NavParams, ToastController, NavController, MenuController, ActionSheetController, ModalController } from 'ionic-angular';
+import { Content, NavParams, ToastController, NavController, MenuController, ActionSheetController, ModalController, Events } from 'ionic-angular';
 import { FeedCommentsPage } from "./feed-comments/feed-comments";
 import { CommonServiceProvider } from '../../providers/common-service/common-service';
 
@@ -49,7 +49,8 @@ export class FeedPage {
     private toastCtrl: ToastController,
     public menu: MenuController,
     public modalCtrl: ModalController,
-    public actionsheetCtrl: ActionSheetController
+    public actionsheetCtrl: ActionSheetController,
+    public events: Events
   ) {
 
     self = this;
@@ -140,8 +141,9 @@ export class FeedPage {
       //this.isLoading = false;
       this.socketFeedArr = result;
       if (this.socketFeedArr.code == '401') {
-        localStorage.clear();
-        this.navCtrl.setRoot(LoginPage);
+        this.events.publish("user:logout");
+        // localStorage.clear();
+        // this.navCtrl.setRoot(LoginPage);
       } else {
         for (var i = 0; i < this.socketFeedArr.data.length; i++) {
 
@@ -254,8 +256,9 @@ export class FeedPage {
         this.feedsArr = result;
 
         if (this.feedsArr.code == '401') {
-          localStorage.clear();
-          this.navCtrl.setRoot(LoginPage);
+          this.events.publish("user:logout");
+          // localStorage.clear();
+          // this.navCtrl.setRoot(LoginPage);
         } else {
           this.organizePost();
         }
