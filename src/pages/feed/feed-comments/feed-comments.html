@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-      <ion-title>Ver Feed</ion-title>
+      <ion-title>Mensaje de</ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
           <span ion-text color="primary" showWhen="ios"><ion-icon name="close"></ion-icon>
@@ -9,16 +9,10 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-  
   <ion-content class="cards-bg social-cards">
-      
     <div class="no_data_found" *ngIf="isLoading">
-        <ion-spinner></ion-spinner>
-       
-        
+      <ion-spinner></ion-spinner>
     </div>
-        
       <div id="feedContainer" *ngIf="!isLoading">
         <ion-card>
           <ion-item ion-item *ngFor="let details of feeds.created_by_user_id"> 
@@ -31,86 +25,69 @@
               </h2>
               <p class="feed-date">{{feeds.createdAt | date}}</p>   
           </ion-item>
-
           <ion-card-content>
             <p class="inner-feed-p" *ngIf="feeds.message">{{feeds.message}}</p>
           </ion-card-content>
-
           <div *ngIf="feeds.media" class="main-feed-image-container">
               <img src="{{backend_url}}{{feeds.media}}">
           </div>
-  
-          <ion-col class="col" col-12="">
+          <ion-card>
             <div class="comment_container">
               <ion-item *ngFor="let comment of feeds.Comments; let j=index;">
-                  <div class="parent_comment">
-                      <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
-                      <img *ngIf="!comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
-                      <h4>
-                        {{comment.created_by_user_id.firstName}} 
-                        {{comment.created_by_user_id.lastName}} 
-                        <span class="time_ago">{{comment.createdAt | timeAgo }}</span>
-                      </h4>
-                      <p>{{comment.message}}</p> 
-
-                      <div class="comment_activities">
-                          
-                          <ion-col id="sub_comment_{{comment._id}}">
-                            <span class="comment_liked" (click)="unlikeChild(comment._id)" *ngIf="comment.me_like">Like</span>
-        
-                            <span class="comment_unliked" (click)="likeChild(comment._id)" *ngIf="!comment.me_like">Like</span>
-                          </ion-col>
-        
-                          <span class="common_span" (click)="replayComment(comment._id)">Reply</span> | 
-                          <span class="common_span" id="sub_comment_like_{{comment._id}}">
-                            {{comment.like?.length}}
-                          </span>
-                          <span class="common_span">Likes</span>
-                      </div>
-                  </div>
-
-                  
-
-                  <div class="child_comment" *ngFor="let chld_comment of comment.child_comment;">
-
-                    <img *ngIf="chld_comment.created_by_user_id.avatar" [src]="chld_comment.created_by_user_id.avatar">
-                    <img *ngIf="!chld_comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
-    
-                    <h4>{{chld_comment.created_by_user_id.firstName}} {{chld_comment.created_by_user_id.lastName}} <span class="time_ago">{{chld_comment.datetime | timeAgo }}</span></h4>
-                    <p>{{chld_comment.message}}</p>
-                  </div>
-
+                <ion-avatar item-start> 
+                  <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
+                  <img *ngIf="!comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
+                </ion-avatar>
+                <div class="parent_comment">
+                  <h4>
+                    {{comment.created_by_user_id.firstName}} 
+                    {{comment.created_by_user_id.lastName}}
+                  </h4>
+                  <p class="feed-date">{{comment.createdAt | timeAgo }}</p>
+                  <p>{{comment.message}}</p> 
+                </div>
+                <div class="comment_activities">
+                  <ion-col id="sub_comment_{{comment._id}}">
+                    <span class="comment_liked" (click)="unlikeChild(comment._id)" *ngIf="comment.me_like">Like</span>
+                    <span class="comment_unliked" (click)="likeChild(comment._id)" *ngIf="!comment.me_like">Like</span>
+                  </ion-col>
+                  <span class="common_span" (click)="replayComment(comment._id)">Reply</span> | 
+                  <span class="common_span" id="sub_comment_like_{{comment._id}}">
+                    {{comment.like?.length}}
+                  </span>
+                  <span class="common_span">Likes</span>
+                </div>
+                <div class="child_comment" *ngFor="let chld_comment of comment.child_comment;">
+                  <img *ngIf="chld_comment.created_by_user_id.avatar" [src]="chld_comment.created_by_user_id.avatar">
+                  <img *ngIf="!chld_comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
+                  <h4>{{chld_comment.created_by_user_id.firstName}} {{chld_comment.created_by_user_id.lastName}} <span class="time_ago">{{chld_comment.datetime | timeAgo }}</span></h4>
+                  <p>{{chld_comment.message}}</p>
+                </div>
                 <form style="display:none;" class="child_comment_form" id="child_comment_form_{{comment._id}}" [formGroup]="childCommentForm" (ngSubmit)="postSubComment(feeds._id, j, comment._id)">
-                    <ion-item class="subcomment_text">
-                      <ion-input id="comment_text_{{feeds._id}}" formControlName="child_comments" placeholder="Write a comment" type="text"></ion-input> 
-                    </ion-item>
-                    <button style="display:none;" type="submit" >
-                      <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
-                    </button>
+                  <ion-item class="subcomment_text">
+                    <ion-input id="comment_text_{{feeds._id}}" formControlName="child_comments" placeholder="Write a comment" type="text"></ion-input> 
+                  </ion-item>
+                  <button style="display:none;" type="submit" >
+                    <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
+                  </button>
                 </form>
-
               </ion-item>
             </div>
-
-
             <form class="comment_form" [formGroup]="commentForm" (ngSubmit)="postComment(feeds._id)">
               <ion-row class="row parent_comment_form"> 
-                  <ion-col class="col" col-12="">
-                      <ion-item no-lines>
-                          <ion-input id="comment_text_{{feeds._id}}" formControlName="comments" placeholder="Write a comment" type="text"></ion-input> 
-                      </ion-item>
-                    </ion-col>
-                    <ion-col class="col" col-2="" style="display:none;">
-                      <button type="submit" clear="" icon-only="" ion-button="" item-right="" class="">
-                        <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
-                      </button>
-                  </ion-col>
+                <ion-col class="col" col-12="">
+                  <ion-item no-lines>
+                    <ion-input id="comment_text_{{feeds._id}}" formControlName="comments" placeholder="Write a comment" type="text"></ion-input> 
+                  </ion-item>
+                </ion-col>
+                <ion-col class="col" col-2="" style="display:none;">
+                  <button type="submit" clear="" icon-only="" ion-button="" item-right="" class="">
+                    <ion-icon ios="ios-send" md="md-send" name="ios-send" role="img"></ion-icon>
+                  </button>
+                </ion-col>
               </ion-row>
             </form>
-
-          </ion-col>
-  
+          </ion-card>
         </ion-card>
       </div>
     </ion-content>
-  

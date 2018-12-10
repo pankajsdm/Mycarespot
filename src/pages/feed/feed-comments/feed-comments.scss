@@ -23,7 +23,7 @@ page-feed-comments {
 
      .bar-buttons-ios .bar-button-default-ios{height: 37px;}
      .comment_container{border-top: 1px solid #d9d9d9;}
-     .parent_comment{width: 100%;}
+     .parent_comment{width: 100%; border-radius: 5px; background-color: #e8e8ea; color: #555555; font-size: 14px; padding: 10px;}
      .parent_comment h4, .child_comment h4
      {
         display: flex;
@@ -107,7 +107,7 @@ page-feed-comments {
         margin: 0px;
         color: #a1a1a1;
         font-weight: normal;
-        font-size: 12px;
+        font-size: 12px !important;
         text-align: left !important;
      }
      .item-ios p

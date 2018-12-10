@@ -33,10 +33,10 @@ export class PharmacyMapPage {
     public authService: CommonServiceProvider
   ) {
 
-    this.geocoder = new google.maps.Geocoder;
-    let elem = document.createElement("div")
-    this.GooglePlaces = new google.maps.places.PlacesService(elem);
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    //this.geocoder = new google.maps.Geocoder;
+    //let elem = document.createElement("div")
+    //this.GooglePlaces = new google.maps.places.PlacesService(elem);
+    //this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = {
       input: ''
     };
@@ -49,31 +49,31 @@ export class PharmacyMapPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PharmacyMapPage');
-    this.current_user = JSON.parse(localStorage.getItem('user_data'));
-    var defaultLatLng = { lat: 25.82, lng: -124.39 };
-    this.map = new google.maps.Map(document.getElementById('map'), {
-      center: defaultLatLng,
-      zoom: 5,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-    });
+    // console.log('ionViewDidLoad PharmacyMapPage');
+    // this.current_user = JSON.parse(localStorage.getItem('user_data'));
+    // var defaultLatLng = { lat: 25.82, lng: -124.39 };
+    // this.map = new google.maps.Map(document.getElementById('map'), {
+    //   center: defaultLatLng,
+    //   zoom: 5,
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP,
+    // });
 
-    /* Set other map attributes*/
-    var bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(25.82, -124.39),
-      new google.maps.LatLng(49.38, -66.94),
-    )
-    this.map.fitBounds(bounds);
-    let zoomChangeBoundsListener =
-      google.maps.event.addListenerOnce(this.map, 'bounds_changed', function (event) {
-        if (this.getZoom()) {
-          this.setZoom(3);
-        }
-      });
-    setTimeout(function () { google.maps.event.removeListener(zoomChangeBoundsListener) }, 2000);
-    /*** End to define the attributes ***/
+    // /* Set other map attributes*/
+    // var bounds = new google.maps.LatLngBounds(
+    //   new google.maps.LatLng(25.82, -124.39),
+    //   new google.maps.LatLng(49.38, -66.94),
+    // )
+    // this.map.fitBounds(bounds);
+    // let zoomChangeBoundsListener =
+    //   google.maps.event.addListenerOnce(this.map, 'bounds_changed', function (event) {
+    //     if (this.getZoom()) {
+    //       this.setZoom(3);
+    //     }
+    //   });
+    // setTimeout(function () { google.maps.event.removeListener(zoomChangeBoundsListener) }, 2000);
+    // /*** End to define the attributes ***/
 
-    this.searchPharmacy();
+    // this.searchPharmacy();
   }
 
   searchPharmacy() {
@@ -172,35 +172,35 @@ export class PharmacyMapPage {
   }
 
   addMarkersToMap(markers) {
-    for (let marker of markers) {
-      var position = new google.maps.LatLng(marker.Latitude, marker.Longitude);
-      var dogwalkMarker = new google.maps.Marker({
-        position: position,
-        title: marker.StoreName,
-        icon: 'assets/img/marker.png'
-      });
-      dogwalkMarker.setMap(this.map);
-      this.addInfoWindowToMarker(dogwalkMarker, marker.PharmacyId, marker.City, marker.State, marker.Address1, marker.ZipCode, marker.PrimaryPhone);
-    }
+    // for (let marker of markers) {
+    //   var position = new google.maps.LatLng(marker.Latitude, marker.Longitude);
+    //   var dogwalkMarker = new google.maps.Marker({
+    //     position: position,
+    //     title: marker.StoreName,
+    //     icon: 'assets/img/marker.png'
+    //   });
+    //   dogwalkMarker.setMap(this.map);
+    //   this.addInfoWindowToMarker(dogwalkMarker, marker.PharmacyId, marker.City, marker.State, marker.Address1, marker.ZipCode, marker.PrimaryPhone);
+    // }
   }
 
   tryGeolocation() {
-    this.clearMarkers();
-    this.geolocation.getCurrentPosition().then((resp) => {
-      let pos = {
-        lat: resp.coords.latitude,
-        lng: resp.coords.longitude
-      };
-      let marker = new google.maps.Marker({
-        position: pos,
-        map: this.map,
-        title: 'I am here!'
-      });
-      this.markers.push(marker);
-      this.map.setCenter(pos);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
+    // this.clearMarkers();
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   let pos = {
+    //     lat: resp.coords.latitude,
+    //     lng: resp.coords.longitude
+    //   };
+    //   let marker = new google.maps.Marker({
+    //     position: pos,
+    //     map: this.map,
+    //     title: 'I am here!'
+    //   });
+    //   this.markers.push(marker);
+    //   this.map.setCenter(pos);
+    // }).catch((error) => {
+    //   console.log('Error getting location', error);
+    // });
   }
 
   updateSearchResults() {
@@ -222,23 +222,23 @@ export class PharmacyMapPage {
   }
 
   selectSearchResult(item) {
-    this.clearMarkers();
-    this.autocompleteItems = [];
+    // this.clearMarkers();
+    // this.autocompleteItems = [];
 
-    this.geocoder.geocode({ 'placeId': item.place_id }, (results, status) => {
-      if (status === 'OK' && results[0]) {
-        // let position = {
-        //     lat: results[0].geometry.location.lat,
-        //     lng: results[0].geometry.location.lng
-        // };
-        let marker = new google.maps.Marker({
-          position: results[0].geometry.location,
-          map: this.map
-        });
-        this.markers.push(marker);
-        this.map.setCenter(results[0].geometry.location);
-      }
-    })
+    // this.geocoder.geocode({ 'placeId': item.place_id }, (results, status) => {
+    //   if (status === 'OK' && results[0]) {
+    //     // let position = {
+    //     //     lat: results[0].geometry.location.lat,
+    //     //     lng: results[0].geometry.location.lng
+    //     // };
+    //     let marker = new google.maps.Marker({
+    //       position: results[0].geometry.location,
+    //       map: this.map
+    //     });
+    //     this.markers.push(marker);
+    //     this.map.setCenter(results[0].geometry.location);
+    //   }
+    // })
   }
 
   clearMarkers() {
