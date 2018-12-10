@@ -1,106 +1,103 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title><span class="user_image"><img [src]="user_picture" alt="picture"/></span>Resumen</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title><span class="user_image"><img [src]="user_picture" alt="picture" /></span>Resumen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="pad_rlt_25">
+    <div class="circle_icon">
+      <ul>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active fill">
+          <ion-icon name="checkmark"></ion-icon>
+        </li>
+        <li class="active">8</li>
+      </ul>
+    </div>
+  </div>
   
-  <ion-content>
-      <div class="pad_rlt_25">
-        <div class="circle_icon">
-          <ul>
-            <li class="active fill">
-              <ion-icon name="checkmark"></ion-icon>
-            </li>
-            <li class="active fill">
-              <ion-icon name="checkmark"></ion-icon>
-            </li>
-            <li class="active fill">
-              <ion-icon name="checkmark"></ion-icon>
-            </li>
-            <li class="active fill">
-              <ion-icon name="checkmark"></ion-icon>
-            </li>
-            <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
-            <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
-            <li class="active fill"><ion-icon name="checkmark"></ion-icon></li>
-            <li class="active">8</li>
-          </ul>
-        </div>
-      </div> 
+  <ion-grid class="title_header">
+    <ion-row>
+      <ion-col col-12>El costo de su visita es</ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <ion-grid class="cost_section">
+    <ion-row>
+      <ion-col col-6>Visita</ion-col>
+      <ion-col col-6><span>$100.00</span></ion-col>
+    </ion-row>
 
-      <ion-grid class="title_header"> 
-        <ion-row>
-          <ion-col col-12>El costo de su visita es</ion-col> 
-        </ion-row>
-      </ion-grid> 
+    <ion-row class="discount">
+      <ion-col col-6>-Cobertura</ion-col>
+      <ion-col col-6><span>$85.00</span></ion-col>
+    </ion-row>
 
-      <ion-grid class="cost_section"> 
-        <ion-row>
-          <ion-col col-6>Visita</ion-col> 
-          <ion-col col-6><span>$100.00</span></ion-col> 
-        </ion-row>
+    <ion-row>
+      <ion-col col-6>Cargo por servicio</ion-col>
+      <ion-col col-6><span>$5.00</span></ion-col>
+    </ion-row>
 
-        <ion-row class="discount">
-          <ion-col col-6>-Cobertura</ion-col> 
-          <ion-col col-6><span>$85.00</span></ion-col> 
-        </ion-row>
+    <ion-row>
+      <ion-col col-6><b>Costo total</b></ion-col>
+      <ion-col col-6><span><b>$20.00</b></span></ion-col>
+    </ion-row>
 
-        <ion-row>
-          <ion-col col-6>Cargo por servicio</ion-col> 
-          <ion-col col-6><span>$5.00</span></ion-col> 
-        </ion-row>
+    <ion-row>
+      <ion-col col-8>
+        <ion-input type="text" placeholder="Numero de cupón"></ion-input>
+      </ion-col>
+      <ion-col col-4><button class="applic_btn">Aplicar</button></ion-col>
+    </ion-row>
 
-        <ion-row>
-          <ion-col col-6><b>Costo total</b></ion-col> 
-          <ion-col col-6><span><b>$20.00</b></span></ion-col> 
-        </ion-row>
+  </ion-grid>
 
-        <ion-row>
-          <ion-col col-8><ion-input type="text" placeholder="Numero de cupón"></ion-input></ion-col> 
-          <ion-col col-4><button class="applic_btn">Aplicar</button></ion-col> 
-        </ion-row>
+  <ion-grid class="title_header">
+    <ion-row>
+      <ion-col col-12>Método de pago</ion-col>
+    </ion-row>
+  </ion-grid>
 
-      </ion-grid> 
+  <div class="card-container" *ngIf="card?.length > 0">
+    <ion-item no-lines no-padding *ngFor="let card_data of card">
+      <ion-col class="col" col-11 (click)="makePayment(card_data.stripe_customer_id)">
+        <h3>{{card_data.card_brand}} ****{{card_data.card_last4}} – Expira
+          {{card_data.card_exp_month}}/{{card_data.card_exp_year}}</h3>
+        <p>{{user_data.firstName}} {{user_data.lastName}}</p>
+      </ion-col>
+      <ion-col class="col forward_icon" (click)="removeCard(card_data.stripe_customer_id,card_data.card_id)" col-1>
+        <ion-icon name="ios-trash"></ion-icon>
+      </ion-col>
+    </ion-item>
+  </div>
 
-  
-      <ion-grid class="title_header"> 
-        <ion-row>
-          <ion-col col-12>Método de pago</ion-col> 
-        </ion-row>
-      </ion-grid> 
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12><button block class="border_btn" (click)="addCard()">+ Añadir método de pago</button></ion-col>
+    </ion-row>
+  </ion-grid>
 
-   
-      <div class="card-container" *ngIf="card?.length > 0">
-        <ion-item no-lines no-padding (click)="makePayment(card_data.stripe_customer_id)" *ngFor="let card_data of card" >
-          <ion-col class="col" col-11>
-            <h3>{{card_data.card_brand}} ****{{card_data.card_last4}} – Expira {{card_data.card_exp_month}}/{{card_data.card_exp_year}}</h3>
-            <p>{{user_data.firstName}} {{user_data.lastName}}</p>
-          </ion-col>
-          <ion-col class="col forward_icon" col-1>
-            <ion-icon name="ios-arrow-forward"></ion-icon>
-          </ion-col>
-        </ion-item> 
-      </div>
-
-
-      <ion-grid> 
-        <ion-row> 
-          <ion-col col-12><button block class="border_btn" (click)="addCard()">+ Añadir método de pago</button></ion-col>  
-        </ion-row>
-      </ion-grid> 
- 
-      <!-- <ion-grid> 
-        <ion-row>  
-          <ion-col col-12><button block>Completar transacción</button></ion-col> 
-        </ion-row>
-      </ion-grid> --> 
-      
-  
-  </ion-content>
-
-  <ion-footer class="main-footer">
-      <ion-toolbar (click)="cancle()">
-        <ion-title>Cancelar proceso</ion-title> 
-      </ion-toolbar>
-    </ion-footer>
+</ion-content>
+<ion-footer class="main-footer">
+  <ion-toolbar (click)="cancle()">
+    <ion-title>Cancelar proceso</ion-title>
+  </ion-toolbar>
+</ion-footer>

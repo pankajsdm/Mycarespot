@@ -31,11 +31,11 @@
       <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Buscar, p. ej. dolor de cabeza"></ion-searchbar>
     </div>
     <ul class="searchedListing">
-      <li (click)="selectItem(item.translations.fr.name)" *ngFor="let item of items">{{ item.translations.fr.name }} <a
+      <li (click)="selectItem(item.translations.fr.name)" *ngFor="let item of items" text-capitalize>{{ item.translations.fr.name }} <a
           href="#"></a></li>
     </ul>
     <ul class="search_tag" *ngIf="disease?.length > 0">
-      <li *ngFor="let des of disease">{{des}} <a href="#" (click)="removeItem(des)"></a></li>
+      <li *ngFor="let des of disease" text-capitalize>{{des}} <a href="#" (click)="removeItem(des)"></a></li>
     </ul>
     <div class="loadingSpinner" *ngIf="isError">
       <p class="searchError">{{error}}</p>

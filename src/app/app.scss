@@ -752,6 +752,7 @@ span.back-button-text.back-button-text-ios {
         height: 100%;
         max-height: 100%;
     }
+    margin-top: 3px;
 }
 
 .window-call {
@@ -930,6 +931,9 @@ ion-footer {
     }
     .header-ios .toolbar-ios {
         height: 100px;
+    }
+    .toolbar-ios{
+        padding: 0 !important;
     }
     ion-header .top {
         margin-top: 0px !important;
@@ -1126,4 +1130,8 @@ body.call-minize {
 }
 .right_button span.button-inner {
   font-size: 17px;
+//   padding-right: 10px;
+}
+.right_button button span ion-icon {
+    font-size: 2.4rem;
 }

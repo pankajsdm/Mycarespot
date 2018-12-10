@@ -9,7 +9,7 @@
   <div class="no_data_found" *ngIf="isLoading">
       <ion-spinner></ion-spinner>
   </div>
-  <div id="profileContainer" *ngIf="!isLoading">
+  <div id="profileContainer" *ngIf="!isLoading && doctor.firstName">
     <ion-item text-center class="image_container_profile">
       <span class="text_center_flex" *ngIf="doctor.avatar">
         <span class="profile_img">
@@ -17,7 +17,7 @@
         </span>
       </span>
       <span class="span-class-1">Dr. {{doctor.firstName}} {{doctor.lastName}}</span>
-      <span class="span-class-2">General Physical</span>
+      <span class="span-class-2">{{doctor.primarySpecialty}}</span>
       <div class="user_activity">
         <ion-icon name="videocam" (click)="patientInfo()" ></ion-icon>
         <ion-icon name="chatbubbles" (click)="openChat()" ></ion-icon>
@@ -27,20 +27,19 @@
     </ion-item>
     <div class="user_info">
       <span class="span-class-1">Bio</span>
-      <span>It is a logn established for fact a reader will be distracted by the readable content a page when looking at its great
-        way.</span>
+      <span>{{basicInfo?.bio_summary}}</span>
     </div>
     <div class="user_info">
       <span class="span-class-1">Language</span>
-      <span>English, Spanish</span>
+      <span>{{getLanguages()}}</span>
     </div>
     <div class="user_info">
       <span class="span-class-1">Education</span>
-      <span>Harvard University</span>
+      <span>{{backgroundInfo.graduating_institution}}</span>
     </div>
     <div class="user_info">
       <span class="span-class-1">Experience</span>
-      <span>7 Years</span>
+      <span>{{backgroundInfo.year_of_exp}}</span>
     </div>
 </div>
 </ion-content>

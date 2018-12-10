@@ -5,54 +5,52 @@ import { Stripe } from '@ionic-native/stripe';
 import { VitalsChooserPage } from './../../vitals/vitals-chooser/vitals-chooser';
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { FormGroup, FormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
- 
+
 
 @Component({
   selector: 'page-card-info',
   templateUrl: 'card-info.html',
-}) 
+})
 export class CardInfoPage {
 
   public cardForm: FormGroup;
   user_data: any;
   user_picture: String;
-  customer: any = {id: ''};
+  customer: any = { id: '' };
   res: any;
   isSubmitted: boolean = false;
-  card: any = { number: '', expMonth: '', expYear: '', cvc: ''};
- 
+  card: any = { number: '', expMonth: '', expYear: '', cvc: '' };
+
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public formdata: FormBuilder,
     private stripe: Stripe,
     private event: Events,
     public modalCtrl: ModalController,
     public authService: CommonServiceProvider
-  ) { 
+  ) {
 
     this.cardForm = this.formdata.group({
       number: ['', [Validators.required]],
       expMonth: ['', [Validators.required]],
       expYear: ['', [Validators.required]],
       cvc: ['', [Validators.required]],
-    }); 
-  }   
- 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardInfoPage');
-    this.user_picture = localStorage.getItem('user_picture');    
-    this.user_data   = JSON.parse(localStorage.getItem('user_data'));    
-
-    
+    });
   }
 
-  choose(val){
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CardInfoPage');
+    this.user_picture = localStorage.getItem('user_picture');
+    this.user_data = JSON.parse(localStorage.getItem('user_data'));
+  }
+
+  choose(val) {
     let profileModal = this.modalCtrl.create(VitalsChooserPage, { value: val });
     profileModal.onDidDismiss(data => {
-      if(val=='months'){
+      if (val == 'months') {
         this.card.expMonth = data.code;
-      }else if(val=='years'){
+      } else if (val == 'years') {
         this.card.expYear = data.code;
       }
     });
@@ -61,49 +59,52 @@ export class CardInfoPage {
 
   get check() { return this.cardForm.controls; }
 
-  saveCard(){
+  saveCard() {
     this.isSubmitted = true;
-    if(this.cardForm.valid){
+    if (this.cardForm.valid) {
       this.authService.showLoader();
       this.stripe.setPublishableKey('pk_test_2wmvXUXermvXMepFVD0rFGpP');
       this.stripe.createCardToken(this.card).then((token) => {
-        console.log("Token It is", token.id);
-        
-        let data = {     
-          email: this.user_data.email, 
+        console.log("Token It is", token);
+        // alert(JSON.stringify(token))
+        let cd: any = token.card;
+        // alert(cd.id)
+        let data = {
+          email: this.user_data.email,
           cardToken: token.id,
           patient_genral_info_id: this.user_data.patientId,
-          created_by_user_id: this.user_data._id
-        }      
+          created_by_user_id: this.user_data._id,
+          card_id: cd.id
+        }
         this.authService.post('payment/createCard', data).then((result) => {
           this.authService.hideLoader();
-          this.res = result;  
+          this.res = result;
           this.customer = this.res.data;
-          if(this.res.code==200){
+          if (this.res.code == 200) {
+
             this.authService.presentToast("Card added successfully...", 'middle');
             setTimeout(() => {
-              this.navCtrl.pop().then( () => {
+              this.navCtrl.pop().then(() => {
                 this.event.publish('isCreated', true);
               });
-            }, 1000); 
-          }else{
-            this.authService.presentToast("Card information is wrong...", 'bottom');
-          } 
-        },(err) => {  
+            }, 1000);
+          } else {
+            this.authService.presentToast(this.res.message, 'bottom');
+          }
+        }, (err) => {
           this.authService.presentToast("Card information is wrong...", 'bottom');
         });
-      }); 
+      });
     }
-
-  }   
+  }
 
   cancle() {
     this.authService.cancle();
     setTimeout(() => {
-      if(this.authService.action){
+      if (this.authService.action) {
         this.navCtrl.setRoot(DoctorsPage);
       }
-    }, 2000);    
+    }, 2000);
   }
 
 }

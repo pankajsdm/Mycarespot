@@ -19,7 +19,8 @@ export class DoctorProfilePage {
   tabBarElement: any;
   currentUser: any;
   isLoading: Boolean = false;
-
+  basicInfo: any = {};
+  backgroundInfo : any = {};
   constructor(
     public navCtrl: NavController,
     public authService: CommonServiceProvider,
@@ -46,6 +47,10 @@ export class DoctorProfilePage {
             this.isLoading = false;
             this.doctrArr = result;
             this.doctor = this.doctrArr.data[0];
+            this.basicInfo = this.doctor.basic_information;
+            if(this.doctor.background_information){
+              this.backgroundInfo = this.doctor.background_information;
+            }            
             console.log("doct", this.doctrArr.data[0]);
           },
           err => {
@@ -120,5 +125,14 @@ export class DoctorProfilePage {
           _id: channel.data._id
         });
       });
+  }
+
+  getLanguages(){
+    if(this.basicInfo && this.basicInfo.languages){
+      let lng = this.basicInfo.languages;
+      return lng.slice(0, lng.length)
+    } else {
+      return ''
+    }    
   }
 }
