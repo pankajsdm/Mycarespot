@@ -57,7 +57,7 @@ export class FeedPage {
     this.socket = io.connect(Config.home_url);
     this.detectNewFeedThroughSocket();
   }
-  
+
   pullToRefresh(refresher) {
     setTimeout(() => {
       this.refresh();
@@ -74,50 +74,51 @@ export class FeedPage {
         if (!doc.like) doc.like = [];
         if (!doc.media) doc.media = '';
         let newFeed = false;
+        if (this.feeds instanceof Array) {
+          for (let i = 0; i < this.feeds.length; i++) {
+            if (this.feeds[i]._id == doc._id) {
+              let isCheckComment = false;
+
+              for (let j = 0; j < this.feeds[i].Comments.length; j++) {
+                if (this.feeds[i].Comments[j]._id == doc._id) {
+                  if (this.feeds[i].Comments[i].child_comment != doc.child_comment) {
+                    return;
+                  }
+                  this.feeds[i].Comments[j] = doc;
+                  isCheckComment = true;
+                  break;
+                }
+              }
+
+              if (!isCheckComment) {
+                this.feeds[i].Comments.push(doc);
+              }
+
+              break;
+
+            }
+          }
+        }
+      } else {
+        doc.created_by_user_id = [doc.created_by_user_id];
+        if (!doc.Comments) doc.Comments = [];
+
+        let isCheck = false;
 
         for (let i = 0; i < this.feeds.length; i++) {
           if (this.feeds[i]._id == doc._id) {
-            let isCheckComment = false;
-            
-            for (let j = 0;j < this.feeds[i].Comments.length;j++) {
-							if (this.feeds[i].Comments[j]._id == doc._id) {
-								if (this.feeds[i].Comments[i].child_comment != doc.child_comment) {
-									return;
-								}
-								this.feeds[i].Comments[j] = doc;
-								isCheckComment = true;
-								break;
-							}
+            this.feeds[i].message = doc.message;
+
+            if (this.feeds[i].media) {
+              this.feeds[i].media = doc.media;
             }
-            
-            if (!isCheckComment) {
-							this.feeds[i].Comments.push(doc);
-						}
-
+            isCheck = true;
             break;
-            
-					}   
-        } 
-      }else{
-        doc.created_by_user_id = [doc.created_by_user_id];
-				if (!doc.Comments) doc.Comments = [];
-
-				let isCheck = false;
-
-				for (let i = 0; i < this.feeds.length; i++) {
-					if (this.feeds[i]._id == doc._id) {
-						this.feeds[i].message = doc.message;
-
-						if (this.feeds[i].media) {
-							this.feeds[i].media = doc.media;
-						}
-						isCheck = true;
-						break;
-					}
-				}
-				if (!isCheck) {
-					this.feeds.unshift(doc);
-				}
+          }
+        }
+        if (!isCheck) {
+          this.feeds.unshift(doc);
+        }
       }
     });
   }
@@ -136,11 +137,11 @@ export class FeedPage {
     }, 500);
   }
 
-  refresh(){
+  refresh() {
     this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=' + this.current_page).then((result) => {
       //this.isLoading = false;
       this.socketFeedArr = result;
-      if (this.socketFeedArr.code == '401') {
+      if (this.socketFeedArr.code == '200') {
         this.events.publish("user:logout");
         // localStorage.clear();
         // this.navCtrl.setRoot(LoginPage);
@@ -272,8 +273,8 @@ export class FeedPage {
     }
   }
 
-  organizePost(){
-    for(var i=0; i < this.feedsArr.data.length; i++){
+  organizePost() {
+    for (var i = 0; i < this.feedsArr.data.length; i++) {
 
       if (this.checkAvailableID(this.feedsArr.data[i].like)) {
         this.feedsArr.data[i]['me_like'] = true;

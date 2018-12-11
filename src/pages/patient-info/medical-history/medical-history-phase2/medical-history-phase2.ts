@@ -5,6 +5,7 @@ import { ToastController, NavParams, NavController, MenuController } from 'ionic
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase3Page } from './../medical-history-phase3/medical-history-phase3';
 import { MedicalHistoryPhase4Page } from './../medical-history-phase4/medical-history-phase4';
+import { MedicalHistoryPhase5Page } from './../medical-history-phase5/medical-history-phase5';
 import { DoctorsPage } from "../../../doctors/doctors";
 import { VitalsPage } from './../../vitals/vitals';
 
@@ -38,10 +39,10 @@ export class MedicalHistoryPhase2Page {
   }
 
   medicalHistoryPhase3(val){
-    console.log(val);
-
+    console.log(val);    
     if(val=='No'){
-      this.navCtrl.push(VitalsPage);
+      // this.navCtrl.push(VitalsPage);
+      this.navCtrl.push(MedicalHistoryPhase5Page);
     }else{
       if(this.online){
         this.authService.showLoader();

@@ -63,6 +63,17 @@ export class RegisterAccountPage {
         Gender: ['', [Validators.required]],
         password: ['', [Validators.required]],
         c_password: ['', [Validators.required]],
+        Address1: ['', [Validators.required]],
+        City: ['', [Validators.required]],
+        State: ['', [Validators.required]],
+        ZipCode: ['', [Validators.required]],
+        PrimaryPhoneType: ['', [Validators.required]],
+        PrimaryPhone: ['',  Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(15),
+          Validators.pattern("[0-9]*")
+        ])],
       },{
         validator: PasswordValidation.MatchPassword
       });
@@ -156,6 +167,12 @@ export class RegisterAccountPage {
       formData.append("DateOfBirth", this.user['DateOfBirth']);
       formData.append("Gender", this.user['Gender']);
       formData.append("password", this.user['password']);
+      formData.append("Address1", this.user['Address1']);
+      formData.append("City", this.user['City']);
+      formData.append("State", this.user['State']);
+      formData.append("ZipCode", this.user['ZipCode']);
+      formData.append("PrimaryPhoneType", this.user['PrimaryPhoneType']);
+      formData.append("PrimaryPhone", this.user['PrimaryPhone']);
       headers.append("Content-Type", "application/x-www-form-urlencoded");
       
       self.http.post(Config.api_url+'patient/registerMobileUserByEmail', formData)
