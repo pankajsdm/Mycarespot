@@ -110,7 +110,7 @@ page-register-account {
     }
     .scroll-content {
         margin-top: 0px !important;
-        overflow: visible;
+        overflow: scroll;
     }
     .fecha {
         margin: 0 auto;
@@ -337,6 +337,25 @@ page-register-account {
     .ion-ios-camera {
         font-size: 12px;
     }
+
+    .item-ios.phone-type{
+        padding-left: 10px;
+        margin-bottom: 10px !important;
+    }
     
+    .item-ios.phone-type .label-ios, .label-md{
+        font-weight: 200;
+        color: #555;
+    }
+    .item-ios.phone-type .select-ios, .select-md{
+        width:40%;
+        padding-top: 12px;
+        padding-bottom: 10px;
+        margin: 0;
+    }
+    .item-ios.phone-type .select-ios .select-icon{
+        float: right !important;
+        margin-right: 10px;
+    }
     
 }

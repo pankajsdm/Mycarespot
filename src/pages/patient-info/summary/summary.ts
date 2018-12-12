@@ -42,4 +42,8 @@ export class SummaryPage {
     }, 2000);    
   }
 
+  search_pharmacy(){
+    
+  }
+
 }
