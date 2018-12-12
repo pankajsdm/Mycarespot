@@ -108,28 +108,28 @@ export class PharmacyMapPage {
       '<p><button id="clickableItem" class="' + ph_id + '" type="button">Añadir</button></p>' +
       '</div>';
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: infoWindowContent
-    });
-    marker.addListener('click', () => {
-      this.closeAllInfoWindows();
-      infoWindow.open(this.map, marker);
-    });
-    this.infoWindows.push(infoWindow);
+    // var infoWindow = new google.maps.InfoWindow({
+    //   content: infoWindowContent
+    // });
+    // marker.addListener('click', () => {
+    //   this.closeAllInfoWindows();
+    //   infoWindow.open(this.map, marker);
+    // });
+    // this.infoWindows.push(infoWindow);
 
-    /* Get the information from info window */
-    google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
-      document.getElementById('clickableItem').addEventListener('click', () => {
-        var pharmacyId = document.getElementById("clickableItem").className;
-        var storeName = document.getElementById("storename")['value'];
-        var city = document.getElementById("city")['value'];
-        var state = document.getElementById("state")['value'];
-        var zipCode = document.getElementById("storename")['value'];
-        var primaryPhone = document.getElementById("primaryPhone")['value'];
-        var address1 = document.getElementById("address1")['value'];
-        this.addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId);
-      });
-    });
+    // /* Get the information from info window */
+    // google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+    //   document.getElementById('clickableItem').addEventListener('click', () => {
+    //     var pharmacyId = document.getElementById("clickableItem").className;
+    //     var storeName = document.getElementById("storename")['value'];
+    //     var city = document.getElementById("city")['value'];
+    //     var state = document.getElementById("state")['value'];
+    //     var zipCode = document.getElementById("storename")['value'];
+    //     var primaryPhone = document.getElementById("primaryPhone")['value'];
+    //     var address1 = document.getElementById("address1")['value'];
+    //     this.addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId);
+    //   });
+    // });
   }
 
   addData(storeName, city, state, zipCode, primaryPhone, address1, pharmacyId) {
