@@ -134,10 +134,7 @@ export class RegisterAccountPage {
       this.selectedPicture = picture; 
       console.log(":::::::::::::::::::::::::: ", this.selectedPicture)
     });
-
-  }
-
- 
+  } 
 
   goToLogin() { 
     this.navCtrl.push(LoginPage); 
