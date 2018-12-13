@@ -94,12 +94,12 @@
                  [ngClass]="{ 'input_invalid': isSubmitted && check.State.errors }"></ion-input>
         </label>
         <label>
-            <ion-input type="text" [(ngModel)]='user.ZipCode' formControlName="ZipCode" placeholder="Código Postal"
-                 [ngClass]="{ 'input_invalid': isSubmitted && check.ZipCode.errors }"></ion-input>
+            <ion-input type="number" [(ngModel)]='user.ZipCode' formControlName="ZipCode" placeholder="Código Postal"
+            minlength="5" maxlength="5" [ngClass]="{ 'input_invalid': isSubmitted && check.ZipCode.errors }"></ion-input>
         </label>
         <label>
             <ion-input type="number" [(ngModel)]='user.PrimaryPhone' formControlName="PrimaryPhone"
-                placeholder="Teléfono Principal"  [ngClass]="{ 'input_invalid': isSubmitted && check.PrimaryPhone.errors }"></ion-input>
+                placeholder="Teléfono Principal" minlength="10" maxlength="12"  [ngClass]="{ 'input_invalid': isSubmitted && check.PrimaryPhone.errors }"></ion-input>
         </label>
         <ion-item class="phone-type" [ngClass]="{ 'input_invalid': isSubmitted && check.PrimaryPhoneType.errors }">
             <ion-label>Tipo de Phnoe primario</ion-label>
@@ -128,7 +128,6 @@
     </form>
     <!-- </div> -->
 </ion-content>
-
 
 <ion-footer class="main-footer" [hidden]="keyboard.isOpen()">
     <ion-toolbar (click)="goToLogin()">

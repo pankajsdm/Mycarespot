@@ -128,11 +128,11 @@ export class RegisterAccountPage {
     this.file_data = file;
     if (!file) return;
     this.filechooser = true;
-    console.log("file", file);
+    // console.log("file", file);
     this.getBase64(file).then( (picture) => {
-      console.log(">>>>>>>>>>>:: ", this.selectedPicture)
+      // console.log(">>>>>>>>>>>:: ", this.selectedPicture)
       this.selectedPicture = picture; 
-      console.log(":::::::::::::::::::::::::: ", this.selectedPicture)
+      // console.log(":::::::::::::::::::::::::: ", this.selectedPicture)
     });
   } 
 
