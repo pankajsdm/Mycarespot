@@ -4,7 +4,7 @@ page-feed-comments {
      /* Ended common css*/
 
      ion-buttons {margin: 0;}
-     .bar-button-default-md, .bar-button-default-ios{color: #0084ff; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
+     .bar-button-default-md, .bar-button-default-ios{color: #555555; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
  
      ion-row.comment-like-text.row {
          padding: 10px;
@@ -53,7 +53,7 @@ page-feed-comments {
         margin-top: 7px;
      }
      .comment_activities .comment_liked{
-         color: #0084ff;
+         color: #555555;
          font-size: 12px;
      }
      .comment_activities .comment_unliked{
@@ -174,12 +174,13 @@ page-feed-comments {
 
     ion-icon.ion-ios-close{
         font-size: 30px !important;
-        color: #0084ff;
+        color: #555555;
     }
 
     .comment_form .parent_comment_form{border-bottom: 1px solid #ddd;}
 
     /* 21-11-2018 stylesheet added */
     .label-ios{flex-direction: column;align-items: normal;}
+   
 }
 

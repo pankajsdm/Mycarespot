@@ -4,6 +4,7 @@ import { ToastController, NavParams, NavController, MenuController } from 'ionic
 import { CommonServiceProvider } from '../../../../providers/common-service/common-service';
 import { MedicalHistoryPhase5Page } from './../medical-history-phase5/medical-history-phase5';
 import { DoctorsPage } from "../../../doctors/doctors";
+import { VitalsPage } from './../../vitals/vitals';
 
 
 @Component({
@@ -20,10 +21,10 @@ export class MedicalHistoryPhase4Page {
   current_user: any;
   user_picture: String;
   isLoading: Boolean = false;
-  
+
   constructor(
     private toastCtrl: ToastController,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public authService: CommonServiceProvider,
     public navParams: NavParams
   ) {
@@ -32,40 +33,45 @@ export class MedicalHistoryPhase4Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPhase4Page');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
-    this.user_picture = localStorage.getItem('user_picture');    
+    this.user_picture = localStorage.getItem('user_picture');
   }
 
-  medicalHistoryPhase5(val){
-    if(this.online){
-      this.authService.showLoader();
-      let data = {
+  medicalHistoryPhase5(val) {
+    if (this.online) {
+      if (val == 'No') {
+        this.navCtrl.push(VitalsPage);
+        // this.navCtrl.push(MedicalHistoryPhase4Page);
+      } else {
+        this.authService.showLoader();
+        let data = {
           patient_user_id: this.current_user._id,
           are_you_allergic_to_any_medications: val
-      }
-      this.authService.post('patient/addHealthQuestions', data).then((result) => {
-        this.authService.hideLoader();
-          this.lists =  result; 
-          if(this.lists.code==200){
-              this.navCtrl.push(MedicalHistoryPhase5Page);
-          }else{
-              this.presentToast(this.lists.message);
+        }
+        this.authService.post('patient/addHealthQuestions', data).then((result) => {
+          this.authService.hideLoader();
+          this.lists = result;
+          if (this.lists.code == 200) {
+            this.navCtrl.push(MedicalHistoryPhase5Page);
+          } else {
+            this.presentToast(this.lists.message);
           }
-      },(err) => {
-        this.authService.hideLoader();
-        this.presentToast('Something wrong! Please try later.');
-      });
-    }else{
+        }, (err) => {
+          this.authService.hideLoader();
+          this.presentToast('Something wrong! Please try later.');
+        });
+      }
+    } else {
       this.presentToast('Oh no! No internet found.');
-    } 
+    }
   }
 
   cancle() {
     this.authService.cancle();
     setTimeout(() => {
-      if(this.authService.action){
+      if (this.authService.action) {
         this.navCtrl.setRoot(DoctorsPage);
       }
-    }, 2000);    
+    }, 2000);
   }
 
 

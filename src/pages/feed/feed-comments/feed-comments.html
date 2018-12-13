@@ -3,22 +3,16 @@
       <ion-title>Ver Feed</ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
-          <span ion-text color="primary" showWhen="ios"><ion-icon name="close"></ion-icon>
+          <span ion-text color="primary"><ion-icon name="close"></ion-icon>
           </span>
         </button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-  
-  <ion-content class="cards-bg social-cards">
-      
+  <ion-content class="cards-bg social-cards">      
     <div class="no_data_found" *ngIf="isLoading">
         <ion-spinner></ion-spinner>
-       
-        
-    </div>
-        
+    </div>        
       <div id="feedContainer" *ngIf="!isLoading">
         <ion-card>
           <ion-item ion-item *ngFor="let details of feeds.created_by_user_id"> 
@@ -31,11 +25,9 @@
               </h2>
               <p class="feed-date">{{feeds.createdAt | date}}</p>   
           </ion-item>
-
           <ion-card-content>
             <p class="inner-feed-p" *ngIf="feeds.message">{{feeds.message}}</p>
           </ion-card-content>
-
           <div *ngIf="feeds.media" class="main-feed-image-container">
               <img src="{{backend_url}}{{feeds.media}}">
           </div>
@@ -46,12 +38,12 @@
                   <div class="parent_comment">
                       <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
                       <img *ngIf="!comment.created_by_user_id.avatar" src="assets/img/default_avatar.png">
-                      <h4>
+                      <h4 class="cmnt-h4">
                         {{comment.created_by_user_id.firstName}} 
                         {{comment.created_by_user_id.lastName}} 
                         <span class="time_ago">{{comment.createdAt | timeAgo }}</span>
                       </h4>
-                      <p>{{comment.message}}</p> 
+                      <p class="cmnt-p">{{comment.message}}</p> 
 
                       <div class="comment_activities">
                           
