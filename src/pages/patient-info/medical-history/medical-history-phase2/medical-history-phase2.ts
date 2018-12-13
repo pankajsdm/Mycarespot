@@ -42,7 +42,7 @@ export class MedicalHistoryPhase2Page {
     console.log(val);    
     if(val=='No'){
       // this.navCtrl.push(VitalsPage);
-      this.navCtrl.push(MedicalHistoryPhase5Page);
+      this.navCtrl.push(MedicalHistoryPhase4Page);
     }else{
       if(this.online){
         this.authService.showLoader();

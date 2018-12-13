@@ -657,7 +657,7 @@ span.back-button-text.back-button-text-ios {
 
 .back-button.show-back-button {
     width: 0px;
-    padding: 15px !important;
+    padding: 10px !important;
     margin: 0px 0px 0px 0px !important;
     min-width: 0px !important;
     color: #0084ff;
@@ -932,7 +932,7 @@ ion-footer {
     .header-ios .toolbar-ios {
         height: 100px;
     }
-    .toolbar-ios{
+    .toolbar-ios {
         padding: 0 !important;
     }
     ion-header .top {
@@ -1125,13 +1125,25 @@ body.call-minize {
 .feed-date {
     font-size: 15px !important;
 }
-.picker-ios .picker-opts{
-  top: 100px !important;
+
+.picker-ios .picker-opts {
+    top: 100px !important;
 }
+
 .right_button span.button-inner {
-  font-size: 17px;
-//   padding-right: 10px;
+    font-size: 17px;    
+    padding-right: 10px;
+    //   color: #0084ff;
 }
+
 .right_button button span ion-icon {
     font-size: 2.4rem;
+}
+
+.header span.button-inner {
+    color: #0084ff;
+}
+
+.header button.bar-button .button-inner {
+    padding-right: 10px;
 }

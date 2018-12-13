@@ -6,7 +6,7 @@ page-feed {
         /* Ended common css*/
 
         ion-buttons {margin: 0;}
-        .bar-button-default-md, .bar-button-default-ios{color: #0084ff; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
+        .bar-button-default-md, .bar-button-default-ios{color: #555555; padding: 0 !important; margin: 0 !important; font-size: 15px !important}
     
         ion-row.comment-like-text.row {
             padding: 10px;
@@ -41,7 +41,7 @@ page-feed {
         .feed_hidden{display:none !important;}
         .comment_container .time_ago{float:right;font-size: 10px;}
         .comment_activities .comment_liked{
-            color: #0084ff;
+            color: #555555;
             font-size: 13px;
         }
         .comment_activities .comment_unliked{
@@ -123,7 +123,7 @@ page-feed {
         }
         .button-clear-md-primary, .button-clear-ios-primary{
             border-color: transparent;
-            color: #a1a1a1;
+            color: #555555;
             background-color: transparent;
             margin: 0;
             padding: 20px !important;
