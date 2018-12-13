@@ -144,5 +144,8 @@ ion-item.item.item-block:last-child{margin-bottom: 0px;}
       background: #ededed;
     }
   }
+  ion-item.item.item-block:hover {
+    background-color: #d9d9d9;
+}
 }
 .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{border-color: transparent;}

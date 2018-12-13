@@ -657,8 +657,8 @@ span.back-button-text.back-button-text-ios {
 
 .back-button.show-back-button {
     width: 0px;
-    padding: 10px !important;
-    margin: 0px 0px 0px 0px !important;
+    padding-right: 10px !important;
+    // margin: 0px 0px 0px 0px !important;
     min-width: 0px !important;
     color: #0084ff;
 }
@@ -1146,4 +1146,5 @@ body.call-minize {
 
 .header button.bar-button .button-inner {
     padding-right: 10px;
+    padding-left: 10px;
 }
