@@ -48,7 +48,7 @@
         </ion-col>
         <!-- Comment -->
         <ion-col>
-          <button ion-button color="primary" clear small icon-start (click)="commentsFeed(feed._id)">
+          <button ion-button color="primary" clear small icon-start (click)="commentsFeed(feed._id, feed.created_by_user_id[0].firstName, feed.created_by_user_id[0].lastName)">
             <ion-icon name='text'></ion-icon>
           </button>
         </ion-col>

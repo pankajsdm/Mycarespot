@@ -1,5 +1,6 @@
 page-doctor-profile {
-    .label-ios, .label-md {
+    .label-ios,
+    .label-md {
         margin: 0px 0px 0px 0px;
         display: block !important;
         display: flex;
@@ -14,47 +15,98 @@ page-doctor-profile {
         font-size: 14px;
         font-weight: bold;
     }
-    .toolbar-background-md, .toolbar-ios{border-bottom:none;}
-    .item-md.item-block .item-inner{padding-right: 0px; border-bottom: 1px solid #d9d9d9;}
-    .card-md, .card-ios{width: 100%; margin: 0;}
-    .toolbar-background {background: #f7f7f7;}
-    ion-title{text-align: center;}
-    ion-title .toolbar-title{color: #555555; font-size: 15px}
-    .back-button{width:0px;color: #fff;}
-    ion-card-title.card-title{font-size: 15px;}
-    .no-scroll .scroll-content{overflow: hidden;}
+    .toolbar-background-md,
+    .toolbar-ios {
+        border-bottom: none;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .card-md,
+    .card-ios {
+        width: 100%;
+        margin: 0;
+    }
+    .toolbar-background {
+        background: #f7f7f7;
+    }
+    ion-title {
+        text-align: center;
+    }
+    ion-title .toolbar-title {
+        color: #555555;
+        font-size: 15px
+    }
+    .back-button {
+        width: 0px;
+        color: #fff;
+    }
+    ion-card-title.card-title {
+        font-size: 15px;
+    }
+    .no-scroll .scroll-content {
+        overflow: hidden;
+    }
     .profile_img {
         width: 90px;
         height: 90px;
         border-radius: 100%;
         overflow: hidden;
-        margin-bottom: 6px;
-        //border: 2px solid #fff;
+        margin-bottom: 6px; //border: 2px solid #fff;
         display: flex;
         align-items: center;
         justify-content: space-around;
-        img{width: 100%;}
+        img {
+            width: 100%;
+        }
     }
-    .text_center_flex{    
+    .text_center_flex {
         display: flex;
         justify-content: space-around;
     }
-    .list-header-md, .list-header-ios{border-bottom: 1px solid #ccc;border-top: none;}
-    
-    .user_info{border-bottom: 1px solid #d9d9d9; padding: 7px 10px !important;}
-    .user_info span{color: #555555; font-size: 14px;}
-    .user_info h6{font-size: 14px; color:#555555;}
-    .user_info p{margin: 0px; color:#555555;}
-    .span-class-1{display: block !important; font-weight: bold !important; font-size: 14px !important; color: #555555 !important; margin-bottom: 6px;}
-    .span-class-2{display: block !important; font-weight: normal !important; font-size: 14px !important; color: #555555 !important}
-    .user_activity{
+    .list-header-md,
+    .list-header-ios {
+        border-bottom: 1px solid #ccc;
+        border-top: none;
+    }
+    .user_info {
+        border-bottom: 1px solid #d9d9d9;
+        padding: 7px 10px !important;
+    }
+    .user_info span {
+        color: #555555;
+        font-size: 14px;
+    }
+    .user_info h6 {
+        font-size: 14px;
+        color: #555555;
+    }
+    .user_info p {
+        margin: 0px;
+        color: #555555;
+    }
+    .span-class-1 {
+        display: block !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        color: #555555 !important;
+        margin-bottom: 6px;
+    }
+    .span-class-2 {
+        display: block !important;
+        font-weight: normal !important;
+        font-size: 14px !important;
+        color: #555555 !important
+    }
+    .user_activity {
         margin: 6px 0px 10px 0px;
         img {
             width: 35px;
             margin-left: 10px;
         }
     }
-    .user_activity ion-icon{
+    .user_activity ion-icon {
         background: #0084ff;
         color: #fff;
         width: 26px;
@@ -65,36 +117,47 @@ page-doctor-profile {
         margin: 0px 2px !important;
     }
     .user_activity_label span {
-        font-size: 11px;
+        font-size: 11px;    
         margin: 0px 38px 0px -4px;
         width: 5px;
     }
-   .item-inner{padding: 0px !important;}
-   .label-ios{margin-right: 0px;}
-   .user_activity ion-icon{margin: 0 15px;}
-   .input-wrapper{
-       background: #f7f7f7;
-       color: #fff;
-       h2{font-weight: bold;color: #fff;}
-       p{
+    .item-inner {
+        padding: 0px !important;
+    }
+    .label-ios {
+        margin-right: 0px;
+    }
+    .user_activity ion-icon {
+        margin: 0 15px;
+    }
+    .input-wrapper {
+        background: #f7f7f7;
         color: #fff;
-        font-weight: bold;
-       }
-    .text-type-1N span {
-        display: block !important;
-        font-weight: normal!important;
-        font-size: 14px!important;
-        text-align: center!important;
-        color: #555555!important;
+        h2 {
+            font-weight: bold;
+            color: #fff;
+        }
+        p {
+            color: #fff;
+            font-weight: bold;
+        }
+        .text-type-1N span {
+            display: block !important;
+            font-weight: normal !important;
+            font-size: 14px !important;
+            text-align: center !important;
+            color: #555555 !important;
+        }
+        .image_container_profile {
+            padding-left: 0px;
+        }
     }
-   .image_container_profile{padding-left:0px;}
-    }
-    .tabs-ios .tabbar{
+    .tabs-ios .tabbar {
         border-top: 1px solid #d9d9d9;
         background: #f7f7f7;
     }
-    .header-ios .toolbar-ios{
-        border-bottom: none!important;
+    .header-ios .toolbar-ios {
+        border-bottom: none !important;
         background-color: #f7f7f7;
     }
     .toolbar-background-ios {
@@ -103,7 +166,17 @@ page-doctor-profile {
     .header-ios .toolbar-ios:last-child .toolbar-background-ios {
         border-width: 0px;
     }
-    .item-ios, .item-md{
+    .item-ios,
+    .item-md {
         padding: 0px !important;
+    }
+    // .back-button-md{
+    //     margin: 0px;
+    // }
+    ion-header .toolbar-content-md {
+        margin-right: 30px;
+    }
+    .header button.bar-button .button-inner {
+        padding-left: 0px;
     }
 }

@@ -1,4 +1,10 @@
 page-vitals {
+    .header button.bar-button .button-inner{
+        padding-left: 0px;
+    }
+    .header .right_button .button-inner {
+        padding-left: 20px !important;
+    }
     .toolbar-background,
     .toolbar-ios {
         background: #f7f7f7;

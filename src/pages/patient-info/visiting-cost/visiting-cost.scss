@@ -1,4 +1,10 @@
 page-visiting-cost {
+    .header button.bar-button .button-inner{
+        padding-left: 0px;
+    }
+    ion-header .toolbar-content-md {
+        margin-right: 30px;
+    }
     .back-button {
         width: 0px;
         color: #fff;

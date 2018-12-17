@@ -1148,3 +1148,11 @@ body.call-minize {
     padding-right: 10px;
     padding-left: 10px;
 }
+.back-button.show-back-button, .bar-buttons-md[end] {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 30px !important;
+}
+ion-header .toolbar-content-md {
+    width: calc(100% - 60px);
+}

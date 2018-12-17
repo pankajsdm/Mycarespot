@@ -27,7 +27,9 @@ export class FeedCommentsPage {
   current_user: any;
   isLoading: Boolean = false;
   backend_url = Config.backend_url;
-  
+  fname: any = '';
+  lname: any = '';
+
   constructor(
     private elementRef:ElementRef,
     public formdata: FormBuilder,
@@ -45,6 +47,8 @@ export class FeedCommentsPage {
     console.log('ionViewDidLoad FeedCommentsPage');
     this.current_user = JSON.parse(localStorage.getItem('user_data'));
     this.feed_id =  this.navParams.get('feed_id');
+    this.fname =  this.navParams.get('fname');
+    this.lname =  this.navParams.get('lname');
     this.getFeed(this.feed_id);
 
     

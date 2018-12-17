@@ -388,8 +388,8 @@ export class FeedPage {
     }
   }
 
-  commentsFeed(feed_id) {
-    let profileModal = this.modalCtrl.create(FeedCommentsPage, { feed_id: feed_id });
+  commentsFeed(feed_id, fname, lname) {
+    let profileModal = this.modalCtrl.create(FeedCommentsPage, { feed_id: feed_id, fname: fname, lname: lname});
     profileModal.onDidDismiss(data => {
       console.log(data);
     });

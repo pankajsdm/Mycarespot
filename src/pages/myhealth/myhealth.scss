@@ -1,101 +1,87 @@
 page-myhealth {
     /* Common css*/
-    .item-md.item-block .item-inner {
-        padding-right: 0px;
-    }
-    .card-md,
-    .card-ios {
-        width: 100%;
-        margin: 0;
-    }
-    .card-ios {
-        box-shadow: none;
-        border-bottom: 1px solid #d9d9d9;
-    }
-    ion-title {
-        text-align: center;
-    }
-    ion-title .toolbar-title {
-        color: #ffffff;
-    }
+    .item-md.item-block .item-inner{padding-right: 0px;}
+    .card-md, .card-ios{width: 100%; margin: 0;}
+    .toolbar-background {background: #f7f7f7;}
+    ion-title{text-align: center;}
+    ion-title .toolbar-title{color: #555555; font-size: 15px;}
+    .back-button{width:0px;color: #fff;}
+
+    
     /* Ended common css*/
+
     /* Main Css*/
-    .bar-buttons-ios .bar-button-default-ios {
-        height: 37px;
-    }
+    .bar-buttons-ios .bar-button-default-ios{height: 37px;}
     //.content-ios .scroll-content{margin-top: 115px !important;}
-    ion-buttons {
-        margin: 0;
-    }
-    .bar-button-default-md,
-    .bar-button-default-ios {
-        color: #fff;
-    }
-    .toolbar-md {
-        padding: 0px;
-    }
-    ion-item.item.item-block {
-        border-bottom: 1px solid #d9d9d9;
-    }
-    ion-col.col.col {
-        float: left;
-    }
-    .forward_icon ion-icon {
-        color: #6b5b5b;
-    }
-    .back-button {
-        width: 0px;
-        color: #fff;
-    }
-    .add_menor {
-        margin-top: 13px;
-        float: left;
-        color: #0084ff;
-    }
-    .form_label {
-        font-size: 13px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        float: left;
-        color: #2f2f2f;
-    }
-    .pad_rlt_10 {
-        padding: 0 10px;
-        display: block;
-    }
-    .pad_rlt_25 {
-        padding: 0 25px;
-        display: block;
-    }
-    .item-ios,
-    .item-md {
-        padding-left: 8px;
-        h2 {
-            font-size: 14px;
-            color: #555555;
-        }
-        p {
-            font-size: 12px;
-        }
-    }
-    .label-ios,
-    .label-md {
-        margin: 8px 0px 8px 0;
+    ion-buttons {margin: 0;}
+    .bar-button-default-md, .bar-button-default-ios{color: #555555;}
+    .toolbar-md{padding: 0px;}
+    ion-item.item.item-block{border-bottom: 1px solid #d9d9d9; padding: 5px 10px !important; font-size: 14px;color:#555555;}
+    ion-item.item.item-block:hover{background-color: #d9d9d9;}
+    ion-col.col.col{float:left;}
+    .forward_icon ion-icon{color: #6b5b5b;}
+    .label-ios, .label-md {
+        margin:0px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .forward_icon {
-        text-align: right;
-    }
-    .item-ios.item-block .item-inner {
-        padding-right: 0px;
-    }
-    .forward_icon .button {
-        width: 74px;
-    }
-    .item {
-        padding-right: 10px;
-        color: #555555;
-    }
+      }
+}
+.flax_box .label-ios{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+.flax_box .item-inner{
+    padding-right: 0px;
+}
+.search_tag{
+    display: block;
+    width: 100%;
+    padding: 0px 0 10px 0;
+    margin: 0px;
+    float: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.searchbar-ios{
+    border-bottom: 0px;
+}
+.search_tag li{
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 13px;
+    background: #00B6FF;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+.search_tag li a{
+    float: right;
+    background: url(../../assets/img/cross.png) no-repeat right top;
+    background-size: 12px;
+    width: 13px;
+    height: 13px;
+}
+.item-ios h2{font-size: 15px;}
+.span-body {font-size:14px;color:#555555; font-weight: normal;}
+.toolbar-background-md{
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d9d9d9;
+}
+.tabs-ios .tabbar{
+    border-top: 1px solid #d9d9d9;
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios{
+    border-bottom: 1px solid #d9d9d9;
+    background-color: #f7f7f7;
+}
+.toolbar-background-ios {
+    background: #f7f7f7;
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0px;
 }

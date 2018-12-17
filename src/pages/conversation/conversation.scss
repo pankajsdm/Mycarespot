@@ -54,7 +54,7 @@ page-conversation {
     .user_date {
         float: right;
         font-size: 12px;
-        margin-right: 15px;
+        // margin-right: 15px;
         margin-top: 3px;
     }
     .searchbar-search-icon {
@@ -107,10 +107,10 @@ page-conversation {
     .searchbar-clear-icon {
         right: 6px !important;
     }
-    .item-ios h2 {
+    .item-md h2,.item-ios h2 {
         font-size: 14px;
         color: #555555;
     }
-    ion-item.item.item-block{padding: 5px 10px !important;}
+    ion-item.item.item-block{padding: 5px 0px 5px 10px !important;}
 }
 

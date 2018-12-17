@@ -1,121 +1,182 @@
 page-patient-simptom-next {
-/* Common css*/
-.toolbar-background-md, .toolbar-ios{border-bottom:1px solid #d9d9d9;}
-.item-md.item-block .item-inner{padding-right: 0px;}
-.item-md.item-block .item-inner{padding-right: 0px;}
-.card-md, .card-ios{width: 100%; margin: 0;}
-.toolbar-background {background: #f7f7f7;}
-.back-button {width: 0px; color: #fff; }
-/* Ended common css*/
-
-
-/* Main Css*/ 
-.bar-buttons-ios .bar-button-default-ios{height: 37px;}
-//.content-ios .scroll-content{margin-top: 115px !important;}
-ion-buttons {margin: 0;}
-.bar-button-default-md, .bar-button-default-ios{color: #fff;}
-.toolbar-md{padding: 0px;}
-ion-item.item.item-block{border-bottom: 1px solid #d9d9d9; padding: 5px 10px; color: #555555;}
-ion-item.item.item-block:hover{background-color: #d9d9d9;}
-ion-col.col.col{float:left;}
-.forward_icon ion-icon{color: #6b5b5b;}
-.item-inner{padding: 0px !important;}
-.label-ios{margin-right: 0px !important;}
-.pad_rlt_25{padding: 0px; display: block;}
-.clearfix {
-  padding: 15px 10px;
-  font-weight: bold;
-  font-size: 14px;
-  margin: 0px;
-  border-bottom: 1px solid #d9d9d9;
+    /* Common css*/
+    .toolbar-background-md,
+    .toolbar-ios {
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .card-md,
+    .card-ios {
+        width: 100%;
+        margin: 0;
+    }
+    .toolbar-background {
+        background: #f7f7f7;
+    }
+    .back-button {
+        width: 0px;
+        color: #fff;
+    }
+    /* Ended common css*/
+    /* Main Css*/
+    .bar-buttons-ios .bar-button-default-ios {
+        height: 37px;
+    }
+    //.content-ios .scroll-content{margin-top: 115px !important;}
+    ion-buttons {
+        margin: 0;
+    }
+    .bar-button-default-md,
+    .bar-button-default-ios {
+        color: #fff;
+    }
+    .toolbar-md {
+        padding: 0px;
+    }
+    ion-item.item.item-block {
+        border-bottom: 1px solid #d9d9d9;
+        padding: 5px 10px;
+        color: #555555;
+    }
+    ion-item.item.item-block:hover {
+        background-color: #d9d9d9;
+    }
+    ion-col.col.col {
+        float: left;
+    }
+    .forward_icon ion-icon {
+        color: #6b5b5b;
+    }
+    .item-inner {
+        padding: 0px !important;
+    }
+    .label-ios {
+        margin-right: 0px !important;
+    }
+    .pad_rlt_25 {
+        padding: 0px;
+        display: block;
+    }
+    .clearfix {
+        padding: 15px 10px;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 0px;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .item-ios h2,
+    .item-md h2 {
+        font-size: 14px;
+        margin: 0px;
+        color: #555555;
+    }
+    .form_label {
+        font-weight: bold;
+        font-size: 14px;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        float: left;
+        color: #555555;
+    }
+    ion-header .toolbar-content-md {
+        margin-right: 30px;
+    }
 }
-.item-ios h2, .item-md h2 {
-  font-size: 14px;
-  margin: 0px;
-  color: #555555;
-}
-.form_label{font-weight: bold;font-size: 14px; margin: 0px;padding: 0px; width: 100%; float: left;color: #555555;} 
 
-}
 .circle_icon ul {
-  padding: 15px 20px 0px 20px !important;
-  background-color: #ffffff;
-  margin: 0px !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom: none;
+    padding: 15px 20px 0px 20px !important;
+    background-color: #ffffff;
+    margin: 0px !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: none;
 }
+
 .circle_icon ul li {
-  list-style: none;
-  padding: 0px;
-  line-height: 25px;
-  font-size: 12px;
-  font-weight: normal;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  background: #e8e8ea;
-  border-radius: 100%;
-  color: #a1a1a1;
-  position: relative;
-  border: 1px solid #e8e8ea;
+    list-style: none;
+    padding: 0px;
+    line-height: 25px;
+    font-size: 12px;
+    font-weight: normal;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: #e8e8ea;
+    border-radius: 100%;
+    color: #a1a1a1;
+    position: relative;
+    border: 1px solid #e8e8ea;
 }
+
 .circle_icon ul li.active {
-  background: #ffffff;
-  border: 1px solid #0084ff;
-  color: #0084ff;
+    background: #ffffff;
+    border: 1px solid #0084ff;
+    color: #0084ff;
 }
+
 .circle_icon ul li.fill {
-  background: #0084ff;
-  border: 1px solid #0084ff;
-  color: #ffffff;
+    background: #0084ff;
+    border: 1px solid #0084ff;
+    color: #ffffff;
 }
+
 .circle_icon ul li:after {
-  content: '';
-  //position: absolute;
-  //top: 11px;
-  //height: 1px;
-  //background: #a1a1a1;
-  //left: 15px;
-  //width: 57px;
-  //z-index: 0;
+    content: ''; //position: absolute;
+    //top: 11px;
+    //height: 1px;
+    //background: #a1a1a1;
+    //left: 15px;
+    //width: 57px;
+    //z-index: 0;
 }
+
 .circle_icon ul li:last-child:after {
-  content: none;
+    content: none;
 }
+
 .circle_icon ul li.fill:after {
-  background: #0084ff; 
+    background: #0084ff;
 }
+
 .forward_icon {
-  text-align: right;
+    text-align: right;
 }
-.label-ios, .label-md {
-  margin: 0px 0px 0px 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 14px;
-  font-weight: bold;
+
+.label-ios,
+.label-md {
+    margin: 0px 0px 0px 0px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
 }
-.card-ios > .item:last-child{
-  border-bottom: 1px solid #d9d9d9 !important;
+
+.card-ios>.item:last-child {
+    border-bottom: 1px solid #d9d9d9 !important;
 }

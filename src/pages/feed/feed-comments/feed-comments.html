@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-      <ion-title>Mensaje de</ion-title>
+      <ion-title>Mensaje {{fname}} {{lname}}</ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
           <span ion-text color="primary"><ion-icon name="close"></ion-icon>
@@ -32,7 +32,7 @@
               <img src="{{backend_url}}{{feeds.media}}">
           </div>
           <ion-card>
-            <div class="comment_container">
+            <div class="comment_container commentList">
               <ion-item *ngFor="let comment of feeds.Comments; let j=index;">
                   <div class="parent_comment">
                       <img *ngIf="comment.created_by_user_id.avatar" [src]="comment.created_by_user_id.avatar">
