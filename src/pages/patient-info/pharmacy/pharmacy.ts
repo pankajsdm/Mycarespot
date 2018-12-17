@@ -154,7 +154,7 @@ export class PharmacyPage {
       // this.authService.hideLoader();       
       if (result.code == 200) {
         this.lists.splice(data.index, 1);
-        this.authService.presentToast(result.message, 'middle');        
+        this.authService.presentToast(result.message, 'bottom');        
       } else {
         this.authService.presentToast(result.message, 'bottom');
       }
