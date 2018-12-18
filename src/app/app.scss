@@ -620,7 +620,6 @@ html segment {
 .no-padding {
     padding: 0;
 }
-
 .bg-block.nav-lt {
     padding: 1rem 0;
     background: #0084ff;
@@ -665,6 +664,7 @@ span.back-button-text.back-button-text-ios {
 
 .back-button-icon-ios {
     font-size: 2.4rem;
+    display: block;
 }
 
 .bottom .link {

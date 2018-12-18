@@ -1,23 +1,25 @@
-
 <ion-header>
-    <ion-navbar>
-      <ion-title>Mis Farmacias</ion-title>
-      <ion-buttons end class="right_button" (click)="add_pharmacy()">
-        <button ion-button color="royal"><ion-icon name="add"></ion-icon></button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  
-
-
+  <ion-navbar>
+    <ion-buttons start class="left_button" (click)="openEdit(editOption)">
+      <button ion-button color="royal">
+        <!-- <ion-icon name="add"></ion-icon> -->
+        <span>{{editOption}}</span>
+      </button>
+    </ion-buttons>
+    <ion-title>Mis Farmacias</ion-title>
+    <ion-buttons end class="right_button" (click)="add_pharmacy()">
+      <button ion-button color="royal">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-
-      <div class="no_data_found" *ngIf="isLoading">
-        <ion-spinner></ion-spinner>
-      </div>
-      
-      <ion-card *ngIf="!isLoading">
-        <ion-item *ngFor="let item of lists" (click)="add_pharmacy()">
+  <ion-card *ngIf="!isLoading">
+    <div class="animation " *ngFor="let item of lists">
+      <div class="leftAnimation" [ngClass]="opendCondition" id="leftAnimation">
+        <div class="left1" (click)="myFunction('rightE')">1</div>
+        <div class="left2" (click)="add_pharmacy()">
           <ion-col class="col" col-11>
             <h2>{{item.name}}</h2>
             <p>{{item.city}}</p>
@@ -26,10 +28,24 @@
           <ion-col class="col forward_icon" col-1>
             <ion-icon name="ios-arrow-forward"></ion-icon>
           </ion-col>
-        </ion-item>
-      </ion-card>
-
-      <div class="no_data_found" *ngIf="lists?.length<1">{{nodata_found}}</div>
-
-  </ion-content>
-  
+        </div>
+        <div class="left3" (click)="closeRight()">
+          <button ion-button color="royal">
+            <ion-icon name="ios-trash"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ion-item *ngFor="let item of lists" (click)="add_pharmacy()">
+      <ion-col class="col" col-11>
+        <h2>{{item.name}}</h2>
+        <p>{{item.city}}</p>
+        <p>{{item.state}}, {{item.phoneOrFax}}</p>
+      </ion-col>
+      <ion-col class="col forward_icon" col-1>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </ion-col>
+    </ion-item>
+  </ion-card>
+  <div class="no_data_found" *ngIf="lists?.length<1">{{nodata_found}}</div>
+</ion-content>

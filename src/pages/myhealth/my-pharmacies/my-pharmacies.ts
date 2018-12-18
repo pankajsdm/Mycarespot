@@ -17,6 +17,8 @@ export class MyPharmaciesPage {
   currentUser: any;
   nodata_found = '';
   isLoading = true;
+  opendCondition : string = '';
+  editOption : string = 'Edit';
 
   constructor(
     public modalCtrl: ModalController,
@@ -33,8 +35,7 @@ export class MyPharmaciesPage {
   }
 
   getPharmacy(_id) {
-    if (this.online) {
-      
+    if (this.online) {      
       this.authService.get('users/getPatientPharmacy/' + _id).then(result => {
         this.isLoading = false;
         this.rawMat = result;
@@ -48,9 +49,27 @@ export class MyPharmaciesPage {
     }
   }
 
-
   add_pharmacy(){
+    this.opendCondition = '';
     this.navCtrl.push(PharmacySearchPage);
   }
 
+  myFunction(openTo){
+    console.log("LLLLLLLLL ", openTo)
+      this.opendCondition = openTo;
+      
+  }
+  openEdit(option){
+    this.opendCondition = (this.editOption == 'Edit') ? "leftE" : "";
+    this.editOption = (this.editOption == 'Edit') ? "Done" : "Edit";    
+  }
+  closeRight(){
+    console.log("RRRRRRRRR")
+    this.opendCondition = '';
+    this.setEditOption();
+  }
+
+  setEditOption(){
+    this.editOption = (this.editOption == 'Edit') ? "Done" : "Edit";
+  }
 }
