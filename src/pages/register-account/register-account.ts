@@ -37,6 +37,7 @@ export class RegisterAccountPage {
   selectedPicture: any = 'assets/img/circle_plus.png';
   file_data = '';
   filechooser:Boolean = false;
+  regUrl : any = ''
 
   constructor(
     private keyboard: Keyboard,
@@ -99,12 +100,14 @@ export class RegisterAccountPage {
 
     this.reg_param = this.navParams.get('type');
     if(this.reg_param=='mail'){
+      this.regUrl = 'patient/registerMobileUserByEmail'
       const pureEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       this.registration_type = true;
       this.registerForm.controls['email'].setValidators([Validators.required, Validators.pattern(pureEmail)]);
       this.registerForm.controls['mobilePhone'].clearValidators();
 
     }else{
+      this.regUrl = 'patient/registerMobileUserByMobileNumber';
       this.registration_type = false;
       this.registerForm.controls['mobilePhone'].setValidators([Validators.required]);
 
@@ -141,21 +144,23 @@ export class RegisterAccountPage {
   }
 
   submitRegistration(){
+    console.log("this.reg_param>>>> ", this.reg_param)
     this.isSubmitted = true;
     if(this.registerForm.valid && this.filechooser){
       this.showLoader();
-      let api_url;
       let formData: FormData = new FormData();
       let headers = new Headers();
       if(this.reg_param=='mail'){
+        console.log(">>>>>>>>>>> Email")
         formData.append("email", this.user['email']);
-        api_url = 'patient/registerMobileUserByEmail';
         delete this.user.mobilePhone;
       }else{
-        api_url = 'patient/registerMobileUserByMobileNumber';
+        console.log(">>>>>>>>>>> Mobile")
+
         delete this.user.email;
         this.user.countryCode = this.set_country_with_code;
         formData.append("countryCode", this.set_country_with_code);
+        formData.append("mobilePhone", this.user['mobilePhone']);
       }
       formData.append('file', this.file_data);
       formData.append('FirstName', this.user['FirstName']);
@@ -172,7 +177,7 @@ export class RegisterAccountPage {
       formData.append("PrimaryPhone", this.user['PrimaryPhone']);
       headers.append("Content-Type", "application/x-www-form-urlencoded");
       
-      self.http.post(Config.api_url+'patient/registerMobileUserByEmail', formData)
+      self.http.post(Config.api_url+this.regUrl, formData)
       .subscribe(res => {
         this.loading.dismiss();
         this.user_data = res; 
