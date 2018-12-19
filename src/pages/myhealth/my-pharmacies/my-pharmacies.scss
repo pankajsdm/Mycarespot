@@ -137,7 +137,7 @@ page-my-pharmacies {
 
 .left1 {
     // background: red;
-    height: 100px;
+    // height: 100px;
     width: 10%;
     float: left;
     margin-left: -10%;
@@ -145,14 +145,25 @@ page-my-pharmacies {
 
 .left2 {
     // background: green;
-    height: 100px;
+    // height: 100px;
     width: 90%;
     float: left;
+    padding-left: 8px;
+    padding-top: 4px;
+    
+}
+.left2 h2
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.left2  p {
+    font-size: 12px;
 }
 
 .left3 {
     // background: red;
-    height: 100px;
+    // height: 100px;
     width: 10%;
     float: right;
 }
@@ -197,6 +208,53 @@ page-my-pharmacies {
     }
 }
 
-.left_button {
-    padding: 10px;
+
+.left1 button {
+    color: #fff;
+    background-color: red;
+    margin: 0.4rem 0.2rem;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    font-weight: bold;
+    margin-left: 14px;
+    margin-top: 22px;
+    padding: 12px!important;
+}
+.left1 button .button-inner
+{
+    font-size:26px;
+    font-weight: bold;
+}
+
+
+
+.left3 button {
+    font-size: 14px;
+    color: #fff;
+    background-color: red;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    vertical-align: middle;
+    padding: 27px 0!important;
+    height: initial;
+}
+.left2 .forward_icon
+{
+    padding-top: 26px;
+    padding-bottom: 25px;
+}
+
+.editbtn {
+    height: initial;
+}
+.editbtn .button-inner {
+    padding-right: 0;
+    padding-left: 0;
+}
+.editbtn span {
+    color: #488aff;
+    font-size: 14px!important;
+    padding-top: 1px !important;
 }

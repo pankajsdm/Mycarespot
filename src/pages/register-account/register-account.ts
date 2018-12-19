@@ -144,19 +144,15 @@ export class RegisterAccountPage {
   }
 
   submitRegistration(){
-    console.log("this.reg_param>>>> ", this.reg_param)
     this.isSubmitted = true;
     if(this.registerForm.valid && this.filechooser){
       this.showLoader();
       let formData: FormData = new FormData();
       let headers = new Headers();
       if(this.reg_param=='mail'){
-        console.log(">>>>>>>>>>> Email")
         formData.append("email", this.user['email']);
         delete this.user.mobilePhone;
       }else{
-        console.log(">>>>>>>>>>> Mobile")
-
         delete this.user.email;
         this.user.countryCode = this.set_country_with_code;
         formData.append("countryCode", this.set_country_with_code);

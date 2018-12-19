@@ -62,7 +62,7 @@ export class MyPharmaciesPage {
     this.opendCondition = (this.editOption === 'Edit') ? "leftE" : "";
     this.editOption = (this.editOption === 'Edit') ? "Done" : "Edit";    
   }
-  closeRight(){
+  closeRight(){ 
     this.opendCondition = '';
     this.setEditOption();
   }
