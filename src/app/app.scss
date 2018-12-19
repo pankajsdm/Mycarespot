@@ -1144,7 +1144,7 @@ body.call-minize {
 }
 
 .header button.bar-button .button-inner {
-    // padding-right: 10px;
+    padding-right: 10px;
     // padding-left: 10px;
 }
 
@@ -1161,6 +1161,10 @@ ion-header .toolbar-content-md {
 
 
 /**/
+button.back-button .button-inner {
+    padding-right: 0px !important;
+    padding-left: 10px;
+}
 .back-button.show-back-button {
     width: 20px !important;
     position: absolute;
@@ -1188,4 +1192,14 @@ ion-header .toolbar-content-md {
 .right_button .button-inner {
     padding-left:0px !important;
     padding-right: 10px;
+}
+
+.right_button .button-inner {
+    padding-right: 7px!important;
+}
+.back-button.show-back-button {
+    width: 20px !important;
+    position: absolute;
+    left: 4px;
+    z-index: 1;
 }
