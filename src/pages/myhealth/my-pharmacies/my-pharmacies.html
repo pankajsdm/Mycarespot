@@ -18,7 +18,11 @@
   <ion-card *ngIf="!isLoading">
     <div class="animation " *ngFor="let item of lists">
       <div class="leftAnimation" [ngClass]="opendCondition" id="leftAnimation">
-        <div class="left1" (click)="myFunction('rightE')">1</div>
+        <div class="left1" (click)="myFunction('rightE')">
+          <button ion-button color="royal">
+            <ion-icon name="ios-remove"></ion-icon>
+          </button>
+        </div>
         <div class="left2" (click)="add_pharmacy()">
           <ion-col class="col" col-11>
             <h2>{{item.name}}</h2>

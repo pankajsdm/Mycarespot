@@ -51,25 +51,23 @@ export class MyPharmaciesPage {
 
   add_pharmacy(){
     this.opendCondition = '';
+    this.setEditOption();
     this.navCtrl.push(PharmacySearchPage);
   }
 
   myFunction(openTo){
-    console.log("LLLLLLLLL ", openTo)
       this.opendCondition = openTo;
-      
   }
   openEdit(option){
-    this.opendCondition = (this.editOption == 'Edit') ? "leftE" : "";
-    this.editOption = (this.editOption == 'Edit') ? "Done" : "Edit";    
+    this.opendCondition = (this.editOption === 'Edit') ? "leftE" : "";
+    this.editOption = (this.editOption === 'Edit') ? "Done" : "Edit";    
   }
   closeRight(){
-    console.log("RRRRRRRRR")
     this.opendCondition = '';
     this.setEditOption();
   }
 
   setEditOption(){
-    this.editOption = (this.editOption == 'Edit') ? "Done" : "Edit";
+    this.editOption = (this.editOption === 'Edit') ? "Done" : "Edit";
   }
 }
