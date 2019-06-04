@@ -141,7 +141,7 @@ export class FeedPage {
     this.authService.get('feeds/getAllPosts?number_of_pages=10&current_page=' + this.current_page).then((result) => {
       //this.isLoading = false;
       this.socketFeedArr = result;
-      if (this.socketFeedArr.code == '200') {
+      if (this.socketFeedArr.code == '401') {
         this.events.publish("user:logout");
         // localStorage.clear();
         // this.navCtrl.setRoot(LoginPage);

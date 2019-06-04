@@ -1,60 +1,260 @@
 page-my-pharmacies {
     /* Common css*/
-  .item-md.item-block .item-inner{padding-right: 0px;}
-  .card-md, .card-ios{width: 100%; margin: 0;}
-  .card-ios{box-shadow: none;border-bottom: 1px solid #d9d9d9;}
-  ion-title{text-align: center;}
-  ion-title .toolbar-title{color: #ffffff;}
-  /* Ended common css*/
-
-  /* Main Css*/
-  .bar-buttons-ios .bar-button-default-ios{height: 37px;}
-  //.content-ios .scroll-content{margin-top: 115px !important;}
-  ion-buttons {margin: 0;}
-  .bar-button-default-md, .bar-button-default-ios{color: #fff;}
-  .toolbar-md{padding: 0px;}
-  ion-item.item.item-block{border-bottom: 1px solid #d9d9d9;}
-  ion-col.col.col{float:left;}
-  .forward_icon ion-icon{color: #6b5b5b;}
-  ion-col p{text-align: left !important;}
-
-  .back-button {
-      width: 0px;
-      color: #fff;
-  }
-
-  .add_menor {
-      margin-top: 13px;
-      float: left;
-      color: #0084ff;
-  }
-
-  .form_label {
-      font-size: 13px;
-      margin-top: 15px;
-      margin-bottom: 15px;
-      float: left;
-      color: #2f2f2f;
-  }
-
-
-    .pad_rlt_10{padding: 0 10px; display: block;}
-    .pad_rlt_25{padding: 0 25px; display: block;}
-    .item-ios, .item-md{padding-left: 8px;
-      h2 {
-          font-size: 14px; font-weight: bold;
+    .item-md.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .card-md,
+    .card-ios {
+        width: 100%;
+        margin: 0;
+    }
+    .card-ios {
+        box-shadow: none;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    ion-title {
+        text-align: center;
+    }
+    ion-title .toolbar-title {
+        color: #ffffff;
+    }
+    /* Ended common css*/
+    /* Main Css*/
+    .bar-buttons-ios .bar-button-default-ios {
+        height: 37px;
+    } //.content-ios .scroll-content{margin-top: 115px !important;}
+    ion-buttons {
+        margin: 0;
+    }
+    .bar-button-default-md,
+    .bar-button-default-ios {
+        color: #fff;
+    }
+    .toolbar-md {
+        padding: 0px;
+    }
+    ion-item.item.item-block {
+        border-bottom: 1px solid #d9d9d9;
+    }
+    ion-col.col.col {
+        float: left;
+    }
+    .forward_icon ion-icon {
+        color: #6b5b5b;
+    }
+    ion-col p {
+        text-align: left !important;
+    }
+    .back-button {
+        width: 0px;
+        color: #fff;
+    }
+    .add_menor {
+        margin-top: 13px;
+        float: left;
+        color: #0084ff;
+    }
+    .form_label {
+        font-size: 13px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        float: left;
+        color: #2f2f2f;
+    }
+    .pad_rlt_10 {
+        padding: 0 10px;
+        display: block;
+    }
+    .pad_rlt_25 {
+        padding: 0 25px;
+        display: block;
+    }
+    .item-ios,
+    .item-md {
+        padding-left: 8px;
+        h2 {
+            font-size: 14px;
+            font-weight: bold;
         }
-      p {
-        font-size: 12px;
-      }
+        p {
+            font-size: 12px;
+        }
     }
-    .label-ios, .label-md {
-      margin:8px 0px 8px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .label-ios,
+    .label-md {
+        margin: 8px 0px 8px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    .forward_icon{text-align: right;}
-    .item-ios.item-block .item-inner{padding-right: 0px;}
-    .forward_icon .button{width: 74px;}
+    .forward_icon {
+        text-align: right;
+    }
+    .item-ios.item-block .item-inner {
+        padding-right: 0px;
+    }
+    .forward_icon .button {
+        width: 74px;
+    }
+    .left_button span {
+        color: map-get($colors, "primary");
+        font-size: 1.6rem;
+    }
+}
+
+.animation {
+    overflow: hidden;
+    border-bottom: 1px solid #d9d9d9; // background:black;
+}
+
+.leftAnimation {
+    width: 120%;
+}
+
+.leftAnimation.leftE {
+    // background: green;
+    position: relative;
+    -webkit-animation: lmove 3s;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards;
+    /* Safari 4.0 - 8.0 */
+    animation: lmove 3s;
+    animation-fill-mode: forwards;
+    width: 120%;
+}
+
+.leftAnimation.rightE {
+    // background: green;
+    position: relative;
+    -webkit-animation: rmove 3s;
+    /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards;
+    /* Safari 4.0 - 8.0 */
+    animation: rmove 3s;
+    animation-fill-mode: forwards;
+    width: 120%;
+}
+
+.left1 {
+    // background: red;
+    // height: 100px;
+    width: 10%;
+    float: left;
+    margin-left: -10%;
+}
+
+.left2 {
+    // background: green;
+    // height: 100px;
+    width: 90%;
+    float: left;
+    padding-left: 8px;
+    padding-top: 4px;
+    
+}
+.left2 h2
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.left2  p {
+    font-size: 12px;
+}
+
+.left3 {
+    // background: red;
+    // height: 100px;
+    width: 10%;
+    float: right;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes lmove {
+    from {
+        left: 0px;
+    }
+    to {
+        left: 10%;
+    }
+}
+
+@keyframes lmove {
+    from {
+        left: 0px;
+    }
+    to {
+        left: 10%;
+    }
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes rmove {
+    from {
+        right: 0px;
+    }
+    to {
+        right: 20%;
+    }
+}
+
+@keyframes rmove {
+    from {
+        right: 0px;
+    }
+    to {
+        right: 20%;
+    }
+}
+
+
+.left1 button {
+    color: #fff;
+    background-color: red;
+    margin: 0.4rem 0.2rem;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    font-weight: bold;
+    margin-left: 14px;
+    margin-top: 22px;
+    padding: 12px!important;
+}
+.left1 button .button-inner
+{
+    font-size:26px;
+    font-weight: bold;
+}
+
+
+
+.left3 button {
+    font-size: 14px;
+    color: #fff;
+    background-color: red;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    vertical-align: middle;
+    padding: 27px 0!important;
+    height: initial;
+}
+.left2 .forward_icon
+{
+    padding-top: 26px;
+    padding-bottom: 25px;
+}
+
+.editbtn {
+    height: initial;
+}
+.editbtn .button-inner {
+    padding-right: 0;
+    padding-left: 0;
+}
+.editbtn span {
+    color: #488aff;
+    font-size: 14px!important;
+    padding-top: 1px !important;
 }
